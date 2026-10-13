@@ -18,7 +18,7 @@ Twelve records have 13 curated Lean declaration links. All external proofs remai
 
 Each source is pinned to an exact commit. Anthropic entries cover FLT, zeta zeros, and 3SUM/APSP. AlphaProof Nexus entries inventory every released `.lean` file under `APNOutputs/`; the inventory does not independently endorse completeness or manuscript fidelity. Original mathematical authors and formalizing model are distinguished in provenance notes.
 
-Public catalogue: <https://gopikannappan.github.io/theorem-atlas/>.
+Public catalogue: <https://theorem-atlas.github.io/theorem-atlas/>.
 
 Contributions are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md), [community conduct](CODE_OF_CONDUCT.md), and [private security reporting](SECURITY.md). Original project code is [Apache-2.0](LICENSE); upstream materials retain their own terms.
 
@@ -60,7 +60,7 @@ The initial attempt fails; Lean's error recovery prints `sorryAx` for that faile
 
 ## Publish
 
-The workflow validates and builds the static catalogue on pull requests. On `main`, it deploys `dist/` to GitHub Pages. The repository uses **GitHub Actions** as its Pages source. The public catalogue is served at <https://gopikannappan.github.io/theorem-atlas/>.
+The workflow validates and builds the static catalogue on pull requests. On `main`, it deploys `dist/` to GitHub Pages. The repository uses **GitHub Actions** as its Pages source. The public catalogue is served at <https://theorem-atlas.github.io/theorem-atlas/>.
 
 ## Evidence boundaries
 
@@ -70,7 +70,7 @@ See [development checkpoint](docs/CHECKPOINT.md) for remaining work. Source mate
 
 ## Source licensing
 
-Licenses and attribution are visible in each record and on the deployed [Sources & licenses page](https://gopikannappan.github.io/theorem-atlas/attribution.html). See [license review](docs/LICENSES.md). Anthropic code is Apache-2.0; AlphaProof Nexus code is Apache-2.0 and its other materials are CC BY 4.0, subject to third-party terms. Implementations and manuscripts are linked, not copied.
+Licenses and attribution are visible in each record and on the deployed [Sources & licenses page](https://theorem-atlas.github.io/theorem-atlas/attribution.html). See [license review](docs/LICENSES.md). Anthropic code is Apache-2.0; AlphaProof Nexus code is Apache-2.0 and its other materials are CC BY 4.0, subject to third-party terms. Implementations and manuscripts are linked, not copied.
 
 ## Overlap handling
 

@@ -1,9 +1,9 @@
-# Current human maintainer; update to organization teams after a transfer.
-* @gopikannappan
+# Human maintainers team; authors cannot approve their own mathematical fidelity.
+* @theorem-atlas/maintainers
 # Maintainer review is required for workflow and catalogue integrity changes.
-/.github/ @gopikannappan
-/scripts/catalogue.py @gopikannappan
-/catalog/ @gopikannappan
-/source_adapters/ @gopikannappan
-/AGENTS.md @gopikannappan
-/SECURITY.md @gopikannappan
+/.github/ @theorem-atlas/maintainers
+/scripts/catalogue.py @theorem-atlas/maintainers
+/catalog/ @theorem-atlas/maintainers
+/source_adapters/ @theorem-atlas/maintainers
+/AGENTS.md @theorem-atlas/maintainers
+/SECURITY.md @theorem-atlas/maintainers

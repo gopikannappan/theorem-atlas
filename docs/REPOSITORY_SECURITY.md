@@ -1,6 +1,6 @@
 # Repository security checkpoint — 2026-10-13
 
-This is the configuration inspected and applied for `gopikannappan/theorem-atlas`. It is hardening evidence, not a guarantee that the repository or its external mathematics is vulnerability-free.
+This is the configuration inspected and applied for `theorem-atlas/theorem-atlas`. It is hardening evidence, not a guarantee that the repository or its external mathematics is vulnerability-free.
 
 ## GitHub controls
 
@@ -40,4 +40,4 @@ The previous hosted UI release (detail overlay) deployed successfully. The harde
 
 - A general Lean proof runner still needs an OS sandbox (container or stronger). `run_pilot.py` runs only its fixed infrastructure example in a temporary directory and is not an arbitrary-code sandbox. PR CI does not run Lean.
 - Mathematical fidelity, local external-proof audits, and a separately maintained proof verifier are not delivered by these repository controls.
-- The new `theorem-atlas` organization requires the owner's web signup. No transfer or site hostname/path change has been made. See ORGANIZATION_TRANSFER.md.
+- The owner created `theorem-atlas`, and the repository has been transferred with its name and `/theorem-atlas/` Pages path retained. Controls were rechecked; CodeQL was re-enabled after its configuration reset. The actual organization maintainers team is now Code Owner. See ORGANIZATION_TRANSFER.md.

@@ -53,3 +53,7 @@ The first overlap implementation mistakenly grouped records sharing the OpenAI m
 ## Record detail interaction
 
 Replaced inline card expansion with clickable card/row links and a native modal dialog, full-screen on narrow displays. Sources, manuscripts, proofs, provenance, licensing and overlap notes are rendered in the panel on demand. The fragment `#record=<encoded-id>` provides direct record links while keeping the catalogue query parameters. Normal clicks add a history entry, so Back dismisses the panel; direct record-link dismissal removes its fragment without leaving the site. Native dialog handles keyboard focus containment and restoration, and Escape/backdrop/Close dismiss the panel. Modified link clicks retain native new-tab behavior. Record-ID encoding tests cover archive member paths and invalid fragments.
+
+## Organization transfer checkpoint
+
+The owner created `theorem-atlas`. Active admin membership was verified before transferring the existing repository to `theorem-atlas/theorem-atlas`; the Git remote, site project link, README, security-report contact, and CODEOWNERS were updated. Security controls were rechecked after transfer. CodeQL required re-enablement; all other inspected controls were retained. The `/theorem-atlas/` path stays, with the new hostname `theorem-atlas.github.io`. No old-site redirect is claimed.

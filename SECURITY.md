@@ -2,7 +2,7 @@
 
 ## Private reporting
 
-Report vulnerabilities using this repository's **Security → Report a vulnerability** feature: [private report](https://github.com/gopikannappan/theorem-atlas/security/advisories/new). Do not include exploit details or secrets in public issues. Include the affected commit, minimal reproduction, impact, and relevant environment. The project has no promised response-time SLA; reports are handled by the maintainer.
+Report vulnerabilities using this repository's **Security → Report a vulnerability** feature: [private report](https://github.com/theorem-atlas/theorem-atlas/security/advisories/new). Do not include exploit details or secrets in public issues. Include the affected commit, minimal reproduction, impact, and relevant environment. The project has no promised response-time SLA; reports are handled by the maintainer.
 
 The supported version is the current `main` branch. Pinned external Lean sources are third-party artifacts and have not been audited locally; report upstream vulnerabilities to their maintainers too, and notify this project when its catalogue links or local tooling are affected.
 
