@@ -24,6 +24,8 @@ import OpenProblemsLab.IntegerComplexity
 set_option autoImplicit false
 set_option maxHeartbeats 400000
 
+noncomputable section
+
 namespace Mathoverflow75792
 
 /-- The inductively defined predicate that m is reachable using n ones. -/
@@ -80,13 +82,13 @@ theorem complexity_eq_expression {n : ℕ} (hn : 0 < n) :
   let witness : ∃ k, Reachable n k := ⟨n, Reachable.self n hn⟩
   have hdef : complexity n = Nat.find witness := by
     unfold complexity
-    rw [dif_neg (Nat.ne_of_gt hn)]
+    rw [dite_eq_right (Nat.ne_of_gt hn)]
   rw [hdef]
   apply le_antisymm
   · obtain ⟨e, he, hs⟩ :=
       OpenProblems.IntegerComplexity.exists_optimal (n := n) (by omega)
     apply Nat.find_min'
-    rw [← he, ← hs]
+    rw [← hs, ← he]
     exact expr_to_reachable e
   · obtain ⟨e, he, hs⟩ := reachable_to_expr (Nat.find_spec witness)
     have h := OpenProblems.IntegerComplexity.complexity_le_size e
