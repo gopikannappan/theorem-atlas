@@ -6022,5 +6022,13 @@
     "external_declarations_in_successful_fresh_group_replay": 0,
     "additional_pilot_fresh_replay_passed": true,
     "completed_independent_audits": 0
+  },
+  "scheduling_checkpoint": {
+    "evidence_commit": "c58c0a3d8bb1010b23e95416864d0d2f8b4a805e",
+    "duplicate_run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38461448185",
+    "reason": "PR path filters include the cumulative PR diff",
+    "action": "Restrict observer jobs to explicit workflow_dispatch; PR jobs skip and concurrency cancels duplicate",
+    "observation_logic_changed": false,
+    "duplicate_run_cancellation": "awaiting_confirmation"
   }
 }

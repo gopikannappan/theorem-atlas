@@ -16,6 +16,9 @@ concurrency:
 
 jobs:
   observe:
+    # The two bounded PR attempts are checkpointed. Further observations need
+    # an explicit workflow dispatch and resource plan; PR updates skip this job.
+    if: github.event_name == 'workflow_dispatch'
     name: observe (${{ matrix.group }})
     runs-on: ubuntu-24.04
     timeout-minutes: 65

@@ -93,3 +93,7 @@ Each fresh result describes replay of the group's combined import environment wi
 Use [the workbench](../audits/linked-declarations/README.md) and its pinned per-target inputs. Independent reviewers must examine the statement and assumptions, definition correspondence, whole proof dependencies, axiom interpretation (including native computation), source overlays, cache/toolchain trust, and coverage versus each manuscript. No agent approval is recorded. Comparator and an independently implemented external checker remain stronger follow-up steps where practical.
 
 Current completed independent audits: **0**.
+
+## Scheduling checkpoint
+
+The evidence-only checkpoint commit c58c0a3d8bb1010b23e95416864d0d2f8b4a805e unexpectedly queued [run 38461448185](https://github.com/theorem-atlas/theorem-atlas/actions/runs/38461448185): PR path filters evaluate the cumulative PR diff, so separate report paths alone do not prevent another run. Further observational jobs are now restricted to explicit workflow dispatch; PR-triggered observation jobs are skipped and the existing concurrency setting cancels the duplicate. This scheduling change does not alter observer/checker logic or catalogue acceptance rules. Future attempts require an explicit resource plan and their own retained checkpoint. The existing catalogue build still runs on PRs.
