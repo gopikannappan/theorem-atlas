@@ -58,6 +58,10 @@ The bounded pilot tries a generated natural-number denominator lemma relevant to
 
 The initial attempt fails; Lean's error recovery prints `sorryAx` for that failed declaration. It is rejected. The second attempt compiles and reports `propext`. This is compiler evidence for a small supporting statement only. The main Catalan proof has **not** been compiled or audited locally; Mathlib has **not** been built locally. Its upstream Lean/Mathlib pins are recorded in `catalog/sources.json` and the proof reference, not installed as a local project dependency.
 
+## CI proof candidate
+
+[Integer complexity of powers of three](proofs/integer-complexity/README.md) completes an unfinished source formulation by proving a bridge to an existing pinned Lean proof. The candidate compiles in [remote CI](https://github.com/theorem-atlas/theorem-atlas/actions/runs/38419766281) with pinned Lean/Mathlib and retained axiom diagnostics. It remains independently unreviewed; the catalogue is not promoted. All builds for this contribution run in GitHub CI, with candidate compilation inside a read-only, offline container. See its [attempt log](proofs/integer-complexity/ATTEMPTS.md) and provenance.
+
 ## Publish
 
 The workflow validates and builds the static catalogue on pull requests. On `main`, it deploys `dist/` to GitHub Pages. The repository uses **GitHub Actions** as its Pages source. The public catalogue is served at <https://theorem-atlas.github.io/theorem-atlas/>.
@@ -66,7 +70,7 @@ The workflow validates and builds the static catalogue on pull requests. On `mai
 
 `discovered` means indexed. `external_linked` means a pinned declaration has been located, not checked locally. The schema reserves the concept's later states, but v1 rejects audit, kernel-check, or fidelity claims until an independently reviewed evidence policy exists. The catalogue validator is a metadata integrity check, **not a proof verifier**. The experiment runner records compiler results and does not audit arbitrary Lean code.
 
-See [development checkpoint](docs/CHECKPOINT.md) for remaining work. Source material belongs to its upstream authors; the OpenAI repository identifies its license as Apache-2.0. Proof implementations are linked rather than copied.
+See [development checkpoint](docs/CHECKPOINT.md) for remaining work. Source material belongs to its upstream authors; the OpenAI repository identifies its license as Apache-2.0. Catalogue proof implementations are linked rather than copied. The CI proof candidate selectively extracts licensed definitions and a witness helper; the full reused proof is imported at a pinned commit.
 
 ## Source licensing
 

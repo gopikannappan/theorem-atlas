@@ -14,7 +14,7 @@ The source's executable decision procedure is omitted and classical decidability
 
 ## Evidence and review
 
-Status: **candidate, independently unreviewed**. CI compilation and printed axiom dependencies are compiler evidence, not mathematical fidelity approval. No catalogue record is promoted, and the existing verifier/validation rules are unchanged. In particular, the new workflow is candidate-build infrastructure and requires maintainer review; it is not an independent certification service.
+Status: **compiled successfully in remote CI, independently unreviewed**. [CI attempt 3](https://github.com/theorem-atlas/theorem-atlas/actions/runs/38419766281) checked candidate commit `4650242990e3030621c0c3535bfe1891964142f3`; retained output is in ATTEMPTS.md. CI compilation and printed axiom dependencies are compiler evidence, not mathematical fidelity approval. No catalogue record is promoted, and the existing verifier/validation rules are unchanged. In particular, the new workflow is candidate-build infrastructure and requires maintainer review; it is not an independent certification service.
 
 The CI job retains the exact checked commit, candidate hash, lockfile, provenance, preparation logs, compiler diagnostics, printed declaration and axiom lists as an artifact. The lockfile pins the full dependency closure. Expected ordinary Lean foundations must be examined rather than simply counting axioms. An independent reviewer should check the source extraction, both representation maps, minima equality, imported dependency source and its axiom closure, and CI isolation.
 

@@ -26,13 +26,15 @@ Create a branch or fork, make a focused change, run the relevant checks, and ope
 - Distinguish a family, manuscript, project, artifact, statement, and theorem. They are not interchangeable counting units.
 - Group alternative proofs of a known problem, document upstream reuse in `catalog/relationships.json`, and do not merge mathematical statements from title similarity alone.
 
-After a source change, run the relevant sync command, `python3 scripts/check_links.py`, `python3 scripts/overlaps.py`, and the checks above. Link checks use network access and only locate declarations; CI remains offline and reproducible from tracked data.
+After a source change, run the relevant sync command, `python3 scripts/check_links.py`, `python3 scripts/overlaps.py`, and the checks above. Link checks use network access and only locate declarations; catalogue CI remains offline and reproducible from tracked data.
 
 ## Proof work and independent review
 
 Proof generation and verification/review are separate responsibilities. Authors and agents must not approve their own mathematical statement fidelity or modify verification rules to accept a submission. Do not weaken statements, alter assumptions, or redefine concepts to make a proof compile. Statement changes require explicit independent review.
 
 Persist generated sources, failed attempts, compiler diagnostics, budgets, dependencies, and reproduction instructions. Use pinned toolchains and isolated builds. No trust bypass may be used to claim a verified proof. Axioms output is one diagnostic, not a sufficient audit. The existing `run_pilot.py` only runs a fixed, reviewed infrastructure example; it is not a sandbox for arbitrary contributed Lean. Never execute unknown Lean on your host or in credential-bearing CI.
+
+The scoped [integer-complexity CI job](proofs/integer-complexity/README.md) compiles its candidate inside a read-only, non-root container without network or credentials. Network-enabled preparation builds pinned upstream dependencies only. Its outputs are compiler evidence, not an independent mathematical certification; it does not change the existing verifier rules. New proof projects and workflow changes need separate maintainer scrutiny.
 
 The catalogue's supported published states remain `discovered` and `external_linked` (with unreviewed drafts/in-progress work permitted by the schema). Audited or faithful status is not currently accepted. New audit policy is a separate, independently reviewed project, not part of a generated-proof PR.
 

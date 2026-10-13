@@ -54,3 +54,29 @@ theorem Mathoverflow75792.complexity_three_pow : True ↔
 ```
 
 The error-recovery axiom in this failed run is not an accepted proof and is not manually introduced by the candidate. No verification is claimed for this revision. Candidate revision 2 adds a noncomputable section for the classical instance, uses the pinned version's non-deprecated `dite_eq_right` lemma, and rewrites expression cost before its value so the cost equality still matches. The predicate, minimum, theorem declaration, and assumptions are unchanged.
+
+## CI attempt 3 — candidate revision 2 compiled successfully
+
+- Candidate commit: 4650242990e3030621c0c3535bfe1891964142f3
+- Checked PR merge commit begins `c4660a9`; the full SHA is in the artifact's checked-commit.txt.
+- [Successful CI run](https://github.com/theorem-atlas/theorem-atlas/actions/runs/38419766281)
+- [Evidence artifact](https://github.com/theorem-atlas/theorem-atlas/actions/runs/38419766281/artifacts/11825767438), SHA256 9be9e4dfe15582730967f5a36a6c260813f1f9d8fc92d0d3bbd6f9813a386bb4.
+- Dependency preparation passed, candidate compiler exited successfully with warnings treated as errors, and diagnostics uploaded.
+- Candidate compiled in approximately four seconds, within the 120-second budget. The build downloaded 1979 transitive Mathlib cache entries and built the reused module.
+- Catalogue CI passed for the same candidate commit.
+- No local build, test, or command was run for this contribution after the owner's explicit restriction.
+
+Retained compiler output:
+
+```text
+theorem Mathoverflow75792.complexity_three_pow : True ↔
+  ∀ (n : ℕ), 0 < n → Mathoverflow75792.complexity (3 ^ n) = 3 * n :=
+{ mp := fun a n hn => Mathoverflow75792.complexity_three_pow_value n hn, mpr := fun a => True.intro }
+'Mathoverflow75792.reachable_iff_expr' depends on axioms: [propext]
+'Mathoverflow75792.complexity_eq_expression' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Mathoverflow75792.complexity_three_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+```
+
+Only ordinary Lean foundational dependencies appear in these lists; no error-recovery axiom appears. This is compiler evidence, not independent trust or mathematical fidelity approval. Source definitions use classical decidability and the explicit True answer wrapper; those extraction choices, the representation bridge, imported proof, cache trust surface, and workflow still require independent review. No catalogue state has been promoted and no existing verifier rule was changed. PR remains draft and unmerged.
+
+Budget checkpoint: three CI attempts, two candidate source revisions. Both failures are recorded above; every source revision is retained in branch history. This final documentation checkpoint does not change the successfully compiled candidate source or build inputs.

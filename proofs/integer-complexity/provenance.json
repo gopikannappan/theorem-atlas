@@ -39,5 +39,18 @@
     "compile_timeout_seconds": 120,
     "job_timeout_minutes": 45
   },
-  "generated_by": "Codex; model identity not recorded by this environment"
+  "generated_by": "Codex; model identity not recorded by this environment",
+  "compiler_evidence": {
+    "outcome": "passed",
+    "candidate_commit": "4650242990e3030621c0c3535bfe1891964142f3",
+    "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38419766281",
+    "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38419766281/artifacts/11825767438",
+    "artifact_sha256": "9be9e4dfe15582730967f5a36a6c260813f1f9d8fc92d0d3bbd6f9813a386bb4",
+    "printed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "independent_audit": false
+  }
 }
