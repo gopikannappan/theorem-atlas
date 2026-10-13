@@ -1,0 +1,65 @@
+name: Linked declaration observations
+
+on:
+  pull_request:
+    paths:
+      - 'audits/linked-declarations/**'
+      - '.github/workflows/linked-declaration-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: linked-declarations-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  observe:
+    name: observe (${{ matrix.group }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        group: [atlas-integer-complexity, openai-catalan, anthropic-flt, anthropic-zeta, anthropic-3sum, alphaproof, harmonic-imo, gauss-pnt]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Prepare attempt identity
+        env:
+          AUDIT_GROUP: ${{ matrix.group }}
+        shell: bash
+        run: |
+          mkdir -p evidence
+          git rev-parse HEAD > evidence/atlas-commit.txt
+          cp "audits/linked-declarations/groups/$AUDIT_GROUP.json" evidence/group.json
+          cp audits/linked-declarations/{prepare.py,observe.py,Dockerfile} evidence/
+          mkdir -p "$RUNNER_TEMP/audit-context"
+          cp evidence/group.json audits/linked-declarations/{prepare.py,observe.py,Dockerfile} "$RUNNER_TEMP/audit-context/"
+      - name: Prepare dependency image without credentials
+        shell: bash
+        run: |
+          set -o pipefail
+          timeout --kill-after=20s 900s docker build --platform linux/amd64 --progress plain \
+            -t atlas-declaration-observation "$RUNNER_TEMP/audit-context" \
+            2>&1 | tee evidence/preparation.log
+      - name: Observe original proof modules offline
+        shell: bash
+        run: |
+          set -o pipefail
+          timeout --kill-after=20s 900s docker run --rm \
+            --network none --cap-drop ALL --security-opt no-new-privileges \
+            --user 1000:1000 --pids-limit 256 --memory 6g --cpus 2 \
+            --tmpfs /tmp:rw,nosuid,nodev,size=256m \
+            atlas-declaration-observation 2>&1 | tee evidence/observations.log
+      - name: Retain attempt evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: declaration-observations-${{ matrix.group }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: evidence/
+          retention-days: 30
+          if-no-files-found: error

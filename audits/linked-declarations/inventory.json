@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "catalogue_commit": "d694d6b6c1916c81ae0fdb75afe89ea81d38fbcb",
+  "catalogue_records": 12,
+  "catalogue_declarations": 13,
+  "pilots": 1,
+  "review_policy": "unchanged; independent review pending; no automatic certification",
+  "budget": {
+    "attempts_per_group": 1,
+    "preparation_seconds": 900,
+    "observation_seconds": 900,
+    "build_seconds_per_target": 480,
+    "replay_seconds_per_target": 180,
+    "max_parallel_jobs": 4
+  },
+  "groups": [
+    "atlas-integer-complexity",
+    "openai-catalan",
+    "anthropic-flt",
+    "anthropic-zeta",
+    "anthropic-3sum",
+    "alphaproof",
+    "harmonic-imo",
+    "gauss-pnt"
+  ]
+}
