@@ -1,0 +1,56 @@
+{
+  "status": "candidate_unreviewed",
+  "manuscript_url": "https://arxiv.org/abs/1207.4841",
+  "source": {
+    "repository": "google-deepmind/formal-conjectures",
+    "commit": "72dad3524e0174dea703f267664d3bc9298803a0",
+    "path": "FormalConjectures/Mathoverflow/75792.lean",
+    "declaration": "Mathoverflow75792.complexity_three_pow",
+    "license": "Apache-2.0"
+  },
+  "reused_proof": {
+    "repository": "BrettKnox/open-problems-lab",
+    "commit": "04ef51fe64bbdd85a40c7105cf0ea46a3bee80af",
+    "path": "OpenProblemsLab/IntegerComplexity.lean",
+    "declaration": "OpenProblems.IntegerComplexity.complexity_three_pow",
+    "license": "Apache-2.0"
+  },
+  "declaration": "Mathoverflow75792.complexity_three_pow",
+  "proposition": "True ↔ ∀ n : ℕ, 0 < n → complexity (3 ^ n) = 3 * n",
+  "assumptions": [
+    "n is a natural number",
+    "0 < n",
+    "Reachable has only one, addition, and multiplication constructors",
+    "complexity is the Nat.find minimum number of ones"
+  ],
+  "proof_dependencies": [
+    "reachable_iff_expr",
+    "complexity_eq_expression",
+    "OpenProblems.IntegerComplexity.exists_optimal",
+    "OpenProblems.IntegerComplexity.complexity_le_size",
+    "OpenProblems.IntegerComplexity.complexity_three_pow"
+  ],
+  "lean": "leanprover/lean4:v4.34.0-rc1",
+  "mathlib_commit": "d77ef0741c6da1ff12df68fb4145ea0ae0850c54",
+  "fidelity_review": "pending independent review; compilation is not statement fidelity",
+  "trust_review": "pending independent review; #print axioms is diagnostic, not certification",
+  "budget": {
+    "max_candidate_attempts": 8,
+    "compile_timeout_seconds": 120,
+    "job_timeout_minutes": 45
+  },
+  "generated_by": "Codex; model identity not recorded by this environment",
+  "compiler_evidence": {
+    "outcome": "passed",
+    "candidate_commit": "4650242990e3030621c0c3535bfe1891964142f3",
+    "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38419766281",
+    "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38419766281/artifacts/11825767438",
+    "artifact_sha256": "9be9e4dfe15582730967f5a36a6c260813f1f9d8fc92d0d3bbd6f9813a386bb4",
+    "printed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "independent_audit": false
+  }
+}

@@ -38,9 +38,13 @@ The previous hosted UI release (detail overlay) deployed successfully. The harde
 
 ## Deferred boundaries
 
-- A general Lean proof runner still needs an OS sandbox (container or stronger). `run_pilot.py` runs only its fixed infrastructure example in a temporary directory and is not an arbitrary-code sandbox. PR CI does not run Lean.
+- A general Lean proof runner still needs an OS sandbox (container or stronger). `run_pilot.py` runs only its fixed infrastructure example in a temporary directory and is not an arbitrary-code sandbox. The scoped integer-complexity PR job now runs candidate compilation in a read-only, non-root, offline container, with a 120-second timeout and memory/CPU/process limits; pinned upstream dependency preparation uses network access. No credentials are passed to that container. This example is not a general independent proof-verification service and requires workflow review.
 - Mathematical fidelity, local external-proof audits, and a separately maintained proof verifier are not delivered by these repository controls.
 - The owner created `theorem-atlas`, and the repository has been transferred with its name and `/theorem-atlas/` Pages path retained. Controls were rechecked; CodeQL was re-enabled after its configuration reset. The actual organization maintainers team is now Code Owner. See ORGANIZATION_TRANSFER.md.
+
+## Proof candidate CI checkpoint
+
+The integer-complexity candidate compiled successfully in [GitHub CI](https://github.com/theorem-atlas/theorem-atlas/actions/runs/38419766281), with warnings treated as errors and recorded declaration/axiom diagnostics. Lean, Mathlib, external proof dependency, Lean archive checksum, and Ubuntu image digest are pinned; apt packages are not individually pinned. Both failed and successful attempts are recorded in proofs/integer-complexity/ATTEMPTS.md. Candidate compilation is isolated from dependency preparation. Independent source fidelity, imported-cache trust, and workflow review remain pending; no catalogue verification state or existing verifier rules changed.
 
 ## Administrator enforcement update
 
