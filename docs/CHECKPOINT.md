@@ -18,6 +18,10 @@ The Catalan comparator statement contains a placeholder. The separate solution d
 
 The first Python HTTPS fetch failed due to the local certificate configuration. Fetching with system curl succeeded with normal certificate validation. No certificate checks were disabled.
 
+## Catalogue browsing update
+
+Tiles are the default with an accessible List toggle. Pagination supports 12/24/48 results, previous/next controls, and direct page selection. Search and filter changes reset pagination. URL parameters preserve view, page, filters, and page size. Four Node tests cover pagination bounds, empty results, and evidence filters. The UI distinguishes the 242 upstream scope notes from the single curated proof declaration.
+
 ## Validation
 
 Nine metadata/adapter tests pass. Static build, JavaScript syntax check, and HTTP responses for index.html, app.js, style.css, and results.json pass. The curated external declaration was located at its pinned line using `python3 scripts/check_links.py`; this is a source-location check only. The same-commit synchronization preserved its curated reference.
@@ -30,4 +34,4 @@ Nine metadata/adapter tests pass. Static build, JavaScript syntax check, and HTT
 4. Select tractable missing results and regression examples after manuscript and Mathlib inspection, with explicit budgets. The current denominator experiment is infrastructure work, not a new manuscript formalization.
 5. Obtain independent statement-fidelity review, then attempt a reviewed main theorem. Report failures and progress candidly.
 
-No new main theorem proof, local external-proof audit, statement-fidelity review, is claimed. GitHub Pages publication is configured through the repository workflow. Browser interaction and visual QA remain untested in this environment.
+No new main theorem proof, local external-proof audit, or statement-fidelity review is claimed. GitHub Pages publication is configured through the repository workflow. Browser interaction and visual QA remain untested in this environment.

@@ -8,15 +8,16 @@ Public catalogue: <https://gopikannappan.github.io/theorem-atlas/>.
 
 ## Run locally
 
-Python 3.11+ and curl are sufficient for catalogue development; there are no Python packages to install.
+Python 3.11+ and curl are sufficient for catalogue builds; Node.js 18+ runs the pagination tests; there are no Python packages to install.
 
 ```sh
 python3 -m unittest discover -s tests -v
+node --test tests/catalogue-state.test.mjs
 python3 scripts/catalogue.py
 python3 -m http.server 8000 --directory dist
 ```
 
-Open <http://localhost:8000>. Search titles, manuscripts, declaration names, and family IDs; filter sources and evidence. Filters are reflected in the URL. Expand a record for pinned manuscript and proof provenance. Download the catalogue as JSON.
+Open <http://localhost:8000>. Tiles are the default; switch to List and paginate with 12, 24, or 48 results per page. View, page, and page size are reflected in shareable URLs. Search titles, manuscripts, declaration names, and family IDs; filter sources and evidence. Filters are reflected in the URL. Expand a record for pinned manuscript and proof provenance. Download the catalogue as JSON.
 
 ## Synchronize
 

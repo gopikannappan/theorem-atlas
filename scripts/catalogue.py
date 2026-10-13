@@ -43,7 +43,7 @@ def main():
     data = validate(json.loads((ROOT / 'catalog/results.json').read_text()))
     out = ROOT / 'dist'
     out.mkdir(exist_ok=True)
-    for name in ['index.html', 'app.js', 'style.css']:
+    for name in ['index.html', 'app.js', 'style.css', 'catalogue-state.mjs']:
         shutil.copyfile(ROOT / 'site' / name, out / name)
     (out / 'results.json').write_text(json.dumps(data, ensure_ascii=False))
     (out / '.nojekyll').touch()
