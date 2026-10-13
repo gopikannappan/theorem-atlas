@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "catalogue_commit": "d694d6b6c1916c81ae0fdb75afe89ea81d38fbcb",
+  "catalogue_records": 12,
+  "catalogue_declarations": 13,
+  "pilots": 1,
+  "review_policy": "unchanged; independent review pending; no automatic certification",
+  "budget": {
+    "attempts_per_group": 1,
+    "preparation_seconds": 900,
+    "observation_seconds": 900,
+    "build_seconds_per_target": 480,
+    "replay_seconds_per_target": 180,
+    "max_parallel_jobs": 4,
+    "runner_revisions": 2,
+    "module_replay_seconds_per_target": 60,
+    "pilot_fresh_replay_seconds": 600,
+    "second_revision_observation_seconds": {
+      "default": 900,
+      "large_single_target_groups": 1800,
+      "harmonic_five_targets": 2700
+    },
+    "second_revision_large_build_seconds": 1200,
+    "job_timeout_minutes": 65
+  },
+  "groups": [
+    "atlas-integer-complexity",
+    "openai-catalan",
+    "anthropic-flt",
+    "anthropic-zeta",
+    "anthropic-3sum",
+    "alphaproof",
+    "harmonic-imo",
+    "gauss-pnt"
+  ]
+}

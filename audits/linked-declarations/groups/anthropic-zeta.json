@@ -1,0 +1,206 @@
+{
+  "repository": "https://github.com/anthropics/formal-math",
+  "commit": "e1a4e6508154ea59f030480661590a9fe3018011",
+  "toolchain": "leanprover/lean4:v4.33.0-rc2",
+  "targets": [
+    {
+      "repository": "https://github.com/anthropics/formal-math",
+      "commit": "e1a4e6508154ea59f030480661590a9fe3018011",
+      "file": "zeta23/Solution.lean",
+      "line": 64,
+      "declaration": "two_thirds_simple_on_critical_line_cumulative",
+      "url": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/zeta23/Solution.lean#L64",
+      "toolchain": "leanprover/lean4:v4.33.0-rc2",
+      "mathlib_commit": "51e6992efd06126df61a496bebf8f49482a4e129",
+      "dependencies": [
+        "ChallengeDeps",
+        "Zeta23.Unconditional",
+        "Zeta23.FinalMult",
+        "Zeta23.ThmD.Final",
+        "Zeta23.ThmD.Mult",
+        "Zeta23.ThmE.Final",
+        "Zeta23.ThmE.Mult",
+        "Zeta23.ThmDE.Final",
+        "Zeta23.ThmDE.Mult"
+      ],
+      "audit_state": "not_locally_audited",
+      "maintenance": "external",
+      "record_id": "anthropic:zeta23",
+      "record_title": "Zeta zeros: more than two thirds simple and on the critical line",
+      "source": "Anthropic / Claude",
+      "manuscripts": [],
+      "references": [
+        {
+          "title": "Alpöge–Furman paper",
+          "url": "https://arxiv.org/abs/2608.13637"
+        }
+      ],
+      "scope_url": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/zeta23/README.md",
+      "target_id": "anthropic:zeta23",
+      "module": "Solution",
+      "probe": "AtlasAudit0.lean",
+      "fidelity_review": {
+        "state": "pending",
+        "reviewer": null
+      },
+      "trust_review": {
+        "state": "pending",
+        "reviewer": null
+      },
+      "reproduction": {
+        "state": "not_attempted"
+      },
+      "review_questions": [
+        "The linked theorem gives a two-thirds-minus-epsilon asymptotic bound. Does the record title 'more than two thirds' require a different declaration or more precise wording?",
+        "Review the definitions and multiplicity conventions of Ncount and N0simple."
+      ],
+      "assumptions_draft": {
+        "status": "unreviewed_source_extraction",
+        "items": [
+          "For every positive real epsilon, there exists a real threshold T0, and the bound holds for every real T ≥ T0",
+          "Ncount and N0simple definitions and counting conventions require review"
+        ],
+        "source_url": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/zeta23/Solution.lean#L64"
+      },
+      "source_git_blob": "bd5dd641b10983884cafb0a4d7d964a10de32d11",
+      "direct_import_source_lines": [
+        "import ChallengeDeps",
+        "import Zeta23.Unconditional",
+        "import Zeta23.FinalMult",
+        "import Zeta23.ThmD.Final",
+        "import Zeta23.ThmD.Mult",
+        "import Zeta23.ThmE.Final",
+        "import Zeta23.ThmE.Mult",
+        "import Zeta23.ThmDE.Final",
+        "import Zeta23.ThmDE.Mult"
+      ]
+    }
+  ],
+  "root": "zeta23",
+  "id": "anthropic-zeta",
+  "mathlib_commit": "51e6992efd06126df61a496bebf8f49482a4e129",
+  "lean_release": {
+    "version": "v4.33.0-rc2",
+    "url": "https://github.com/leanprover/lean4/releases/download/v4.33.0-rc2/lean-4.33.0-rc2-linux.tar.zst",
+    "sha256": "48010c7d6264dc992574e9b0e09ece1f9c648e8f5106066b2cdb6834a6a60a6c",
+    "asset_id": 500021613,
+    "sha256_basis": "github_asset_digest"
+  },
+  "checker": {
+    "kind": "leanchecker",
+    "provided_by": "pinned Lean release"
+  },
+  "manifest_git_blob": "af9ef405e4e292f2e0176b12b6cb66f547575314",
+  "manifest_packages": [
+    {
+      "url": "https://github.com/leanprover-community/plausible",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "123d15766ba49356c02ebad2a4462dfe12d79899",
+      "name": "plausible",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "main",
+      "inherited": true,
+      "configFile": "lakefile.toml"
+    },
+    {
+      "url": "https://github.com/leanprover-community/LeanSearchClient",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "f5c090429dff3cf66cb65562526c9ea6e8edfbcb",
+      "name": "LeanSearchClient",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "main",
+      "inherited": true,
+      "configFile": "lakefile.toml"
+    },
+    {
+      "url": "https://github.com/leanprover-community/import-graph",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "bb3469a87774349fe01898d8bf2fc6a1ce6411ca",
+      "name": "importGraph",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "main",
+      "inherited": true,
+      "configFile": "lakefile.toml"
+    },
+    {
+      "url": "https://github.com/leanprover-community/ProofWidgets4",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "222c58dad7706a6e7cae46c0edd65ea881d3ee27",
+      "name": "proofwidgets",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "main",
+      "inherited": true,
+      "configFile": "lakefile.lean"
+    },
+    {
+      "url": "https://github.com/leanprover-community/aesop",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "7db8190085343afde2f5d2cdcc9bac719b6ec02c",
+      "name": "aesop",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "master",
+      "inherited": true,
+      "configFile": "lakefile.toml"
+    },
+    {
+      "url": "https://github.com/leanprover-community/quote4",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "ef42f8944eaf5b6cbfbe75d1917d824c7dd6cf33",
+      "name": "Qq",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "master",
+      "inherited": true,
+      "configFile": "lakefile.toml"
+    },
+    {
+      "url": "https://github.com/leanprover-community/batteries",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "76e1c118b0700b4ceafe99532e887d6431625e1a",
+      "name": "batteries",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "main",
+      "inherited": true,
+      "configFile": "lakefile.toml"
+    },
+    {
+      "url": "https://github.com/leanprover/lean4-cli",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover",
+      "rev": "1319485273bf87833fa472afbcefdedecb16b45f",
+      "name": "Cli",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "v4.33.0-rc2",
+      "inherited": true,
+      "configFile": "lakefile.toml"
+    },
+    {
+      "url": "https://github.com/leanprover-community/mathlib4",
+      "type": "git",
+      "subDir": null,
+      "scope": "",
+      "rev": "51e6992efd06126df61a496bebf8f49482a4e129",
+      "name": "mathlib",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "51e6992efd06126df61a496bebf8f49482a4e129",
+      "inherited": false,
+      "configFile": "lakefile.lean"
+    }
+  ],
+  "observation_seconds": 1800,
+  "build_seconds": 1200
+}

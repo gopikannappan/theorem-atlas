@@ -1,0 +1,414 @@
+{
+  "repository": "https://github.com/harmonic-ai/IMO2025",
+  "commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+  "toolchain": "leanprover/lean4:v4.20.0-rc5",
+  "targets": [
+    {
+      "repository": "https://github.com/harmonic-ai/IMO2025",
+      "commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+      "file": "HarmonicLean/IMO2025P1.lean",
+      "line": 1387,
+      "declaration": "IMO2025P1.main_theorem",
+      "url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/HarmonicLean/IMO2025P1.lean#L1387",
+      "toolchain": "leanprover/lean4:v4.20.0-rc5",
+      "mathlib_commit": "4e685d14db58b1ab29024bb0761902a3615f3f14",
+      "dependencies": [
+        "HarmonicLean.Imports"
+      ],
+      "audit_state": "not_locally_audited",
+      "maintenance": "external",
+      "record_id": "harmonic:imo2025:p1",
+      "record_title": "IMO 2025 — problem 1",
+      "source": "Harmonic / Aristotle",
+      "manuscripts": [],
+      "references": [
+        {
+          "title": "IMO 2025 official problems",
+          "url": "https://www.imo-official.org/problems.aspx"
+        }
+      ],
+      "scope_url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/README.md",
+      "target_id": "harmonic:imo2025:p1",
+      "module": "HarmonicLean.IMO2025P1",
+      "probe": "AtlasAudit0.lean",
+      "fidelity_review": {
+        "state": "pending",
+        "reviewer": null
+      },
+      "trust_review": {
+        "state": "pending",
+        "reviewer": null
+      },
+      "reproduction": {
+        "state": "not_attempted"
+      },
+      "review_questions": [
+        "Check that the real-line encoding and sunny-line coefficient exclusions match the official geometry problem."
+      ],
+      "assumptions_draft": {
+        "status": "unreviewed_source_extraction",
+        "items": [
+          "n is a natural number with n ≥ 3",
+          "Finite sets of n distinct real-plane lines with specified triangular-grid coverage and sunny-line conditions"
+        ],
+        "source_url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/HarmonicLean/IMO2025P1.lean#L1387"
+      },
+      "source_git_blob": "7b15da46975979ddfe4d8ead8a149105e0290b35",
+      "direct_import_source_lines": [
+        "import HarmonicLean.Imports"
+      ]
+    },
+    {
+      "repository": "https://github.com/harmonic-ai/IMO2025",
+      "commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+      "file": "HarmonicLean/IMO2025P3.lean",
+      "line": 417,
+      "declaration": "IMO2025P3.main_theorem",
+      "url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/HarmonicLean/IMO2025P3.lean#L417",
+      "toolchain": "leanprover/lean4:v4.20.0-rc5",
+      "mathlib_commit": "4e685d14db58b1ab29024bb0761902a3615f3f14",
+      "dependencies": [
+        "HarmonicLean.Imports"
+      ],
+      "audit_state": "not_locally_audited",
+      "maintenance": "external",
+      "record_id": "harmonic:imo2025:p3",
+      "record_title": "IMO 2025 — problem 3",
+      "source": "Harmonic / Aristotle",
+      "manuscripts": [],
+      "references": [
+        {
+          "title": "IMO 2025 official problems",
+          "url": "https://www.imo-official.org/problems.aspx"
+        }
+      ],
+      "scope_url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/README.md",
+      "target_id": "harmonic:imo2025:p3",
+      "module": "HarmonicLean.IMO2025P3",
+      "probe": "AtlasAudit1.lean",
+      "fidelity_review": {
+        "state": "pending",
+        "reviewer": null
+      },
+      "trust_review": {
+        "state": "pending",
+        "reviewer": null
+      },
+      "reproduction": {
+        "state": "not_attempted"
+      },
+      "review_questions": [
+        "Check the quantified IsBonza predicate and its modular-equivalence hypothesis against divisibility over positive integers."
+      ],
+      "assumptions_draft": {
+        "status": "unreviewed_source_extraction",
+        "items": [
+          "IsBonza is a predicate on positive-natural-valued functions",
+          "For every f, IsBonza f is equivalent to the given modular condition for every pair of positive natural inputs"
+        ],
+        "source_url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/HarmonicLean/IMO2025P3.lean#L417"
+      },
+      "source_git_blob": "0480b995de79b0547e4bd5d0938eec96e9cbf62a",
+      "direct_import_source_lines": [
+        "import HarmonicLean.Imports"
+      ]
+    },
+    {
+      "repository": "https://github.com/harmonic-ai/IMO2025",
+      "commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+      "file": "HarmonicLean/IMO2025P4.lean",
+      "line": 1437,
+      "declaration": "IMO2025P4.main_theorem",
+      "url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/HarmonicLean/IMO2025P4.lean#L1437",
+      "toolchain": "leanprover/lean4:v4.20.0-rc5",
+      "mathlib_commit": "4e685d14db58b1ab29024bb0761902a3615f3f14",
+      "dependencies": [
+        "HarmonicLean.Imports"
+      ],
+      "audit_state": "not_locally_audited",
+      "maintenance": "external",
+      "record_id": "harmonic:imo2025:p4",
+      "record_title": "IMO 2025 — problem 4",
+      "source": "Harmonic / Aristotle",
+      "manuscripts": [],
+      "references": [
+        {
+          "title": "IMO 2025 official problems",
+          "url": "https://www.imo-official.org/problems.aspx"
+        }
+      ],
+      "scope_url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/README.md",
+      "target_id": "harmonic:imo2025:p4:1",
+      "module": "HarmonicLean.IMO2025P4",
+      "probe": "AtlasAudit2.lean",
+      "fidelity_review": {
+        "state": "pending",
+        "reviewer": null
+      },
+      "trust_review": {
+        "state": "pending",
+        "reviewer": null
+      },
+      "reproduction": {
+        "state": "not_attempted"
+      },
+      "review_questions": [
+        "Compare the proper-divisor ordering and zero-based sequence index with the official problem.",
+        "Compare the positive-m condition with the second proof's coprimality-only formulation; do not assume equivalence from the title."
+      ],
+      "assumptions_draft": {
+        "status": "unreviewed_source_extraction",
+        "items": [
+          "No explicit theorem parameters; the left set quantifies an infinite natural-number sequence with every term positive and at least three proper divisors",
+          "Each successor is the sum of the three largest proper divisors",
+          "The right set requires positive m coprime to 10"
+        ],
+        "source_url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/HarmonicLean/IMO2025P4.lean#L1437"
+      },
+      "source_git_blob": "6a026875c0236715a1f799a4262a3df0a49779dd",
+      "direct_import_source_lines": [
+        "import HarmonicLean.Imports"
+      ]
+    },
+    {
+      "repository": "https://github.com/harmonic-ai/IMO2025",
+      "commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+      "file": "HarmonicLean/IMO2025P4_solve2.lean",
+      "line": 934,
+      "declaration": "IMO2025P4Solve2.main_theorem",
+      "url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/HarmonicLean/IMO2025P4_solve2.lean#L934",
+      "toolchain": "leanprover/lean4:v4.20.0-rc5",
+      "mathlib_commit": "4e685d14db58b1ab29024bb0761902a3615f3f14",
+      "dependencies": [
+        "HarmonicLean.Imports"
+      ],
+      "audit_state": "not_locally_audited",
+      "maintenance": "external",
+      "record_id": "harmonic:imo2025:p4",
+      "record_title": "IMO 2025 — problem 4",
+      "source": "Harmonic / Aristotle",
+      "manuscripts": [],
+      "references": [
+        {
+          "title": "IMO 2025 official problems",
+          "url": "https://www.imo-official.org/problems.aspx"
+        }
+      ],
+      "scope_url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/README.md",
+      "target_id": "harmonic:imo2025:p4:2",
+      "module": "HarmonicLean.IMO2025P4_solve2",
+      "probe": "AtlasAudit3.lean",
+      "fidelity_review": {
+        "state": "pending",
+        "reviewer": null
+      },
+      "trust_review": {
+        "state": "pending",
+        "reviewer": null
+      },
+      "reproduction": {
+        "state": "not_attempted"
+      },
+      "review_questions": [
+        "Compare the proper-divisor ordering and zero-based sequence index with the official problem.",
+        "Review why coprimality with 10 supplies the needed positive-m condition."
+      ],
+      "assumptions_draft": {
+        "status": "unreviewed_source_extraction",
+        "items": [
+          "No explicit theorem parameters; the left set quantifies an infinite natural-number sequence with every term positive and at least three proper divisors",
+          "Each successor is the sum of the three largest proper divisors",
+          "The right set requires m coprime to 10; positivity is not an explicit right-set conjunct"
+        ],
+        "source_url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/HarmonicLean/IMO2025P4_solve2.lean#L934"
+      },
+      "source_git_blob": "407a3f4a4217de8c928e19fd5e709b73e7102068",
+      "direct_import_source_lines": [
+        "import HarmonicLean.Imports"
+      ]
+    },
+    {
+      "repository": "https://github.com/harmonic-ai/IMO2025",
+      "commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+      "file": "HarmonicLean/IMO2025P5.lean",
+      "line": 615,
+      "declaration": "IMO2025P5.main_theorem",
+      "url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/HarmonicLean/IMO2025P5.lean#L615",
+      "toolchain": "leanprover/lean4:v4.20.0-rc5",
+      "mathlib_commit": "4e685d14db58b1ab29024bb0761902a3615f3f14",
+      "dependencies": [
+        "HarmonicLean.Imports"
+      ],
+      "audit_state": "not_locally_audited",
+      "maintenance": "external",
+      "record_id": "harmonic:imo2025:p5",
+      "record_title": "IMO 2025 — problem 5",
+      "source": "Harmonic / Aristotle",
+      "manuscripts": [],
+      "references": [
+        {
+          "title": "IMO 2025 official problems",
+          "url": "https://www.imo-official.org/problems.aspx"
+        }
+      ],
+      "scope_url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/README.md",
+      "target_id": "harmonic:imo2025:p5",
+      "module": "HarmonicLean.IMO2025P5",
+      "probe": "AtlasAudit4.lean",
+      "fidelity_review": {
+        "state": "pending",
+        "reviewer": null
+      },
+      "trust_review": {
+        "state": "pending",
+        "reviewer": null
+      },
+      "reproduction": {
+        "state": "not_attempted"
+      },
+      "review_questions": [
+        "Review game strategies, legal-move semantics, and the equality case at the threshold against the official problem."
+      ],
+      "assumptions_draft": {
+        "status": "unreviewed_source_extraction",
+        "items": [
+          "No explicit theorem parameters; the two winning-parameter sets involve positive real lambda and the defined Alice/Bazza strategy predicates"
+        ],
+        "source_url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/HarmonicLean/IMO2025P5.lean#L615"
+      },
+      "source_git_blob": "f30ebfea7f85187c13cb8867503865e169d0eac1",
+      "direct_import_source_lines": [
+        "import HarmonicLean.Imports"
+      ]
+    }
+  ],
+  "root": "",
+  "id": "harmonic-imo",
+  "mathlib_commit": "4e685d14db58b1ab29024bb0761902a3615f3f14",
+  "lean_release": {
+    "version": "v4.20.0-rc5",
+    "url": "https://github.com/leanprover/lean4/releases/download/v4.20.0-rc5/lean-4.20.0-rc5-linux.tar.zst",
+    "sha256": "e4544c44170377ef33d6ae1ebe7eea10383f7fe20a84d56c1fdc18d16fccb575",
+    "asset_id": 252596559,
+    "sha256_basis": "observed_first_CI_download",
+    "digest_evidence_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11842285695"
+  },
+  "checker": {
+    "kind": "lean4checker",
+    "repository": "https://github.com/leanprover/lean4checker",
+    "commit": "9fb95ce88e73c985a1bd6596e1dbd19b0a9cd355"
+  },
+  "manifest_git_blob": "abdf80393336a11c9ef59c950f624a0dac5430f2",
+  "manifest_packages": [
+    {
+      "url": "https://github.com/leanprover-community/mathlib4",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "4e685d14db58b1ab29024bb0761902a3615f3f14",
+      "name": "mathlib",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "v4.20.0-rc5",
+      "inherited": false,
+      "configFile": "lakefile.lean"
+    },
+    {
+      "url": "https://github.com/leanprover-community/plausible",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "304c5e2f490d546134c06bf8919e13b175272084",
+      "name": "plausible",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "main",
+      "inherited": true,
+      "configFile": "lakefile.toml"
+    },
+    {
+      "url": "https://github.com/leanprover-community/LeanSearchClient",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "25078369972d295301f5a1e53c3e5850cf6d9d4c",
+      "name": "LeanSearchClient",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "main",
+      "inherited": true,
+      "configFile": "lakefile.toml"
+    },
+    {
+      "url": "https://github.com/leanprover-community/import-graph",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "f5e58ef1f58fc0cbd92296d18951f45216309e48",
+      "name": "importGraph",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "main",
+      "inherited": true,
+      "configFile": "lakefile.toml"
+    },
+    {
+      "url": "https://github.com/leanprover-community/ProofWidgets4",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "632ca63a94f47dbd5694cac3fd991354b82b8f7a",
+      "name": "proofwidgets",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "v0.0.59",
+      "inherited": true,
+      "configFile": "lakefile.lean"
+    },
+    {
+      "url": "https://github.com/leanprover-community/aesop",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "9264d548cf1ccf0ba454b82f931f44c37c299fc1",
+      "name": "aesop",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "master",
+      "inherited": true,
+      "configFile": "lakefile.toml"
+    },
+    {
+      "url": "https://github.com/leanprover-community/quote4",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "36ce5e17d6ab3c881e0cb1bb727982507e708130",
+      "name": "Qq",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "master",
+      "inherited": true,
+      "configFile": "lakefile.toml"
+    },
+    {
+      "url": "https://github.com/leanprover-community/batteries",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "78e1181c4752c7e10874d2ed5a6a15063f4a35b6",
+      "name": "batteries",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "main",
+      "inherited": true,
+      "configFile": "lakefile.toml"
+    },
+    {
+      "url": "https://github.com/leanprover/lean4-cli",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover",
+      "rev": "4f22c09e7ded721e6ecd3cf59221c4647ca49664",
+      "name": "Cli",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "main",
+      "inherited": true,
+      "configFile": "lakefile.toml"
+    }
+  ],
+  "observation_seconds": 2700,
+  "build_seconds": 480
+}

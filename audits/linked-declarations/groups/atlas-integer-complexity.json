@@ -1,0 +1,73 @@
+{
+  "id": "atlas-integer-complexity",
+  "repository": "https://github.com/theorem-atlas/theorem-atlas",
+  "commit": "758e030c9ae8fc0a7ce8ed5165cec3672b81d197",
+  "root": "proofs/integer-complexity",
+  "toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "mathlib_commit": "d77ef0741c6da1ff12df68fb4145ea0ae0850c54",
+  "lean_release": {
+    "version": "v4.34.0-rc1",
+    "url": "https://github.com/leanprover/lean4/releases/download/v4.34.0-rc1/lean-4.34.0-rc1-linux.tar.zst",
+    "sha256": "41dc6a6ec143ece8ed4ba4c4c6978c91f21ad5cbe3c4e7728ad31b869961dc17",
+    "asset_id": 509012398,
+    "sha256_basis": "github_asset_digest"
+  },
+  "checker": {
+    "kind": "leanchecker",
+    "provided_by": "pinned Lean release"
+  },
+  "targets": [
+    {
+      "target_id": "atlas:integer-complexity",
+      "record_id": null,
+      "record_title": "Integer complexity of powers of three — source-model bridge",
+      "source": "Theorem Atlas / proof reuse",
+      "repository": "https://github.com/theorem-atlas/theorem-atlas",
+      "commit": "758e030c9ae8fc0a7ce8ed5165cec3672b81d197",
+      "file": "proofs/integer-complexity/IntegerComplexity.lean",
+      "module": "IntegerComplexity",
+      "probe": "AtlasAudit0.lean",
+      "line": 103,
+      "declaration": "Mathoverflow75792.complexity_three_pow",
+      "url": "https://github.com/theorem-atlas/theorem-atlas/blob/758e030c9ae8fc0a7ce8ed5165cec3672b81d197/proofs/integer-complexity/IntegerComplexity.lean#L103",
+      "references": [
+        {
+          "title": "Source manuscript",
+          "url": "https://arxiv.org/abs/1207.4841"
+        }
+      ],
+      "fidelity_review": {
+        "state": "pending",
+        "reviewer": null
+      },
+      "trust_review": {
+        "state": "pending",
+        "reviewer": null
+      },
+      "reproduction": {
+        "state": "ci_compiled",
+        "evidence_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38425504276"
+      },
+      "review_questions": [
+        "Independently check the selective source extraction, classical decidability, and explicit True answer wrapper.",
+        "Review both representation maps and equality of minima; confirm the positive-exponent condition and reused Selfridge proof."
+      ],
+      "assumptions_draft": {
+        "status": "unreviewed_source_extraction",
+        "items": [
+          "n is a natural number",
+          "0 < n",
+          "Reachable uses only one, addition, and multiplication constructors",
+          "complexity minimizes the number of ones using Nat.find"
+        ],
+        "source_url": "https://github.com/theorem-atlas/theorem-atlas/blob/758e030c9ae8fc0a7ce8ed5165cec3672b81d197/proofs/integer-complexity/IntegerComplexity.lean#L103"
+      },
+      "direct_import_source_lines": [
+        "import OpenProblemsLab.IntegerComplexity"
+      ]
+    }
+  ],
+  "fresh_replay_seconds": 600,
+  "observation_seconds": 900,
+  "build_seconds": 480
+}

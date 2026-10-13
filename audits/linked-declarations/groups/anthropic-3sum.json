@@ -1,0 +1,189 @@
+{
+  "repository": "https://github.com/anthropics/formal-math",
+  "commit": "e1a4e6508154ea59f030480661590a9fe3018011",
+  "toolchain": "leanprover/lean4:v4.33.1",
+  "targets": [
+    {
+      "repository": "https://github.com/anthropics/formal-math",
+      "commit": "e1a4e6508154ea59f030480661590a9fe3018011",
+      "file": "3sum-apsp/ThreeSumApsp/Statements/EndStatement.lean",
+      "line": 44,
+      "declaration": "ThreeSumApsp.endStatement_theorem_22_3SUM",
+      "url": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Statements/EndStatement.lean#L44",
+      "toolchain": "leanprover/lean4:v4.33.1",
+      "mathlib_commit": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "dependencies": [],
+      "audit_state": "not_locally_audited",
+      "maintenance": "external",
+      "record_id": "anthropic:3sum-apsp",
+      "record_title": "Subquadratic 3SUM and subcubic APSP — Lean formalization",
+      "source": "Anthropic / Claude",
+      "manuscripts": [],
+      "references": [
+        {
+          "title": "Alman–Vassilevska Williams paper",
+          "url": "https://arxiv.org/abs/2610.06783"
+        }
+      ],
+      "scope_url": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/README.md",
+      "target_id": "anthropic:3sum-apsp",
+      "module": "ThreeSumApsp.Statements.EndStatement",
+      "probe": "AtlasAudit0.lean",
+      "fidelity_review": {
+        "state": "pending",
+        "reviewer": null
+      },
+      "trust_review": {
+        "state": "pending",
+        "reviewer": null
+      },
+      "reproduction": {
+        "state": "not_attempted"
+      },
+      "review_questions": [
+        "The linked declaration covers 3SUM specifically, while the record title also mentions APSP. Record coverage per declaration.",
+        "Review the WordRAM model, bounded integer inputs, correctness, and cost model behind EndStatement.Theorem_22_3SUM."
+      ],
+      "assumptions_draft": {
+        "status": "unreviewed_source_extraction",
+        "items": [
+          "The formal statement is the named proposition EndStatement.Theorem_22_3SUM; expand its definitions to inventory machine/input/cost assumptions. This expansion is pending."
+        ],
+        "source_url": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Statements/EndStatement.lean#L44"
+      },
+      "source_git_blob": "5f034c8999ab8d97f66653b3feef1b4a9ed4f38b",
+      "direct_import_source_lines": [
+        "public import ThreeSumApsp.RunningTimes.Sec3.Theorem22",
+        "public import ThreeSumApsp.RunningTimes.Sec5.Corollary39",
+        "public import ThreeSumApsp.Statements.Exponents"
+      ]
+    }
+  ],
+  "root": "3sum-apsp",
+  "id": "anthropic-3sum",
+  "mathlib_commit": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "lean_release": {
+    "version": "v4.33.1",
+    "url": "https://github.com/leanprover/lean4/releases/download/v4.33.1/lean-4.33.1-linux.tar.zst",
+    "sha256": "890afd185370f85666025b883914ab4f4b339136f8c96167b69cfb62aecaf235",
+    "asset_id": 523687465,
+    "sha256_basis": "github_asset_digest"
+  },
+  "checker": {
+    "kind": "leanchecker",
+    "provided_by": "pinned Lean release"
+  },
+  "manifest_git_blob": "278733a7ecc1563b8ceb70e62df049d43c6a83c6",
+  "manifest_packages": [
+    {
+      "url": "https://github.com/leanprover-community/mathlib4",
+      "type": "git",
+      "subDir": null,
+      "scope": "",
+      "rev": "0df444a360eaa60ab8c11dca51a86af692955474",
+      "name": "mathlib",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "v4.33.1",
+      "inherited": false,
+      "configFile": "lakefile.lean"
+    },
+    {
+      "url": "https://github.com/leanprover-community/plausible",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "b7eb3304aeae834b12dda98993a37f6a41f6f0bb",
+      "name": "plausible",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "main",
+      "inherited": true,
+      "configFile": "lakefile.toml"
+    },
+    {
+      "url": "https://github.com/leanprover-community/LeanSearchClient",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "5f4d51b81cbd3f6b32b156bfad9056621a040404",
+      "name": "LeanSearchClient",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "main",
+      "inherited": true,
+      "configFile": "lakefile.toml"
+    },
+    {
+      "url": "https://github.com/leanprover-community/import-graph",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "16f02aa7642864af59f1ff0e384a015994db9118",
+      "name": "importGraph",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "main",
+      "inherited": true,
+      "configFile": "lakefile.toml"
+    },
+    {
+      "url": "https://github.com/leanprover-community/ProofWidgets4",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "4be2e3d5087eeb272cf5a8853b8f9dd025ef5957",
+      "name": "proofwidgets",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "main",
+      "inherited": true,
+      "configFile": "lakefile.lean"
+    },
+    {
+      "url": "https://github.com/leanprover-community/aesop",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "3448c0bcc5ce01b2d1546e483ec3620e32df3d0e",
+      "name": "aesop",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "master",
+      "inherited": true,
+      "configFile": "lakefile.toml"
+    },
+    {
+      "url": "https://github.com/leanprover-community/quote4",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "92c15be17b7caf78c2ad767ec40f89052d908d81",
+      "name": "Qq",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "master",
+      "inherited": true,
+      "configFile": "lakefile.toml"
+    },
+    {
+      "url": "https://github.com/leanprover-community/batteries",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover-community",
+      "rev": "4488d40d070b9700d4d5a6aa342f0d40c31b2a2d",
+      "name": "batteries",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "main",
+      "inherited": true,
+      "configFile": "lakefile.toml"
+    },
+    {
+      "url": "https://github.com/leanprover/lean4-cli",
+      "type": "git",
+      "subDir": null,
+      "scope": "leanprover",
+      "rev": "6130a47896ce867c6a4a55373441e59e565bad0f",
+      "name": "Cli",
+      "manifestFile": "lake-manifest.json",
+      "inputRev": "v4.33.0",
+      "inherited": true,
+      "configFile": "lakefile.toml"
+    }
+  ],
+  "observation_seconds": 1800,
+  "build_seconds": 1200
+}
