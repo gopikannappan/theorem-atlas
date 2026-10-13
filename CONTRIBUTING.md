@@ -38,7 +38,7 @@ The catalogue's supported published states remain `discovered` and `external_lin
 
 ## Reviews and licensing
 
-The human maintainer reviews contributions; Code Owners review is required for protected-branch PRs. Workflow and trust/evidence-related changes need focused human scrutiny. CI success alone does not approve a theorem or a source's statement fidelity.
+The human maintainer reviews contributions; Code Owners review is required for protected-branch PRs. Workflow and trust/evidence-related changes need focused human scrutiny. CI success alone does not approve a theorem or a source's statement fidelity. Use PRs for contributions. Administrator bypass is temporarily available while there is only one maintainer; other collaborators still require the normal reviews and checks. A PR author cannot approve their own PR. Re-enable administrator enforcement when a trusted second maintainer is available.
 
 Original project code is Apache-2.0. By submitting original code, you license that contribution under the project's license. Existing upstream material retains its original terms; preserve source credit and do not claim ownership or blanket relicensing. No CLA is required. Do not submit material you lack permission to contribute.
 

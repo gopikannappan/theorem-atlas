@@ -21,4 +21,4 @@ The supported version is the current `main` branch. Pinned external Lean sources
 
 ## Repository administration
 
-See [repository security checkpoint](docs/REPOSITORY_SECURITY.md) for actual checked settings and any limits. Administrator bypass remains available for maintenance; normal collaborator changes require PR review and a passing build. After an organization transfer, recheck security controls and update CODEOWNERS to real maintainer teams rather than guessed team names.
+See [repository security checkpoint](docs/REPOSITORY_SECURITY.md) for actual checked settings and any limits. Administrator bypass is temporarily available while the project has only one maintainer. Contributions should still use PRs; normal collaborator changes require Code Owner approval and a passing up-to-date build. Re-enable administrator enforcement after adding a trusted second maintainer who can independently review maintainer-authored PRs. After an organization transfer, recheck security controls and update CODEOWNERS to real maintainer teams rather than guessed team names.

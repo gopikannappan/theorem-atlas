@@ -13,7 +13,7 @@ This is the configuration inspected and applied for `theorem-atlas/theorem-atlas
 | `main` checks | Up-to-date `build` required from GitHub Actions app 15368 |
 | PR reviews | One approving review, Code Owner review, stale approval dismissal, and approval after last push |
 | Merge hygiene | Conversation resolution and linear history required; force pushes and deletion disabled; squash/rebase available, merged branches deleted |
-| Administrator bypass | Available (`enforce_admins=false`); owner maintenance is an exception to normal PR enforcement |
+| Administrator bypass | Temporarily available (`enforce_admins=false`) until a trusted second maintainer can independently review owner-authored PRs |
 | Actions policy | GitHub-owned Actions only; other verified/third-party Actions not allowed; full SHA pinning required |
 | Default workflow token | Read-only; cannot approve PR reviews |
 | Pages environment | Deployment branch policy permits `main`; workflow also checks the branch and excludes PRs |
@@ -41,3 +41,9 @@ The previous hosted UI release (detail overlay) deployed successfully. The harde
 - A general Lean proof runner still needs an OS sandbox (container or stronger). `run_pilot.py` runs only its fixed infrastructure example in a temporary directory and is not an arbitrary-code sandbox. PR CI does not run Lean.
 - Mathematical fidelity, local external-proof audits, and a separately maintained proof verifier are not delivered by these repository controls.
 - The owner created `theorem-atlas`, and the repository has been transferred with its name and `/theorem-atlas/` Pages path retained. Controls were rechecked; CodeQL was re-enabled after its configuration reset. The actual organization maintainers team is now Code Owner. See ORGANIZATION_TRANSFER.md.
+
+## Administrator enforcement update
+
+On 2026-10-13, administrator enforcement was enabled at the owner's request. Owner-authored PRs then could not obtain an independent Code Owner approval because the project had only one maintainer. At the owner's request, administrator bypass was restored temporarily using the dedicated API endpoint. Read-back confirmed `enforce_admins=false`; the existing required build, one approval, Code Owner review, last-push approval, and other protection settings were retained.
+
+Contributions should still use PRs. Re-enable administrator enforcement after adding a trusted second maintainer who can review owner-authored changes. This temporary repository-administration exception does not permit an agent or author to approve their own mathematical statement fidelity.
