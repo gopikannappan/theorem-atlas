@@ -1,0 +1,188 @@
+[
+  {
+    "adapter": "project",
+    "source": "Anthropic / Claude",
+    "model": "Claude (upstream attribution; exact model varies by project)",
+    "origin_note": "AI-assisted formalization; mathematical authorship is described in the linked source metadata.",
+    "attribution": "Anthropic, PBC and upstream contributors. Linked artifact metadata curated by Theorem Atlas; no proof implementations copied.",
+    "id": "anthropic:fermat-last-theorem",
+    "title": "Fermat’s Last Theorem — Lean formalization",
+    "repository": "https://github.com/anthropics/fermats-last-theorem",
+    "commit": "6e837e75355538c7f80bab5b956861e86c4eacc2",
+    "readme": "README.md",
+    "toolchain": "leanprover/lean4:v4.33.1",
+    "mathlib_commit": "db584cd6d46c92f209a44c0f1c829460d327499d",
+    "references": [
+      {
+        "title": "Original Wiles paper (1995)",
+        "url": "https://doi.org/10.2307/2118559"
+      },
+      {
+        "title": "Taylor–Wiles companion paper (1995)",
+        "url": "https://doi.org/10.2307/2118560"
+      }
+    ],
+    "reproduction_commands": [
+      "lake build",
+      "verification/comparator/run.sh",
+      "verification/nanoda/run.sh"
+    ],
+    "targets": [
+      {
+        "file": "Theorems/Thm_fermat_last_theorem.lean",
+        "line": 128,
+        "declaration": "fermat_last_theorem",
+        "dependencies": [
+          "Mathlib.NumberTheory.FLT.Basic",
+          "P2M.Util",
+          "P2M.Sol.S_fermat_last_theorem"
+        ]
+      }
+    ],
+    "license": {
+      "code": "Apache-2.0",
+      "materials": "See source publication terms",
+      "url": "https://github.com/anthropics/fermats-last-theorem/blob/6e837e75355538c7f80bab5b956861e86c4eacc2/LICENSE",
+      "third_party_note": "Upstream NOTICE and attribution files cover third-party contributions; papers are linked, not redistributed."
+    }
+  },
+  {
+    "adapter": "project",
+    "source": "Anthropic / Claude",
+    "model": "Claude (upstream attribution; exact model varies by project)",
+    "origin_note": "AI-assisted formalization; mathematical authorship is described in the linked source metadata.",
+    "attribution": "Anthropic, PBC and upstream contributors. Linked artifact metadata curated by Theorem Atlas; no proof implementations copied.",
+    "id": "anthropic:zeta23",
+    "title": "Zeta zeros: more than two thirds simple and on the critical line",
+    "repository": "https://github.com/anthropics/formal-math",
+    "commit": "e1a4e6508154ea59f030480661590a9fe3018011",
+    "readme": "zeta23/README.md",
+    "toolchain": "leanprover/lean4:v4.33.0-rc2",
+    "mathlib_commit": "51e6992efd06126df61a496bebf8f49482a4e129",
+    "references": [
+      {
+        "title": "Alpöge–Furman paper",
+        "url": "https://arxiv.org/abs/2608.13637"
+      }
+    ],
+    "reproduction_commands": [
+      "cd zeta23",
+      "lake exe cache get",
+      "lake build",
+      "bash ../.github/scripts/comparator-check.sh"
+    ],
+    "targets": [
+      {
+        "file": "zeta23/Solution.lean",
+        "line": 64,
+        "declaration": "two_thirds_simple_on_critical_line_cumulative",
+        "dependencies": [
+          "ChallengeDeps",
+          "Zeta23.Unconditional",
+          "Zeta23.FinalMult",
+          "Zeta23.ThmD.Final",
+          "Zeta23.ThmD.Mult",
+          "Zeta23.ThmE.Final",
+          "Zeta23.ThmE.Mult",
+          "Zeta23.ThmDE.Final",
+          "Zeta23.ThmDE.Mult"
+        ]
+      }
+    ],
+    "license": {
+      "code": "Apache-2.0",
+      "materials": "See source publication terms",
+      "url": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/LICENSE",
+      "third_party_note": "Upstream NOTICE and attribution files cover third-party contributions; papers are linked, not redistributed."
+    }
+  },
+  {
+    "adapter": "project",
+    "source": "Anthropic / Claude",
+    "model": "Claude (upstream attribution; exact model varies by project)",
+    "origin_note": "Reported research result and its formalization. The upstream README distinguishes proved word-RAM bounds from claims not proved for a machine; consult its coverage table.",
+    "attribution": "Anthropic, PBC and upstream contributors. Linked artifact metadata curated by Theorem Atlas; no proof implementations copied.",
+    "id": "anthropic:3sum-apsp",
+    "title": "Subquadratic 3SUM and subcubic APSP — Lean formalization",
+    "repository": "https://github.com/anthropics/formal-math",
+    "commit": "e1a4e6508154ea59f030480661590a9fe3018011",
+    "readme": "3sum-apsp/README.md",
+    "toolchain": "leanprover/lean4:v4.33.1",
+    "mathlib_commit": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "references": [
+      {
+        "title": "Alman–Vassilevska Williams paper",
+        "url": "https://arxiv.org/abs/2610.06783"
+      }
+    ],
+    "reproduction_commands": [
+      "cd 3sum-apsp",
+      "lake exe cache get",
+      "lake build",
+      "bash ../.github/scripts/comparator-check.sh"
+    ],
+    "targets": [
+      {
+        "file": "3sum-apsp/ThreeSumApsp/Statements/EndStatement.lean",
+        "line": 44,
+        "declaration": "ThreeSumApsp.endStatement_theorem_22_3SUM",
+        "dependencies": []
+      }
+    ],
+    "license": {
+      "code": "Apache-2.0",
+      "materials": "See source publication terms",
+      "url": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/LICENSE",
+      "third_party_note": "Upstream NOTICE and attribution files cover third-party contributions; papers are linked, not redistributed."
+    }
+  },
+  {
+    "adapter": "inventory",
+    "source": "Google DeepMind / AlphaProof Nexus",
+    "model": "AlphaProof Nexus",
+    "repository": "https://github.com/google-deepmind/alphaproof-nexus-results",
+    "commit": "0647711a71183c1ea492ad60860776617ce1ea88",
+    "toolchain": "leanprover/lean4:v4.27.0",
+    "mathlib_commit": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+    "attribution": "Google LLC and the original mathematical sources credited upstream. File titles adapted from filenames by Theorem Atlas; proofs and prose remain upstream.",
+    "origin_note": "Includes existing conjectures, established mathematics, and human–AI research collaborations; the model is not attributed authorship of the original conjectures.",
+    "reproduction_commands": [
+      "lake exe cache get",
+      "lake build"
+    ],
+    "license": {
+      "code": "Apache-2.0",
+      "materials": "CC-BY-4.0",
+      "url": "https://github.com/google-deepmind/alphaproof-nexus-results/blob/0647711a71183c1ea492ad60860776617ce1ea88/README.md#license-and-disclaimer",
+      "third_party_note": "OEIS source material: CC-BY-SA-4.0. Erdős Problems and other contributed material may have separate terms. These are external links, not blanket relicensing."
+    },
+    "curated": {
+      "APNOutputs/ErdosProblems/erdos_152.lean": {
+        "title": "Erdős problem 152 — isolated sums in Sidon sets",
+        "line": 505,
+        "declaration": "Erdos152.target_theorem_0",
+        "dependencies": [
+          "FormalConjectures.Util.ProblemImports"
+        ],
+        "prose": "NaturalLanguageProofs/ErdosProblems/erdos152.pdf"
+      },
+      "APNOutputs/OEIS/oeis_51293_conjecture_0.lean": {
+        "title": "OEIS A051293 — subsets with integer average",
+        "line": 517,
+        "declaration": "target_theorem_0",
+        "dependencies": [
+          "FormalConjectures.Util.ProblemImports"
+        ],
+        "prose": "NaturalLanguageProofs/OEIS/oeis_51293.pdf"
+      },
+      "APNOutputs/StacksProject/NormalRings_normalRing_characterization.lean": {
+        "title": "Stacks Project — characterization of normal rings",
+        "line": 1029,
+        "declaration": "normalRing_characterization",
+        "dependencies": [
+          "Mathlib"
+        ]
+      }
+    }
+  }
+]

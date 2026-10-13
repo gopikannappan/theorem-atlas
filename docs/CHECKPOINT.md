@@ -35,3 +35,9 @@ Nine metadata/adapter tests pass. Static build, JavaScript syntax check, and HTT
 5. Obtain independent statement-fidelity review, then attempt a reviewed main theorem. Report failures and progress candidly.
 
 No new main theorem proof, local external-proof audit, or statement-fidelity review is claimed. GitHub Pages publication is configured through the repository workflow. Browser interaction and visual QA remain untested in this environment.
+
+## Additional source checkpoint
+
+Added three Anthropic projects and all 71 AlphaProof Nexus `APNOutputs/` Lean files, with source-specific kinds, pinned commits, toolchains/Mathlib revisions, original-source references, reproduction commands, and license attribution. Seven catalogue records now have curated declaration links. Source-location checking succeeded for all seven; this does not audit the proofs. No upstream proof source or manuscript content is copied. See LICENSES.md and catalog/external-sources.json for review evidence and exact pins.
+
+The FLT recursive GitHub tree response was truncated; it was not used for ingestion. The adapter indexes that project's curated headline metadata directly. The complete AlphaProof Nexus tree was not truncated and its adapter rejects truncated inventories. Some exploratory candidate paths returned HTTP 404; declaration locations were resolved in the actual solution library rather than using comparator statement files.

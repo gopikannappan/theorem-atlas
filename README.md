@@ -1,8 +1,10 @@
 # Theorem Atlas
 
-An open, source-agnostic catalogue of mathematical results and pinned Lean proof references. The first source adapter is OpenAI's public mathematics collection. See [the concept](CONCEPT-TA.md) and [operating rules](AGENTS.md).
+An open, source-agnostic catalogue of mathematical results and pinned Lean proof references. Sources include OpenAI mathematics, Anthropic / Claude, and Google DeepMind / AlphaProof Nexus. See [the concept](CONCEPT-TA.md) and [operating rules](AGENTS.md).
 
-The first slice indexes **372 result families and 719 manuscripts** at upstream commit `1581d4cbdd69a0faf34b2089614fe2a814316a6a`. These are upstream claims, not independently endorsed mathematical results. One external Catalan proof has a curated declaration link. Other families may have upstream scope notes; absence of a curated proof link does not mean no proof exists.
+The catalogue contains **446 records**: **372 OpenAI result families / 719 manuscripts**, **3 Anthropic formalization projects**, and **71 AlphaProof Nexus Lean artifacts**. Seven records have curated declaration links. File artifacts, projects, manuscripts, and mathematical theorems are different counting units; file-level titles do not establish theorem-level identity. All external proofs remain locally unaudited.
+
+Each source is pinned to an exact commit. Anthropic entries cover FLT, zeta zeros, and 3SUM/APSP. AlphaProof Nexus entries inventory every released `.lean` file under `APNOutputs/`; the inventory does not independently endorse completeness or manuscript fidelity. Original mathematical authors and formalizing model are distinguished in provenance notes.
 
 Public catalogue: <https://gopikannappan.github.io/theorem-atlas/>.
 
@@ -23,11 +25,12 @@ Open <http://localhost:8000>. Tiles are the default; switch to List and paginate
 
 ```sh
 python3 scripts/sync_upstream.py
+python3 scripts/sync_external.py
 python3 scripts/check_links.py
 python3 scripts/catalogue.py
 ```
 
-The adapter fetches an exact commit, not a moving branch. To adopt a new upstream version, inspect its format, change the adapter pin, run synchronization and review the diff. Curated fields survive same-commit refreshes. A new commit resets this adapter's statement/proof fields for review. Other adapters' records are retained. Do not edit generated title/manuscript fields manually.
+The adapters fetch exact commits, not moving branches. External source pins, curated targets, reproduction commands, and license metadata are in `catalog/external-sources.json`. Refreshing an external source regenerates its catalogue records from this manifest; edit that manifest for curated metadata. To adopt a new upstream version, inspect its format, change the adapter pin, run synchronization and review the diff. Curated fields survive same-commit refreshes. A new commit resets this adapter's statement/proof fields for review. Other adapters' records are retained. Do not edit generated title/manuscript fields manually.
 
 ## Lean experiment
 
@@ -49,3 +52,7 @@ The workflow validates and builds the static catalogue on pull requests. On `mai
 `discovered` means indexed. `external_linked` means a pinned declaration has been located, not checked locally. The schema reserves the concept's later states, but v1 rejects audit, kernel-check, or fidelity claims until an independently reviewed evidence policy exists. The catalogue validator is a metadata integrity check, **not a proof verifier**. The experiment runner records compiler results and does not audit arbitrary Lean code.
 
 See [development checkpoint](docs/CHECKPOINT.md) for remaining work. Source material belongs to its upstream authors; the OpenAI repository identifies its license as Apache-2.0. Proof implementations are linked rather than copied.
+
+## Source licensing
+
+Licenses and attribution are visible in each record and on the deployed [Sources & licenses page](https://gopikannappan.github.io/theorem-atlas/attribution.html). See [license review](docs/LICENSES.md). Anthropic code is Apache-2.0; AlphaProof Nexus code is Apache-2.0 and its other materials are CC BY 4.0, subject to third-party terms. Implementations and manuscripts are linked, not copied.

@@ -19,8 +19,18 @@ def validate(data):
         ids.add(r['id'])
         if not SHA.fullmatch(r['upstream_commit']) or r['status'] not in STATUSES:
             raise ValueError(f'Invalid provenance/status: {r["id"]}')
-        if not r['manuscripts'] or not r['title']:
-            raise ValueError(f'Missing manuscript/title: {r["id"]}')
+        if r['kind'] not in {'result_family', 'formalization_project', 'external_proof_artifact'} or not r['title']:
+            raise ValueError(f'Invalid record kind/title: {r["id"]}')
+        if r['kind'] == 'result_family' and not r['manuscripts']:
+            raise ValueError(f'Missing family manuscript: {r["id"]}')
+        if r['kind'] != 'result_family':
+            if not r.get('license', {}).get('url', '').startswith('https://') or not r.get('attribution'):
+                raise ValueError(f'Missing license attribution: {r["id"]}')
+            if r['kind'] == 'external_proof_artifact' and r.get('artifact_url') != r['source_url']:
+                raise ValueError('Artifact location must match pinned source')
+        for reference in r.get('references', []):
+            if not reference['url'].startswith('https://') or not reference['title']:
+                raise ValueError('Invalid external publication reference')
         for url in [r['source_url'], *(p['url'] for p in r['manuscripts'])]:
             if not url.startswith('https://') or r['upstream_commit'] not in url:
                 raise ValueError(f'Unpinned source: {r["id"]}')
@@ -43,8 +53,9 @@ def main():
     data = validate(json.loads((ROOT / 'catalog/results.json').read_text()))
     out = ROOT / 'dist'
     out.mkdir(exist_ok=True)
-    for name in ['index.html', 'app.js', 'style.css', 'catalogue-state.mjs']:
+    for name in ['index.html', 'app.js', 'style.css', 'catalogue-state.mjs', 'attribution.html']:
         shutil.copyfile(ROOT / 'site' / name, out / name)
+    shutil.copytree(ROOT / 'site/licenses', out / 'licenses', dirs_exist_ok=True)
     (out / 'results.json').write_text(json.dumps(data, ensure_ascii=False))
     (out / '.nojekyll').touch()
     print(f'Built dist/ with {len(data["results"])} validated records')

@@ -19,7 +19,7 @@ def main():
                 record[field] = previous[field]
     records += [r for r in old if not r['id'].startswith('openai-math:')]
     path.write_text(json.dumps({'schema_version': 1, 'results': records}, indent=2, ensure_ascii=False) + '\n')
-    print(f'Indexed {len(records)} result families at {COMMIT}')
+    print(f'Catalogue contains {len(records)} records after OpenAI refresh at {COMMIT}')
 
 if __name__ == '__main__':
     main()

@@ -33,6 +33,8 @@ def parse(contents):
             'manuscripts': [{'title': plain(title), 'url': f'{REPOSITORY}/blob/{COMMIT}/{path}'} for title, path in manuscripts],
             'status': 'discovered', 'statement': None, 'assumptions': None,
             'fidelity_review': 'unreviewed', 'proofs': [],
+            'attribution': 'OpenAI mathematics collection. Family and manuscript titles indexed by Theorem Atlas; proof implementations linked upstream.',
+            'license': {'code': 'Apache-2.0', 'materials': 'Apache-2.0 (repository notice)', 'url': f'{REPOSITORY}/blob/{COMMIT}/LICENSE', 'third_party_note': 'External cited publications retain their own terms.'},
             'scope_url': f'{REPOSITORY}/blob/{COMMIT}/{scope[1]}' if scope else None,
         })
     if not records or len({r['id'] for r in records}) != len(records):

@@ -21,7 +21,7 @@ function render() {
   const selected = filterRecords(records, { query: $('query').value, source: $('source').value, status: $('status').value });
   const pagination = paginate(selected, currentPage, $('page-size').value);
   currentPage = pagination.page;
-  $('count').textContent = `${pagination.first}–${pagination.last} of ${selected.length} matching families (${records.length} total)`;
+  $('count').textContent = `${pagination.first}–${pagination.last} of ${selected.length} matching records (${records.length} total)`;
   $('empty').hidden = selected.length !== 0;
   $('results').className = currentView;
   $('tiles-view').setAttribute('aria-pressed', String(currentView === 'tiles'));
@@ -38,16 +38,27 @@ function render() {
   const fragment = document.createDocumentFragment();
   for (const r of pagination.items) {
     const article = element('article', undefined, 'record'); article.id = r.id;
-    article.append(element('div', r.id.replace('openai-math:', 'OAI / '), 'record-id'));
+    article.append(element('div', r.id.startsWith('openai-math:') ? r.id.replace('openai-math:', 'OAI / ') : r.id.startsWith('anthropic:') ? 'ANTHROPIC / PROJECT' : 'DEEPMIND / ' + (r.category || 'ARTIFACT'), 'record-id'));
     const body = element('div'); body.append(element('h3', r.title));
     const tags = element('div', undefined, 'tags');
-    tags.append(element('span', r.source), element('span', r.proofs.length ? 'External proof linked' : r.scope_url ? 'Upstream Lean scope note' : 'No Lean scope note indexed', `badge ${r.proofs.length ? 'linked' : ''}`), element('span', `${r.manuscripts.length} manuscript${r.manuscripts.length === 1 ? '' : 's'}`));
+    tags.append(element('span', r.source), element('span', r.proofs.length ? 'External proof linked' : r.artifact_url ? 'External Lean artifact' : r.scope_url ? 'Upstream Lean scope note' : 'No Lean scope note indexed', `badge ${r.proofs.length ? 'linked' : ''}`), element('span', r.kind === 'result_family' ? `${r.manuscripts.length} manuscript${r.manuscripts.length === 1 ? '' : 's'}` : r.kind === 'formalization_project' ? 'Formalization project' : 'Proof artifact'));
     body.append(tags);
     const details = element('details'); details.append(element('summary', 'Inspect sources & evidence'));
     const evidence = element('div', undefined, 'evidence');
     const manuscripts = element('ul');
     for (const m of r.manuscripts) { const li = element('li'); li.append(link(m.title, m.url)); manuscripts.append(li); }
-    evidence.append(manuscripts);
+    if (r.manuscripts.length) evidence.append(manuscripts);
+    for (const reference of r.references || []) {
+      const p = element('p'); p.append(link(reference.title + ' ↗', reference.url)); evidence.append(p);
+    }
+    if (r.artifact_url) { const p = element('p'); p.append(link('Pinned upstream Lean artifact ↗', r.artifact_url)); evidence.append(p); }
+    if (r.origin_note) evidence.append(element('p', r.origin_note));
+    if (r.metadata_note) evidence.append(element('p', r.metadata_note));
+    if (r.license) {
+      const p = element('p', 'Upstream license: '); p.append(link(r.license.code + ' · ' + r.license.materials, r.license.url)); evidence.append(p);
+      evidence.append(element('p', r.attribution));
+      evidence.append(element('p', r.license.third_party_note));
+    }
     const provenance = element('p', 'Upstream commit: '); provenance.append(link(r.upstream_commit, r.source_url)); evidence.append(provenance);
     if (r.scope_url) { const p = element('p'); p.append(link('Upstream formalization scope note ↗', r.scope_url)); evidence.append(p); }
     for (const proof of r.proofs) {
@@ -79,7 +90,7 @@ async function init() {
     $('page-size').value = String(paginate([], 1, params.get('size')).size);
     $('total').textContent = records.length;
     $('linked').textContent = records.filter(r => r.proofs.length).length;
-    $('coverage-summary').textContent = `${records.filter(r => r.scope_url).length} families have upstream Lean scope notes · ${records.filter(r => r.proofs.length).length} has a curated declaration link · 0 locally audited. Scope notes may describe partial or supporting results.`;
+    $('coverage-summary').textContent = `${records.filter(r => r.kind === 'result_family').length} result families · ${records.filter(r => r.kind === 'formalization_project').length} formalization projects · ${records.filter(r => r.kind === 'external_proof_artifact').length} Lean artifacts. ${records.filter(r => r.proofs.length).length} records have curated declaration links; 0 locally audited. Projects and artifacts are not additional manuscript or theorem counts.`;
     render();
     $('filters').addEventListener('input', () => { currentPage = 1; render(); });
     $('filters').addEventListener('submit', event => event.preventDefault());

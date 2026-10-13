@@ -11,8 +11,11 @@ class CatalogueTests(unittest.TestCase):
 
     def test_live_snapshot_integrity(self):
         validate(self.data)
-        self.assertEqual(len(self.data['results']), 372)
-        self.assertEqual(sum(len(r['manuscripts']) for r in self.data['results']), 719)
+        openai = [r for r in self.data['results'] if r['id'].startswith('openai-math:')]
+        self.assertEqual(len(openai), 372)
+        self.assertEqual(sum(len(r['manuscripts']) for r in openai), 719)
+        self.assertEqual(sum(r['id'].startswith('anthropic:') for r in self.data['results']), 3)
+        self.assertGreater(sum(r['id'].startswith('alphaproof-nexus:') for r in self.data['results']), 0)
 
     def test_reject_duplicate_id(self):
         self.data['results'].append(copy.deepcopy(self.data['results'][0]))

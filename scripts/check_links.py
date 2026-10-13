@@ -1,5 +1,6 @@
 """Check curated declaration locations at pinned commits, without compiling proofs."""
 import json
+import re
 import subprocess
 from pathlib import Path
 
@@ -15,7 +16,7 @@ def main():
             source = subprocess.check_output(['curl', '-fsSL', '--max-time', '30', url], text=True)
             line = source.splitlines()[proof['line'] - 1]
             name = proof['declaration'].split('.')[-1]
-            if not line.strip().startswith('theorem ' + name + ' '):
+            if not re.match(r'^\s*(?:theorem|lemma)\s+' + re.escape(name) + r'(?:\s|$|\.)', line):
                 raise ValueError(f'Declaration location changed: {proof["url"]}')
             print(f'Located {proof["declaration"]} at {proof["commit"]}:{proof["line"]}')
             count += 1
