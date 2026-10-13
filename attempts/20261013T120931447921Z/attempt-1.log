@@ -1,0 +1,7 @@
+Pilot.lean:3:2: error: Tactic `rfl` failed: Expected the goal to be a binary relation
+
+Hint: Reflexivity tactics can only be used on goals of the form `x ~ x` or `R x x`
+
+n : Nat
+⊢ 2 * n + 1 ≠ 0
+'TheoremAtlas.Pilot.odd_denominator_ne_zero' depends on axioms: [sorryAx]

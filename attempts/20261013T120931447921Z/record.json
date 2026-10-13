@@ -1,0 +1,53 @@
+{
+  "run_id": "20261013T120931447921Z",
+  "result_id": "openai-math:005",
+  "target_kind": "supporting_lemma_experiment",
+  "declaration": "TheoremAtlas.Pilot.odd_denominator_ne_zero",
+  "assumptions": "n is a natural number",
+  "statement": "\u2200 n : \u2115, 2 * n + 1 \u2260 0",
+  "scope": "Natural-number denominator nonvanishing only; not Catalan irrationality.",
+  "source_url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Catalans-constant-is-irrational-September-24-2026/paper.pdf",
+  "upstream_commit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+  "local_commit": "8bb54d93faabb3a3d4832d71e4dd52fd91f5300c",
+  "local_worktree_dirty": true,
+  "runner_sha256": "0e167bf5f9d51d1410a8e8b180bc2cf18bef68c5ab9e118fdc0968091e850f0d",
+  "toolchain": "leanprover/lean4:v4.34.1",
+  "dependencies": [
+    "Lean core: Nat.succ_ne_zero"
+  ],
+  "generator": "Codex session; exact model/version unavailable",
+  "budget": {
+    "max_attempts": 2,
+    "timeout_seconds_per_attempt": 30
+  },
+  "estimated_compute_cost": null,
+  "fidelity_review": "unreviewed",
+  "audit_state": "not_audited",
+  "attempts": [
+    {
+      "index": 1,
+      "strategy": "reflexivity baseline",
+      "command": [
+        "lean",
+        "+leanprover/lean4:v4.34.1",
+        "Pilot.lean"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 3.1528605419880478,
+      "source_sha256": "20b4e5d251d9dbb57bbd9764685d88ddb88693213865c1ac54bad59ba5739924"
+    },
+    {
+      "index": 2,
+      "strategy": "use core successor nonvanishing",
+      "command": [
+        "lean",
+        "+leanprover/lean4:v4.34.1",
+        "Pilot.lean"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.1983240000117803,
+      "source_sha256": "3bb4d222fc6963ebd8110fdae23bb07d74a1fea1742426bc70ab8ef0dcd10558"
+    }
+  ],
+  "outcome": "compiler_accepted_unreviewed"
+}
