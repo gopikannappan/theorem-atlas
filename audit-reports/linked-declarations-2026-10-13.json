@@ -6029,6 +6029,633 @@
     "reason": "PR path filters include the cumulative PR diff",
     "action": "Restrict observer jobs to explicit workflow_dispatch; PR jobs skip and concurrency cancels duplicate",
     "observation_logic_changed": false,
-    "duplicate_run_cancellation": "awaiting_confirmation"
+    "duplicate_run_cancellation": "confirmed: all eight jobs cancelled",
+    "confirmation_run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38461640351",
+    "confirmation_conclusion": "skipped",
+    "partial_duplicate_groups": [
+      {
+        "group": "anthropic-zeta",
+        "job_id": 115517359108,
+        "job_conclusion": "cancelled",
+        "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38461448185/artifacts/11846415419",
+        "artifact_sha256": "e04f08813f884733a3ea27165b519785adda70feac83dbff21b28b8feb5966b7",
+        "archive": {
+          "url": "https://github.com/leanprover/lean4/releases/download/v4.33.0-rc2/lean-4.33.0-rc2-linux.tar.zst",
+          "asset_id": 500021613,
+          "observed_sha256": "48010c7d6264dc992574e9b0e09ece1f9c648e8f5106066b2cdb6834a6a60a6c",
+          "expected_sha256": "48010c7d6264dc992574e9b0e09ece1f9c648e8f5106066b2cdb6834a6a60a6c",
+          "sha256_basis": "github_asset_digest",
+          "published_sha256": "48010c7d6264dc992574e9b0e09ece1f9c648e8f5106066b2cdb6834a6a60a6c"
+        },
+        "manifest_sha256": "1847b362e15efd927e75aa8b5442e491f998e4a3f730f9dcaca9841f2957c448",
+        "dependency_pins": [
+          {
+            "name": "plausible",
+            "commit": "123d15766ba49356c02ebad2a4462dfe12d79899"
+          },
+          {
+            "name": "LeanSearchClient",
+            "commit": "f5c090429dff3cf66cb65562526c9ea6e8edfbcb"
+          },
+          {
+            "name": "importGraph",
+            "commit": "bb3469a87774349fe01898d8bf2fc6a1ce6411ca"
+          },
+          {
+            "name": "proofwidgets",
+            "commit": "222c58dad7706a6e7cae46c0edd65ea881d3ee27"
+          },
+          {
+            "name": "aesop",
+            "commit": "7db8190085343afde2f5d2cdcc9bac719b6ec02c"
+          },
+          {
+            "name": "Qq",
+            "commit": "ef42f8944eaf5b6cbfbe75d1917d824c7dd6cf33"
+          },
+          {
+            "name": "batteries",
+            "commit": "76e1c118b0700b4ceafe99532e887d6431625e1a"
+          },
+          {
+            "name": "Cli",
+            "commit": "1319485273bf87833fa472afbcefdedecb16b45f"
+          },
+          {
+            "name": "mathlib",
+            "commit": "51e6992efd06126df61a496bebf8f49482a4e129"
+          }
+        ],
+        "preparation_commands": [
+          [
+            "curl",
+            "--fail",
+            "--location",
+            "--connect-timeout",
+            "20",
+            "--max-time",
+            "180",
+            "--retry",
+            "2",
+            "https://github.com/leanprover/lean4/releases/download/v4.33.0-rc2/lean-4.33.0-rc2-linux.tar.zst",
+            "-o",
+            "/tmp/lean.tar.zst"
+          ],
+          [
+            "tar",
+            "--zstd",
+            "-xf",
+            "/tmp/lean.tar.zst",
+            "-C",
+            "/opt/lean",
+            "--strip-components=1"
+          ],
+          [
+            "git",
+            "init",
+            "/source"
+          ],
+          [
+            "git",
+            "remote",
+            "add",
+            "origin",
+            "https://github.com/anthropics/formal-math"
+          ],
+          [
+            "git",
+            "fetch",
+            "--depth=1",
+            "origin",
+            "e1a4e6508154ea59f030480661590a9fe3018011"
+          ],
+          [
+            "git",
+            "checkout",
+            "--detach",
+            "FETCH_HEAD"
+          ],
+          [
+            "chown",
+            "-R",
+            "1000:1000",
+            "/source"
+          ],
+          [
+            "runuser",
+            "-u",
+            "ubuntu",
+            "--",
+            "/opt/lean/bin/lake",
+            "exe",
+            "cache",
+            "get"
+          ],
+          [
+            "chmod",
+            "-R",
+            "a+rX",
+            "/source",
+            "/audit"
+          ],
+          [
+            "chown",
+            "-R",
+            "1000:1000",
+            "/source"
+          ]
+        ],
+        "targets": [],
+        "commands_and_outcomes": [],
+        "declaration_probe_output": [],
+        "axiom_diagnostics": [],
+        "compiler_diagnostics": [],
+        "last_module_progress": [
+          "#10 65.77 ✔ [12/26] Built Cache.IO (1.6s)",
+          "#10 66.77 ✔ [13/26] Built Cache.Hashing (910ms)",
+          "#10 67.37 ✔ [14/26] Built Cache.Hashing:c.o (664ms)",
+          "#10 67.47 ✔ [15/26] Built Cache.IO:c.o (1.7s)",
+          "#10 68.97 ✔ [16/26] Built Cache.Requests (2.2s)",
+          "#10 69.67 ✔ [17/26] Built Cache.Marker (704ms)",
+          "#10 69.87 ✔ [18/26] Built Cache.Marker:c.o (187ms)",
+          "#10 70.57 ✔ [19/26] Built Cache.Query (848ms)",
+          "#10 70.88 ✔ [20/26] Built Cache.Query:c.o (335ms)",
+          "#10 71.38 ✔ [21/26] Built Cache.Warning (894ms)",
+          "#10 71.88 ✔ [22/26] Built Cache.Warning:c.o (425ms)",
+          "#10 72.18 ✔ [23/26] Built Cache.Requests:c.o (3.2s)",
+          "#10 72.78 ✔ [24/26] Built Cache.Main (1.4s)",
+          "#10 73.78 ✔ [25/26] Built Cache.Main:c.o (950ms)",
+          "#10 74.58 ✔ [26/26] Built cache:exe (803ms)"
+        ],
+        "upstream_patches": [],
+        "reproduction_state": "preparation_failed_or_incomplete",
+        "fidelity_reviewer": null,
+        "trust_reviewer": null,
+        "certification": "none",
+        "attempt_identity_prepared": true,
+        "note": "No target observation produced; cancelled duplicate excluded from the two-attempt summary"
+      },
+      {
+        "group": "harmonic-imo",
+        "job_id": 115517359276,
+        "job_conclusion": "cancelled",
+        "dependency_pins": [],
+        "preparation_commands": [],
+        "targets": [],
+        "commands_and_outcomes": [],
+        "declaration_probe_output": [],
+        "axiom_diagnostics": [],
+        "compiler_diagnostics": [],
+        "last_module_progress": [],
+        "upstream_patches": [],
+        "reproduction_state": "preparation_failed_or_incomplete",
+        "fidelity_reviewer": null,
+        "trust_reviewer": null,
+        "certification": "none",
+        "attempt_identity_prepared": false,
+        "note": "No target observation produced; cancelled duplicate excluded from the two-attempt summary"
+      },
+      {
+        "group": "gauss-pnt",
+        "job_id": 115517359393,
+        "job_conclusion": "cancelled",
+        "dependency_pins": [],
+        "preparation_commands": [],
+        "targets": [],
+        "commands_and_outcomes": [],
+        "declaration_probe_output": [],
+        "axiom_diagnostics": [],
+        "compiler_diagnostics": [],
+        "last_module_progress": [],
+        "upstream_patches": [],
+        "reproduction_state": "preparation_failed_or_incomplete",
+        "fidelity_reviewer": null,
+        "trust_reviewer": null,
+        "certification": "none",
+        "attempt_identity_prepared": false,
+        "note": "No target observation produced; cancelled duplicate excluded from the two-attempt summary"
+      },
+      {
+        "group": "openai-catalan",
+        "job_id": 115517359406,
+        "job_conclusion": "cancelled",
+        "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38461448185/artifacts/11845967595",
+        "artifact_sha256": "a7090c6dc916e498a307ed3c0b507483cc015d5a92a054e5271571e5c392eab6",
+        "archive": {
+          "url": "https://github.com/leanprover/lean4/releases/download/v4.34.1/lean-4.34.1-linux.tar.zst",
+          "asset_id": 586761733,
+          "observed_sha256": "47bf4bbd78f70c2e9670598ab7124d92b6efb7330ff33e5fbb4030f6fd72e4e4",
+          "expected_sha256": "47bf4bbd78f70c2e9670598ab7124d92b6efb7330ff33e5fbb4030f6fd72e4e4",
+          "sha256_basis": "github_asset_digest",
+          "published_sha256": "47bf4bbd78f70c2e9670598ab7124d92b6efb7330ff33e5fbb4030f6fd72e4e4"
+        },
+        "manifest_sha256": "cf6105a25d9dca2f166b241d9191bd12c7e13305890dc9c4d0952351cccc0794",
+        "dependency_pins": [],
+        "preparation_commands": [
+          [
+            "curl",
+            "--fail",
+            "--location",
+            "--connect-timeout",
+            "20",
+            "--max-time",
+            "180",
+            "--retry",
+            "2",
+            "https://github.com/leanprover/lean4/releases/download/v4.34.1/lean-4.34.1-linux.tar.zst",
+            "-o",
+            "/tmp/lean.tar.zst"
+          ],
+          [
+            "tar",
+            "--zstd",
+            "-xf",
+            "/tmp/lean.tar.zst",
+            "-C",
+            "/opt/lean",
+            "--strip-components=1"
+          ],
+          [
+            "git",
+            "init",
+            "/source"
+          ],
+          [
+            "git",
+            "remote",
+            "add",
+            "origin",
+            "https://github.com/openai/math"
+          ],
+          [
+            "git",
+            "fetch",
+            "--depth=1",
+            "origin",
+            "1581d4cbdd69a0faf34b2089614fe2a814316a6a"
+          ],
+          [
+            "git",
+            "checkout",
+            "--detach",
+            "FETCH_HEAD"
+          ],
+          [
+            "chown",
+            "-R",
+            "1000:1000",
+            "/source"
+          ],
+          [
+            "runuser",
+            "-u",
+            "ubuntu",
+            "--",
+            "/opt/lean/bin/lake",
+            "exe",
+            "cache",
+            "get"
+          ]
+        ],
+        "targets": [],
+        "commands_and_outcomes": [],
+        "declaration_probe_output": [],
+        "axiom_diagnostics": [],
+        "compiler_diagnostics": [],
+        "last_module_progress": [],
+        "upstream_patches": [],
+        "reproduction_state": "preparation_failed_or_incomplete",
+        "fidelity_reviewer": null,
+        "trust_reviewer": null,
+        "certification": "none",
+        "attempt_identity_prepared": true,
+        "note": "No target observation produced; cancelled duplicate excluded from the two-attempt summary"
+      },
+      {
+        "group": "atlas-integer-complexity",
+        "job_id": 115517359422,
+        "job_conclusion": "cancelled",
+        "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38461448185/artifacts/11845404880",
+        "artifact_sha256": "7decbeb309075c7db110f135a0b1d55074dc6a4e718f891a7b0ea40b0bf518c6",
+        "archive": {
+          "url": "https://github.com/leanprover/lean4/releases/download/v4.34.0-rc1/lean-4.34.0-rc1-linux.tar.zst",
+          "asset_id": 509012398,
+          "observed_sha256": "41dc6a6ec143ece8ed4ba4c4c6978c91f21ad5cbe3c4e7728ad31b869961dc17",
+          "expected_sha256": "41dc6a6ec143ece8ed4ba4c4c6978c91f21ad5cbe3c4e7728ad31b869961dc17",
+          "sha256_basis": "github_asset_digest",
+          "published_sha256": "41dc6a6ec143ece8ed4ba4c4c6978c91f21ad5cbe3c4e7728ad31b869961dc17"
+        },
+        "manifest_sha256": "6522a729783ec3ab8cb4ea774d20251b6cbd8e3ef72b0edd4228c5b7969554ae",
+        "dependency_pins": [
+          {
+            "name": "OpenProblemsLab",
+            "commit": "04ef51fe64bbdd85a40c7105cf0ea46a3bee80af"
+          },
+          {
+            "name": "mathlib",
+            "commit": "d77ef0741c6da1ff12df68fb4145ea0ae0850c54"
+          },
+          {
+            "name": "plausible",
+            "commit": "38e9c3ce15cbb63c92e90bb9a92e4eb82131f669"
+          },
+          {
+            "name": "LeanSearchClient",
+            "commit": "2bc7cf064315b26bc38dac2e9612fb581be9b75f"
+          },
+          {
+            "name": "importGraph",
+            "commit": "978b7ec9fbbf9a535114f1de8fe5b3778b358870"
+          },
+          {
+            "name": "proofwidgets",
+            "commit": "ebeca04ecd5ee2ba9740e13576d80d4ab6b5779c"
+          },
+          {
+            "name": "aesop",
+            "commit": "c1c4362a130f12e632d252180a6c2a31d8fd4726"
+          },
+          {
+            "name": "Qq",
+            "commit": "3b55e9d00c6b0018e5d984eb011b6f93c09bd163"
+          },
+          {
+            "name": "batteries",
+            "commit": "36cc05ca2d0e469bfbeea9437f460e19238e885e"
+          },
+          {
+            "name": "Cli",
+            "commit": "af8bc067a4cc6c6df472a68909a3f40b1c76c43e"
+          }
+        ],
+        "preparation_commands": [
+          [
+            "curl",
+            "--fail",
+            "--location",
+            "--connect-timeout",
+            "20",
+            "--max-time",
+            "180",
+            "--retry",
+            "2",
+            "https://github.com/leanprover/lean4/releases/download/v4.34.0-rc1/lean-4.34.0-rc1-linux.tar.zst",
+            "-o",
+            "/tmp/lean.tar.zst"
+          ],
+          [
+            "tar",
+            "--zstd",
+            "-xf",
+            "/tmp/lean.tar.zst",
+            "-C",
+            "/opt/lean",
+            "--strip-components=1"
+          ],
+          [
+            "git",
+            "init",
+            "/source"
+          ],
+          [
+            "git",
+            "remote",
+            "add",
+            "origin",
+            "https://github.com/theorem-atlas/theorem-atlas"
+          ],
+          [
+            "git",
+            "fetch",
+            "--depth=1",
+            "origin",
+            "758e030c9ae8fc0a7ce8ed5165cec3672b81d197"
+          ],
+          [
+            "git",
+            "checkout",
+            "--detach",
+            "FETCH_HEAD"
+          ],
+          [
+            "chown",
+            "-R",
+            "1000:1000",
+            "/source"
+          ],
+          [
+            "runuser",
+            "-u",
+            "ubuntu",
+            "--",
+            "/opt/lean/bin/lake",
+            "exe",
+            "cache",
+            "get"
+          ],
+          [
+            "chmod",
+            "-R",
+            "a+rX",
+            "/source",
+            "/audit"
+          ],
+          [
+            "chown",
+            "-R",
+            "1000:1000",
+            "/source"
+          ]
+        ],
+        "targets": [],
+        "commands_and_outcomes": [],
+        "declaration_probe_output": [],
+        "axiom_diagnostics": [],
+        "compiler_diagnostics": [],
+        "last_module_progress": [
+          "#10 53.90 ✔ [12/26] Built Cache.IO (1.1s)",
+          "#10 54.60 ✔ [13/26] Built Cache.Hashing (691ms)",
+          "#10 54.90 ✔ [14/26] Built Cache.IO:c.o (991ms)",
+          "#10 54.90 ✔ [15/26] Built Cache.Hashing:c.o (346ms)",
+          "#10 55.90 ✔ [16/26] Built Cache.Requests (1.4s)",
+          "#10 56.50 ✔ [17/26] Built Cache.Marker (528ms)",
+          "#10 56.50 ✔ [18/26] Built Cache.Marker:c.o (96ms)",
+          "#10 57.10 ✔ [19/26] Built Cache.Query (638ms)",
+          "#10 57.40 ✔ [20/26] Built Cache.Query:c.o (263ms)",
+          "#10 57.71 ✔ [21/26] Built Cache.Warning (637ms)",
+          "#10 57.81 ✔ [22/26] Built Cache.Requests:c.o (1.9s)",
+          "#10 57.91 ✔ [23/26] Built Cache.Warning:c.o (193ms)",
+          "#10 58.61 ✔ [24/26] Built Cache.Main (878ms)",
+          "#10 59.11 ✔ [25/26] Built Cache.Main:c.o (546ms)",
+          "#10 59.81 ✔ [26/26] Built cache:exe (604ms)"
+        ],
+        "upstream_patches": [],
+        "reproduction_state": "preparation_failed_or_incomplete",
+        "fidelity_reviewer": null,
+        "trust_reviewer": null,
+        "certification": "none",
+        "attempt_identity_prepared": true,
+        "note": "No target observation produced; cancelled duplicate excluded from the two-attempt summary"
+      },
+      {
+        "group": "anthropic-3sum",
+        "job_id": 115517359426,
+        "job_conclusion": "cancelled",
+        "dependency_pins": [],
+        "preparation_commands": [],
+        "targets": [],
+        "commands_and_outcomes": [],
+        "declaration_probe_output": [],
+        "axiom_diagnostics": [],
+        "compiler_diagnostics": [],
+        "last_module_progress": [],
+        "upstream_patches": [],
+        "reproduction_state": "preparation_failed_or_incomplete",
+        "fidelity_reviewer": null,
+        "trust_reviewer": null,
+        "certification": "none",
+        "attempt_identity_prepared": false,
+        "note": "No target observation produced; cancelled duplicate excluded from the two-attempt summary"
+      },
+      {
+        "group": "alphaproof",
+        "job_id": 115517359475,
+        "job_conclusion": "cancelled",
+        "dependency_pins": [],
+        "preparation_commands": [],
+        "targets": [],
+        "commands_and_outcomes": [],
+        "declaration_probe_output": [],
+        "axiom_diagnostics": [],
+        "compiler_diagnostics": [],
+        "last_module_progress": [],
+        "upstream_patches": [],
+        "reproduction_state": "preparation_failed_or_incomplete",
+        "fidelity_reviewer": null,
+        "trust_reviewer": null,
+        "certification": "none",
+        "attempt_identity_prepared": false,
+        "note": "No target observation produced; cancelled duplicate excluded from the two-attempt summary"
+      },
+      {
+        "group": "anthropic-flt",
+        "job_id": 115517359668,
+        "job_conclusion": "cancelled",
+        "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38461448185/artifacts/11846695135",
+        "artifact_sha256": "dc62e6f24b66c4ee02eda9b0bb422767fd7afab2c7fdd0ca032e6b771c4cf4aa",
+        "archive": {
+          "url": "https://github.com/leanprover/lean4/releases/download/v4.33.1/lean-4.33.1-linux.tar.zst",
+          "asset_id": 523687465,
+          "observed_sha256": "890afd185370f85666025b883914ab4f4b339136f8c96167b69cfb62aecaf235",
+          "expected_sha256": "890afd185370f85666025b883914ab4f4b339136f8c96167b69cfb62aecaf235",
+          "sha256_basis": "github_asset_digest",
+          "published_sha256": "890afd185370f85666025b883914ab4f4b339136f8c96167b69cfb62aecaf235"
+        },
+        "manifest_sha256": "435fe2ab2550e2b82c0a93fd421c96d197d6dd55bc739481e2a4a07e04b979bf",
+        "dependency_pins": [],
+        "preparation_commands": [
+          [
+            "curl",
+            "--fail",
+            "--location",
+            "--connect-timeout",
+            "20",
+            "--max-time",
+            "180",
+            "--retry",
+            "2",
+            "https://github.com/leanprover/lean4/releases/download/v4.33.1/lean-4.33.1-linux.tar.zst",
+            "-o",
+            "/tmp/lean.tar.zst"
+          ],
+          [
+            "tar",
+            "--zstd",
+            "-xf",
+            "/tmp/lean.tar.zst",
+            "-C",
+            "/opt/lean",
+            "--strip-components=1"
+          ],
+          [
+            "git",
+            "init",
+            "/source"
+          ],
+          [
+            "git",
+            "remote",
+            "add",
+            "origin",
+            "https://github.com/anthropics/fermats-last-theorem"
+          ],
+          [
+            "git",
+            "fetch",
+            "--depth=1",
+            "origin",
+            "6e837e75355538c7f80bab5b956861e86c4eacc2"
+          ],
+          [
+            "git",
+            "checkout",
+            "--detach",
+            "FETCH_HEAD"
+          ],
+          [
+            "chown",
+            "-R",
+            "1000:1000",
+            "/source"
+          ],
+          [
+            "runuser",
+            "-u",
+            "ubuntu",
+            "--",
+            "/opt/lean/bin/lake",
+            "exe",
+            "cache",
+            "get"
+          ]
+        ],
+        "targets": [],
+        "commands_and_outcomes": [],
+        "declaration_probe_output": [],
+        "axiom_diagnostics": [],
+        "compiler_diagnostics": [
+          "#10 89.04 Dependency Mathlib uses a different lean-toolchain",
+          "#10 89.04   Project uses leanprover/lean4:v4.33.1",
+          "#10 89.04   Mathlib uses leanprover/lean4:v4.33.0",
+          "#10 89.04 The cache will not work unless your project's toolchain matches Mathlib's toolchain",
+          "#10 89.11 subprocess.CalledProcessError: Command '['runuser', '-u', 'ubuntu', '--', '/opt/lean/bin/lake', 'exe', 'cache', 'get']' returned non-zero exit status 1.",
+          "89.11 subprocess.CalledProcessError: Command '['runuser', '-u', 'ubuntu', '--', '/opt/lean/bin/lake', 'exe', 'cache', 'get']' returned non-zero exit status 1."
+        ],
+        "last_module_progress": [
+          "#10 76.61 ✔ [12/26] Built Cache.IO (1.6s)",
+          "#10 77.51 ✔ [13/26] Built Cache.Hashing (870ms)",
+          "#10 78.01 ✔ [14/26] Built Cache.Hashing:c.o (475ms)",
+          "#10 78.51 ✔ [15/26] Built Cache.IO:c.o (1.9s)",
+          "#10 79.81 ✔ [16/26] Built Cache.Requests (2.3s)",
+          "#10 80.52 ✔ [17/26] Built Cache.Marker (684ms)",
+          "#10 80.71 ✔ [18/26] Built Cache.Marker:c.o (203ms)",
+          "#10 81.42 ✔ [19/26] Built Cache.Query (901ms)",
+          "#10 81.92 ✔ [20/26] Built Cache.Query:c.o (498ms)",
+          "#10 82.42 ✔ [21/26] Built Cache.Warning (941ms)",
+          "#10 82.72 ✔ [22/26] Built Cache.Warning:c.o (305ms)",
+          "#10 83.12 ✔ [23/26] Built Cache.Requests:c.o (3.3s)",
+          "#10 83.72 ✔ [24/26] Built Cache.Main (1.3s)",
+          "#10 84.72 ✔ [25/26] Built Cache.Main:c.o (1.0s)",
+          "#10 85.52 ✔ [26/26] Built cache:exe (767ms)"
+        ],
+        "upstream_patches": [],
+        "reproduction_state": "preparation_failed_or_incomplete",
+        "fidelity_reviewer": null,
+        "trust_reviewer": null,
+        "certification": "none",
+        "attempt_identity_prepared": true,
+        "note": "No target observation produced; cancelled duplicate excluded from the two-attempt summary"
+      }
+    ]
   }
 }
