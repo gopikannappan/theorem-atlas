@@ -502,6 +502,18 @@
       {
         "title": "Formal Conjectures paper",
         "url": "https://arxiv.org/abs/2605.13171"
+      },
+      {
+        "title": "Theorem Atlas completion: Mathoverflow75792.complexity_three_pow (CI compiled; fidelity unreviewed)",
+        "url": "https://github.com/theorem-atlas/theorem-atlas/blob/758e030c9ae8fc0a7ce8ed5165cec3672b81d197/proofs/integer-complexity/IntegerComplexity.lean#L103"
+      },
+      {
+        "title": "Integer-complexity proof provenance, reuse, and review limits",
+        "url": "https://github.com/theorem-atlas/theorem-atlas/blob/758e030c9ae8fc0a7ce8ed5165cec3672b81d197/proofs/integer-complexity/README.md"
+      },
+      {
+        "title": "Merged-commit Lean compiler evidence (passed)",
+        "url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38425504276"
       }
     ],
     "targets": [],
@@ -513,6 +525,7 @@
     },
     "id": "formal-conjectures:collection",
     "title": "Formal Conjectures — open Lean statement collection",
-    "kind": "statement_collection"
+    "kind": "statement_collection",
+    "metadata_note": "Selected statement completion: Theorem Atlas connects the integer-complexity formulation for positive powers of three to an existing pinned expression-tree proof. Remote CI compilation passed; independent statement fidelity and trust review remain unrecorded. This link is a compiler-evidence example, not proof coverage for this collection or a new mathematical discovery."
   }
 ]
