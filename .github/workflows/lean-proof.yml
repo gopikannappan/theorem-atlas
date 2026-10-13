@@ -1,0 +1,64 @@
+name: Lean proof candidate
+
+on:
+  pull_request:
+    paths:
+      - 'proofs/integer-complexity/**'
+      - '.github/workflows/lean-proof.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'proofs/integer-complexity/**'
+      - '.github/workflows/lean-proof.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lean-proof-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lean-proof:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Record candidate and reproduction inputs
+        shell: bash
+        run: |
+          mkdir -p evidence
+          git rev-parse HEAD > evidence/checked-commit.txt
+          sha256sum proofs/integer-complexity/IntegerComplexity.lean > evidence/candidate-sha256.txt
+          cp proofs/integer-complexity/lean-toolchain proofs/integer-complexity/lake-manifest.json evidence/
+          cp proofs/integer-complexity/provenance.json evidence/
+      - name: Prepare pinned upstream dependencies
+        shell: bash
+        run: |
+          set -o pipefail
+          docker build --platform linux/amd64 --progress plain \
+            -t theorem-atlas-integer-complexity proofs/integer-complexity \
+            2>&1 | tee evidence/dependency-build.log
+      - name: Compile candidate without network or credentials
+        shell: bash
+        run: |
+          set -o pipefail
+          timeout --kill-after=10s 120s docker run --rm \
+            --network none --read-only --cap-drop ALL \
+            --security-opt no-new-privileges --pids-limit 128 \
+            --memory 6g --cpus 2 --user 1000:1000 \
+            --tmpfs /tmp:rw,nosuid,nodev,size=256m \
+            --mount "type=bind,src=$PWD/proofs/integer-complexity/IntegerComplexity.lean,dst=/work/IntegerComplexity.lean,readonly" \
+            theorem-atlas-integer-complexity \
+            2>&1 | tee evidence/compiler.log
+      - name: Preserve attempt diagnostics
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f
+        with:
+          name: lean-proof-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: evidence/
+          retention-days: 30
+          if-no-files-found: error
