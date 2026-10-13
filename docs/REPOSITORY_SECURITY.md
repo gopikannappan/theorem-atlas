@@ -13,7 +13,7 @@ This is the configuration inspected and applied for `theorem-atlas/theorem-atlas
 | `main` checks | Up-to-date `build` required from GitHub Actions app 15368 |
 | PR reviews | One approving review, Code Owner review, stale approval dismissal, and approval after last push |
 | Merge hygiene | Conversation resolution and linear history required; force pushes and deletion disabled; squash/rebase available, merged branches deleted |
-| Administrator bypass | Available (`enforce_admins=false`); owner maintenance is an exception to normal PR enforcement |
+| Administrator bypass | Disabled (`enforce_admins=true`); PR/review/build rules apply to administrators too |
 | Actions policy | GitHub-owned Actions only; other verified/third-party Actions not allowed; full SHA pinning required |
 | Default workflow token | Read-only; cannot approve PR reviews |
 | Pages environment | Deployment branch policy permits `main`; workflow also checks the branch and excludes PRs |
@@ -41,3 +41,7 @@ The previous hosted UI release (detail overlay) deployed successfully. The harde
 - A general Lean proof runner still needs an OS sandbox (container or stronger). `run_pilot.py` runs only its fixed infrastructure example in a temporary directory and is not an arbitrary-code sandbox. PR CI does not run Lean.
 - Mathematical fidelity, local external-proof audits, and a separately maintained proof verifier are not delivered by these repository controls.
 - The owner created `theorem-atlas`, and the repository has been transferred with its name and `/theorem-atlas/` Pages path retained. Controls were rechecked; CodeQL was re-enabled after its configuration reset. The actual organization maintainers team is now Code Owner. See ORGANIZATION_TRANSFER.md.
+
+## Administrator enforcement update
+
+On 2026-10-13, the owner requested that PR requirements apply to administrators. The existing protection was retained and administrator enforcement enabled via the dedicated API endpoint. The read-back confirmed `enforce_admins=true`, one required Code Owner approval, and the up-to-date GitHub Actions build check. No main-branch push was used to document this change. With only one maintainer, maintainer-authored PRs require a second independent maintainer reviewer. Administrators can still edit branch-protection settings; no organization-level separation of administrative powers is claimed.

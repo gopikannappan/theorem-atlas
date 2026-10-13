@@ -21,4 +21,4 @@ The supported version is the current `main` branch. Pinned external Lean sources
 
 ## Repository administration
 
-See [repository security checkpoint](docs/REPOSITORY_SECURITY.md) for actual checked settings and any limits. Administrator bypass remains available for maintenance; normal collaborator changes require PR review and a passing build. After an organization transfer, recheck security controls and update CODEOWNERS to real maintainer teams rather than guessed team names.
+See [repository security checkpoint](docs/REPOSITORY_SECURITY.md) for actual checked settings and any limits. Branch protection applies to administrators too. All changes to `main` require a PR, Code Owner approval, and a passing up-to-date build. Administrators retain the ability to change repository settings, so this is an enforced branch policy, not removal of administrative control. After an organization transfer, recheck security controls and update CODEOWNERS to real maintainer teams rather than guessed team names.
