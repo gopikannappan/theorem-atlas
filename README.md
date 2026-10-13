@@ -20,9 +20,11 @@ Each source is pinned to an exact commit. Anthropic entries cover FLT, zeta zero
 
 Public catalogue: <https://gopikannappan.github.io/theorem-atlas/>.
 
+Contributions are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md), [community conduct](CODE_OF_CONDUCT.md), and [private security reporting](SECURITY.md). Original project code is [Apache-2.0](LICENSE); upstream materials retain their own terms.
+
 ## Run locally
 
-Python 3.11+ and curl are sufficient for catalogue builds; Node.js 18+ runs the pagination tests; there are no Python packages to install.
+Python 3.11+ and curl are sufficient for catalogue builds; Node.js 24 matches CI and runs the browser-state tests; there are no Python packages to install.
 
 ```sh
 python3 -m unittest discover -s tests -v
@@ -77,3 +79,5 @@ Harmonic’s two IMO 2025 problem-4 proofs are grouped in one record. Source reu
 `python3 scripts/overlaps.py` checks exact artifact identities, declaration URLs, manuscript URLs, benchmark IDs, and source hashes where available. ZIP-member identity includes the member path, so 438 files sharing one archive URL do not collapse into one record. Shared catalogue README/map URLs are not treated as duplicate artifacts. No automatic title-based merging occurs. The generated report is visible in the catalogue and stored in `catalog/overlap-report.json`.
 
 DeepSeek’s ZIP has no release toolchain or Mathlib manifest; these are left unknown rather than fabricated. Harmonic and Math Inc. have no repository-wide LICENSE file at the inspected commits; DeepSeek’s proof-archive rights are not explicitly established by its model agreement. These sources remain metadata/link entries. See Sources & licenses before copying any material.
+
+Repository administration and organization-transfer preparation are recorded in [security checkpoint](docs/REPOSITORY_SECURITY.md) and [organization transfer guide](docs/ORGANIZATION_TRANSFER.md).

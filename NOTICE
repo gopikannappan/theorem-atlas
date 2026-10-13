@@ -1,0 +1,11 @@
+Theorem Atlas
+Copyright 2026 Theorem Atlas contributors
+
+Original project code and original documentation are licensed under Apache-2.0.
+Upstream mathematical material, source titles, and third-party artifacts retain
+applicable upstream licenses and attribution. This license does not grant new
+rights to externally linked proofs, datasets, or publications.
+
+Source attribution and licensing evidence are documented in docs/LICENSES.md,
+catalogue record metadata, and the site's Sources & licenses page. No upstream
+proof implementations or manuscripts are redistributed by this project.

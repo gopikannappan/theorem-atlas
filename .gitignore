@@ -2,3 +2,11 @@ __pycache__/
 .lake/
 dist/
 .DS_Store
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.venv/
+node_modules/
+coverage/

@@ -13,7 +13,7 @@ This checkpoint records the published licenses inspected for the linked sources.
 
 The adapters store titles, identifiers, commit pins, locations, toolchain/dependency metadata, attribution, and license links. No upstream proof implementations, PDFs, prose proofs, sequence data, or conjecture descriptions are redistributed. File-derived titles are identified as such. Publication links do not imply that the publication's text is covered by its proof repository's license.
 
-Every catalogue record includes source credit and a license link. The deployed Sources & licenses page gives source attribution, third-party notice links, and a modification/curation description. An Apache-2.0 license text is included for reference; it does not apply a new license to the project's original code or override upstream licenses.
+Every catalogue record includes source credit and a license link. The deployed Sources & licenses page gives source attribution, third-party notice links, and a modification/curation description. The original project code and original documentation are now Apache-2.0 under the root LICENSE and NOTICE, as chosen by the project owner. This does not override upstream licenses or grant rights to externally linked material.
 
 ## Conditions if copying is introduced later
 

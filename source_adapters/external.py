@@ -3,19 +3,19 @@ import hashlib
 import io
 import zipfile
 import json
-import re
-import subprocess
+from source_adapters.network import fetch_text, fetch_bytes, safe_path, source_identity
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def fetch(url):
-    return subprocess.check_output(['curl', '-fsSL', '--max-time', '60', url], text=True)
+    return fetch_text(url)
 
 
 def blob(config, path):
-    return f'{config["repository"]}/blob/{config["commit"]}/{path}'
+    source_identity(config['repository'], config['commit'])
+    return f'{config["repository"]}/blob/{config["commit"]}/{safe_path(path)}'
 
 
 def proof_reference(config, target):
@@ -80,7 +80,12 @@ def parse_archive(config, payload):
         members = sorted(info for info in archive.namelist() if info.endswith('.lean') and not info.startswith('__MACOSX/'))
         if len(members) != len(set(members)) or len(members) != config['expected_members']:
             raise ValueError('Unexpected or duplicate archive member inventory')
+        infos = [archive.getinfo(member) for member in members]
+        if (len(archive.infolist()) > 5000 or sum(info.file_size for info in infos) > 64 * 1024 * 1024
+            or any(info.file_size > 8 * 1024 * 1024 or info.flag_bits & 1 for info in infos)):
+            raise ValueError('Archive exceeds decompression budget or contains encrypted members')
         for member in members:
+            safe_path(member)
             # Read bytes only to record exact identity; never extract or execute code.
             body = archive.read(member)
             name = Path(member).stem
@@ -101,13 +106,12 @@ def collect(configs):
     records = []
     for config in configs:
         if config['adapter'] == 'inventory':
-            slug = config['repository'].removeprefix('https://github.com/')
+            slug = source_identity(config['repository'], config['commit'])
             tree = json.loads(fetch(f'https://api.github.com/repos/{slug}/git/trees/{config["commit"]}?recursive=1'))
             records.extend(parse_inventory(config, tree))
         elif config['adapter'] == 'archive_inventory':
-            slug = config['repository'].removeprefix('https://github.com/')
-            payload = subprocess.check_output(['curl', '-fsSL', '--max-time', '60', '--max-filesize', '67108864',
-                f'https://raw.githubusercontent.com/{slug}/{config["commit"]}/{config["archive_path"]}'])
+            slug = source_identity(config['repository'], config['commit'])
+            payload = fetch_bytes(f'https://raw.githubusercontent.com/{slug}/{config["commit"]}/{safe_path(config["archive_path"])}', max_bytes=64 * 1024 * 1024)
             records.extend(parse_archive(config, payload))
         elif config['adapter'] == 'project':
             kind = config.get('kind', 'formalization_project')

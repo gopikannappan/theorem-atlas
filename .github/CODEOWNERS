@@ -1,0 +1,9 @@
+# Current human maintainer; update to organization teams after a transfer.
+* @gopikannappan
+# Maintainer review is required for workflow and catalogue integrity changes.
+/.github/ @gopikannappan
+/scripts/catalogue.py @gopikannappan
+/catalog/ @gopikannappan
+/source_adapters/ @gopikannappan
+/AGENTS.md @gopikannappan
+/SECURITY.md @gopikannappan

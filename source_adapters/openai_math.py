@@ -1,17 +1,15 @@
 """Pinned OpenAI manuscript-family ingestion. Does not assert theorem fidelity."""
 import html
 import re
-import subprocess
+from source_adapters.network import fetch_text, safe_path, source_identity
 
 REPOSITORY = 'https://github.com/openai/math'
 COMMIT = '1581d4cbdd69a0faf34b2089614fe2a814316a6a'
 
 
 def fetch(path):
-    return subprocess.check_output([
-        'curl', '--fail', '--silent', '--show-error', '--location',
-        '--max-time', '60', f'https://raw.githubusercontent.com/openai/math/{COMMIT}/{path}'
-    ], text=True)
+    slug = source_identity(REPOSITORY, COMMIT)
+    return fetch_text(f'https://raw.githubusercontent.com/{slug}/{COMMIT}/{safe_path(path)}')
 
 
 def plain(text):

@@ -1,0 +1,21 @@
+name: Bug report
+description: Report a catalogue, site, or tooling bug. Use private reporting for vulnerabilities.
+title: '[Bug]: '
+body:
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction
+      description: Steps, commands, or a shareable catalogue URL. Do not include secrets.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser, operating system, and relevant Python/Node/Lean versions

@@ -1,0 +1,25 @@
+name: Catalogue correction or source proposal
+description: Report provenance, licensing, statement coverage, or overlap issues.
+title: '[Catalogue]: '
+body:
+  - type: input
+    id: record
+    attributes:
+      label: Record ID or proposed source
+      placeholder: 'openai-math:005 or a repository URL'
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: Correction or proposed addition
+      description: Describe what is incorrect or missing, without claiming unreviewed mathematical success.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Include pinned upstream links, declaration locations, licensing, and relevant manuscript references.
+    validations:
+      required: true
