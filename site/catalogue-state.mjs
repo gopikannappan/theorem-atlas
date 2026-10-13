@@ -14,3 +14,12 @@ export function paginate(records, requestedPage = 1, requestedSize = 12) {
   return { items: records.slice(start, start + size), page, size, totalPages,
     first: records.length ? start + 1 : 0, last: Math.min(start + size, records.length) };
 }
+
+export function recordHash(id) {
+  return '#record=' + encodeURIComponent(id);
+}
+export function recordIdFromHash(hash) {
+  if (!hash.startsWith('#record=')) return null;
+  try { return decodeURIComponent(hash.slice(8)) || null; }
+  catch { return null; }
+}

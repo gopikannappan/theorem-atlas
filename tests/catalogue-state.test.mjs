@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { filterRecords, paginate } from '../site/catalogue-state.mjs';
+import { filterRecords, paginate, recordHash, recordIdFromHash } from '../site/catalogue-state.mjs';
 const records = Array.from({ length: 25 }, (_, i) => ({ id: String(i), title: `Result ${i}`, source: 'OpenAI', manuscripts: [], proofs: [], status: 'discovered', scope_url: i % 2 ? 'https://example.com' : null }));
 test('default tiles page size is 12 with complete page boundaries', () => {
   assert.equal(paginate(records).items.length, 12);
@@ -29,4 +29,12 @@ test('record type filter distinguishes proof artifacts from statement collection
   const mixed = [{ ...records[0], kind: 'external_proof_artifact' }, { ...records[1], kind: 'statement_collection' }];
   assert.equal(filterRecords(mixed, { kind: 'external_proof_artifact' }).length, 1);
   assert.equal(filterRecords(mixed, { kind: 'statement_collection' })[0].id, '1');
+});
+
+test('record deep links round-trip IDs including archive member paths', () => {
+  for (const id of ['openai-math:005', 'deepseek-minif2f:test/aime_1983_p1.lean', 'name with & punctuation'])
+    assert.equal(recordIdFromHash(recordHash(id)), id);
+});
+test('non-record and malformed fragments do not open an overlay', () => {
+  for (const hash of ['', '#catalogue', '#record=', '#record=%ZZ']) assert.equal(recordIdFromHash(hash), null);
 });

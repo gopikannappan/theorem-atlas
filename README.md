@@ -31,7 +31,7 @@ python3 scripts/catalogue.py
 python3 -m http.server 8000 --directory dist
 ```
 
-Open <http://localhost:8000>. Tiles are the default; switch to List and paginate with 12, 24, or 48 results per page. View, page, and page size are reflected in shareable URLs. Search titles, manuscripts, declaration names, and family IDs; filter sources and evidence. Filters are reflected in the URL. Expand a record for pinned manuscript and proof provenance. Download the catalogue as JSON.
+Open <http://localhost:8000>. Tiles are the default; switch to List and paginate with 12, 24, or 48 results per page. View, page, and page size are reflected in shareable URLs. Search titles, manuscripts, declaration names, and family IDs; filter sources and evidence. Filters are reflected in the URL. Click a tile or row to open its detail overlay with pinned manuscript and proof provenance. Escape, Close, or a backdrop click returns to the catalogue; browser Back closes a panel opened from the catalogue. Record links preserve filters, view, and page and can be shared or opened in a new tab. Download the catalogue as JSON.
 
 ## Synchronize
 

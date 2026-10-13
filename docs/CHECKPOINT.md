@@ -49,3 +49,7 @@ Added Harmonic (four Lean problem records, one text artifact), Gauss StrongPNT, 
 Two alternative Harmonic problem-4 proofs are grouped under one record. OpenAI’s exact StrongPNT dependency and AlphaProof Nexus’s older Formal Conjectures dependency are documented from pinned manifests. Mechanical checks found no repeated artifact identities, declaration URLs, manuscript links, benchmark IDs, or available source hashes across separate records. This does not establish absence of equivalent mathematical statements.
 
 The first overlap implementation mistakenly grouped records sharing the OpenAI manuscript-map URL; it was corrected before publication to compare artifact identities only. Regression tests distinguish shared source pages from repeated artifacts and distinguish ZIP members sharing one URL.
+
+## Record detail interaction
+
+Replaced inline card expansion with clickable card/row links and a native modal dialog, full-screen on narrow displays. Sources, manuscripts, proofs, provenance, licensing and overlap notes are rendered in the panel on demand. The fragment `#record=<encoded-id>` provides direct record links while keeping the catalogue query parameters. Normal clicks add a history entry, so Back dismisses the panel; direct record-link dismissal removes its fragment without leaving the site. Native dialog handles keyboard focus containment and restoration, and Escape/backdrop/Close dismiss the panel. Modified link clicks retain native new-tab behavior. Record-ID encoding tests cover archive member paths and invalid fragments.
