@@ -12,9 +12,10 @@ ENV PATH="/opt/lean/bin:${PATH}"
 WORKDIR /work
 COPY lean-toolchain lakefile.toml lake-manifest.json ./
 # Only pinned upstream code is built here. Candidate code is mounted later.
-RUN lake exe cache get && lake build OpenProblemsLab.IntegerComplexity \
+RUN lake exe cache get Mathlib.Order.Lattice.Nat Mathlib.Analysis.SpecialFunctions.Log.Base Mathlib.Tactic.Linarith Mathlib.Tactic.IntervalCases && lake build OpenProblemsLab.IntegerComplexity \
     && rm -rf /root/.cache/mathlib \
-    && chmod -R a+rX /work /opt/lean
+    && chmod -R a+rX /work /opt/lean \
+    && chown -R 1000:1000 /work
 ENV HOME=/tmp
 USER 1000:1000
 CMD ["lake", "env", "lean", "-DwarningAsError=true", "IntegerComplexity.lean"]
