@@ -11,7 +11,17 @@
     "observation_seconds": 900,
     "build_seconds_per_target": 480,
     "replay_seconds_per_target": 180,
-    "max_parallel_jobs": 4
+    "max_parallel_jobs": 4,
+    "runner_revisions": 2,
+    "module_replay_seconds_per_target": 60,
+    "pilot_fresh_replay_seconds": 600,
+    "second_revision_observation_seconds": {
+      "default": 900,
+      "large_single_target_groups": 1800,
+      "harmonic_five_targets": 2700
+    },
+    "second_revision_large_build_seconds": 1200,
+    "job_timeout_minutes": 65
   },
   "groups": [
     "atlas-integer-complexity",

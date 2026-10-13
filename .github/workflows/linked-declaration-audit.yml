@@ -18,7 +18,7 @@ jobs:
   observe:
     name: observe (${{ matrix.group }})
     runs-on: ubuntu-24.04
-    timeout-minutes: 35
+    timeout-minutes: 65
     strategy:
       fail-fast: false
       max-parallel: 4
@@ -50,7 +50,8 @@ jobs:
         shell: bash
         run: |
           set -o pipefail
-          timeout --kill-after=20s 900s docker run --rm \
+          AUDIT_OBSERVATION_SECONDS="$(python3 -c 'import json; n=json.load(open("evidence/group.json")).get("observation_seconds",900); assert 60 <= n <= 2700; print(n)')"
+          timeout --kill-after=20s "${AUDIT_OBSERVATION_SECONDS}s" docker run --rm --init \
             --network none --cap-drop ALL --security-opt no-new-privileges \
             --user 1000:1000 --pids-limit 256 --memory 6g --cpus 2 \
             --tmpfs /tmp:rw,nosuid,nodev,size=256m \

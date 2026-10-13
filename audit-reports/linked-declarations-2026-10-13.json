@@ -1,0 +1,436 @@
+{
+  "schema_version": 1,
+  "certification": "none",
+  "independent_reviews": "unassigned by owner request",
+  "attempts": [
+    {
+      "atlas_commit": "b67e3923af2bbd0d496ab7398606f26a5d30fc77",
+      "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932",
+      "groups": [
+        {
+          "group": "atlas-integer-complexity",
+          "job_id": 115484747750,
+          "job_conclusion": "failure",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11841666358",
+          "artifact_sha256": "6ef374f21d30d640307f238fab92925a95cbebf10a8942b81c36e7400ce12b49",
+          "archive": {
+            "url": "https://github.com/leanprover/lean4/releases/download/v4.34.0-rc1/lean-4.34.0-rc1-linux.tar.zst",
+            "asset_id": 509012398,
+            "observed_sha256": "41dc6a6ec143ece8ed4ba4c4c6978c91f21ad5cbe3c4e7728ad31b869961dc17",
+            "published_sha256": "41dc6a6ec143ece8ed4ba4c4c6978c91f21ad5cbe3c4e7728ad31b869961dc17"
+          },
+          "targets": [
+            {
+              "target_id": "atlas:integer-complexity",
+              "declaration": "Mathoverflow75792.complexity_three_pow",
+              "source_commit": "758e030c9ae8fc0a7ce8ed5165cec3672b81d197",
+              "fidelity_review": "pending",
+              "independent_trust_review": "pending",
+              "external_checker": "not_run",
+              "build": {
+                "exit_code": 0,
+                "outcome": "completed"
+              },
+              "declaration_and_axioms": {
+                "exit_code": 0,
+                "outcome": "completed"
+              },
+              "kernel_replay": {
+                "exit_code": null,
+                "outcome": "timeout"
+              }
+            }
+          ],
+          "axiom_diagnostics": [
+            "info: IntegerComplexity.lean:114:0: 'Mathoverflow75792.reachable_iff_expr' depends on axioms: [propext]",
+            "info: IntegerComplexity.lean:115:0: 'Mathoverflow75792.complexity_eq_expression' depends on axioms: [propext, Classical.choice, Quot.sound]",
+            "info: IntegerComplexity.lean:116:0: 'Mathoverflow75792.complexity_three_pow' depends on axioms: [propext, Classical.choice, Quot.sound]",
+            "'Mathoverflow75792.complexity_three_pow' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]"
+          ],
+          "compiler_diagnostics": [],
+          "last_module_progress": [
+            "#9 81.48 ✔ [24/26] Built Cache.Main (1.0s)",
+            "#9 82.18 ✔ [25/26] Built Cache.Main:c.o (685ms)",
+            "#9 82.78 ✔ [26/26] Built cache:exe (639ms)",
+            "✔ [1996/1998] Built OpenProblemsLab.IntegerComplexity (2.8s)",
+            "ℹ [1997/1998] Built IntegerComplexity (1.6s)"
+          ]
+        },
+        {
+          "group": "anthropic-zeta",
+          "job_id": 115484747774,
+          "job_conclusion": "failure",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11841027941",
+          "artifact_sha256": "367c8680d4fd71a81b0314a18a53f9f9d395021495bc9791df47760bf7986baa",
+          "archive": {
+            "url": "https://github.com/leanprover/lean4/releases/download/v4.33.0-rc2/lean-4.33.0-rc2-linux.tar.zst",
+            "asset_id": 500021613,
+            "observed_sha256": "48010c7d6264dc992574e9b0e09ece1f9c648e8f5106066b2cdb6834a6a60a6c",
+            "published_sha256": "48010c7d6264dc992574e9b0e09ece1f9c648e8f5106066b2cdb6834a6a60a6c"
+          },
+          "targets": [
+            {
+              "target_id": "anthropic:zeta23",
+              "declaration": "two_thirds_simple_on_critical_line_cumulative",
+              "source_commit": "e1a4e6508154ea59f030480661590a9fe3018011",
+              "fidelity_review": "pending",
+              "independent_trust_review": "pending",
+              "external_checker": "not_run",
+              "build": {
+                "exit_code": null,
+                "outcome": "timeout"
+              }
+            }
+          ],
+          "axiom_diagnostics": [],
+          "compiler_diagnostics": [],
+          "last_module_progress": [
+            "✔ [8776/8791] Built Zeta23.PrimeSideA.EndsE2 (29s)",
+            "✔ [8777/8792] Built Zeta23.FromPNTPlus.Tactic.AdditiveCombination (5.1s)",
+            "✔ [8778/8793] Built Zeta23.FromPNTPlus.Fourier (9.9s)",
+            "⚠ [8779/8793] Built Zeta23.RvM.Halving (6.2s)",
+            "✔ [8780/8793] Built Zeta23.WeilEF.XiLogDeriv (7.1s)"
+          ]
+        },
+        {
+          "group": "gauss-pnt",
+          "job_id": 115484747845,
+          "job_conclusion": "failure",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11840994859",
+          "artifact_sha256": "2dae23dbcb76978e8707b3327dfdf3f7cdae9a85e82d82660be9c40464a02c12",
+          "archive": {
+            "url": "https://github.com/leanprover/lean4/releases/download/v4.21.0/lean-4.21.0-linux.tar.zst",
+            "asset_id": 268459637,
+            "observed_sha256": "455c6df09d5bd54d2a51b137939c47e2dda816d512ac789c4b3642c9bf98bde8",
+            "published_sha256": "455c6df09d5bd54d2a51b137939c47e2dda816d512ac789c4b3642c9bf98bde8"
+          },
+          "targets": [
+            {
+              "target_id": "math-inc:strongpnt",
+              "declaration": "Strong_PNT",
+              "source_commit": "2f5835c322314f55f1026ec2f139d704b7c45c69",
+              "fidelity_review": "pending",
+              "independent_trust_review": "pending",
+              "external_checker": "not_run",
+              "build": {
+                "exit_code": null,
+                "outcome": "timeout"
+              }
+            }
+          ],
+          "axiom_diagnostics": [
+            "info: StrongPNT/PNT1_ComplexAnalysis.lean:2969:0: 'borel_caratheodory_II' depends on axioms: [propext, Classical.choice, Quot.sound]"
+          ],
+          "compiler_diagnostics": [],
+          "last_module_progress": [
+            "ℹ [6920/6930] Built StrongPNT.PNT1_ComplexAnalysis",
+            "⚠ [6921/6930] Built PrimeNumberTheoremAnd.Wiener",
+            "✔ [6922/6930] Built PrimeNumberTheoremAnd.PerronFormula",
+            "✔ [6923/6930] Built StrongPNT.PNT2_LogDerivative",
+            "✔ [6924/6930] Built PrimeNumberTheoremAnd.MellinCalculus"
+          ]
+        },
+        {
+          "group": "openai-catalan",
+          "job_id": 115484747864,
+          "job_conclusion": "failure",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11842125582",
+          "artifact_sha256": "a3e804bc667b89b2b6ebaf498ea7873f325eb6871c7c56b1f9421c2f97136a01",
+          "archive": {
+            "url": "https://github.com/leanprover/lean4/releases/download/v4.34.1/lean-4.34.1-linux.tar.zst",
+            "asset_id": 586761733,
+            "observed_sha256": "47bf4bbd78f70c2e9670598ab7124d92b6efb7330ff33e5fbb4030f6fd72e4e4",
+            "published_sha256": "47bf4bbd78f70c2e9670598ab7124d92b6efb7330ff33e5fbb4030f6fd72e4e4"
+          },
+          "targets": [
+            {
+              "target_id": "openai-math:005",
+              "declaration": "OAI.InternalCatalan.catalan_irrational",
+              "source_commit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+              "fidelity_review": "pending",
+              "independent_trust_review": "pending",
+              "external_checker": "not_run",
+              "build": {
+                "exit_code": null,
+                "outcome": "timeout"
+              }
+            }
+          ],
+          "axiom_diagnostics": [],
+          "compiler_diagnostics": [
+            "error: no such file or directory (error code: 2)",
+            "error: OAI/NumberTheory/Catalan/PrimeLimits/ImportedPNTCoreBridge.lean: bad import 'PrimeNumberTheoremAnd.Catalan.Consequences'",
+            "error: OAI/NumberTheory/Catalan/Arithmetic/OddPrimeLossNormalization.lean: bad import 'OAI.NumberTheory.Catalan.PrimeLimits.ImportedPNTCoreBridge'",
+            "error: OAI/NumberTheory/Catalan/Arithmetic/FinitePlaceAssembly.lean: bad import 'OAI.NumberTheory.Catalan.Arithmetic.OddPrimeLossNormalization'"
+          ],
+          "last_module_progress": [
+            "✔ [3090/3097] Built OAI.NumberTheory.Catalan.Determinants.FixedCompactRow48 (12s)",
+            "✔ [3091/3098] Built OAI.NumberTheory.Catalan.Determinants.FixedClearedMomentColumn4 (16s)",
+            "✔ [3092/3099] Built OAI.NumberTheory.Catalan.Determinants.FixedClearedMomentColumn38 (27s)",
+            "✔ [3093/3099] Built OAI.NumberTheory.Catalan.Determinants.FixedClearedMomentColumn39 (28s)",
+            "✔ [3094/3100] Built OAI.NumberTheory.Catalan.Determinants.FixedClearedMomentColumn40 (28s)"
+          ]
+        },
+        {
+          "group": "anthropic-3sum",
+          "job_id": 115484747927,
+          "job_conclusion": "failure",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11841342948",
+          "artifact_sha256": "d270e5c3c062622d4e1d81cabc32c66a902462ff34bd82491d98e62c16e46428",
+          "archive": {
+            "url": "https://github.com/leanprover/lean4/releases/download/v4.33.1/lean-4.33.1-linux.tar.zst",
+            "asset_id": 523687465,
+            "observed_sha256": "890afd185370f85666025b883914ab4f4b339136f8c96167b69cfb62aecaf235",
+            "published_sha256": "890afd185370f85666025b883914ab4f4b339136f8c96167b69cfb62aecaf235"
+          },
+          "targets": [
+            {
+              "target_id": "anthropic:3sum-apsp",
+              "declaration": "ThreeSumApsp.endStatement_theorem_22_3SUM",
+              "source_commit": "e1a4e6508154ea59f030480661590a9fe3018011",
+              "fidelity_review": "pending",
+              "independent_trust_review": "pending",
+              "external_checker": "not_run",
+              "build": {
+                "exit_code": null,
+                "outcome": "timeout"
+              }
+            }
+          ],
+          "axiom_diagnostics": [],
+          "compiler_diagnostics": [],
+          "last_module_progress": [
+            "✔ [2868/2904] Built ThreeSumApsp.Programs.Sec3.Theorem17.Hashing.ChoosePrime (17s)",
+            "✔ [2869/2904] Built ThreeSumApsp.Lang.Compiler.StatementCode (8.9s)",
+            "✔ [2870/2905] Built ThreeSumApsp.Programs.Sec4.Theorem30.Contracts (10s)",
+            "✔ [2871/2905] Built ThreeSumApsp.Sec4.Corollary31 (13s)",
+            "✔ [2872/2905] Built ThreeSumApsp.Programs.Sec3.Theorem17.TimeBound.Terms (12s)"
+          ]
+        },
+        {
+          "group": "anthropic-flt",
+          "job_id": 115484748047,
+          "job_conclusion": "failure",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11840541715",
+          "artifact_sha256": "15dcee451401bca26fc8defaab751176593944f6f05d7c4c766f468b833158a1",
+          "archive": {
+            "url": "https://github.com/leanprover/lean4/releases/download/v4.33.1/lean-4.33.1-linux.tar.zst",
+            "asset_id": 523687465,
+            "observed_sha256": "890afd185370f85666025b883914ab4f4b339136f8c96167b69cfb62aecaf235",
+            "published_sha256": "890afd185370f85666025b883914ab4f4b339136f8c96167b69cfb62aecaf235"
+          },
+          "targets": [],
+          "axiom_diagnostics": [],
+          "compiler_diagnostics": [
+            "#9 91.28 Dependency Mathlib uses a different lean-toolchain",
+            "#9 91.28   Project uses leanprover/lean4:v4.33.1",
+            "#9 91.28   Mathlib uses leanprover/lean4:v4.33.0"
+          ],
+          "last_module_progress": [
+            "#9 84.76 ✔ [22/26] Built Cache.Warning:c.o (370ms)",
+            "#9 85.06 ✔ [23/26] Built Cache.Requests:c.o (3.1s)",
+            "#9 85.76 ✔ [24/26] Built Cache.Main (1.4s)",
+            "#9 86.76 ✔ [25/26] Built Cache.Main:c.o (938ms)",
+            "#9 87.46 ✔ [26/26] Built cache:exe (758ms)"
+          ]
+        },
+        {
+          "group": "harmonic-imo",
+          "job_id": 115484748062,
+          "job_conclusion": "failure",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11842285695",
+          "artifact_sha256": "478b8bc552d8bf4347bbe57a1397dc27d1f4a37f210c265df60237350e7337ca",
+          "archive": {
+            "url": "https://github.com/leanprover/lean4/releases/download/v4.20.0-rc5/lean-4.20.0-rc5-linux.tar.zst",
+            "asset_id": 252596559,
+            "observed_sha256": "e4544c44170377ef33d6ae1ebe7eea10383f7fe20a84d56c1fdc18d16fccb575",
+            "published_sha256": null
+          },
+          "targets": [
+            {
+              "target_id": "harmonic:imo2025:p1",
+              "declaration": "IMO2025P1.main_theorem",
+              "source_commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+              "fidelity_review": "pending",
+              "independent_trust_review": "pending",
+              "external_checker": "not_run",
+              "build": {
+                "exit_code": 0,
+                "outcome": "completed"
+              },
+              "declaration_and_axioms": {
+                "exit_code": 0,
+                "outcome": "completed"
+              },
+              "kernel_replay": {
+                "exit_code": 1,
+                "outcome": "failed"
+              }
+            },
+            {
+              "target_id": "harmonic:imo2025:p3",
+              "declaration": "IMO2025P3.main_theorem",
+              "source_commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+              "fidelity_review": "pending",
+              "independent_trust_review": "pending",
+              "external_checker": "not_run",
+              "build": {
+                "exit_code": 0,
+                "outcome": "completed"
+              },
+              "declaration_and_axioms": {
+                "exit_code": 0,
+                "outcome": "completed"
+              },
+              "kernel_replay": {
+                "exit_code": 1,
+                "outcome": "failed"
+              }
+            },
+            {
+              "target_id": "harmonic:imo2025:p4:1",
+              "declaration": "IMO2025P4.main_theorem",
+              "source_commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+              "fidelity_review": "pending",
+              "independent_trust_review": "pending",
+              "external_checker": "not_run",
+              "build": {
+                "exit_code": null,
+                "outcome": "timeout"
+              }
+            },
+            {
+              "target_id": "harmonic:imo2025:p4:2",
+              "declaration": "IMO2025P4Solve2.main_theorem",
+              "source_commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+              "fidelity_review": "pending",
+              "independent_trust_review": "pending",
+              "external_checker": "not_run",
+              "build": {
+                "exit_code": null,
+                "outcome": "group_budget_exhausted"
+              }
+            },
+            {
+              "target_id": "harmonic:imo2025:p5",
+              "declaration": "IMO2025P5.main_theorem",
+              "source_commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+              "fidelity_review": "pending",
+              "independent_trust_review": "pending",
+              "external_checker": "not_run",
+              "build": {
+                "exit_code": null,
+                "outcome": "group_budget_exhausted"
+              }
+            }
+          ],
+          "axiom_diagnostics": [
+            "info: /source/HarmonicLean/IMO2025P1.lean:1433:0: 'IMO2025P1.main_theorem' depends on axioms: [propext, Classical.choice, Quot.sound]",
+            "'IMO2025P1.main_theorem' depends on axioms: [propext, Classical.choice, Quot.sound]",
+            "info: /source/HarmonicLean/IMO2025P3.lean:433:0: 'IMO2025P3.main_theorem' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]",
+            "'IMO2025P3.main_theorem' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]"
+          ],
+          "compiler_diagnostics": [
+            "uncaught exception: (kernel) unknown constant 'Std.DHashMap.Internal.Raw₀.expand.go._unary.induct'",
+            "uncaught exception: (kernel) unknown constant 'Std.DHashMap.Internal.Raw₀.expand.go._unary.induct'"
+          ],
+          "last_module_progress": [
+            "#9 77.09 ✔ [8/8] Built lean4checker",
+            "✔ [6673/6675] Built HarmonicLean.Attrs",
+            "✔ [6674/6675] Built HarmonicLean.Imports",
+            "⚠ [6675/6675] Built HarmonicLean.IMO2025P1",
+            "⚠ [6675/6675] Built HarmonicLean.IMO2025P3"
+          ]
+        },
+        {
+          "group": "alphaproof",
+          "job_id": 115484748278,
+          "job_conclusion": "failure",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11840879827",
+          "artifact_sha256": "f9e29ceafae186464f095c0b049c05632455d298da5f833f1f86c2ccfa1beacf",
+          "archive": {
+            "url": "https://github.com/leanprover/lean4/releases/download/v4.27.0/lean-4.27.0-linux.tar.zst",
+            "asset_id": 344780903,
+            "observed_sha256": "056e2dc8564fc064a801e69f3eb18c044b9b546bc8b0e5a2c00247f8a1cb8ce6",
+            "published_sha256": "056e2dc8564fc064a801e69f3eb18c044b9b546bc8b0e5a2c00247f8a1cb8ce6"
+          },
+          "targets": [
+            {
+              "target_id": "alphaproof-nexus:ErdosProblems/erdos_152.lean",
+              "declaration": "Erdos152.target_theorem_0",
+              "source_commit": "0647711a71183c1ea492ad60860776617ce1ea88",
+              "fidelity_review": "pending",
+              "independent_trust_review": "pending",
+              "external_checker": "not_run",
+              "build": {
+                "exit_code": 0,
+                "outcome": "completed"
+              },
+              "declaration_and_axioms": {
+                "exit_code": 0,
+                "outcome": "completed"
+              },
+              "kernel_replay": {
+                "exit_code": null,
+                "outcome": "timeout"
+              }
+            },
+            {
+              "target_id": "alphaproof-nexus:OEIS/oeis_51293_conjecture_0.lean",
+              "declaration": "target_theorem_0",
+              "source_commit": "0647711a71183c1ea492ad60860776617ce1ea88",
+              "fidelity_review": "pending",
+              "independent_trust_review": "pending",
+              "external_checker": "not_run",
+              "build": {
+                "exit_code": 0,
+                "outcome": "completed"
+              },
+              "declaration_and_axioms": {
+                "exit_code": 0,
+                "outcome": "completed"
+              },
+              "kernel_replay": {
+                "exit_code": null,
+                "outcome": "timeout"
+              }
+            },
+            {
+              "target_id": "alphaproof-nexus:StacksProject/NormalRings_normalRing_characterization.lean",
+              "declaration": "normalRing_characterization",
+              "source_commit": "0647711a71183c1ea492ad60860776617ce1ea88",
+              "fidelity_review": "pending",
+              "independent_trust_review": "pending",
+              "external_checker": "not_run",
+              "build": {
+                "exit_code": 0,
+                "outcome": "completed"
+              },
+              "declaration_and_axioms": {
+                "exit_code": 0,
+                "outcome": "completed"
+              },
+              "kernel_replay": {
+                "exit_code": null,
+                "outcome": "timeout"
+              }
+            }
+          ],
+          "axiom_diagnostics": [
+            "'Erdos152.target_theorem_0' depends on axioms: [propext, Classical.choice, Quot.sound]",
+            "'target_theorem_0' depends on axioms: [propext, Classical.choice, Quot.sound]",
+            "'normalRing_characterization' depends on axioms: [propext, Classical.choice, Quot.sound]"
+          ],
+          "compiler_diagnostics": [],
+          "last_module_progress": [
+            "✔ [7989/7991] Built FormalConjectures.Util.Linters.AMSLinter (2.9s)",
+            "✔ [7990/7991] Built FormalConjectures.Util.ProblemImports (3.2s)",
+            "⚠ [7991/7991] Built APNOutputs.ErdosProblems.erdos_152 (18s)",
+            "⚠ [7991/7991] Built APNOutputs.OEIS.oeis_51293_conjecture_0 (35s)",
+            "⚠ [7885/7885] Built APNOutputs.StacksProject.NormalRings_normalRing_characterization (42s)"
+          ]
+        }
+      ]
+    }
+  ]
+}

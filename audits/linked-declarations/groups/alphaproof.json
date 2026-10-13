@@ -49,6 +49,17 @@
       },
       "review_questions": [
         "Review the definition of f and answer(True) wrapper against the exact Erdos statement and prose proof."
+      ],
+      "assumptions_draft": {
+        "status": "unreviewed_source_extraction",
+        "items": [
+          "No explicit theorem parameters; the proposition is an answer(True) equivalence with Tendsto f atTop atTop. Definition of f requires review."
+        ],
+        "source_url": "https://github.com/google-deepmind/alphaproof-nexus-results/blob/0647711a71183c1ea492ad60860776617ce1ea88/APNOutputs/ErdosProblems/erdos_152.lean#L505"
+      },
+      "source_git_blob": "e09219a2220f579656757682839069d30572d28b",
+      "direct_import_source_lines": [
+        "import FormalConjectures.Util.ProblemImports"
       ]
     },
     {
@@ -97,6 +108,17 @@
       },
       "review_questions": [
         "The target is an asymptotic expansion for a_real. Trace that definition to the OEIS subset-counting sequence and check all normalization terms."
+      ],
+      "assumptions_draft": {
+        "status": "unreviewed_source_extraction",
+        "items": [
+          "No explicit theorem parameters; an asymptotic expansion for a_real over natural n. Definition of a_real requires review."
+        ],
+        "source_url": "https://github.com/google-deepmind/alphaproof-nexus-results/blob/0647711a71183c1ea492ad60860776617ce1ea88/APNOutputs/OEIS/oeis_51293_conjecture_0.lean#L517"
+      },
+      "source_git_blob": "7337a1af3a878f3462a127a4fef0443070534596",
+      "direct_import_source_lines": [
+        "import FormalConjectures.Util.ProblemImports"
       ]
     },
     {
@@ -141,6 +163,19 @@
       "review_questions": [
         "The target assumes a reduced commutative ring and finitely many minimal primes. Confirm that those conditions match the intended Stacks result.",
         "Trace NormalRing, NormalDomain, IsIntegrallyClosed, and the product decomposition definitions."
+      ],
+      "assumptions_draft": {
+        "status": "unreviewed_source_extraction",
+        "items": [
+          "R is a commutative ring",
+          "R is reduced",
+          "The set of minimal prime ideals over the zero ideal is finite"
+        ],
+        "source_url": "https://github.com/google-deepmind/alphaproof-nexus-results/blob/0647711a71183c1ea492ad60860776617ce1ea88/APNOutputs/StacksProject/NormalRings_normalRing_characterization.lean#L1029"
+      },
+      "source_git_blob": "0f6cdd84840e75835cbbc2a2b35019a5ae092f88",
+      "direct_import_source_lines": [
+        "import Mathlib"
       ]
     }
   ],
@@ -151,7 +186,8 @@
     "version": "v4.27.0",
     "url": "https://github.com/leanprover/lean4/releases/download/v4.27.0/lean-4.27.0-linux.tar.zst",
     "sha256": "056e2dc8564fc064a801e69f3eb18c044b9b546bc8b0e5a2c00247f8a1cb8ce6",
-    "asset_id": 344780903
+    "asset_id": 344780903,
+    "sha256_basis": "github_asset_digest"
   },
   "checker": {
     "kind": "lean4checker",
@@ -280,5 +316,7 @@
       "inherited": true,
       "configFile": "lakefile.toml"
     }
-  ]
+  ],
+  "observation_seconds": 900,
+  "build_seconds": 480
 }

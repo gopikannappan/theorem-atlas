@@ -53,6 +53,26 @@
       "review_questions": [
         "The linked theorem gives a two-thirds-minus-epsilon asymptotic bound. Does the record title 'more than two thirds' require a different declaration or more precise wording?",
         "Review the definitions and multiplicity conventions of Ncount and N0simple."
+      ],
+      "assumptions_draft": {
+        "status": "unreviewed_source_extraction",
+        "items": [
+          "For every positive real epsilon, there exists a real threshold T0, and the bound holds for every real T ≥ T0",
+          "Ncount and N0simple definitions and counting conventions require review"
+        ],
+        "source_url": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/zeta23/Solution.lean#L64"
+      },
+      "source_git_blob": "bd5dd641b10983884cafb0a4d7d964a10de32d11",
+      "direct_import_source_lines": [
+        "import ChallengeDeps",
+        "import Zeta23.Unconditional",
+        "import Zeta23.FinalMult",
+        "import Zeta23.ThmD.Final",
+        "import Zeta23.ThmD.Mult",
+        "import Zeta23.ThmE.Final",
+        "import Zeta23.ThmE.Mult",
+        "import Zeta23.ThmDE.Final",
+        "import Zeta23.ThmDE.Mult"
       ]
     }
   ],
@@ -63,7 +83,8 @@
     "version": "v4.33.0-rc2",
     "url": "https://github.com/leanprover/lean4/releases/download/v4.33.0-rc2/lean-4.33.0-rc2-linux.tar.zst",
     "sha256": "48010c7d6264dc992574e9b0e09ece1f9c648e8f5106066b2cdb6834a6a60a6c",
-    "asset_id": 500021613
+    "asset_id": 500021613,
+    "sha256_basis": "github_asset_digest"
   },
   "checker": {
     "kind": "leanchecker",
@@ -179,5 +200,7 @@
       "inherited": false,
       "configFile": "lakefile.lean"
     }
-  ]
+  ],
+  "observation_seconds": 1800,
+  "build_seconds": 1200
 }

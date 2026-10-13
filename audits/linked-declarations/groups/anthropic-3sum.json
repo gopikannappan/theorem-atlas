@@ -43,6 +43,19 @@
       "review_questions": [
         "The linked declaration covers 3SUM specifically, while the record title also mentions APSP. Record coverage per declaration.",
         "Review the WordRAM model, bounded integer inputs, correctness, and cost model behind EndStatement.Theorem_22_3SUM."
+      ],
+      "assumptions_draft": {
+        "status": "unreviewed_source_extraction",
+        "items": [
+          "The formal statement is the named proposition EndStatement.Theorem_22_3SUM; expand its definitions to inventory machine/input/cost assumptions. This expansion is pending."
+        ],
+        "source_url": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Statements/EndStatement.lean#L44"
+      },
+      "source_git_blob": "5f034c8999ab8d97f66653b3feef1b4a9ed4f38b",
+      "direct_import_source_lines": [
+        "public import ThreeSumApsp.RunningTimes.Sec3.Theorem22",
+        "public import ThreeSumApsp.RunningTimes.Sec5.Corollary39",
+        "public import ThreeSumApsp.Statements.Exponents"
       ]
     }
   ],
@@ -53,7 +66,8 @@
     "version": "v4.33.1",
     "url": "https://github.com/leanprover/lean4/releases/download/v4.33.1/lean-4.33.1-linux.tar.zst",
     "sha256": "890afd185370f85666025b883914ab4f4b339136f8c96167b69cfb62aecaf235",
-    "asset_id": 523687465
+    "asset_id": 523687465,
+    "sha256_basis": "github_asset_digest"
   },
   "checker": {
     "kind": "leanchecker",
@@ -169,5 +183,7 @@
       "inherited": true,
       "configFile": "lakefile.toml"
     }
-  ]
+  ],
+  "observation_seconds": 1800,
+  "build_seconds": 1200
 }

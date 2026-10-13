@@ -9,7 +9,8 @@
     "version": "v4.34.0-rc1",
     "url": "https://github.com/leanprover/lean4/releases/download/v4.34.0-rc1/lean-4.34.0-rc1-linux.tar.zst",
     "sha256": "41dc6a6ec143ece8ed4ba4c4c6978c91f21ad5cbe3c4e7728ad31b869961dc17",
-    "asset_id": 509012398
+    "asset_id": 509012398,
+    "sha256_basis": "github_asset_digest"
   },
   "checker": {
     "kind": "leanchecker",
@@ -50,7 +51,23 @@
       "review_questions": [
         "Independently check the selective source extraction, classical decidability, and explicit True answer wrapper.",
         "Review both representation maps and equality of minima; confirm the positive-exponent condition and reused Selfridge proof."
+      ],
+      "assumptions_draft": {
+        "status": "unreviewed_source_extraction",
+        "items": [
+          "n is a natural number",
+          "0 < n",
+          "Reachable uses only one, addition, and multiplication constructors",
+          "complexity minimizes the number of ones using Nat.find"
+        ],
+        "source_url": "https://github.com/theorem-atlas/theorem-atlas/blob/758e030c9ae8fc0a7ce8ed5165cec3672b81d197/proofs/integer-complexity/IntegerComplexity.lean#L103"
+      },
+      "direct_import_source_lines": [
+        "import OpenProblemsLab.IntegerComplexity"
       ]
     }
-  ]
+  ],
+  "fresh_replay_seconds": 600,
+  "observation_seconds": 900,
+  "build_seconds": 480
 }

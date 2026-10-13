@@ -45,7 +45,21 @@
         "state": "not_attempted"
       },
       "review_questions": [
-        "Trace the determinant bounds and nonvanishing lemmas back to the manuscript; inspect all assumptions and definitions in their dependency chain."
+        "Trace the determinant bounds and nonvanishing lemmas back to the manuscript; inspect all assumptions and definitions in their dependency chain.",
+        "Audit the exact upstream compatibility patches as part of the proof source. The PNT patch adds Catalan modules that are absent from the bare dependency commit."
+      ],
+      "assumptions_draft": {
+        "status": "unreviewed_source_extraction",
+        "items": [
+          "Closed irrationality proposition for the displayed infinite real series; no explicit theorem parameters. Referenced definitions and proof axioms remain to be reviewed."
+        ],
+        "source_url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/OAI/NumberTheory/Catalan/Results/Conclusions.lean#L11"
+      },
+      "source_git_blob": "a21cbc0e56a4e71ec21ce765b16e6ef0adb864f0",
+      "direct_import_source_lines": [
+        "import OAI.NumberTheory.Catalan.Arithmetic.FinitePlaceAssembly",
+        "import OAI.NumberTheory.Catalan.Arithmetic.PrimeNonvanishing",
+        "import OAI.NumberTheory.Catalan.Determinants.RealDeterminantUpper"
       ]
     }
   ],
@@ -56,7 +70,8 @@
     "version": "v4.34.1",
     "url": "https://github.com/leanprover/lean4/releases/download/v4.34.1/lean-4.34.1-linux.tar.zst",
     "sha256": "47bf4bbd78f70c2e9670598ab7124d92b6efb7330ff33e5fbb4030f6fd72e4e4",
-    "asset_id": 586761733
+    "asset_id": 586761733,
+    "sha256_basis": "github_asset_digest"
   },
   "checker": {
     "kind": "leanchecker",
@@ -568,5 +583,33 @@
       "inherited": true,
       "configFile": "lakefile.lean"
     }
-  ]
+  ],
+  "upstream_patch_labels": [
+    "iut",
+    "tate-curves-theta",
+    "genl",
+    "heights",
+    "pi1",
+    "orbicurve-cores",
+    "oka",
+    "tempered-fundamental-groups",
+    "elliptic-curves",
+    "formal-schemes",
+    "belyi",
+    "fixed-point-theorems",
+    "PrimeNumberTheoremAnd",
+    "Zeta3Irrational",
+    "rellich-kondrachov",
+    "carleson",
+    "StrongPNT",
+    "AbsorptionCutoff",
+    "AINTLIB",
+    "ClassFieldTheory",
+    "schoenflies-lean",
+    "SphereEversion",
+    "gromov"
+  ],
+  "upstream_patch_source_url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/lakefile.lean",
+  "observation_seconds": 1800,
+  "build_seconds": 1200
 }
