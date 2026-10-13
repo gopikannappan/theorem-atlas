@@ -25,3 +25,8 @@ test('coverage filters distinguish scope notes from curated proofs', () => {
   assert.equal(filterRecords(records, { query: ' result 24 ' })[0].id, '24');
   assert.equal(filterRecords(records, { source: 'Other' }).length, 0);
 });
+test('record type filter distinguishes proof artifacts from statement collections', () => {
+  const mixed = [{ ...records[0], kind: 'external_proof_artifact' }, { ...records[1], kind: 'statement_collection' }];
+  assert.equal(filterRecords(mixed, { kind: 'external_proof_artifact' }).length, 1);
+  assert.equal(filterRecords(mixed, { kind: 'statement_collection' })[0].id, '1');
+});

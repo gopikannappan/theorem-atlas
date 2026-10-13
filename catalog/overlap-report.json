@@ -1,0 +1,29 @@
+{
+  "scope": "Exact metadata identities only; mathematical statement equivalence has not been reviewed.",
+  "exact_artifact_groups": [],
+  "repeated_proof_location_groups": [],
+  "repeated_manuscript_groups": [],
+  "repeated_benchmark_groups": [],
+  "identical_source_hash_groups": [],
+  "alternative_proof_records": [
+    "harmonic:imo2025:p4"
+  ],
+  "source_reuse": [
+    {
+      "kind": "upstream_dependency_reuse",
+      "source": "OpenAI mathematics",
+      "record_id": "math-inc:strongpnt",
+      "description": "OpenAI’s pinned mathematics release already includes this exact StrongPNT commit as a dependency. This identifies reused formalization infrastructure, not a second independently generated mathematical result.",
+      "dependency_commit": "2f5835c322314f55f1026ec2f139d704b7c45c69",
+      "evidence_url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/lake-manifest.json"
+    },
+    {
+      "kind": "upstream_dependency_reuse",
+      "source": "Google DeepMind / AlphaProof Nexus",
+      "record_id": "formal-conjectures:collection",
+      "description": "AlphaProof Nexus depends on Formal Conjectures. Its pinned dependency is an older revision than this catalogue’s statement-collection snapshot; this is shared source infrastructure, not established theorem equivalence.",
+      "dependency_commit": "7862bf6a6976c26acb086b6b2cec12ad1d92ce5d",
+      "evidence_url": "https://github.com/google-deepmind/alphaproof-nexus-results/blob/0647711a71183c1ea492ad60860776617ce1ea88/lake-manifest.json"
+    }
+  ]
+}

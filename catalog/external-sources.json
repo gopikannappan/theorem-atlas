@@ -184,5 +184,335 @@
         ]
       }
     }
+  },
+  {
+    "adapter": "project",
+    "source": "Harmonic / Aristotle",
+    "model": "Aristotle",
+    "repository": "https://github.com/harmonic-ai/IMO2025",
+    "commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+    "readme": "README.md",
+    "toolchain": "leanprover/lean4:v4.20.0-rc5",
+    "mathlib_commit": "4e685d14db58b1ab29024bb0761902a3615f3f14",
+    "attribution": "Harmonic / Aristotle and the original mathematical authors and contributors credited upstream. Linked metadata curated by Theorem Atlas; implementations remain upstream.",
+    "origin_note": "Existing IMO competition problems formalized or solved by Aristotle; original problem authorship remains with the IMO.",
+    "reproduction_commands": [
+      "lake exe cache get",
+      "lake build"
+    ],
+    "references": [
+      {
+        "title": "IMO 2025 official problems",
+        "url": "https://www.imo-official.org/problems.aspx"
+      }
+    ],
+    "targets": [
+      {
+        "file": "HarmonicLean/IMO2025P1.lean",
+        "line": 1387,
+        "declaration": "IMO2025P1.main_theorem",
+        "dependencies": [
+          "HarmonicLean.Imports"
+        ]
+      }
+    ],
+    "license": {
+      "code": "Not specified for all released artifacts",
+      "materials": "No redistribution permission inferred",
+      "url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/README.md",
+      "third_party_note": "No repository-wide LICENSE file was located at this pinned commit. Metadata and links only; check permission before copying source."
+    },
+    "id": "harmonic:imo2025:p1",
+    "title": "IMO 2025 — problem 1",
+    "kind": "external_proof_artifact",
+    "benchmark_id": "imo:2025:p1",
+    "record_path": "HarmonicLean/IMO2025P1.lean",
+    "metadata_note": "Pinned Lean solutions for this competition problem; not locally audited."
+  },
+  {
+    "adapter": "project",
+    "source": "Harmonic / Aristotle",
+    "model": "Aristotle",
+    "repository": "https://github.com/harmonic-ai/IMO2025",
+    "commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+    "readme": "README.md",
+    "toolchain": "leanprover/lean4:v4.20.0-rc5",
+    "mathlib_commit": "4e685d14db58b1ab29024bb0761902a3615f3f14",
+    "attribution": "Harmonic / Aristotle and the original mathematical authors and contributors credited upstream. Linked metadata curated by Theorem Atlas; implementations remain upstream.",
+    "origin_note": "Existing IMO competition problems formalized or solved by Aristotle; original problem authorship remains with the IMO.",
+    "reproduction_commands": [
+      "lake exe cache get",
+      "lake build"
+    ],
+    "references": [
+      {
+        "title": "IMO 2025 official problems",
+        "url": "https://www.imo-official.org/problems.aspx"
+      }
+    ],
+    "targets": [],
+    "license": {
+      "code": "Not specified for all released artifacts",
+      "materials": "No redistribution permission inferred",
+      "url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/README.md",
+      "third_party_note": "No repository-wide LICENSE file was located at this pinned commit. Metadata and links only; check permission before copying source."
+    },
+    "id": "harmonic:imo2025:p2",
+    "title": "IMO 2025 — problem 2",
+    "kind": "external_artifact",
+    "benchmark_id": "imo:2025:p2",
+    "record_path": "HarmonicLean/IMO2025P2.txt",
+    "metadata_note": "Text geometry artifact; no Lean proof declaration located for this problem at this commit."
+  },
+  {
+    "adapter": "project",
+    "source": "Harmonic / Aristotle",
+    "model": "Aristotle",
+    "repository": "https://github.com/harmonic-ai/IMO2025",
+    "commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+    "readme": "README.md",
+    "toolchain": "leanprover/lean4:v4.20.0-rc5",
+    "mathlib_commit": "4e685d14db58b1ab29024bb0761902a3615f3f14",
+    "attribution": "Harmonic / Aristotle and the original mathematical authors and contributors credited upstream. Linked metadata curated by Theorem Atlas; implementations remain upstream.",
+    "origin_note": "Existing IMO competition problems formalized or solved by Aristotle; original problem authorship remains with the IMO.",
+    "reproduction_commands": [
+      "lake exe cache get",
+      "lake build"
+    ],
+    "references": [
+      {
+        "title": "IMO 2025 official problems",
+        "url": "https://www.imo-official.org/problems.aspx"
+      }
+    ],
+    "targets": [
+      {
+        "file": "HarmonicLean/IMO2025P3.lean",
+        "line": 417,
+        "declaration": "IMO2025P3.main_theorem",
+        "dependencies": [
+          "HarmonicLean.Imports"
+        ]
+      }
+    ],
+    "license": {
+      "code": "Not specified for all released artifacts",
+      "materials": "No redistribution permission inferred",
+      "url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/README.md",
+      "third_party_note": "No repository-wide LICENSE file was located at this pinned commit. Metadata and links only; check permission before copying source."
+    },
+    "id": "harmonic:imo2025:p3",
+    "title": "IMO 2025 — problem 3",
+    "kind": "external_proof_artifact",
+    "benchmark_id": "imo:2025:p3",
+    "record_path": "HarmonicLean/IMO2025P3.lean",
+    "metadata_note": "Pinned Lean solutions for this competition problem; not locally audited."
+  },
+  {
+    "adapter": "project",
+    "source": "Harmonic / Aristotle",
+    "model": "Aristotle",
+    "repository": "https://github.com/harmonic-ai/IMO2025",
+    "commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+    "readme": "README.md",
+    "toolchain": "leanprover/lean4:v4.20.0-rc5",
+    "mathlib_commit": "4e685d14db58b1ab29024bb0761902a3615f3f14",
+    "attribution": "Harmonic / Aristotle and the original mathematical authors and contributors credited upstream. Linked metadata curated by Theorem Atlas; implementations remain upstream.",
+    "origin_note": "Existing IMO competition problems formalized or solved by Aristotle; original problem authorship remains with the IMO.",
+    "reproduction_commands": [
+      "lake exe cache get",
+      "lake build"
+    ],
+    "references": [
+      {
+        "title": "IMO 2025 official problems",
+        "url": "https://www.imo-official.org/problems.aspx"
+      }
+    ],
+    "targets": [
+      {
+        "file": "HarmonicLean/IMO2025P4.lean",
+        "line": 1437,
+        "declaration": "IMO2025P4.main_theorem",
+        "dependencies": [
+          "HarmonicLean.Imports"
+        ]
+      },
+      {
+        "file": "HarmonicLean/IMO2025P4_solve2.lean",
+        "line": 934,
+        "declaration": "IMO2025P4Solve2.main_theorem",
+        "dependencies": [
+          "HarmonicLean.Imports"
+        ]
+      }
+    ],
+    "license": {
+      "code": "Not specified for all released artifacts",
+      "materials": "No redistribution permission inferred",
+      "url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/README.md",
+      "third_party_note": "No repository-wide LICENSE file was located at this pinned commit. Metadata and links only; check permission before copying source."
+    },
+    "id": "harmonic:imo2025:p4",
+    "title": "IMO 2025 — problem 4",
+    "kind": "external_proof_artifact",
+    "benchmark_id": "imo:2025:p4",
+    "record_path": "HarmonicLean/IMO2025P4.lean",
+    "metadata_note": "Pinned Lean solutions for this competition problem; not locally audited."
+  },
+  {
+    "adapter": "project",
+    "source": "Harmonic / Aristotle",
+    "model": "Aristotle",
+    "repository": "https://github.com/harmonic-ai/IMO2025",
+    "commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+    "readme": "README.md",
+    "toolchain": "leanprover/lean4:v4.20.0-rc5",
+    "mathlib_commit": "4e685d14db58b1ab29024bb0761902a3615f3f14",
+    "attribution": "Harmonic / Aristotle and the original mathematical authors and contributors credited upstream. Linked metadata curated by Theorem Atlas; implementations remain upstream.",
+    "origin_note": "Existing IMO competition problems formalized or solved by Aristotle; original problem authorship remains with the IMO.",
+    "reproduction_commands": [
+      "lake exe cache get",
+      "lake build"
+    ],
+    "references": [
+      {
+        "title": "IMO 2025 official problems",
+        "url": "https://www.imo-official.org/problems.aspx"
+      }
+    ],
+    "targets": [
+      {
+        "file": "HarmonicLean/IMO2025P5.lean",
+        "line": 615,
+        "declaration": "IMO2025P5.main_theorem",
+        "dependencies": [
+          "HarmonicLean.Imports"
+        ]
+      }
+    ],
+    "license": {
+      "code": "Not specified for all released artifacts",
+      "materials": "No redistribution permission inferred",
+      "url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/README.md",
+      "third_party_note": "No repository-wide LICENSE file was located at this pinned commit. Metadata and links only; check permission before copying source."
+    },
+    "id": "harmonic:imo2025:p5",
+    "title": "IMO 2025 — problem 5",
+    "kind": "external_proof_artifact",
+    "benchmark_id": "imo:2025:p5",
+    "record_path": "HarmonicLean/IMO2025P5.lean",
+    "metadata_note": "Pinned Lean solutions for this competition problem; not locally audited."
+  },
+  {
+    "adapter": "project",
+    "source": "Math Inc. / Gauss",
+    "model": "Gauss",
+    "repository": "https://github.com/math-inc/strongpnt",
+    "commit": "2f5835c322314f55f1026ec2f139d704b7c45c69",
+    "readme": "README.md",
+    "toolchain": "leanprover/lean4:v4.21.0",
+    "mathlib_commit": "308445d7985027f538e281e18df29ca16ede2ba3",
+    "attribution": "Math Inc. / Gauss and the original mathematical authors and contributors credited upstream. Linked metadata curated by Theorem Atlas; implementations remain upstream.",
+    "origin_note": "AI-assisted formalization of the established strong Prime Number Theorem, with human scaffolding and reused PrimeNumberTheoremAnd material.",
+    "reproduction_commands": [
+      "lake exe cache get",
+      "lake build"
+    ],
+    "references": [
+      {
+        "title": "Gauss project announcement",
+        "url": "https://www.math.inc/gauss"
+      }
+    ],
+    "targets": [
+      {
+        "file": "StrongPNT/PNT5_Strong.lean",
+        "line": 5911,
+        "declaration": "Strong_PNT",
+        "dependencies": [
+          "PrimeNumberTheoremAnd.ZetaBounds",
+          "PrimeNumberTheoremAnd.ZetaConj",
+          "Mathlib.Algebra.Group.Support",
+          "Mathlib.Analysis.SpecialFunctions.Log.Monotone",
+          "Mathlib.Data.Real.Pi.Bounds",
+          "Mathlib.Data.Complex.ExponentialBounds",
+          "StrongPNT.ZetaZeroFree"
+        ]
+      }
+    ],
+    "license": {
+      "code": "Not specified for all released artifacts",
+      "materials": "No redistribution permission inferred",
+      "url": "https://github.com/math-inc/strongpnt/blob/2f5835c322314f55f1026ec2f139d704b7c45c69/README.md",
+      "third_party_note": "No repository-wide LICENSE file was located at this pinned commit. Metadata and links only; check permission before copying source."
+    },
+    "id": "math-inc:strongpnt",
+    "title": "Strong Prime Number Theorem — Gauss formalization"
+  },
+  {
+    "adapter": "archive_inventory",
+    "source": "DeepSeek / Prover-V2",
+    "model": "DeepSeek-Prover-V2",
+    "repository": "https://github.com/deepseek-ai/DeepSeek-Prover-V2",
+    "commit": "e598a57ea3284997d4a2a168a069fdd5064afbc8",
+    "readme": "README.md",
+    "toolchain": null,
+    "mathlib_commit": null,
+    "attribution": "DeepSeek / Prover-V2 and the original mathematical authors and contributors credited upstream. Linked metadata curated by Theorem Atlas; implementations remain upstream.",
+    "origin_note": "Proof candidates for existing miniF2F competition and textbook benchmark problems. Released files are not evidence of local compilation or mathematical fidelity.",
+    "reproduction_commands": [
+      "Fetch the pinned archive and confirm its recorded SHA-256.",
+      "Upstream archive contains no toolchain or dependency manifest; establish a compatible pinned environment before attempting compilation."
+    ],
+    "references": [
+      {
+        "title": "DeepSeek-Prover-V2 research paper",
+        "url": "https://arxiv.org/abs/2504.21801"
+      }
+    ],
+    "targets": [],
+    "license": {
+      "code": "Archive license not explicitly established",
+      "materials": "Model license is separate from proof/data rights",
+      "url": "https://github.com/deepseek-ai/DeepSeek-Prover-V2/blob/e598a57ea3284997d4a2a168a069fdd5064afbc8/README.md#6-license",
+      "third_party_note": "LICENSE-MODEL governs the model and excludes Data from its scope. README badges are not treated as a blanket license for the proof ZIP. No code or model weights redistributed."
+    },
+    "id_prefix": "deepseek-minif2f:",
+    "archive_path": "minif2f-solutions.zip",
+    "archive_sha256": "aa40d80045b6c9b4da34476aa8142fa5979c290970e50fc148077aa78a4ed6ce",
+    "expected_members": 438
+  },
+  {
+    "adapter": "project",
+    "source": "Google DeepMind / Formal Conjectures",
+    "model": "Community formalizations; no single model attribution",
+    "repository": "https://github.com/google-deepmind/formal-conjectures",
+    "commit": "72dad3524e0174dea703f267664d3bc9298803a0",
+    "readme": "README.md",
+    "toolchain": "leanprover/lean4:v4.33.1",
+    "mathlib_commit": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "attribution": "Google DeepMind / Formal Conjectures and the original mathematical authors and contributors credited upstream. Linked metadata curated by Theorem Atlas; implementations remain upstream.",
+    "origin_note": "A community collection of formalized conjecture statements. A statement entry is not automatically a proof or an LLM-generated discovery.",
+    "reproduction_commands": [
+      "lake exe cache get",
+      "lake build"
+    ],
+    "references": [
+      {
+        "title": "Formal Conjectures paper",
+        "url": "https://arxiv.org/abs/2605.13171"
+      }
+    ],
+    "targets": [],
+    "license": {
+      "code": "Apache-2.0",
+      "materials": "External mathematical sources retain their terms",
+      "url": "https://github.com/google-deepmind/formal-conjectures/blob/72dad3524e0174dea703f267664d3bc9298803a0/LICENSE",
+      "third_party_note": "Collection-level metadata and links only. Do not infer proof coverage or rights to reproduce cited source material."
+    },
+    "id": "formal-conjectures:collection",
+    "title": "Formal Conjectures — open Lean statement collection",
+    "kind": "statement_collection"
   }
 ]

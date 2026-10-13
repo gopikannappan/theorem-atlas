@@ -23,3 +23,12 @@ Every catalogue record includes source credit and a license link. The deployed S
 - Check each journal/arXiv publication's own terms before republishing its prose, figures, or PDF.
 
 No licensing blocker was identified for the implemented attribution-and-link catalogue. This is a scoped review of the inspected notices, not an assurance about all possible future uses.
+
+## Additional sources
+
+- Harmonic IMO2025 `72b62405a176a7eaeadb335a7fa6ee80b6667161`: no repository-wide license located in the complete pinned tree or README. The catalogue links the artifacts without copying their code or problem prose.
+- Math Inc. strongpnt `2f5835c322314f55f1026ec2f139d704b7c45c69`: no repository-wide license located. Its README documents reuse from PrimeNumberTheoremAnd; this does not establish a blanket license for generated project files. Linked only.
+- DeepSeek-Prover-V2 `e598a57ea3284997d4a2a168a069fdd5064afbc8`: LICENSE-MODEL governs model usage and explicitly excludes Data. The archive contains only Lean files, with no separate license or toolchain manifest. The README has a code-license badge and model-license section but does not explicitly settle proof-archive licensing. Model weights and Lean code are not redistributed; only archive-member metadata and hashes are stored.
+- Formal Conjectures `72dad3524e0174dea703f267664d3bc9298803a0`: Apache-2.0 repository license. Indexed at collection level as statements; not represented as proof coverage.
+
+Unknown redistribution rights are recorded as unknown. The present link-and-metadata approach does not grant permission for future copying.

@@ -1,4 +1,7 @@
 """Pinned inventories and curated declaration locations; no proof code is copied."""
+import hashlib
+import io
+import zipfile
 import json
 import re
 import subprocess
@@ -68,6 +71,32 @@ def parse_inventory(config, tree):
     return records
 
 
+def parse_archive(config, payload):
+    digest = hashlib.sha256(payload).hexdigest()
+    if digest != config['archive_sha256']:
+        raise ValueError('Proof archive checksum mismatch')
+    records = []
+    with zipfile.ZipFile(io.BytesIO(payload)) as archive:
+        members = sorted(info for info in archive.namelist() if info.endswith('.lean') and not info.startswith('__MACOSX/'))
+        if len(members) != len(set(members)) or len(members) != config['expected_members']:
+            raise ValueError('Unexpected or duplicate archive member inventory')
+        for member in members:
+            # Read bytes only to record exact identity; never extract or execute code.
+            body = archive.read(member)
+            name = Path(member).stem
+            r = base_record(config, config['id_prefix'] + member, name.replace('_', ' '),
+                            config['archive_path'], 'external_proof_artifact')
+            r.update(artifact_url=r['source_url'], archive_member=member,
+                     archive_sha256=digest, source_sha256=hashlib.sha256(body).hexdigest(),
+                     benchmark_id='minif2f:' + name, category='miniF2F / ' + member.split('/')[0],
+                     metadata_note='Archive member indexed by filename. Download the pinned ZIP and locate this member; no individual Lean declaration URL is available. Toolchain and dependencies were not supplied in the release.')
+            r['references'] = config['references']
+            records.append(r)
+    if len({r['benchmark_id'] for r in records}) != len(records):
+        raise ValueError('Repeated miniF2F problem ID; review before indexing')
+    return records
+
+
 def collect(configs):
     records = []
     for config in configs:
@@ -75,12 +104,24 @@ def collect(configs):
             slug = config['repository'].removeprefix('https://github.com/')
             tree = json.loads(fetch(f'https://api.github.com/repos/{slug}/git/trees/{config["commit"]}?recursive=1'))
             records.extend(parse_inventory(config, tree))
-        else:
-            r = base_record(config, config['id'], config['title'], config['readme'], 'formalization_project')
-            r['scope_url'] = r['source_url']
+        elif config['adapter'] == 'archive_inventory':
+            slug = config['repository'].removeprefix('https://github.com/')
+            payload = subprocess.check_output(['curl', '-fsSL', '--max-time', '60', '--max-filesize', '67108864',
+                f'https://raw.githubusercontent.com/{slug}/{config["commit"]}/{config["archive_path"]}'])
+            records.extend(parse_archive(config, payload))
+        elif config['adapter'] == 'project':
+            kind = config.get('kind', 'formalization_project')
+            r = base_record(config, config['id'], config['title'], config.get('record_path', config['readme']), kind)
+            r['scope_url'] = blob(config, config['readme'])
+            if kind in {'external_artifact', 'external_proof_artifact'}:
+                r['artifact_url'] = r['source_url']
+            for field in ['benchmark_id', 'metadata_note']:
+                if field in config: r[field] = config[field]
             r['references'] = config['references']
             r['proofs'] = [proof_reference(config, target) for target in config.get('targets', [])]
             if r['proofs']:
                 r['status'] = 'external_linked'
             records.append(r)
+        else:
+            raise ValueError('Unknown external adapter: ' + config['adapter'])
     return records

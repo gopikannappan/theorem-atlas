@@ -2,6 +2,7 @@
 import { filterRecords, paginate } from './catalogue-state.mjs';
 const $ = id => document.getElementById(id);
 let records = [];
+const KIND_LABELS = { result_family: 'Result family', formalization_project: 'Formalization project', external_proof_artifact: 'Lean artifact', external_artifact: 'Other artifact', statement_collection: 'Statement collection' };
 let currentPage = 1;
 let currentView = 'tiles';
 function element(tag, text, cls) {
@@ -18,7 +19,7 @@ function link(text, url) {
   return node;
 }
 function render() {
-  const selected = filterRecords(records, { query: $('query').value, source: $('source').value, status: $('status').value });
+  const selected = filterRecords(records, { query: $('query').value, source: $('source').value, status: $('status').value, kind: $('kind').value });
   const pagination = paginate(selected, currentPage, $('page-size').value);
   currentPage = pagination.page;
   $('count').textContent = `${pagination.first}–${pagination.last} of ${selected.length} matching records (${records.length} total)`;
@@ -38,10 +39,12 @@ function render() {
   const fragment = document.createDocumentFragment();
   for (const r of pagination.items) {
     const article = element('article', undefined, 'record'); article.id = r.id;
-    article.append(element('div', r.id.startsWith('openai-math:') ? r.id.replace('openai-math:', 'OAI / ') : r.id.startsWith('anthropic:') ? 'ANTHROPIC / PROJECT' : 'DEEPMIND / ' + (r.category || 'ARTIFACT'), 'record-id'));
+    article.append(element('div', r.id.startsWith('openai-math:') ? r.id.replace('openai-math:', 'OAI / ') : r.category || KIND_LABELS[r.kind], 'record-id'));
     const body = element('div'); body.append(element('h3', r.title));
     const tags = element('div', undefined, 'tags');
-    tags.append(element('span', r.source), element('span', r.proofs.length ? 'External proof linked' : r.artifact_url ? 'External Lean artifact' : r.scope_url ? 'Upstream Lean scope note' : 'No Lean scope note indexed', `badge ${r.proofs.length ? 'linked' : ''}`), element('span', r.kind === 'result_family' ? `${r.manuscripts.length} manuscript${r.manuscripts.length === 1 ? '' : 's'}` : r.kind === 'formalization_project' ? 'Formalization project' : 'Proof artifact'));
+    tags.append(element('span', r.source), element('span', r.proofs.length ? 'External proof linked' : r.kind === 'statement_collection' ? 'Statements; not proof coverage' : r.kind === 'external_artifact' ? 'Text artifact; no Lean link' : r.artifact_url ? 'Unreviewed Lean artifact' : r.scope_url ? 'Upstream Lean scope note' : 'No Lean scope note indexed', `badge ${r.proofs.length ? 'linked' : ''}`), element('span', r.kind === 'result_family' ? `${r.manuscripts.length} manuscript${r.manuscripts.length === 1 ? '' : 's'}` : KIND_LABELS[r.kind]));
+    if (r.proofs.length > 1) tags.append(element('span', `${r.proofs.length} alternative proof links`, 'badge'));
+    if (r.source_relationships?.length) tags.append(element('span', 'Shared source material', 'badge'));
     body.append(tags);
     const details = element('details'); details.append(element('summary', 'Inspect sources & evidence'));
     const evidence = element('div', undefined, 'evidence');
@@ -51,7 +54,10 @@ function render() {
     for (const reference of r.references || []) {
       const p = element('p'); p.append(link(reference.title + ' ↗', reference.url)); evidence.append(p);
     }
-    if (r.artifact_url) { const p = element('p'); p.append(link('Pinned upstream Lean artifact ↗', r.artifact_url)); evidence.append(p); }
+    if (r.artifact_url) { const p = element('p'); p.append(link(r.archive_member ? 'Pinned proof archive ↗' : r.kind === 'external_artifact' ? 'Pinned text artifact ↗' : 'Pinned upstream Lean artifact ↗', r.artifact_url)); evidence.append(p); }
+    if (r.archive_member) evidence.append(element('p', 'Archive member: ' + r.archive_member));
+    if (r.archive_sha256) evidence.append(element('p', 'Archive SHA-256: ' + r.archive_sha256));
+    for (const relation of r.source_relationships || []) { const p = element('p', relation.description + ' '); p.append(link('Pinned reuse evidence ↗', relation.evidence_url)); evidence.append(p); }
     if (r.origin_note) evidence.append(element('p', r.origin_note));
     if (r.metadata_note) evidence.append(element('p', r.metadata_note));
     if (r.license) {
@@ -71,7 +77,7 @@ function render() {
   }
   $('results').replaceChildren(fragment);
   const params = new URLSearchParams();
-  for (const id of ['query', 'source', 'status']) if ($(id).value) params.set(id, $(id).value);
+  for (const id of ['query', 'source', 'status', 'kind']) if ($(id).value) params.set(id, $(id).value);
   if (currentView === 'list') params.set('view', 'list');
   if (currentPage > 1) params.set('page', String(currentPage));
   if ($('page-size').value !== '12') params.set('size', $('page-size').value);
@@ -81,16 +87,19 @@ async function init() {
   try {
     const response = await fetch('results.json');
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    records = (await response.json()).results;
+    const catalogue = await response.json();
+    records = catalogue.results;
+    const overlap = catalogue.overlap_report;
+    if (overlap) $('overlap-summary').textContent = `${overlap.exact_artifact_groups.length} exact artifact overlap groups; ${overlap.repeated_manuscript_groups.length} repeated manuscript-link groups; ${overlap.alternative_proof_records.length} record with alternative proofs; ${overlap.source_reuse.length} documented source-reuse relationships. These are metadata checks, not a theorem-equivalence audit.`;
     for (const source of [...new Set(records.map(r => r.source))].sort()) { const option = element('option', source); option.value = source; $('source').append(option); }
     const params = new URLSearchParams(location.search);
-    for (const id of ['query', 'source', 'status']) if (params.has(id)) $(id).value = params.get(id);
+    for (const id of ['query', 'source', 'status', 'kind']) if (params.has(id)) $(id).value = params.get(id);
     currentView = params.get('view') === 'list' ? 'list' : 'tiles';
     currentPage = Number(params.get('page') || 1);
     $('page-size').value = String(paginate([], 1, params.get('size')).size);
     $('total').textContent = records.length;
     $('linked').textContent = records.filter(r => r.proofs.length).length;
-    $('coverage-summary').textContent = `${records.filter(r => r.kind === 'result_family').length} result families · ${records.filter(r => r.kind === 'formalization_project').length} formalization projects · ${records.filter(r => r.kind === 'external_proof_artifact').length} Lean artifacts. ${records.filter(r => r.proofs.length).length} records have curated declaration links; 0 locally audited. Projects and artifacts are not additional manuscript or theorem counts.`;
+    $('coverage-summary').textContent = `${records.filter(r => r.kind === 'result_family').length} result families · ${records.filter(r => r.kind === 'formalization_project').length} formalization projects · ${records.filter(r => r.kind === 'external_proof_artifact').length} Lean artifacts · ${records.filter(r => r.kind === 'external_artifact').length} other artifact · ${records.filter(r => r.kind === 'statement_collection').length} statement collection. ${records.filter(r => r.proofs.length).length} records have curated declaration links; 0 locally audited. Projects and artifacts are not additional manuscript or theorem counts.`;
     render();
     $('filters').addEventListener('input', () => { currentPage = 1; render(); });
     $('filters').addEventListener('submit', event => event.preventDefault());

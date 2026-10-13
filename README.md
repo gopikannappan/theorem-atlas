@@ -1,8 +1,20 @@
 # Theorem Atlas
 
-An open, source-agnostic catalogue of mathematical results and pinned Lean proof references. Sources include OpenAI mathematics, Anthropic / Claude, and Google DeepMind / AlphaProof Nexus. See [the concept](CONCEPT-TA.md) and [operating rules](AGENTS.md).
+An open, source-agnostic catalogue of mathematical results and pinned Lean proof references. Sources include OpenAI mathematics, Anthropic / Claude, and Google DeepMind / AlphaProof Nexus, Harmonic / Aristotle, Math Inc. / Gauss, DeepSeek / Prover-V2, and Formal Conjectures. See [the concept](CONCEPT-TA.md) and [operating rules](AGENTS.md).
 
-The catalogue contains **446 records**: **372 OpenAI result families / 719 manuscripts**, **3 Anthropic formalization projects**, and **71 AlphaProof Nexus Lean artifacts**. Seven records have curated declaration links. File artifacts, projects, manuscripts, and mathematical theorems are different counting units; file-level titles do not establish theorem-level identity. All external proofs remain locally unaudited.
+The catalogue contains **891 records**:
+
+| Source | Indexed units |
+| --- | --- |
+| OpenAI mathematics | 372 families / 719 manuscripts |
+| Anthropic / Claude | 3 formalization projects |
+| AlphaProof Nexus | 71 Lean artifacts |
+| Harmonic / Aristotle | 4 Lean problem records and 1 text artifact; problem 4 has two proof links |
+| Math Inc. / Gauss | 1 formalization project |
+| DeepSeek / Prover-V2 | 438 Lean archive members: 217 test and 221 validation |
+| Formal Conjectures | 1 statement-collection entry; individual conjectures are not ingested |
+
+Twelve records have 13 curated Lean declaration links. All external proofs remain locally unaudited. These units are not a count of distinct mathematical theorems or discoveries.
 
 Each source is pinned to an exact commit. Anthropic entries cover FLT, zeta zeros, and 3SUM/APSP. AlphaProof Nexus entries inventory every released `.lean` file under `APNOutputs/`; the inventory does not independently endorse completeness or manuscript fidelity. Original mathematical authors and formalizing model are distinguished in provenance notes.
 
@@ -27,6 +39,7 @@ Open <http://localhost:8000>. Tiles are the default; switch to List and paginate
 python3 scripts/sync_upstream.py
 python3 scripts/sync_external.py
 python3 scripts/check_links.py
+python3 scripts/overlaps.py
 python3 scripts/catalogue.py
 ```
 
@@ -56,3 +69,11 @@ See [development checkpoint](docs/CHECKPOINT.md) for remaining work. Source mate
 ## Source licensing
 
 Licenses and attribution are visible in each record and on the deployed [Sources & licenses page](https://gopikannappan.github.io/theorem-atlas/attribution.html). See [license review](docs/LICENSES.md). Anthropic code is Apache-2.0; AlphaProof Nexus code is Apache-2.0 and its other materials are CC BY 4.0, subject to third-party terms. Implementations and manuscripts are linked, not copied.
+
+## Overlap handling
+
+Harmonic’s two IMO 2025 problem-4 proofs are grouped in one record. Source reuse is recorded separately: OpenAI’s pinned dependency manifest already includes the exact Gauss StrongPNT commit, and AlphaProof Nexus depends on an older Formal Conjectures snapshot. These are reuse relationships, not independently reviewed mathematical equivalences.
+
+`python3 scripts/overlaps.py` checks exact artifact identities, declaration URLs, manuscript URLs, benchmark IDs, and source hashes where available. ZIP-member identity includes the member path, so 438 files sharing one archive URL do not collapse into one record. Shared catalogue README/map URLs are not treated as duplicate artifacts. No automatic title-based merging occurs. The generated report is visible in the catalogue and stored in `catalog/overlap-report.json`.
+
+DeepSeek’s ZIP has no release toolchain or Mathlib manifest; these are left unknown rather than fabricated. Harmonic and Math Inc. have no repository-wide LICENSE file at the inspected commits; DeepSeek’s proof-archive rights are not explicitly established by its model agreement. These sources remain metadata/link entries. See Sources & licenses before copying any material.

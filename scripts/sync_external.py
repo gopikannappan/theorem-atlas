@@ -5,15 +5,17 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from source_adapters.external import collect
 from scripts.catalogue import validate
+from scripts.overlaps import annotate
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
     configs = json.loads((ROOT / 'catalog/external-sources.json').read_text())
-    records = collect(configs)
+    records = annotate(collect(configs))
     path = ROOT / 'catalog/results.json'
     data = json.loads(path.read_text())
-    data['results'] = [r for r in data['results'] if not r['id'].startswith(('anthropic:', 'alphaproof-nexus:'))] + records
+    managed = tuple({c.get('id_prefix', c.get('id', 'alphaproof-nexus:').split(':')[0] + ':') for c in configs})
+    data['results'] = [r for r in data['results'] if not r['id'].startswith(managed)] + records
     validate(data)
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + '\n')
     print(f'Indexed {len(records)} external projects/artifacts; {len(data["results"])} total records')

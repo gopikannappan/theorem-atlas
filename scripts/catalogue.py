@@ -19,7 +19,7 @@ def validate(data):
         ids.add(r['id'])
         if not SHA.fullmatch(r['upstream_commit']) or r['status'] not in STATUSES:
             raise ValueError(f'Invalid provenance/status: {r["id"]}')
-        if r['kind'] not in {'result_family', 'formalization_project', 'external_proof_artifact'} or not r['title']:
+        if r['kind'] not in {'result_family', 'formalization_project', 'external_proof_artifact', 'external_artifact', 'statement_collection'} or not r['title']:
             raise ValueError(f'Invalid record kind/title: {r["id"]}')
         if r['kind'] == 'result_family' and not r['manuscripts']:
             raise ValueError(f'Missing family manuscript: {r["id"]}')
@@ -51,6 +51,12 @@ def validate(data):
 
 def main():
     data = validate(json.loads((ROOT / 'catalog/results.json').read_text()))
+    # Compute the report from the current data; checked-in reports are checkpoints only.
+    import sys
+    sys.path.insert(0, str(ROOT))
+    from scripts.overlaps import annotate, report
+    annotate(data['results'])
+    data['overlap_report'] = report(data['results'])
     out = ROOT / 'dist'
     out.mkdir(exist_ok=True)
     for name in ['index.html', 'app.js', 'style.css', 'catalogue-state.mjs', 'attribution.html']:

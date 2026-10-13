@@ -41,3 +41,11 @@ No new main theorem proof, local external-proof audit, or statement-fidelity rev
 Added three Anthropic projects and all 71 AlphaProof Nexus `APNOutputs/` Lean files, with source-specific kinds, pinned commits, toolchains/Mathlib revisions, original-source references, reproduction commands, and license attribution. Seven catalogue records now have curated declaration links. Source-location checking succeeded for all seven; this does not audit the proofs. No upstream proof source or manuscript content is copied. See LICENSES.md and catalog/external-sources.json for review evidence and exact pins.
 
 The FLT recursive GitHub tree response was truncated; it was not used for ingestion. The adapter indexes that project's curated headline metadata directly. The complete AlphaProof Nexus tree was not truncated and its adapter rejects truncated inventories. Some exploratory candidate paths returned HTTP 404; declaration locations were resolved in the actual solution library rather than using comparator statement files.
+
+## Remaining sources and overlaps checkpoint
+
+Added Harmonic (four Lean problem records, one text artifact), Gauss StrongPNT, 438 DeepSeek miniF2F archive members, and a collection-level Formal Conjectures entry. Total: 891 catalogue records. DeepSeek archive SHA-256 is aa40d80045b6c9b4da34476aa8142fa5979c290970e50fc148077aa78a4ed6ce. No source was executed or copied into repository proof files; the archive was read only for filenames and identity hashes. Toolchain/dependency pins absent from that archive remain unknown.
+
+Two alternative Harmonic problem-4 proofs are grouped under one record. OpenAI’s exact StrongPNT dependency and AlphaProof Nexus’s older Formal Conjectures dependency are documented from pinned manifests. Mechanical checks found no repeated artifact identities, declaration URLs, manuscript links, benchmark IDs, or available source hashes across separate records. This does not establish absence of equivalent mathematical statements.
+
+The first overlap implementation mistakenly grouped records sharing the OpenAI manuscript-map URL; it was corrected before publication to compare artifact identities only. Regression tests distinguish shared source pages from repeated artifacts and distinguish ZIP members sharing one URL.
