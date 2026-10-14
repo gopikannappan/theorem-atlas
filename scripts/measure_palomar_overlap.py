@@ -47,6 +47,16 @@ def title_key(text):
     text = unicodedata.normalize("NFKD", text or "")
     return " ".join(re.findall(r"[a-z0-9]+", text.encode("ascii", "ignore").decode().lower()))
 
+def github_document(repository, path):
+    # A preprint's folder, paper.pdf and build/paper.tex name the same source
+    # document, not necessarily the same revision or theorem coverage.
+    parts = path.strip("/").split("/")
+    if len(parts) >= 2 and parts[0] == "preprints" and (
+        len(parts) == 2 or "/".join(parts[2:]) in {"paper.pdf", "paper.tex", "build/paper.tex"}
+    ):
+        path = "/".join(parts[:2])
+    return "github:" + repository.lower() + "/" + path
+
 def document_key(url):
     if not isinstance(url, str):
         return None
@@ -58,10 +68,10 @@ def document_key(url):
         return "doi:" + match.group(1).lower()
     parsed = urllib.parse.urlsplit(url.strip())
     pieces = urllib.parse.unquote(parsed.path).strip("/").split("/")
-    if parsed.netloc.lower() == "github.com" and len(pieces) >= 5 and pieces[2] in {"blob", "raw"}:
-        return "github:" + "/".join(pieces[:2]).lower() + "/" + "/".join(pieces[4:])
+    if parsed.netloc.lower() == "github.com" and len(pieces) >= 5 and pieces[2] in {"blob", "raw", "tree"}:
+        return github_document("/".join(pieces[:2]), "/".join(pieces[4:]))
     if parsed.netloc.lower() == "raw.githubusercontent.com" and len(pieces) >= 4:
-        return "github:" + "/".join(pieces[:2]).lower() + "/" + "/".join(pieces[3:])
+        return github_document("/".join(pieces[:2]), "/".join(pieces[3:]))
     if parsed.scheme in {"https", "http"}:
         return parsed.netloc.lower() + parsed.path.rstrip("/")
     return None
@@ -94,9 +104,10 @@ def measure(atlas, entries):
                 if proof["declaration"] in proofs and any(repo_key(loc.get("repository")) == repo_key(proof["repository"]) and loc.get("commit") == proof["commit"] for loc in locations):
                     exact.setdefault(row["id"], set()).add(entry["id"])
             for paper in provenance.get("mathematical_sources", []):
-                key = document_key(paper.get("identifier"))
+                keys = {document_key(paper.get(field)) for field in ["identifier", "location"]}
+                keys.discard(None)
                 title = title_key(paper.get("title"))
-                url_match = key is not None and key in docs
+                url_match = bool(keys & docs)
                 title_match = bool(title and title in titles)
                 if url_match or title_match:
                     relationship = paper["relationship"]
@@ -115,7 +126,7 @@ def measure(atlas, entries):
             n = len(ids & set(matches))
             return {"matched": n, "denominator": len(ids), "percent": round(100 * n / len(ids), 3) if ids else None}
         return {"exact_selected_declaration_and_commit": count(exact), "direct_source_document_identifiers_ignoring_github_commit": count(direct), "source_identifier_or_exact_title_candidates": count(candidates), "background_source_references": count(background)}
-    return {"all_atlas_records": metric(atlas), "research_family_or_project_records": metric(research), "openai_result_families": metric(openai), "candidate_evidence": evidence, "exact_matches": {k: sorted(v) for k,v in exact.items()}, "limitations": ["Source references and exact normalized titles identify candidate relationships, not theorem equivalence or full family coverage.", "GitHub source-document matching ignores commit but preserves repository and file path, so different manuscript revisions remain a limitation.", "No fuzzy title matching, dependency-reuse counting, LLM judgment, or proof execution is used.", "A zero exact selected-declaration match does not mean zero mathematical overlap."]}
+    return {"all_atlas_records": metric(atlas), "research_family_or_project_records": metric(research), "openai_result_families": metric(openai), "candidate_evidence": evidence, "exact_matches": {k: sorted(v) for k,v in exact.items()}, "limitations": ["Source references and exact normalized titles identify candidate relationships, not theorem equivalence or full family coverage.", "GitHub source-document matching ignores ref and normalizes only a preprint folder, paper.pdf and paper.tex within that same folder; a floating metadata URL or another revision is not a checked source-version match.", "No fuzzy title matching, dependency-reuse counting, LLM judgment, or proof execution is used.", "A zero exact selected-declaration match does not mean zero mathematical overlap."]}
 
 def main():
     atlas_bytes = (ROOT / "catalog/results.json").read_bytes()
@@ -152,7 +163,7 @@ def main():
     report.update({"measured_at": datetime.now(timezone.utc).isoformat(), "atlas_catalogue_sha256": hashlib.sha256(atlas_bytes).hexdigest(), "palomar_release": release, "palomar_totals": totals, "palomar_entries_read": len(entries), "source_snapshots": manifest, "complete_registry_listing": True})
     (OUT / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
     (OUT / "registry-entries.json").write_text(json.dumps(entries, ensure_ascii=False))
-    print("OVERLAP_REPORT " + json.dumps({k:v for k,v in report.items() if k != "source_snapshots"}, ensure_ascii=False), flush=True)
+    print("OVERLAP_REPORT " + json.dumps({**{k:v for k,v in report.items() if k not in {"source_snapshots", "candidate_evidence"}}, "candidate_evidence": [r for r in report["candidate_evidence"] if r["relationship"] in DIRECT], "background_evidence_count": len([r for r in report["candidate_evidence"] if r["relationship"] not in DIRECT])}, ensure_ascii=False), flush=True)
 
 if __name__ == "__main__":
     try:
