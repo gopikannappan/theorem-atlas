@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "packet_id": "stacks-normal-rings-2026-10-14",
+  "state": "frozen",
+  "certification": "none",
+  "created_on": "2026-10-14",
+  "target": {
+    "record_id": "alphaproof-nexus:StacksProject/NormalRings_normalRing_characterization.lean",
+    "repository": "https://github.com/google-deepmind/alphaproof-nexus-results",
+    "commit": "0647711a71183c1ea492ad60860776617ce1ea88",
+    "file": "APNOutputs/StacksProject/NormalRings_normalRing_characterization.lean",
+    "declaration": "normalRing_characterization",
+    "line": 1029,
+    "url": "https://github.com/google-deepmind/alphaproof-nexus-results/blob/0647711a71183c1ea492ad60860776617ce1ea88/APNOutputs/StacksProject/NormalRings_normalRing_characterization.lean#L1029",
+    "source_git_blob": "0f6cdd84840e75835cbbc2a2b35019a5ae092f88",
+    "toolchain": "leanprover/lean4:v4.27.0",
+    "mathlib_commit": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+    "manifest_git_blob": "8b7e2a4236bacc34931ea0276349a677a1c479ce"
+  },
+  "manuscript": {
+    "repository": "https://github.com/stacks/stacks-project",
+    "commit": "a04446e57ec1fbc252a871afcec7752fb2807b14",
+    "file": "algebra.tex",
+    "git_blob": "ff4c47a74e8a273a49e6de7272a5c1311617cfc7",
+    "url": "https://github.com/stacks/stacks-project/blob/a04446e57ec1fbc252a871afcec7752fb2807b14/algebra.tex#L8275",
+    "label": "lemma-characterize-reduced-ring-normal",
+    "tag_url": "https://stacks.math.columbia.edu/tag/030C",
+    "definition_locators": [
+      "https://stacks.math.columbia.edu/tag/0309",
+      "https://stacks.math.columbia.edu/tag/00GV"
+    ],
+    "author_selected_revision": "unknown",
+    "license_url": "https://github.com/stacks/stacks-project/blob/a04446e57ec1fbc252a871afcec7752fb2807b14/COPYING"
+  },
+  "generation": {
+    "actor": "google-deepmind/alphaproof-nexus-results upstream submission",
+    "exact_model_id": null,
+    "author_rationale_included": false
+  },
+  "machine_evidence": {
+    "atlas_commit": "a0d12c266674a01f0b300a970851999f8d051835",
+    "report_url": "https://github.com/theorem-atlas/theorem-atlas/blob/a0d12c266674a01f0b300a970851999f8d051835/audit-reports/linked-declarations-2026-10-13.json",
+    "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250",
+    "controller_commit": "84f0dba73e15b33a38e1aa79f790825dbd3bf575",
+    "scope": "compiler_and_axioms_and_module_replay_imports_assumed",
+    "fresh_replay": "timeout",
+    "external_checker": "not_run"
+  },
+  "review_requirements": [
+    "hypotheses",
+    "quantifiers",
+    "definitions",
+    "conclusion",
+    "edge_cases",
+    "source_provenance"
+  ],
+  "policy_state": "draft_independent_review_pending"
+}
