@@ -45,3 +45,7 @@ The human maintainer reviews contributions; Code Owners review is required for p
 Original project code is Apache-2.0. By submitting original code, you license that contribution under the project's license. Existing upstream material retains its original terms; preserve source credit and do not claim ownership or blanket relicensing. No CLA is required. Do not submit material you lack permission to contribute.
 
 Never include credentials, personal data, dependency caches, or built artifacts. For security issues, use [private reporting](SECURITY.md) instead of public issues.
+
+## Separate AI fidelity review evidence
+
+Use the [draft AI fidelity-review workbench](audits/ai-fidelity/README.md) to freeze source inputs and collect independent reviewer recommendations. Publish original reports and separate amendments through PRs. AI recommendations and machine verification have distinct scopes; same-family agreement and unknown model identities must remain explicit. The workbench does not change catalogue acceptance rules or replace maintainer scrutiny of workflow/evidence policy changes.

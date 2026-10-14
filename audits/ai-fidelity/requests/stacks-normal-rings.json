@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "session_id": "stacks-normal-rings-2026-10-14",
+  "record_kind": "coordinator_transcription_of_commissioning_messages",
+  "parent_history_shared": false,
+  "model_override_requested": false,
+  "inherited_system_and_tool_instructions_archived": false,
+  "initial_requests": [
+    {
+      "reviewer": "A",
+      "agent_path": "/root/fidelity_review_a",
+      "fork_turns": "none",
+      "message": "You are reviewer A for a first independent AI fidelity review. User authorized this separate-review workflow. Work read-only through remote web/GitHub tools only: never use local shell/files/builds or write to GitHub. You must independently inspect the original source mathematics and pinned Lean declaration, without author rationale or another reviewer report. Target: google-deepmind/alphaproof-nexus-results@0647711a71183c1ea492ad60860776617ce1ea88, APNOutputs/StacksProject/NormalRings_normalRing_characterization.lean, declaration normalRing_characterization near line1029, Lean4.27.0, Mathliba3a10db0e9d66acbebf76c5e6a135066525ac900. Locate the precise original Stacks Project statement yourself, including its tag and definition of normal ring. Do not assume a title or matching label establishes fidelity. Read necessary Lean definitions, hypotheses and target conclusion, map quantifiers/definitions/assumptions/conclusion against that source. Look for strengthened assumptions, weakened conclusions or unreviewed definitional differences. Never edit theorem/verifier, approve your own generated statement, or claim independently audited/faithful certification. No proof compilation expected. Bound research to at most12 remote source calls and ~10 minutes; retain useful findings if incomplete. Return a structured review report with verdict recommend_pass / changes_requested / inconclusive, exact source URLs and retrieved source identities where available, each mapping with evidence URLs/line locations, findings and unresolved gaps, and explicit limitations. State model identity only if exposed; otherwise mark exact model version unknown. You share the inherited model family with another independent reviewer, which is a correlated-error limitation. You will not receive that review until both reports are frozen. Report actual source-based analysis, not merely a checklist."
+    },
+    {
+      "reviewer": "B",
+      "agent_path": "/root/fidelity_review_b",
+      "fork_turns": "none",
+      "message": "You are reviewer B for a first independent AI fidelity review. User authorized this separate-review workflow. Work read-only through remote web/GitHub tools only: never use local shell/files/builds or write to GitHub. You must independently inspect original source mathematics and pinned Lean declaration, without author rationale or another reviewer report. Target: google-deepmind/alphaproof-nexus-results@0647711a71183c1ea492ad60860776617ce1ea88, APNOutputs/StacksProject/NormalRings_normalRing_characterization.lean, declaration normalRing_characterization near line1029, Lean4.27.0, Mathliba3a10db0e9d66acbebf76c5e6a135066525ac900. Locate precise original Stacks Project statement yourself, including tag and normal-ring definitions. Do not assume similar titles establish fidelity. Inspect necessary Lean definitions, hypotheses and conclusion, map all quantifiers/assumptions/definitions against source. Prioritize adversarial counterexamples: zero ring, infinite/finite products, reducedness, finite minimal primes, localization and interpretation of custom NormalRing/NormalDomain. Do not weaken/edit theorem, change checker policy, or claim final independently audited/faithful certification. No compilation expected. Bound research to at most12 remote source calls and ~10 minutes; checkpoint useful findings even if incomplete. Return structured report with verdict recommend_pass / changes_requested / inconclusive, exact source URLs and identities when available, mapping rows with locations, findings and unresolved gaps, explicit limitations. Model identity only if exposed, else exact version unknown. Your inherited model family is shared with another fresh-context reviewer, a correlated-error limitation. You will not see the other report before both are frozen. Produce actual source-based analysis, not just a checklist."
+    }
+  ],
+  "amendment_requests": [
+    {
+      "reviewer": "A",
+      "message": "Your original report is frozen and will be retained unchanged. Please produce a separate provenance amendment only; do not see or use the other reviewer report. Verify the shared manuscript snapshot stacks/stacks-project@a04446e57ec1fbc252a871afcec7752fb2807b14, algebra.tex blob ff4c47a74e8a273a49e6de7272a5c1311617cfc7, normal-ring definitions/theorem lines7972–8310 (lemma-characterize-reduced-ring-normal around8275). You may fetch Git blob via GitHub fetch to read large UTF8 text, storing full result without printing it. Also independently confirm target toolchain/manifest and primitive IsReduced/IsDomain definitions at the pinned Mathlib revision if practical. Bound to6 remote calls/~5minutes; if not feasible, mark unresolved. Return amendment with exact sources inspected, whether source mapping still holds, whether you verified same pinned manuscript as frozen packet, remaining gaps, and same recommendation or changed verdict. Do not approve catalogue/audit policy or final certification."
+    },
+    {
+      "reviewer": "B",
+      "message": "Your original report is frozen and will be retained unchanged. Please produce a separate provenance amendment only; do not see or use the other reviewer report. Verify shared manuscript snapshot stacks/stacks-project@a04446e57ec1fbc252a871afcec7752fb2807b14, algebra.tex blob ff4c47a74e8a273a49e6de7272a5c1311617cfc7, normal-ring definitions/theorem lines7972–8310 (lemma-characterize-reduced-ring-normal around8275), rather than only the historical source snapshot. You may fetch Git blob via GitHub fetch for large UTF8 text, storing without printing full text. Also inspect primitive IsReduced/IsDomain definitions at pinned Mathlib revision if practical. Bound to6 remote calls/~5minutes; if not feasible mark unresolved. Return amendment with exact sources inspected, whether mapping still holds against shared pinned manuscript, remaining gaps and recommendation. Do not approve catalogue/audit policy or final certification."
+    }
+  ],
+  "provenance_messages": {
+    "source_pin": {
+      "commit": "a04446e57ec1fbc252a871afcec7752fb2807b14",
+      "git_blob": "ff4c47a74e8a273a49e6de7272a5c1311617cfc7",
+      "file": "algebra.tex",
+      "physical_region": "7972–8310",
+      "note": "Supplied to both reviewers without other reviewer findings."
+    },
+    "packet_pin": {
+      "commit": "9a8d6d5ad8c51270aeefafe6152062519d2ba47a",
+      "git_blob": "962c4d36520625cd6fd7bf801b886715803dbc80",
+      "path": "audits/ai-fidelity/packets/stacks-normal-rings.json",
+      "note": "Supplied during the amendment phase; actual inspection differs by reviewer."
+    }
+  },
+  "archival_scope": "After verdicts were frozen, reviewers were permitted to create immutable tree/commit objects containing their own exact reports. They could not update refs or alter source/proofs/verifier/policy. This is archival, not another assessment."
+}

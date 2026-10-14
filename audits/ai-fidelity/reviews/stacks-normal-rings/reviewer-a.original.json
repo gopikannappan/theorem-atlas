@@ -1,0 +1,91 @@
+{
+  "reviewer": "A",
+  "verdict": "recommend_pass",
+  "scope": "First independent AI statement-fidelity review; recommendation only, not certification.",
+  "model_identity": "Codex, GPT-6 family as exposed by session instructions; exact model version unknown.",
+  "independence": "Inspected source mathematics and pinned Lean source without author rationale or another reviewer report. Same inherited model family as the other reviewer creates correlated-error risk.",
+  "target": {
+    "repository": "google-deepmind/alphaproof-nexus-results",
+    "commit": "0647711a71183c1ea492ad60860776617ce1ea88",
+    "file": "APNOutputs/StacksProject/NormalRings_normalRing_characterization.lean",
+    "declaration": "normalRing_characterization",
+    "lean_version": "4.27.0 supplied by task; not independently confirmed",
+    "mathlib_commit": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+    "source_url": "https://github.com/google-deepmind/alphaproof-nexus-results/blob/0647711a71183c1ea492ad60860776617ce1ea88/APNOutputs/StacksProject/NormalRings_normalRing_characterization.lean"
+  },
+  "original_mathematics": {
+    "statement": "Stacks Project Lemma 10.37.16, tag 030C",
+    "url": "https://stacks.math.columbia.edu/tag/030C",
+    "evidence_location": "Retrieved webpage lines 23–29",
+    "identity_limit": "Live tag page retrieved during this review; no immutable Stacks manuscript commit established.",
+    "normal_ring_definition": "Definition 10.37.11, tag 00GV: localizations at every prime ideal are normal domains.",
+    "normal_ring_url": "https://stacks.math.columbia.edu/tag/00GV",
+    "normal_domain_definition": "Definition 10.37.1, tag 0309: a domain integrally closed in its fraction field.",
+    "normal_domain_url": "https://stacks.math.columbia.edu/tag/0309"
+  },
+  "mapping": [
+    {
+      "item": "Ambient ring",
+      "assessment": "Matches: CommRing corresponds to the manuscript's commutative unital ring convention, including the zero ring. No Nontrivial hypothesis occurs in the theorem.",
+      "evidence": [
+        "https://stacks.math.columbia.edu/tag/00AQ — line 18",
+        "https://raw.githubusercontent.com/leanprover-community/mathlib4/a3a10db0e9d66acbebf76c5e6a135066525ac900/Mathlib/Algebra/Ring/Defs.lean — lines 366–367",
+        "Pinned target — theorem header, retrieved lines 973–974"
+      ]
+    },
+    {
+      "item": "Reduced and finitely many minimal primes",
+      "assessment": "Matches the two source hypotheses: IsReduced R and finiteness of minimal primes over the zero ideal. Mathlib defines ring minimal primes as Ideal.minimalPrimes bottom; there is no Noetherian, domain, or nonzero assumption added.",
+      "evidence": [
+        "https://stacks.math.columbia.edu/tag/030C — line 23",
+        "Pinned target — retrieved lines 973–974",
+        "https://raw.githubusercontent.com/leanprover-community/mathlib4/a3a10db0e9d66acbebf76c5e6a135066525ac900/Mathlib/RingTheory/Ideal/MinimalPrime/Basic.lean — lines 35–46",
+        "https://raw.githubusercontent.com/leanprover-community/mathlib4/a3a10db0e9d66acbebf76c5e6a135066525ac900/Mathlib/RingTheory/Nilpotent/Defs.lean — lines 111–123, showing reducedness through nilpotents equalling zero"
+      ]
+    },
+    {
+      "item": "Normal ring and normal domain",
+      "assessment": "Matches. The target's NormalRing quantifies over every ideal with IsPrime evidence and requires NormalDomain of its prime localization. NormalDomain extends IsDomain and IsIntegrallyClosed. Prime localization is localization at the prime complement; for domains FractionRing is a field.",
+      "evidence": [
+        "https://stacks.math.columbia.edu/tag/00GV — line 23",
+        "https://stacks.math.columbia.edu/tag/0309 — line 22",
+        "Pinned target — retrieved lines 38–41",
+        "https://raw.githubusercontent.com/leanprover-community/mathlib4/a3a10db0e9d66acbebf76c5e6a135066525ac900/Mathlib/RingTheory/Localization/AtPrime/Basic.lean — lines 42–51",
+        "https://raw.githubusercontent.com/leanprover-community/mathlib4/a3a10db0e9d66acbebf76c5e6a135066525ac900/Mathlib/RingTheory/Localization/FractionRing.lean — lines 518–530"
+      ]
+    },
+    {
+      "item": "Integral closure in total fractions",
+      "assessment": "Matches despite the abbreviated name. IsIntegrallyClosed R uses FractionRing R, which is localization at nonZeroDivisors R, so it does not secretly require R to be a domain. Its expanded condition says every integral fraction lies in the image of R; the fraction map is injective.",
+      "evidence": [
+        "https://stacks.math.columbia.edu/tag/02C5 — lines 27–29",
+        "https://raw.githubusercontent.com/leanprover-community/mathlib4/a3a10db0e9d66acbebf76c5e6a135066525ac900/Mathlib/RingTheory/IntegralClosure/IntegrallyClosed.lean — lines 57–64, 96–112",
+        "https://raw.githubusercontent.com/leanprover-community/mathlib4/a3a10db0e9d66acbebf76c5e6a135066525ac900/Mathlib/RingTheory/Localization/FractionRing.lean — lines 112–113, 512–519"
+      ]
+    },
+    {
+      "item": "Finite product and equivalence",
+      "assessment": "Matches: existential finite index type, commutative ring structures and normal-domain properties for every factor, plus existence of a ring isomorphism to the dependent function product. The index type may be empty, consistently accommodating the zero ring. List.TFAE asserts pairwise logical equivalence of all three propositions, preserving all directions.",
+      "evidence": [
+        "https://stacks.math.columbia.edu/tag/030C — lines 25–29",
+        "Pinned target — retrieved lines 975–980",
+        "https://raw.githubusercontent.com/leanprover-community/mathlib4/a3a10db0e9d66acbebf76c5e6a135066525ac900/Mathlib/Data/List/TFAE.lean — lines 27–28"
+      ]
+    }
+  ],
+  "findings": [
+    "No strengthened mathematical hypothesis or weakened conclusion found.",
+    "Restricting the finite index type to Type and factors to Type u is a universe representation choice: any finite decomposition can use Fin n, and source quotient factors live at R's universe. I found no mathematical scope loss.",
+    "The web renderer locates the theorem at lines 973–984 rather than the supplied approximate line 1029. The declaration name and pinned file content identify the target; renderer line numbers should not be copied as GitHub physical-line anchors."
+  ],
+  "unresolved_gaps": [
+    "The primitive IsReduced class declaration was not located within the bounded research; inspected pinned nilpotent API supports its usual no-nonzero-nilpotents meaning.",
+    "No immutable Stacks manuscript revision or upstream statement-history commit was established.",
+    "Lean toolchain and effective dependency resolution were supplied, not independently audited."
+  ],
+  "limitations": [
+    "Read-only remote research only; 11 web tool calls, no local shell, writes, compilation, or axiom audit.",
+    "This reviews statement correspondence, not kernel correctness, proof dependencies, effective build provenance, or complete trust assumptions.",
+    "A passing recommendation must remain distinct from independent mathematical certification and local verification."
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "packet_id": "stacks-normal-rings",
+  "packet": {
+    "repository": "theorem-atlas/theorem-atlas",
+    "commit": "9a8d6d5ad8c51270aeefafe6152062519d2ba47a",
+    "path": "audits/ai-fidelity/packets/stacks-normal-rings.json",
+    "blob": "962c4d36520625cd6fd7bf801b886715803dbc80",
+    "inspection": "supplied_by_coordinator_not_inspected"
+  },
+  "reviewer_id": "A",
+  "agent_path": "/root/fidelity_review_a",
+  "model_family": "GPT-6",
+  "model_version": null,
+  "fresh_context": true,
+  "other_review_seen_before_freeze": false,
+  "author_rationale_seen": false,
+  "verdict": "recommend_pass",
+  "scope": "statement_fidelity_only",
+  "certification": "none",
+  "unresolved_gaps": [
+    "Manuscript Git blob SHA supplied, not independently verified.",
+    "Frozen packet supplied, not inspected.",
+    "Effective build resolution, compilation, axioms and proof-dependency audit not performed."
+  ],
+  "mappings": [
+    {
+      "item": "Ambient ring",
+      "assessment": "Matches: CommRing corresponds to the manuscript's commutative unital ring convention, including the zero ring. No Nontrivial hypothesis occurs in the theorem.",
+      "evidence": [
+        "https://stacks.math.columbia.edu/tag/00AQ — line 18",
+        "https://raw.githubusercontent.com/leanprover-community/mathlib4/a3a10db0e9d66acbebf76c5e6a135066525ac900/Mathlib/Algebra/Ring/Defs.lean — lines 366–367",
+        "Pinned target — theorem header, retrieved lines 973–974"
+      ]
+    },
+    {
+      "item": "Reduced and finitely many minimal primes",
+      "assessment": "Matches the two source hypotheses: IsReduced R and finiteness of minimal primes over the zero ideal. Mathlib defines ring minimal primes as Ideal.minimalPrimes bottom; there is no Noetherian, domain, or nonzero assumption added.",
+      "evidence": [
+        "https://stacks.math.columbia.edu/tag/030C — line 23",
+        "Pinned target — retrieved lines 973–974",
+        "https://raw.githubusercontent.com/leanprover-community/mathlib4/a3a10db0e9d66acbebf76c5e6a135066525ac900/Mathlib/RingTheory/Ideal/MinimalPrime/Basic.lean — lines 35–46",
+        "https://raw.githubusercontent.com/leanprover-community/mathlib4/a3a10db0e9d66acbebf76c5e6a135066525ac900/Mathlib/RingTheory/Nilpotent/Defs.lean — lines 111–123, showing reducedness through nilpotents equalling zero"
+      ]
+    },
+    {
+      "item": "Normal ring and normal domain",
+      "assessment": "Matches. The target's NormalRing quantifies over every ideal with IsPrime evidence and requires NormalDomain of its prime localization. NormalDomain extends IsDomain and IsIntegrallyClosed. Prime localization is localization at the prime complement; for domains FractionRing is a field.",
+      "evidence": [
+        "https://stacks.math.columbia.edu/tag/00GV — line 23",
+        "https://stacks.math.columbia.edu/tag/0309 — line 22",
+        "Pinned target — retrieved lines 38–41",
+        "https://raw.githubusercontent.com/leanprover-community/mathlib4/a3a10db0e9d66acbebf76c5e6a135066525ac900/Mathlib/RingTheory/Localization/AtPrime/Basic.lean — lines 42–51",
+        "https://raw.githubusercontent.com/leanprover-community/mathlib4/a3a10db0e9d66acbebf76c5e6a135066525ac900/Mathlib/RingTheory/Localization/FractionRing.lean — lines 518–530"
+      ]
+    },
+    {
+      "item": "Integral closure in total fractions",
+      "assessment": "Matches despite the abbreviated name. IsIntegrallyClosed R uses FractionRing R, which is localization at nonZeroDivisors R, so it does not secretly require R to be a domain. Its expanded condition says every integral fraction lies in the image of R; the fraction map is injective.",
+      "evidence": [
+        "https://stacks.math.columbia.edu/tag/02C5 — lines 27–29",
+        "https://raw.githubusercontent.com/leanprover-community/mathlib4/a3a10db0e9d66acbebf76c5e6a135066525ac900/Mathlib/RingTheory/IntegralClosure/IntegrallyClosed.lean — lines 57–64, 96–112",
+        "https://raw.githubusercontent.com/leanprover-community/mathlib4/a3a10db0e9d66acbebf76c5e6a135066525ac900/Mathlib/RingTheory/Localization/FractionRing.lean — lines 112–113, 512–519"
+      ]
+    },
+    {
+      "item": "Finite product and equivalence",
+      "assessment": "Matches: existential finite index type, commutative ring structures and normal-domain properties for every factor, plus existence of a ring isomorphism to the dependent function product. The index type may be empty, consistently accommodating the zero ring. List.TFAE asserts pairwise logical equivalence of all three propositions, preserving all directions.",
+      "evidence": [
+        "https://stacks.math.columbia.edu/tag/030C — lines 25–29",
+        "Pinned target — retrieved lines 975–980",
+        "https://raw.githubusercontent.com/leanprover-community/mathlib4/a3a10db0e9d66acbebf76c5e6a135066525ac900/Mathlib/Data/List/TFAE.lean — lines 27–28"
+      ]
+    }
+  ]
+}
