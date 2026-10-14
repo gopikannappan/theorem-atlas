@@ -1,0 +1,874 @@
+{
+  "schema_version": 1,
+  "observed_on": "2026-10-13",
+  "report_url": "https://github.com/theorem-atlas/theorem-atlas/blob/c908a5ad24b9238c83a838d164d7d8a9b634dd5e/docs/AUDIT_CHECKPOINT.md",
+  "observations": [
+    {
+      "record_id": "alphaproof-nexus:ErdosProblems/erdos_152.lean",
+      "target_id": "alphaproof-nexus:ErdosProblems/erdos_152.lean",
+      "proof": {
+        "url": "https://github.com/google-deepmind/alphaproof-nexus-results/blob/0647711a71183c1ea492ad60860776617ce1ea88/APNOutputs/ErdosProblems/erdos_152.lean#L505",
+        "commit": "0647711a71183c1ea492ad60860776617ce1ea88",
+        "declaration": "Erdos152.target_theorem_0",
+        "toolchain": "leanprover/lean4:v4.27.0",
+        "mathlib_commit": "a3a10db0e9d66acbebf76c5e6a135066525ac900"
+      },
+      "review": "pending",
+      "reviewer": null,
+      "attempts": [
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932",
+          "controller_commit": "b67e3923af2bbd0d496ab7398606f26a5d30fc77",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11840879827",
+          "build": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "probe": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "module_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "fresh_replay": {
+            "exit_code": null,
+            "outcome": "timeout"
+          },
+          "axioms": [
+            "'Erdos152.target_theorem_0' depends on axioms: [propext, Classical.choice, Quot.sound]"
+          ]
+        },
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250",
+          "controller_commit": "84f0dba73e15b33a38e1aa79f790825dbd3bf575",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250/artifacts/11844426258",
+          "build": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "probe": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "module_replay": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "fresh_replay": {
+            "exit_code": null,
+            "outcome": "timeout"
+          },
+          "axioms": [
+            "'Erdos152.target_theorem_0' depends on axioms: [propext, Classical.choice, Quot.sound]"
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "alphaproof-nexus:OEIS/oeis_51293_conjecture_0.lean",
+      "target_id": "alphaproof-nexus:OEIS/oeis_51293_conjecture_0.lean",
+      "proof": {
+        "url": "https://github.com/google-deepmind/alphaproof-nexus-results/blob/0647711a71183c1ea492ad60860776617ce1ea88/APNOutputs/OEIS/oeis_51293_conjecture_0.lean#L517",
+        "commit": "0647711a71183c1ea492ad60860776617ce1ea88",
+        "declaration": "target_theorem_0",
+        "toolchain": "leanprover/lean4:v4.27.0",
+        "mathlib_commit": "a3a10db0e9d66acbebf76c5e6a135066525ac900"
+      },
+      "review": "pending",
+      "reviewer": null,
+      "attempts": [
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932",
+          "controller_commit": "b67e3923af2bbd0d496ab7398606f26a5d30fc77",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11840879827",
+          "build": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "probe": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "module_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "fresh_replay": {
+            "exit_code": null,
+            "outcome": "timeout"
+          },
+          "axioms": [
+            "'target_theorem_0' depends on axioms: [propext, Classical.choice, Quot.sound]"
+          ]
+        },
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250",
+          "controller_commit": "84f0dba73e15b33a38e1aa79f790825dbd3bf575",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250/artifacts/11844426258",
+          "build": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "probe": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "module_replay": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "fresh_replay": {
+            "exit_code": null,
+            "outcome": "timeout"
+          },
+          "axioms": [
+            "'target_theorem_0' depends on axioms: [propext, Classical.choice, Quot.sound]"
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "alphaproof-nexus:StacksProject/NormalRings_normalRing_characterization.lean",
+      "target_id": "alphaproof-nexus:StacksProject/NormalRings_normalRing_characterization.lean",
+      "proof": {
+        "url": "https://github.com/google-deepmind/alphaproof-nexus-results/blob/0647711a71183c1ea492ad60860776617ce1ea88/APNOutputs/StacksProject/NormalRings_normalRing_characterization.lean#L1029",
+        "commit": "0647711a71183c1ea492ad60860776617ce1ea88",
+        "declaration": "normalRing_characterization",
+        "toolchain": "leanprover/lean4:v4.27.0",
+        "mathlib_commit": "a3a10db0e9d66acbebf76c5e6a135066525ac900"
+      },
+      "review": "pending",
+      "reviewer": null,
+      "attempts": [
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932",
+          "controller_commit": "b67e3923af2bbd0d496ab7398606f26a5d30fc77",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11840879827",
+          "build": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "probe": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "module_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "fresh_replay": {
+            "exit_code": null,
+            "outcome": "timeout"
+          },
+          "axioms": [
+            "'normalRing_characterization' depends on axioms: [propext, Classical.choice, Quot.sound]"
+          ]
+        },
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250",
+          "controller_commit": "84f0dba73e15b33a38e1aa79f790825dbd3bf575",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250/artifacts/11844426258",
+          "build": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "probe": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "module_replay": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "fresh_replay": {
+            "exit_code": null,
+            "outcome": "timeout"
+          },
+          "axioms": [
+            "'normalRing_characterization' depends on axioms: [propext, Classical.choice, Quot.sound]"
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "anthropic:3sum-apsp",
+      "target_id": "anthropic:3sum-apsp",
+      "proof": {
+        "url": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/3sum-apsp/ThreeSumApsp/Statements/EndStatement.lean#L44",
+        "commit": "e1a4e6508154ea59f030480661590a9fe3018011",
+        "declaration": "ThreeSumApsp.endStatement_theorem_22_3SUM",
+        "toolchain": "leanprover/lean4:v4.33.1",
+        "mathlib_commit": "0df444a360eaa60ab8c11dca51a86af692955474"
+      },
+      "review": "pending",
+      "reviewer": null,
+      "attempts": [
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932",
+          "controller_commit": "b67e3923af2bbd0d496ab7398606f26a5d30fc77",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11841342948",
+          "build": {
+            "exit_code": null,
+            "outcome": "timeout"
+          },
+          "probe": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "module_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "fresh_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "axioms": []
+        },
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250",
+          "controller_commit": "84f0dba73e15b33a38e1aa79f790825dbd3bf575",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250/artifacts/11845063174",
+          "build": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "probe": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "module_replay": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "fresh_replay": {
+            "exit_code": null,
+            "outcome": "timeout"
+          },
+          "axioms": [
+            "'ThreeSumApsp.endStatement_theorem_22_3SUM' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]"
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "anthropic:fermat-last-theorem",
+      "target_id": "anthropic:fermat-last-theorem",
+      "proof": {
+        "url": "https://github.com/anthropics/fermats-last-theorem/blob/6e837e75355538c7f80bab5b956861e86c4eacc2/Theorems/Thm_fermat_last_theorem.lean#L128",
+        "commit": "6e837e75355538c7f80bab5b956861e86c4eacc2",
+        "declaration": "fermat_last_theorem",
+        "toolchain": "leanprover/lean4:v4.33.1",
+        "mathlib_commit": "db584cd6d46c92f209a44c0f1c829460d327499d"
+      },
+      "review": "pending",
+      "reviewer": null,
+      "attempts": [
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932",
+          "controller_commit": "b67e3923af2bbd0d496ab7398606f26a5d30fc77",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11840541715",
+          "build": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "probe": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "module_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "fresh_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "axioms": []
+        },
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250",
+          "controller_commit": "84f0dba73e15b33a38e1aa79f790825dbd3bf575",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250/artifacts/11844150137",
+          "build": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "probe": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "module_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "fresh_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "axioms": []
+        }
+      ]
+    },
+    {
+      "record_id": "anthropic:zeta23",
+      "target_id": "anthropic:zeta23",
+      "proof": {
+        "url": "https://github.com/anthropics/formal-math/blob/e1a4e6508154ea59f030480661590a9fe3018011/zeta23/Solution.lean#L64",
+        "commit": "e1a4e6508154ea59f030480661590a9fe3018011",
+        "declaration": "two_thirds_simple_on_critical_line_cumulative",
+        "toolchain": "leanprover/lean4:v4.33.0-rc2",
+        "mathlib_commit": "51e6992efd06126df61a496bebf8f49482a4e129"
+      },
+      "review": "pending",
+      "reviewer": null,
+      "attempts": [
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932",
+          "controller_commit": "b67e3923af2bbd0d496ab7398606f26a5d30fc77",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11841027941",
+          "build": {
+            "exit_code": null,
+            "outcome": "timeout"
+          },
+          "probe": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "module_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "fresh_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "axioms": []
+        },
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250",
+          "controller_commit": "84f0dba73e15b33a38e1aa79f790825dbd3bf575",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250/artifacts/11845267108",
+          "build": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "probe": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "module_replay": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "fresh_replay": {
+            "exit_code": null,
+            "outcome": "timeout"
+          },
+          "axioms": [
+            "'two_thirds_simple_on_critical_line_cumulative' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]"
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": null,
+      "target_id": "atlas:integer-complexity",
+      "proof": {
+        "url": "https://github.com/theorem-atlas/theorem-atlas/blob/758e030c9ae8fc0a7ce8ed5165cec3672b81d197/proofs/integer-complexity/IntegerComplexity.lean#L103",
+        "commit": "758e030c9ae8fc0a7ce8ed5165cec3672b81d197",
+        "declaration": "Mathoverflow75792.complexity_three_pow"
+      },
+      "review": "pending",
+      "reviewer": null,
+      "attempts": [
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932",
+          "controller_commit": "b67e3923af2bbd0d496ab7398606f26a5d30fc77",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11841666358",
+          "build": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "probe": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "module_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "fresh_replay": {
+            "exit_code": null,
+            "outcome": "timeout"
+          },
+          "axioms": [
+            "info: IntegerComplexity.lean:116:0: 'Mathoverflow75792.complexity_three_pow' depends on axioms: [propext, Classical.choice, Quot.sound]",
+            "'Mathoverflow75792.complexity_three_pow' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]"
+          ]
+        },
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250",
+          "controller_commit": "84f0dba73e15b33a38e1aa79f790825dbd3bf575",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250/artifacts/11842647277",
+          "build": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "probe": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "module_replay": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "fresh_replay": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "axioms": [
+            "info: IntegerComplexity.lean:116:0: 'Mathoverflow75792.complexity_three_pow' depends on axioms: [propext, Classical.choice, Quot.sound]",
+            "'Mathoverflow75792.complexity_three_pow' depends on axioms: [propext, Classical.choice.{u}, Quot.sound.{u}]"
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "math-inc:strongpnt",
+      "target_id": "math-inc:strongpnt",
+      "proof": {
+        "url": "https://github.com/math-inc/strongpnt/blob/2f5835c322314f55f1026ec2f139d704b7c45c69/StrongPNT/PNT5_Strong.lean#L5911",
+        "commit": "2f5835c322314f55f1026ec2f139d704b7c45c69",
+        "declaration": "Strong_PNT",
+        "toolchain": "leanprover/lean4:v4.21.0",
+        "mathlib_commit": "308445d7985027f538e281e18df29ca16ede2ba3"
+      },
+      "review": "pending",
+      "reviewer": null,
+      "attempts": [
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932",
+          "controller_commit": "b67e3923af2bbd0d496ab7398606f26a5d30fc77",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11840994859",
+          "build": {
+            "exit_code": null,
+            "outcome": "timeout"
+          },
+          "probe": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "module_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "fresh_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "axioms": []
+        },
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250",
+          "controller_commit": "84f0dba73e15b33a38e1aa79f790825dbd3bf575",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250/artifacts/11846290092",
+          "build": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "probe": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "module_replay": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "fresh_replay": {
+            "exit_code": null,
+            "outcome": "timeout"
+          },
+          "axioms": [
+            "info: StrongPNT/PNT5_Strong.lean:6599:0: 'Strong_PNT' depends on axioms: [propext, Classical.choice, Quot.sound]",
+            "'Strong_PNT' depends on axioms: [propext, Classical.choice, Quot.sound]"
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "harmonic:imo2025:p1",
+      "target_id": "harmonic:imo2025:p1",
+      "proof": {
+        "url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/HarmonicLean/IMO2025P1.lean#L1387",
+        "commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+        "declaration": "IMO2025P1.main_theorem",
+        "toolchain": "leanprover/lean4:v4.20.0-rc5",
+        "mathlib_commit": "4e685d14db58b1ab29024bb0761902a3615f3f14"
+      },
+      "review": "pending",
+      "reviewer": null,
+      "attempts": [
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932",
+          "controller_commit": "b67e3923af2bbd0d496ab7398606f26a5d30fc77",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11842285695",
+          "build": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "probe": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "module_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "fresh_replay": {
+            "exit_code": 1,
+            "outcome": "failed"
+          },
+          "axioms": [
+            "info: /source/HarmonicLean/IMO2025P1.lean:1433:0: 'IMO2025P1.main_theorem' depends on axioms: [propext, Classical.choice, Quot.sound]",
+            "'IMO2025P1.main_theorem' depends on axioms: [propext, Classical.choice, Quot.sound]"
+          ]
+        },
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250",
+          "controller_commit": "84f0dba73e15b33a38e1aa79f790825dbd3bf575",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250/artifacts/11844519571",
+          "build": {
+            "exit_code": null,
+            "outcome": "timeout"
+          },
+          "probe": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "module_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "fresh_replay": {
+            "exit_code": null,
+            "outcome": "incomplete_group_build"
+          },
+          "axioms": []
+        }
+      ]
+    },
+    {
+      "record_id": "harmonic:imo2025:p3",
+      "target_id": "harmonic:imo2025:p3",
+      "proof": {
+        "url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/HarmonicLean/IMO2025P3.lean#L417",
+        "commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+        "declaration": "IMO2025P3.main_theorem",
+        "toolchain": "leanprover/lean4:v4.20.0-rc5",
+        "mathlib_commit": "4e685d14db58b1ab29024bb0761902a3615f3f14"
+      },
+      "review": "pending",
+      "reviewer": null,
+      "attempts": [
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932",
+          "controller_commit": "b67e3923af2bbd0d496ab7398606f26a5d30fc77",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11842285695",
+          "build": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "probe": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "module_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "fresh_replay": {
+            "exit_code": 1,
+            "outcome": "failed"
+          },
+          "axioms": [
+            "info: /source/HarmonicLean/IMO2025P3.lean:433:0: 'IMO2025P3.main_theorem' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]",
+            "'IMO2025P3.main_theorem' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]"
+          ]
+        },
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250",
+          "controller_commit": "84f0dba73e15b33a38e1aa79f790825dbd3bf575",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250/artifacts/11844519571",
+          "build": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "probe": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "module_replay": {
+            "exit_code": 1,
+            "outcome": "failed"
+          },
+          "fresh_replay": {
+            "exit_code": null,
+            "outcome": "incomplete_group_build"
+          },
+          "axioms": [
+            "info: /source/HarmonicLean/IMO2025P3.lean:433:0: 'IMO2025P3.main_theorem' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]",
+            "'IMO2025P3.main_theorem' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]"
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "harmonic:imo2025:p4",
+      "target_id": "harmonic:imo2025:p4:1",
+      "proof": {
+        "url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/HarmonicLean/IMO2025P4.lean#L1437",
+        "commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+        "declaration": "IMO2025P4.main_theorem",
+        "toolchain": "leanprover/lean4:v4.20.0-rc5",
+        "mathlib_commit": "4e685d14db58b1ab29024bb0761902a3615f3f14"
+      },
+      "review": "pending",
+      "reviewer": null,
+      "attempts": [
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932",
+          "controller_commit": "b67e3923af2bbd0d496ab7398606f26a5d30fc77",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11842285695",
+          "build": {
+            "exit_code": null,
+            "outcome": "timeout"
+          },
+          "probe": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "module_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "fresh_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "axioms": []
+        },
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250",
+          "controller_commit": "84f0dba73e15b33a38e1aa79f790825dbd3bf575",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250/artifacts/11844519571",
+          "build": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "probe": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "module_replay": {
+            "exit_code": 1,
+            "outcome": "failed"
+          },
+          "fresh_replay": {
+            "exit_code": null,
+            "outcome": "incomplete_group_build"
+          },
+          "axioms": [
+            "info: /source/HarmonicLean/IMO2025P4.lean:1461:0: 'IMO2025P4.main_theorem' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]",
+            "'IMO2025P4.main_theorem' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]"
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "harmonic:imo2025:p4",
+      "target_id": "harmonic:imo2025:p4:2",
+      "proof": {
+        "url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/HarmonicLean/IMO2025P4_solve2.lean#L934",
+        "commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+        "declaration": "IMO2025P4Solve2.main_theorem",
+        "toolchain": "leanprover/lean4:v4.20.0-rc5",
+        "mathlib_commit": "4e685d14db58b1ab29024bb0761902a3615f3f14"
+      },
+      "review": "pending",
+      "reviewer": null,
+      "attempts": [
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932",
+          "controller_commit": "b67e3923af2bbd0d496ab7398606f26a5d30fc77",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11842285695",
+          "build": {
+            "exit_code": null,
+            "outcome": "group_budget_exhausted"
+          },
+          "probe": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "module_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "fresh_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "axioms": []
+        },
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250",
+          "controller_commit": "84f0dba73e15b33a38e1aa79f790825dbd3bf575",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250/artifacts/11844519571",
+          "build": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "probe": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "module_replay": {
+            "exit_code": 1,
+            "outcome": "failed"
+          },
+          "fresh_replay": {
+            "exit_code": null,
+            "outcome": "incomplete_group_build"
+          },
+          "axioms": [
+            "info: /source/HarmonicLean/IMO2025P4_solve2.lean:964:0: 'IMO2025P4Solve2.main_theorem' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]",
+            "'IMO2025P4Solve2.main_theorem' depends on axioms: [propext, Classical.choice, Lean.ofReduceBool, Quot.sound]"
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "harmonic:imo2025:p5",
+      "target_id": "harmonic:imo2025:p5",
+      "proof": {
+        "url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/HarmonicLean/IMO2025P5.lean#L615",
+        "commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+        "declaration": "IMO2025P5.main_theorem",
+        "toolchain": "leanprover/lean4:v4.20.0-rc5",
+        "mathlib_commit": "4e685d14db58b1ab29024bb0761902a3615f3f14"
+      },
+      "review": "pending",
+      "reviewer": null,
+      "attempts": [
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932",
+          "controller_commit": "b67e3923af2bbd0d496ab7398606f26a5d30fc77",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11842285695",
+          "build": {
+            "exit_code": null,
+            "outcome": "group_budget_exhausted"
+          },
+          "probe": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "module_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "fresh_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "axioms": []
+        },
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250",
+          "controller_commit": "84f0dba73e15b33a38e1aa79f790825dbd3bf575",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250/artifacts/11844519571",
+          "build": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "probe": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "module_replay": {
+            "exit_code": 0,
+            "outcome": "completed"
+          },
+          "fresh_replay": {
+            "exit_code": null,
+            "outcome": "incomplete_group_build"
+          },
+          "axioms": [
+            "info: /source/HarmonicLean/IMO2025P5.lean:728:0: 'IMO2025P5.main_theorem' depends on axioms: [propext, Classical.choice, Quot.sound]",
+            "'IMO2025P5.main_theorem' depends on axioms: [propext, Classical.choice, Quot.sound]"
+          ]
+        }
+      ]
+    },
+    {
+      "record_id": "openai-math:005",
+      "target_id": "openai-math:005",
+      "proof": {
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/OAI/NumberTheory/Catalan/Results/Conclusions.lean#L11",
+        "commit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+        "declaration": "OAI.InternalCatalan.catalan_irrational",
+        "toolchain": "leanprover/lean4:v4.34.1",
+        "mathlib_commit": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+      },
+      "review": "pending",
+      "reviewer": null,
+      "attempts": [
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932",
+          "controller_commit": "b67e3923af2bbd0d496ab7398606f26a5d30fc77",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38451927932/artifacts/11842125582",
+          "build": {
+            "exit_code": null,
+            "outcome": "timeout"
+          },
+          "probe": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "module_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "fresh_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "axioms": []
+        },
+        {
+          "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250",
+          "controller_commit": "84f0dba73e15b33a38e1aa79f790825dbd3bf575",
+          "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38456001250/artifacts/11844492615",
+          "build": {
+            "exit_code": null,
+            "outcome": "timeout"
+          },
+          "probe": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "module_replay": {
+            "outcome": "not_run",
+            "exit_code": null
+          },
+          "fresh_replay": {
+            "exit_code": null,
+            "outcome": "no_built_modules"
+          },
+          "axioms": []
+        }
+      ]
+    }
+  ]
+}

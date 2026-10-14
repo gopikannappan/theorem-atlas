@@ -1,9 +1,10 @@
+import { hasStage } from './evidence-state.mjs';
 export function filterRecords(records, { query = '', source = '', status = '', kind = '' } = {}) {
   const needle = query.trim().toLowerCase();
   return records.filter(r => (!needle || JSON.stringify([r.id, r.title, r.manuscripts, r.proofs]).toLowerCase().includes(needle))
     && (!source || r.source === source)
     && (!kind || r.kind === kind)
-    && (!status || (status === 'scope' ? Boolean(r.scope_url) : status === 'no_scope' ? !r.scope_url : r.status === status)));
+    && (!status || (['compiled', 'module_replayed', 'review_pending', 'trust_flag'].includes(status) ? hasStage(r, status) : status === 'scope' ? Boolean(r.scope_url) : status === 'no_scope' ? !r.scope_url : r.status === status)));
 }
 export function paginate(records, requestedPage = 1, requestedSize = 12) {
   const size = [12, 24, 48].includes(Number(requestedSize)) ? Number(requestedSize) : 12;

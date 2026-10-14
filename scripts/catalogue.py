@@ -59,7 +59,7 @@ def main():
     data['overlap_report'] = report(data['results'])
     out = ROOT / 'dist'
     out.mkdir(exist_ok=True)
-    for name in ['index.html', 'app.js', 'style.css', 'catalogue-state.mjs', 'attribution.html']:
+    for name in ['index.html', 'app.js', 'style.css', 'catalogue-state.mjs', 'evidence-state.mjs', 'evidence.json', 'attribution.html']:
         shutil.copyfile(ROOT / 'site' / name, out / name)
     shutil.copytree(ROOT / 'site/licenses', out / 'licenses', dirs_exist_ok=True)
     (out / 'results.json').write_text(json.dumps(data, ensure_ascii=False))

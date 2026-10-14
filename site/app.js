@@ -1,5 +1,7 @@
 'use strict';
 import { filterRecords, paginate, recordHash, recordIdFromHash } from './catalogue-state.mjs';
+import { attachObservations, observationStages, hasStage, outcomeLabel } from './evidence-state.mjs';
+let evidenceSnapshot = null;
 const $ = id => document.getElementById(id);
 let records = [];
 const KIND_LABELS = { result_family: 'Result family', formalization_project: 'Formalization project', external_proof_artifact: 'Lean artifact', external_artifact: 'Other artifact', statement_collection: 'Statement collection' };
@@ -17,6 +19,37 @@ function link(text, url) {
   if (parsed.protocol !== 'https:') throw new Error('Invalid source URL');
   node.href = parsed.href; node.target = '_blank'; node.rel = 'noopener noreferrer';
   return node;
+}
+function observationPanel(observation) {
+  const panel = element('section', undefined, 'observation-panel');
+  panel.append(element('h4', 'Atlas machine evidence'));
+  if (!observation) {
+    panel.append(element('p', 'No matching machine observations indexed for this exact proof version.'));
+    return panel;
+  }
+  const stages = observationStages(observation);
+  panel.append(element('p', stages.compiled ? 'Compilation reproduced at least once. Outcomes below retain earlier successes and later limits.' : 'Compilation has not been reproduced within the recorded budgets.'));
+  panel.append(element('p', 'Module replay assumes imported environments. Fresh replay attempts the whole group of imports. Neither establishes mathematical fidelity.'));
+  if (stages.trust_flag) panel.append(element('p', 'Trust flag: Lean.ofReduceBool appears in the reported axiom output. Native computation requires independent trust review.', 'trust-flag'));
+  const table = element('table');
+  const caption = element('caption', 'Recorded attempts · ' + evidenceSnapshot.observed_on);
+  const head = element('tr');
+  for (const title of ['Attempt', 'Build', 'Type / axioms', 'Module replay', 'Fresh replay']) head.append(element('th', title));
+  const thead = element('thead'); thead.append(head); table.append(caption, thead);
+  const tbody = element('tbody');
+  observation.attempts.forEach((attempt, index) => {
+    const row = element('tr'); const source = element('td');
+    source.append(link('Run ' + (index + 1) + ' ↗', attempt.run_url));
+    row.append(source);
+    for (const key of ['build', 'probe', 'module_replay', 'fresh_replay']) row.append(element('td', outcomeLabel(attempt[key])));
+    tbody.append(row);
+  });
+  table.append(tbody);
+  const scroll = element('div', undefined, 'evidence-table'); scroll.append(table); panel.append(scroll);
+  panel.append(element('p', 'Independent mathematical fidelity review: pending · Reviewer unassigned', 'review'));
+  panel.append(element('p', 'Independent trust review: pending · Reviewer unassigned', 'review'));
+  const report = element('p'); report.append(link('Audit report, diagnostics and artifacts ↗', evidenceSnapshot.report_url)); panel.append(report);
+  return panel;
 }
 function recordUrl(id) {
   return location.pathname + location.search + recordHash(id);
@@ -68,12 +101,13 @@ function syncOverlay() {
     }
     const provenance = element('p', 'Upstream commit: '); provenance.append(link(r.upstream_commit, r.source_url)); evidence.append(provenance);
     if (r.scope_url) { const p = element('p'); p.append(link('Upstream formalization scope note ↗', r.scope_url)); evidence.append(p); }
-    for (const proof of r.proofs) {
+    for (const [index, proof] of r.proofs.entries()) {
       const p = element('p'); p.append(link(proof.declaration + ' ↗', proof.url)); evidence.append(p);
-      evidence.append(element('p', `Lean: ${proof.toolchain} · External · Not locally audited`));
+      evidence.append(element('p', `Lean: ${proof.toolchain} · External proof · Independent review pending`));
       evidence.append(element('p', `Dependencies: ${proof.dependencies.join(', ')}`));
+      evidence.append(observationPanel(r.observations?.[index]));
     }
-    evidence.append(element('p', 'Statement and assumptions have not been independently extracted or reviewed. No local proof audit or manuscript-fidelity review is claimed.', 'review'));
+    evidence.append(element('p', 'Statement, definitions, assumptions and trust dependencies have not been independently reviewed. Machine observations are evidence, not a completed audit or manuscript-fidelity approval.', 'review'));
 
     content.replaceChildren(evidence);
   } else content.replaceChildren(element('p', 'Close this panel to browse or search the catalogue.'));
@@ -115,6 +149,10 @@ function render() {
     const body = element('div'); body.append(element('h3', r.title));
     const tags = element('div', undefined, 'tags');
     tags.append(element('span', r.source), element('span', r.proofs.length ? 'External proof linked' : r.kind === 'statement_collection' ? 'Statements; not proof coverage' : r.kind === 'external_artifact' ? 'Text artifact; no Lean link' : r.artifact_url ? 'Unreviewed Lean artifact' : r.scope_url ? 'Upstream Lean scope note' : 'No Lean scope note indexed', `badge ${r.proofs.length ? 'linked' : ''}`), element('span', r.kind === 'result_family' ? `${r.manuscripts.length} manuscript${r.manuscripts.length === 1 ? '' : 's'}` : KIND_LABELS[r.kind]));
+    if (hasStage(r, 'module_replayed')) tags.append(element('span', 'Module replay passed', 'badge observed'));
+    else if (hasStage(r, 'compiled')) tags.append(element('span', 'Compilation reproduced', 'badge observed'));
+    if (r.proofs.length) tags.append(element('span', 'Independent review pending', 'badge'));
+    if (hasStage(r, 'trust_flag')) tags.append(element('span', 'Native computation · trust review pending', 'badge trust-flag'));
     if (r.proofs.length > 1) tags.append(element('span', `${r.proofs.length} alternative proof links`, 'badge'));
     if (r.source_relationships?.length) tags.append(element('span', 'Shared source material', 'badge'));
     body.append(tags);
@@ -135,6 +173,22 @@ async function init() {
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const catalogue = await response.json();
     records = catalogue.results;
+    try {
+      const evidenceResponse = await fetch('evidence.json');
+      if (!evidenceResponse.ok) throw new Error('Evidence unavailable');
+      evidenceSnapshot = await evidenceResponse.json();
+      records = attachObservations(records, evidenceSnapshot);
+      $('machine-summary').textContent = `Machine observations · ${evidenceSnapshot.observed_on}: ${records.filter(r => hasStage(r, 'compiled')).length} records compiled at least once; ${records.filter(r => hasStage(r, 'module_replayed')).length} records passed module replay with imports assumed. Independent reviews are pending; 0 completed audits.`;
+      const report = element('p'); report.append(link('Read the audit checkpoint ↗', evidenceSnapshot.report_url)); $('machine-evidence').append(report);
+      const pilot = evidenceSnapshot.observations.find(o => o.target_id === 'atlas:integer-complexity' && o.record_id === null);
+      if (pilot && observationStages(pilot).fresh_replayed) {
+        const p = element('p', 'Separate pilot: integer complexity passed fresh dependency replay. It is outside the 12 linked catalogue records and remains independently unreviewed. ');
+        p.append(link('Pilot declaration ↗', pilot.proof.url)); $('machine-evidence').append(p);
+      }
+    } catch (error) {
+      $('machine-summary').textContent = 'Machine evidence is temporarily unavailable. Proof links remain browsable; no audit status is inferred.';
+      console.warn(error);
+    }
     const overlap = catalogue.overlap_report;
     if (overlap) $('overlap-summary').textContent = `${overlap.exact_artifact_groups.length} exact artifact overlap groups; ${overlap.repeated_manuscript_groups.length} repeated manuscript-link groups; ${overlap.alternative_proof_records.length} record with alternative proofs; ${overlap.source_reuse.length} documented source-reuse relationships. These are metadata checks, not a theorem-equivalence audit.`;
     for (const source of [...new Set(records.map(r => r.source))].sort()) { const option = element('option', source); option.value = source; $('source').append(option); }
@@ -145,7 +199,7 @@ async function init() {
     $('page-size').value = String(paginate([], 1, params.get('size')).size);
     $('total').textContent = records.length;
     $('linked').textContent = records.filter(r => r.proofs.length).length;
-    $('coverage-summary').textContent = `${records.filter(r => r.kind === 'result_family').length} result families · ${records.filter(r => r.kind === 'formalization_project').length} formalization projects · ${records.filter(r => r.kind === 'external_proof_artifact').length} Lean artifacts · ${records.filter(r => r.kind === 'external_artifact').length} other artifact · ${records.filter(r => r.kind === 'statement_collection').length} statement collection. ${records.filter(r => r.proofs.length).length} records have curated declaration links; 0 locally audited. Projects and artifacts are not additional manuscript or theorem counts.`;
+    $('coverage-summary').textContent = `${records.filter(r => r.kind === 'result_family').length} result families · ${records.filter(r => r.kind === 'formalization_project').length} formalization projects · ${records.filter(r => r.kind === 'external_proof_artifact').length} Lean artifacts · ${records.filter(r => r.kind === 'external_artifact').length} other artifact · ${records.filter(r => r.kind === 'statement_collection').length} statement collection. ${records.filter(r => r.proofs.length).length} records have curated declaration links; 0 independently audited. Projects and artifacts are not additional manuscript or theorem counts.`;
     render();
     syncOverlay();
     $('detail-close').addEventListener('click', closeOverlay);
