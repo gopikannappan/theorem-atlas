@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "session_id": "stacks-normal-rings-2026-10-14",
+  "packet": {
+    "path": "audits/ai-fidelity/packets/stacks-normal-rings.json",
+    "git_blob": "962c4d36520625cd6fd7bf801b886715803dbc80",
+    "freeze_commit": "9a8d6d5ad8c51270aeefafe6152062519d2ba47a"
+  },
+  "certification": "none",
+  "policy_state": "draft_independent_review_pending",
+  "state": "recommendations_received",
+  "provenance_complete": false,
+  "initial_packet_timing": "Initial reviews used the commissioning target pins and independently located source mathematics. Combined JSON packet was frozen during the provenance-amendment phase, not before initial reviews.",
+  "coordinator": "Theorem Atlas submission coordinator; not a fidelity approver",
+  "reviewers": [
+    {
+      "id": "A",
+      "agent_path": "/root/fidelity_review_a",
+      "model_family": "GPT-6",
+      "model_version": null,
+      "fresh_context": true,
+      "other_review_seen_before_initial_freeze": false,
+      "author_rationale_seen_before_initial_freeze": false,
+      "generated_target": false,
+      "initial_verdict": "recommend_pass",
+      "amended_verdict": "recommend_pass",
+      "scope": "statement_fidelity_recommendation",
+      "certification": "none",
+      "archive_commit": "09b00e19542d62029f37f1aee0a106801a52b1da",
+      "files": [
+        {
+          "path": "audits/ai-fidelity/reviews/stacks-normal-rings/reviewer-a.original.json",
+          "git_blob": "2c08fb708e1745bd3859c917a787f52c725c5a5c"
+        },
+        {
+          "path": "audits/ai-fidelity/reviews/stacks-normal-rings/reviewer-a.amendment.md",
+          "git_blob": "2014fa1251ea7abd259cfca7e05e38b2b6c55ce9"
+        },
+        {
+          "path": "audits/ai-fidelity/reviews/stacks-normal-rings/reviewer-a.record.json",
+          "git_blob": "3d7b56e1ff5e9f2fdfa71adf30a577704bbee788"
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "agent_path": "/root/fidelity_review_b",
+      "model_family": "GPT-6",
+      "model_version": null,
+      "fresh_context": true,
+      "other_review_seen_before_initial_freeze": false,
+      "author_rationale_seen_before_initial_freeze": false,
+      "generated_target": false,
+      "initial_verdict": "recommend_pass",
+      "amended_verdict": "recommend_pass",
+      "scope": "statement_fidelity_recommendation",
+      "certification": "none",
+      "archive_commit": "d428640ebd20a6bcf33bbed2b507c53ebc5b1e63",
+      "files": [
+        {
+          "path": "audits/ai-fidelity/reviews/stacks-normal-rings/reviewer-b.original.md",
+          "git_blob": "884b866a4ea4d2c593235caefd11faf2c364b706"
+        },
+        {
+          "path": "audits/ai-fidelity/reviews/stacks-normal-rings/reviewer-b.amendment.md",
+          "git_blob": "c833df481fd82a7770a6b39df66762246dd956e9"
+        }
+      ]
+    }
+  ],
+  "reconciliation": {
+    "state": "recommendations_agree_with_unresolved_provenance",
+    "mathematical_disagreements_reported": [],
+    "recommendations": [
+      "Both recommend statement correspondence to Stacks tag030C after inspecting the relevant source definitions and conclusions."
+    ],
+    "scope_limit": "Agreement records reviewer recommendations only; it does not activate accepted fidelity or audit status.",
+    "unresolved": [
+      "Same model family; exact model versions unknown.",
+      "Combined packet was frozen after initial commissioning. Reviewer A did not inspect the final packet or independently establish its manuscript blob metadata.",
+      "Reviewer B inspected packet/manuscript blobs but did not separately verify packet commit association; primitive class declarations remain uninspected by reviewer B.",
+      "Upstream author's chosen manuscript revision is unknown; the reviewed snapshot is identified explicitly.",
+      "Full system prompts/runtime settings and cryptographic context-isolation attestations are not available.",
+      "Fresh group replay timed out; external checker and independent trust review remain incomplete.",
+      "The proposed AI label acceptance policy has not been independently reviewed."
+    ]
+  }
+}
