@@ -1,0 +1,188 @@
+{
+  "reference_status": "author_intent_only_expert_pending",
+  "human_reference_available": false,
+  "results": [
+    {
+      "benchmark_id": "ai-fidelity-pilot-v1",
+      "reviewer_id": "blind-pilot-a",
+      "reference_status": "author_intent_only_expert_pending",
+      "expert_accuracy": null,
+      "diagnostic_correctness": "ungraded",
+      "certification": "none",
+      "total": 12,
+      "counts": {
+        "aligned_agreements": 6,
+        "intended_defects_flagged": 6,
+        "intended_defects_missed": 0,
+        "control_false_alarms": 0,
+        "inconclusive": 0,
+        "category_agreements": 6
+      },
+      "cases": [
+        {
+          "id": "q7m2",
+          "author_intention": "aligned",
+          "reviewer_verdict": "aligned",
+          "agrees_with_author": true
+        },
+        {
+          "id": "p4v9",
+          "author_intention": "mismatch",
+          "reviewer_verdict": "mismatch",
+          "agrees_with_author": true
+        },
+        {
+          "id": "r8c1",
+          "author_intention": "aligned",
+          "reviewer_verdict": "aligned",
+          "agrees_with_author": true
+        },
+        {
+          "id": "t3a6",
+          "author_intention": "mismatch",
+          "reviewer_verdict": "mismatch",
+          "agrees_with_author": true
+        },
+        {
+          "id": "u6b3",
+          "author_intention": "aligned",
+          "reviewer_verdict": "aligned",
+          "agrees_with_author": true
+        },
+        {
+          "id": "v1c8",
+          "author_intention": "mismatch",
+          "reviewer_verdict": "mismatch",
+          "agrees_with_author": true
+        },
+        {
+          "id": "w7d2",
+          "author_intention": "aligned",
+          "reviewer_verdict": "aligned",
+          "agrees_with_author": true
+        },
+        {
+          "id": "x3a9",
+          "author_intention": "mismatch",
+          "reviewer_verdict": "mismatch",
+          "agrees_with_author": true
+        },
+        {
+          "id": "y8f5",
+          "author_intention": "aligned",
+          "reviewer_verdict": "aligned",
+          "agrees_with_author": true
+        },
+        {
+          "id": "z2c6",
+          "author_intention": "mismatch",
+          "reviewer_verdict": "mismatch",
+          "agrees_with_author": true
+        },
+        {
+          "id": "b5e7",
+          "author_intention": "aligned",
+          "reviewer_verdict": "aligned",
+          "agrees_with_author": true
+        },
+        {
+          "id": "d9b4",
+          "author_intention": "mismatch",
+          "reviewer_verdict": "mismatch",
+          "agrees_with_author": true
+        }
+      ]
+    },
+    {
+      "benchmark_id": "ai-fidelity-pilot-v1",
+      "reviewer_id": "blind-pilot-b",
+      "reference_status": "author_intent_only_expert_pending",
+      "expert_accuracy": null,
+      "diagnostic_correctness": "ungraded",
+      "certification": "none",
+      "total": 12,
+      "counts": {
+        "aligned_agreements": 6,
+        "intended_defects_flagged": 6,
+        "intended_defects_missed": 0,
+        "control_false_alarms": 0,
+        "inconclusive": 0,
+        "category_agreements": 6
+      },
+      "cases": [
+        {
+          "id": "q7m2",
+          "author_intention": "aligned",
+          "reviewer_verdict": "aligned",
+          "agrees_with_author": true
+        },
+        {
+          "id": "p4v9",
+          "author_intention": "mismatch",
+          "reviewer_verdict": "mismatch",
+          "agrees_with_author": true
+        },
+        {
+          "id": "r8c1",
+          "author_intention": "aligned",
+          "reviewer_verdict": "aligned",
+          "agrees_with_author": true
+        },
+        {
+          "id": "t3a6",
+          "author_intention": "mismatch",
+          "reviewer_verdict": "mismatch",
+          "agrees_with_author": true
+        },
+        {
+          "id": "u6b3",
+          "author_intention": "aligned",
+          "reviewer_verdict": "aligned",
+          "agrees_with_author": true
+        },
+        {
+          "id": "v1c8",
+          "author_intention": "mismatch",
+          "reviewer_verdict": "mismatch",
+          "agrees_with_author": true
+        },
+        {
+          "id": "w7d2",
+          "author_intention": "aligned",
+          "reviewer_verdict": "aligned",
+          "agrees_with_author": true
+        },
+        {
+          "id": "x3a9",
+          "author_intention": "mismatch",
+          "reviewer_verdict": "mismatch",
+          "agrees_with_author": true
+        },
+        {
+          "id": "y8f5",
+          "author_intention": "aligned",
+          "reviewer_verdict": "aligned",
+          "agrees_with_author": true
+        },
+        {
+          "id": "z2c6",
+          "author_intention": "mismatch",
+          "reviewer_verdict": "mismatch",
+          "agrees_with_author": true
+        },
+        {
+          "id": "b5e7",
+          "author_intention": "aligned",
+          "reviewer_verdict": "aligned",
+          "agrees_with_author": true
+        },
+        {
+          "id": "d9b4",
+          "author_intention": "mismatch",
+          "reviewer_verdict": "mismatch",
+          "agrees_with_author": true
+        }
+      ]
+    }
+  ]
+}
