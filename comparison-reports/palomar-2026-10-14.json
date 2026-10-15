@@ -1,0 +1,209 @@
+{
+  "all_atlas_records": {
+    "exact_selected_declaration_and_commit": {
+      "matched": 0,
+      "denominator": 891,
+      "percent": 0
+    },
+    "direct_source_document_identifiers_ignoring_github_commit": {
+      "matched": 1,
+      "denominator": 891,
+      "percent": 0.112
+    },
+    "source_identifier_or_exact_title_candidates": {
+      "matched": 4,
+      "denominator": 891,
+      "percent": 0.449
+    },
+    "background_source_references": {
+      "matched": 74,
+      "denominator": 891,
+      "percent": 8.305
+    }
+  },
+  "research_family_or_project_records": {
+    "exact_selected_declaration_and_commit": {
+      "matched": 0,
+      "denominator": 376,
+      "percent": 0
+    },
+    "direct_source_document_identifiers_ignoring_github_commit": {
+      "matched": 1,
+      "denominator": 376,
+      "percent": 0.266
+    },
+    "source_identifier_or_exact_title_candidates": {
+      "matched": 4,
+      "denominator": 376,
+      "percent": 1.064
+    },
+    "background_source_references": {
+      "matched": 3,
+      "denominator": 376,
+      "percent": 0.798
+    }
+  },
+  "openai_result_families": {
+    "exact_selected_declaration_and_commit": {
+      "matched": 0,
+      "denominator": 372,
+      "percent": 0
+    },
+    "direct_source_document_identifiers_ignoring_github_commit": {
+      "matched": 1,
+      "denominator": 372,
+      "percent": 0.269
+    },
+    "source_identifier_or_exact_title_candidates": {
+      "matched": 4,
+      "denominator": 372,
+      "percent": 1.075
+    },
+    "background_source_references": {
+      "matched": 1,
+      "denominator": 372,
+      "percent": 0.269
+    }
+  },
+  "exact_matches": {},
+  "limitations": [
+    "Source references and exact normalized titles identify candidate relationships, not theorem equivalence or full family coverage.",
+    "GitHub source-document matching ignores ref and normalizes only a preprint folder, paper.pdf and paper.tex within that same folder; a floating metadata URL or another revision is not a checked source-version match.",
+    "No fuzzy title matching, dependency-reuse counting, LLM judgment, or proof execution is used.",
+    "A zero exact selected-declaration match does not mean zero mathematical overlap."
+  ],
+  "measured_at": "2026-10-14T21:38:24.151388+00:00",
+  "atlas_catalogue_sha256": "c5b5fda703b1eb1413eedd6df56dcb0fc61cc67f4d6dcf15d5ce76dcb2304d6a",
+  "palomar_release": "1377c2d090125abd17c5440988ed9494e7a4c6e1395e40e2238b179b6dc2e58d",
+  "palomar_totals": {
+    "results": 544,
+    "projects": 447
+  },
+  "palomar_entries_read": 544,
+  "complete_registry_listing": true,
+  "candidate_evidence": [
+    {
+      "atlas_id": "openai-math:107",
+      "atlas_title": "Matrix multiplication with exponent at most 9/4",
+      "palomar_id": "PALOMAR-2026-10-11-000007",
+      "palomar_version": 1,
+      "palomar_title": "Matrix multiplication: omega at most 9/4 over every ring",
+      "relationship": "adapts",
+      "basis": "source_document_identifier",
+      "paper": {
+        "authors": [
+          {
+            "name": "OpenAI"
+          }
+        ],
+        "identifier": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Matrix-Multiplication-Nine-Fourths-October-2-2026/paper.pdf",
+        "relationship": "adapts",
+        "title": "An Upper Bound of 9/4 for the Matrix Multiplication Exponent",
+        "type": "paper"
+      }
+    },
+    {
+      "atlas_id": "openai-math:107",
+      "atlas_title": "Matrix multiplication with exponent at most 9/4",
+      "palomar_id": "PALOMAR-2026-10-08-000005",
+      "palomar_version": 1,
+      "palomar_title": "Matrix multiplication exponent at most 9/4 over arbitrary fields",
+      "relationship": "adapts",
+      "basis": "source_document_identifier",
+      "paper": {
+        "authors": [
+          {
+            "name": "OpenAI"
+          }
+        ],
+        "identifier": "https://github.com/openai/math/tree/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Matrix-Multiplication-Nine-Fourths-October-2-2026",
+        "location": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Matrix-Multiplication-Nine-Fourths-October-2-2026/build/paper.tex",
+        "relationship": "adapts",
+        "title": "An Upper Bound of 9/4 for the Matrix Multiplication Exponent",
+        "type": "paper"
+      }
+    },
+    {
+      "atlas_id": "openai-math:149",
+      "atlas_title": "Classwise permanence for weakly reversible mass-action systems",
+      "palomar_id": "PALOMAR-2026-10-11-000020",
+      "palomar_version": 1,
+      "palomar_title": "Quantitative permanence and recovery with vanishing reverse rates",
+      "relationship": "adapts",
+      "basis": "exact_normalized_source_title",
+      "paper": {
+        "authors": [],
+        "location": "https://github.com/openai/math/tree/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Uniform-Permanence-in-Weakly-Reversible-Mass-Action-Systems-October-5-2026",
+        "relationship": "adapts",
+        "title": "Uniform permanence in weakly reversible mass-action systems",
+        "type": "paper"
+      }
+    },
+    {
+      "atlas_id": "openai-math:149",
+      "atlas_title": "Classwise permanence for weakly reversible mass-action systems",
+      "palomar_id": "PALOMAR-2026-10-11-000020",
+      "palomar_version": 1,
+      "palomar_title": "Quantitative permanence and recovery with vanishing reverse rates",
+      "relationship": "adapts",
+      "basis": "exact_normalized_source_title",
+      "paper": {
+        "authors": [],
+        "location": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/docs/149.md",
+        "relationship": "adapts",
+        "title": "Boundedness and persistence of weakly reversible mass-action systems",
+        "type": "paper"
+      }
+    },
+    {
+      "atlas_id": "openai-math:238",
+      "atlas_title": "Optimal logarithmic mixing of the Thorp shuffle",
+      "palomar_id": "PALOMAR-2026-10-08-000007",
+      "palomar_version": 1,
+      "palomar_title": "Sharp robustness and stability of the four-row permanent inequality",
+      "relationship": "adapts",
+      "basis": "exact_normalized_source_title",
+      "paper": {
+        "authors": [
+          {
+            "name": "OpenAI"
+          }
+        ],
+        "identifier": "https://github.com/openai/math/tree/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/A-strict-four-row-permanent-inequality-and-permutation-moments-September-26-2026",
+        "relationship": "adapts",
+        "title": "A strict four-row permanent inequality and permutation moments",
+        "type": "paper"
+      }
+    },
+    {
+      "atlas_id": "openai-math:367",
+      "atlas_title": "The critical dimension for the one-phase Bernoulli problem",
+      "palomar_id": "PALOMAR-2026-10-14-000010",
+      "palomar_version": 1,
+      "palomar_title": "Flatness of one-homogeneous one-phase Bernoulli minimizers in dimensions at most six",
+      "relationship": "formalizes",
+      "basis": "exact_normalized_source_title",
+      "paper": {
+        "authors": [
+          {
+            "name": "OpenAI"
+          }
+        ],
+        "identifier": "https://github.com/openai/math/tree/main/preprints/The-critical-dimension-for-one-phase-Bernoulli-minimizers-September-24-2026",
+        "location": "Theorem 1.1, first sentence (flatness for 1 ≤ d ≤ 6); preprint dated September 24, 2026",
+        "relationship": "formalizes",
+        "title": "The critical dimension for one-phase Bernoulli minimizers",
+        "type": "paper"
+      }
+    }
+  ],
+  "background_evidence_count": 75,
+  "measurement": {
+    "controller_commit": "889747be9f1a47ca700aab48ec5a5cd1f36ab854",
+    "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38641690595",
+    "artifact_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/38641690595/artifacts/11931111140",
+    "artifact_sha256": "1559cbd77fe68f1fb7e4f75325cf4cbf0741218737767fd0fb4c82f9b31cdbd4",
+    "source_snapshots_retention_days": 30,
+    "candidate_scope": "Direct mathematical-source identifiers or exact normalized source titles with formalizes/adapts/independently-proves relationship. Background citations excluded."
+  }
+}
