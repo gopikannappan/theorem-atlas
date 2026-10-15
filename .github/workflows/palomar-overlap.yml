@@ -1,0 +1,35 @@
+name: Atlas Palomar overlap measurement
+on:
+  pull_request:
+    paths:
+      - 'scripts/measure_palomar_overlap.py'
+      - '.github/workflows/palomar-overlap.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: palomar-overlap-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  compare:
+    # Bounded comparison is checkpointed; future live reads are explicit.
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.11'
+      - name: Compare public records without executing proof code
+        run: python3 scripts/measure_palomar_overlap.py
+      - name: Preserve dataset snapshots and comparison
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: atlas-palomar-overlap
+          path: comparison-output/
+          retention-days: 30
+          if-no-files-found: error
