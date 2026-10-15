@@ -1,0 +1,174 @@
+{
+  "benchmark_id": "ai-fidelity-pilot-v1",
+  "observations": [
+    {
+      "id": "q7m2",
+      "command": [
+        "lean",
+        "/cases/fixtures/q7m2.lean"
+      ],
+      "source_sha256": "17d8890ff451c535ced00cd0fcb2772c9acb92234957c8a6c61831f72ed7f326",
+      "exit_code": 0,
+      "stdout": "'candidate' does not depend on any axioms\n",
+      "stderr": "",
+      "scope": "compiler_and_axioms_only",
+      "fidelity": "not_evaluated",
+      "certification": "none"
+    },
+    {
+      "id": "p4v9",
+      "command": [
+        "lean",
+        "/cases/fixtures/p4v9.lean"
+      ],
+      "source_sha256": "5c6aa9e93ee8237dbbf109111153314f4278700590d7f0d5e0c1085ddc9c02b8",
+      "exit_code": 0,
+      "stdout": "'candidate' does not depend on any axioms\n",
+      "stderr": "",
+      "scope": "compiler_and_axioms_only",
+      "fidelity": "not_evaluated",
+      "certification": "none"
+    },
+    {
+      "id": "r8c1",
+      "command": [
+        "lean",
+        "/cases/fixtures/r8c1.lean"
+      ],
+      "source_sha256": "aa12c750f637d440984ee6323076310dcc31e309c2e75d1165a06ff89668cceb",
+      "exit_code": 0,
+      "stdout": "'candidate' does not depend on any axioms\n",
+      "stderr": "",
+      "scope": "compiler_and_axioms_only",
+      "fidelity": "not_evaluated",
+      "certification": "none"
+    },
+    {
+      "id": "t3a6",
+      "command": [
+        "lean",
+        "/cases/fixtures/t3a6.lean"
+      ],
+      "source_sha256": "946fc743c74f82565f09e54a5f50f5b1bc59471994082ca60bb72dec0455984f",
+      "exit_code": 0,
+      "stdout": "'candidate' does not depend on any axioms\n",
+      "stderr": "",
+      "scope": "compiler_and_axioms_only",
+      "fidelity": "not_evaluated",
+      "certification": "none"
+    },
+    {
+      "id": "u6b3",
+      "command": [
+        "lean",
+        "/cases/fixtures/u6b3.lean"
+      ],
+      "source_sha256": "9f6b683a047e02b1dc05b90f17a141c3935354bc90c349f66fdfd6e1dfe9c8a0",
+      "exit_code": 0,
+      "stdout": "'candidate' does not depend on any axioms\n",
+      "stderr": "",
+      "scope": "compiler_and_axioms_only",
+      "fidelity": "not_evaluated",
+      "certification": "none"
+    },
+    {
+      "id": "v1c8",
+      "command": [
+        "lean",
+        "/cases/fixtures/v1c8.lean"
+      ],
+      "source_sha256": "555585fe167f7c0aef53c4dd67174905bac4bdf5881fbf88127636d0ba2f11df",
+      "exit_code": 0,
+      "stdout": "'candidate' does not depend on any axioms\n",
+      "stderr": "",
+      "scope": "compiler_and_axioms_only",
+      "fidelity": "not_evaluated",
+      "certification": "none"
+    },
+    {
+      "id": "w7d2",
+      "command": [
+        "lean",
+        "/cases/fixtures/w7d2.lean"
+      ],
+      "source_sha256": "37f134dce0d6bf88cbbffa09ca87758673413d7082454be416a42f5e33a55bbf",
+      "exit_code": 0,
+      "stdout": "'candidate' does not depend on any axioms\n",
+      "stderr": "",
+      "scope": "compiler_and_axioms_only",
+      "fidelity": "not_evaluated",
+      "certification": "none"
+    },
+    {
+      "id": "x3a9",
+      "command": [
+        "lean",
+        "/cases/fixtures/x3a9.lean"
+      ],
+      "source_sha256": "619eba3959c881f9d3a3e789b0c6e681582ecf94f006920fc3ba186fe1fa2e82",
+      "exit_code": 0,
+      "stdout": "'candidate' does not depend on any axioms\n",
+      "stderr": "",
+      "scope": "compiler_and_axioms_only",
+      "fidelity": "not_evaluated",
+      "certification": "none"
+    },
+    {
+      "id": "y8f5",
+      "command": [
+        "lean",
+        "/cases/fixtures/y8f5.lean"
+      ],
+      "source_sha256": "cc2b23554bf4a77879c7c9b0d2d8f41b21fb6e5a5932203989e0f427db4e509b",
+      "exit_code": 0,
+      "stdout": "'candidate' does not depend on any axioms\n",
+      "stderr": "",
+      "scope": "compiler_and_axioms_only",
+      "fidelity": "not_evaluated",
+      "certification": "none"
+    },
+    {
+      "id": "z2c6",
+      "command": [
+        "lean",
+        "/cases/fixtures/z2c6.lean"
+      ],
+      "source_sha256": "d3779e0f85f844fc31c14fb4f8adb4d10f0766be9d5850f5dcbd1f2b68157768",
+      "exit_code": 0,
+      "stdout": "'candidate' does not depend on any axioms\n",
+      "stderr": "",
+      "scope": "compiler_and_axioms_only",
+      "fidelity": "not_evaluated",
+      "certification": "none"
+    },
+    {
+      "id": "b5e7",
+      "command": [
+        "lean",
+        "/cases/fixtures/b5e7.lean"
+      ],
+      "source_sha256": "4481959ea8721fc5d22325560351f5dc3e042dd016de9fdda5e230fe263ce549",
+      "exit_code": 0,
+      "stdout": "'candidate' does not depend on any axioms\n",
+      "stderr": "",
+      "scope": "compiler_and_axioms_only",
+      "fidelity": "not_evaluated",
+      "certification": "none"
+    },
+    {
+      "id": "d9b4",
+      "command": [
+        "lean",
+        "/cases/fixtures/d9b4.lean"
+      ],
+      "source_sha256": "e33669ba6cc7bb70acf145152b3ca07895326e29ed96cf89668f0925e6b112cb",
+      "exit_code": 0,
+      "stdout": "'candidate' does not depend on any axioms\n",
+      "stderr": "",
+      "scope": "compiler_and_axioms_only",
+      "fidelity": "not_evaluated",
+      "certification": "none"
+    }
+  ],
+  "certification": "none"
+}

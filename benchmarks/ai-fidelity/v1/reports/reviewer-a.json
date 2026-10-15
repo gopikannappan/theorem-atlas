@@ -1,0 +1,126 @@
+{
+  "benchmark_id": "ai-fidelity-pilot-v1",
+  "reviewer_id": "blind-pilot-a",
+  "model_family": "GPT-6",
+  "model_version": null,
+  "source_commit": "5ad31c8ce250d75bec9acc65ec3bd05781dcb987",
+  "packet_git_blob": "cc185fe638d76d954c3910af287b01d4660d10d4",
+  "tool_access": {
+    "method": "Remote GitHub fetch_file only",
+    "file_reads": 14,
+    "files_read": "Frozen REVIEW_PROMPT.md, cases.json, and the twelve listed Lean fixtures",
+    "local_commands": false,
+    "proof_execution": false,
+    "limitations": "Bounded statement screening only; exact model version and independent context isolation authentication unavailable. No compiler verdicts or other reviewers' reports inspected."
+  },
+  "cases": [
+    {
+      "id": "q7m2",
+      "verdict": "aligned",
+      "category": "equivalent",
+      "source_obligation": "For every natural n, including zero, n + 0 equals n.",
+      "lean_location": "benchmarks/ai-fidelity/v1/fixtures/q7m2.lean:3, candidate",
+      "explanation": "The arbitrary Nat parameter supplies universal scope, and the conclusion is exactly the advertised equality without additional hypotheses.",
+      "counterexample_or_scope_argument": "Instantiating n with any natural, including 0, gives the required instance; no scope discrepancy applies."
+    },
+    {
+      "id": "p4v9",
+      "verdict": "mismatch",
+      "category": "definition_mismatch",
+      "source_obligation": "Even natural numbers are precisely doubles of natural numbers, and every even number has such a witness.",
+      "lean_location": "benchmarks/ai-fidelity/v1/fixtures/p4v9.lean:3, EvenCandidate; line 5, candidate",
+      "explanation": "The reachable definition equates evenness with being zero. The candidate therefore handles only zero, rather than the source's even numbers.",
+      "counterexample_or_scope_argument": "The number 2 satisfies the source definition with k = 1 but does not satisfy EvenCandidate 2. The selected theorem cannot be applied to this source-even input."
+    },
+    {
+      "id": "r8c1",
+      "verdict": "aligned",
+      "category": "equivalent",
+      "source_obligation": "Every natural n has a natural m strictly greater than n.",
+      "lean_location": "benchmarks/ai-fidelity/v1/fixtures/r8c1.lean:3, candidate",
+      "explanation": "The declaration has the exact universal-existential quantifier order, natural domains, and strict comparison requested.",
+      "counterexample_or_scope_argument": "The witness may depend on each n, as required; n + 1 supplies the displayed witness. No scope discrepancy applies."
+    },
+    {
+      "id": "t3a6",
+      "verdict": "mismatch",
+      "category": "added_assumption",
+      "source_obligation": "Every natural number, without restriction, is zero or a successor.",
+      "lean_location": "benchmarks/ai-fidelity/v1/fixtures/t3a6.lean:3, candidate",
+      "explanation": "The candidate adds the hypothesis n = 0. Its conclusion matches the advertised disjunction, but its applicability is restricted to the zero case.",
+      "counterexample_or_scope_argument": "At n = 1 the source requires the successor alternative, while the candidate requires an unavailable proof of 1 = 0. This is a partial formalization, not a claim that the source is false."
+    },
+    {
+      "id": "u6b3",
+      "verdict": "aligned",
+      "category": "equivalent",
+      "source_obligation": "For every natural n, n = 0 holds if and only if n + 1 = 1.",
+      "lean_location": "benchmarks/ai-fidelity/v1/fixtures/u6b3.lean:3, candidate",
+      "explanation": "The arbitrary natural parameter and biconditional express both directions with precisely the stated equalities.",
+      "counterexample_or_scope_argument": "Both implications are present and there are no added hypotheses or restricted inputs; no counterexample to correspondence applies."
+    },
+    {
+      "id": "v1c8",
+      "verdict": "mismatch",
+      "category": "quantifier_mismatch",
+      "source_obligation": "For each natural n, a greater natural m exists.",
+      "lean_location": "benchmarks/ai-fidelity/v1/fixtures/v1c8.lean:3, candidate",
+      "explanation": "The candidate existentially quantifies n as well as m, proving only that one increasing pair exists.",
+      "counterexample_or_scope_argument": "The witnesses 0 and 1 discharge the entire candidate but provide no instance for an arbitrary prescribed n such as 100. Both propositions are true over Nat, but their stated scope differs."
+    },
+    {
+      "id": "w7d2",
+      "verdict": "aligned",
+      "category": "equivalent",
+      "source_obligation": "Evenness means possessing a natural double witness, and every even natural has that witness.",
+      "lean_location": "benchmarks/ai-fidelity/v1/fixtures/w7d2.lean:3, EvenCandidate; line 5, candidate",
+      "explanation": "EvenCandidate is defined exactly as the source's double-witness condition. Unfolding it makes the candidate the requested implication. The source's 'precisely when' is realized by the definition itself.",
+      "counterexample_or_scope_argument": "For any natural n, EvenCandidate n and existence of a natural k with n = 2 * k are definitionally the same proposition, so neither direction loses inputs."
+    },
+    {
+      "id": "x3a9",
+      "verdict": "mismatch",
+      "category": "vacuous_hypothesis",
+      "source_obligation": "Every natural n is strictly smaller than n + 1 without any premise.",
+      "lean_location": "benchmarks/ai-fidelity/v1/fixtures/x3a9.lean:3, candidate",
+      "explanation": "The candidate requires n < n, an impossible hypothesis, and derives its conclusion by eliminating the resulting contradiction.",
+      "counterexample_or_scope_argument": "No natural n can satisfy the added premise. Even the source instance at n = 0 cannot be obtained by applying candidate without supplying an impossible proof of 0 < 0."
+    },
+    {
+      "id": "y8f5",
+      "verdict": "aligned",
+      "category": "equivalent",
+      "source_obligation": "Every natural is either zero or one more than a natural.",
+      "lean_location": "benchmarks/ai-fidelity/v1/fixtures/y8f5.lean:3, candidate",
+      "explanation": "The arbitrary Nat parameter, zero disjunct, and existential successor disjunct match the source exactly.",
+      "counterexample_or_scope_argument": "Zero is covered by the first disjunct and every successor by the second with its predecessor as witness; no input is excluded."
+    },
+    {
+      "id": "z2c6",
+      "verdict": "mismatch",
+      "category": "domain_restriction",
+      "source_obligation": "The identity n + 0 = n must cover every natural, expressly including zero.",
+      "lean_location": "benchmarks/ai-fidelity/v1/fixtures/z2c6.lean:3, candidate",
+      "explanation": "The declaration proves the equality only for numbers of the form Nat.succ k. Its arbitrary k covers positive naturals but does not supply the required zero instance.",
+      "counterexample_or_scope_argument": "There is no natural k with Nat.succ k = 0. Although 0 + 0 = 0 is independently immediate, no bridge covering it is part of the selected declaration."
+    },
+    {
+      "id": "b5e7",
+      "verdict": "aligned",
+      "category": "equivalent",
+      "source_obligation": "For every natural n, n < n + 1.",
+      "lean_location": "benchmarks/ai-fidelity/v1/fixtures/b5e7.lean:3, candidate",
+      "explanation": "The declaration states precisely the requested strict inequality for an arbitrary natural and adds no hypotheses.",
+      "counterexample_or_scope_argument": "The Nat parameter ranges over every source input, including zero; no discrepancy in domain or conclusion applies."
+    },
+    {
+      "id": "d9b4",
+      "verdict": "mismatch",
+      "category": "missing_direction",
+      "source_obligation": "Both n = 0 implies n + 1 = 1 and n + 1 = 1 implies n = 0 must be expressed.",
+      "lean_location": "benchmarks/ai-fidelity/v1/fixtures/d9b4.lean:3, candidate",
+      "explanation": "The selected declaration contains only the forward implication. The reverse implication required by 'if and only if' is absent.",
+      "counterexample_or_scope_argument": "The source's reverse direction is true over Nat, but its proof would require an additional argument such as successor injectivity. The candidate alone supplies no reverse implication; this is partial coverage."
+    }
+  ]
+}

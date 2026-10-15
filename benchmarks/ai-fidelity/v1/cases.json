@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "benchmark_id": "ai-fidelity-pilot-v1",
+  "scope": "statement_fidelity_screening",
+  "source_kind": "original_synthetic_benchmark_statements",
+  "toolchain": "leanprover/lean4:v4.34.1",
+  "cases": [
+    {
+      "id": "q7m2",
+      "source_statement": "Every natural number n satisfies n + 0 = n, including n = 0.",
+      "lean_file": "benchmarks/ai-fidelity/v1/fixtures/q7m2.lean",
+      "declaration": "candidate"
+    },
+    {
+      "id": "p4v9",
+      "source_statement": "A natural number n is even precisely when n = 2 * k for some natural number k. Every even n can be written as 2 * k for a natural k.",
+      "lean_file": "benchmarks/ai-fidelity/v1/fixtures/p4v9.lean",
+      "declaration": "candidate"
+    },
+    {
+      "id": "r8c1",
+      "source_statement": "For every natural number n, there is a natural number m strictly greater than n.",
+      "lean_file": "benchmarks/ai-fidelity/v1/fixtures/r8c1.lean",
+      "declaration": "candidate"
+    },
+    {
+      "id": "t3a6",
+      "source_statement": "Every natural number is either zero or one more than some natural number.",
+      "lean_file": "benchmarks/ai-fidelity/v1/fixtures/t3a6.lean",
+      "declaration": "candidate"
+    },
+    {
+      "id": "u6b3",
+      "source_statement": "A natural number n equals zero if and only if n + 1 equals one.",
+      "lean_file": "benchmarks/ai-fidelity/v1/fixtures/u6b3.lean",
+      "declaration": "candidate"
+    },
+    {
+      "id": "v1c8",
+      "source_statement": "For every natural number n, there is a natural number m strictly greater than n.",
+      "lean_file": "benchmarks/ai-fidelity/v1/fixtures/v1c8.lean",
+      "declaration": "candidate"
+    },
+    {
+      "id": "w7d2",
+      "source_statement": "A natural number n is even precisely when n = 2 * k for some natural number k. Every even n can be written as 2 * k for a natural k.",
+      "lean_file": "benchmarks/ai-fidelity/v1/fixtures/w7d2.lean",
+      "declaration": "candidate"
+    },
+    {
+      "id": "x3a9",
+      "source_statement": "Every natural number n is strictly less than n + 1.",
+      "lean_file": "benchmarks/ai-fidelity/v1/fixtures/x3a9.lean",
+      "declaration": "candidate"
+    },
+    {
+      "id": "y8f5",
+      "source_statement": "Every natural number is either zero or one more than some natural number.",
+      "lean_file": "benchmarks/ai-fidelity/v1/fixtures/y8f5.lean",
+      "declaration": "candidate"
+    },
+    {
+      "id": "z2c6",
+      "source_statement": "Every natural number n satisfies n + 0 = n, including n = 0.",
+      "lean_file": "benchmarks/ai-fidelity/v1/fixtures/z2c6.lean",
+      "declaration": "candidate"
+    },
+    {
+      "id": "b5e7",
+      "source_statement": "Every natural number n is strictly less than n + 1.",
+      "lean_file": "benchmarks/ai-fidelity/v1/fixtures/b5e7.lean",
+      "declaration": "candidate"
+    },
+    {
+      "id": "d9b4",
+      "source_statement": "A natural number n equals zero if and only if n + 1 equals one.",
+      "lean_file": "benchmarks/ai-fidelity/v1/fixtures/d9b4.lean",
+      "declaration": "candidate"
+    }
+  ],
+  "reference_labels_included": false,
+  "certification": "none"
+}
