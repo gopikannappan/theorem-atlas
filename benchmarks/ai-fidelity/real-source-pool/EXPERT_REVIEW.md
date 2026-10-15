@@ -1,0 +1,14 @@
+# Instructions for independent expert adjudication
+
+The objective is to establish trustworthy reference judgments and grade AI explanations. Compilation and two AIs agreeing cannot supply this reference by themselves.
+
+1. Copy adjudication-template.json into a new review record; keep the empty template unchanged. State identity, relevant expertise, conflicts, independence from the case author, and whether source/key/report exposure occurred. Do not invent reviewer identities or backfill an exposure statement.
+2. For pilot cases, open only cases.json and its Lean fixtures at commit5ad31c8ce250d75bec9acc65ec3bd05781dcb987. For real-source cases, use pool.json's pinned source/Lean locators but defer the proposed-design section. The pool and pilot are public, so first-pass blindness is a process request, not an independently verified fact.
+3. Compare domains, assumptions, quantifier order, reachable custom definitions, and all advertised conclusion directions. Accept equivalent formulations when an actual bridge is supplied. Distinguish a source theorem being true from the selected declaration expressing its full scope. Record ambiguous task boundaries rather than forcing a binary answer.
+4. For each verdict (aligned, mismatch, or inconclusive), state the selected source obligation, exact citations, definition trace, and a counterexample or scope/equivalence argument. A mismatch can concern applicability even when both propositions are true. Reference slots stay pending until this evidence exists.
+5. Seal the entire first pass with an immutable commit or timestamped record before seeing the pilot answer key, AI reports, or author-intended design labels. Record that identity in first_pass.sealed_commit. Do not silently revise the initial judgment after exposure.
+6. Then inspect the pilot author key at commitc5162c020b733f2fd8734e9760757f36e6c20d82 and the two immutable reviewer reports identified in benchmarks/ai-fidelity/v1/run.json. Grade the verdict, explanation, location, and scope argument separately for every reviewer/case pair. A coincidentally correct label with incorrect reasoning must remain visible.
+7. Record proposed reference amendments separately with reasons. Where multiple experts disagree, retain both initial judgments and obtain a separate adjudication; do not resolve by AI majority vote. Do not replace the original author key or rewrite raw reviewer responses.
+8. Submit the record as a PR. This is reference adjudication, not automatic promotion of a catalogue theorem to audited/faithful. Existing independent trust and fidelity acceptance requirements still apply.
+
+The coordinator has left every expert decision and slot unassigned. The source pool contains review questions and planned adversarial changes, not validated reference labels. No outreach is sent by this repository workflow.

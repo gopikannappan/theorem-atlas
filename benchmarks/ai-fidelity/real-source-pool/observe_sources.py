@@ -8,7 +8,7 @@ import urllib.request
 
 SOURCES = [
     dict(id="erdos152-companion", url="https://raw.githubusercontent.com/google-deepmind/alphaproof-nexus-results/0647711a71183c1ea492ad60860776617ce1ea88/NaturalLanguageProofs/ErdosProblems/erdos152.pdf", git_blob="10cf3a8b982d128816dc66aff4bfc8cb9d260147", excerpt=True),
-    dict(id="imo2025-official", url="https://www.imo-official.org/assets/documents/problems/2025/2025_eng.pdf", git_blob=None, excerpt=False),
+    dict(id="imo2025-official", url="https://www.imo-official.org/assets/documents/problems/2025/2025_eng.pdf", git_blob=None, sha256="f6c56af26bf10ce0b7046c6861447f976a1b02d53ef7158061fc9e6344a82682", excerpt=False),
 ]
 
 def observe(source):
@@ -22,6 +22,8 @@ def observe(source):
             raise ValueError("source size exceeds budget")
         result["sha256"] = hashlib.sha256(data).hexdigest()
         result["git_blob"] = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+        if source.get("sha256") and result["sha256"] != source["sha256"]:
+            raise ValueError("observed official PDF hash changed")
         if source["git_blob"] and result["git_blob"] != source["git_blob"]:
             raise ValueError("pinned Git blob mismatch")
         if not data.startswith(b"%PDF-"):

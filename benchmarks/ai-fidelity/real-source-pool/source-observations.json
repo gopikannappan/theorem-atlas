@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "observations": [
+    {
+      "source_id": "erdos152-companion",
+      "url": "https://raw.githubusercontent.com/google-deepmind/alphaproof-nexus-results/0647711a71183c1ea492ad60860776617ce1ea88/NaturalLanguageProofs/ErdosProblems/erdos152.pdf",
+      "status": "observed",
+      "certification": "none",
+      "resolved_url": "https://raw.githubusercontent.com/google-deepmind/alphaproof-nexus-results/0647711a71183c1ea492ad60860776617ce1ea88/NaturalLanguageProofs/ErdosProblems/erdos152.pdf",
+      "sha256": "ec57666d3b8c052c560848f7bd8501f34ad0fcbc00c1be7c7a9010c0c274aa86",
+      "git_blob": "10cf3a8b982d128816dc66aff4bfc8cb9d260147",
+      "byte_count": 110988,
+      "extraction_exit_code": 0,
+      "extraction_stderr": "",
+      "page_one_excerpt": "Theorem. (Erdős #152) For a Sidon set A ⊂ N of size n, let I(A + A) count the isolated elements of the sumset — those s ∈ A + A with s ± 1 ∈ / A + A. Define f (n) as the minimum of I(A + A) over all Sidon sets of size n. Then f (n) ≥ (n2 − 100n − 16)/16, so in particular f (n) → ∞. Proof. The proof establishes, for every Sidon set A of size n: 16 · I(A + A) + 100n + 16 ≥ n2 . (⋆) Let D = {a − b : a, b ∈ A} denote the difference set and S = A + A the sumset. For any set X ⊆ Z, let Nk (X) := |x ∈ X : x + k ∈ X| be the number of pairs at distance k, V2 (X) := |x ∈ X : x ± 1 ∈ X| be the number of interior points, and I(X) be the isolated points . Let X ⊂ Z. We will employ",
+      "excerpt_scope": "First 180 whitespace-separated words of page1; not a full manuscript review"
+    },
+    {
+      "source_id": "imo2025-official",
+      "url": "https://www.imo-official.org/assets/documents/problems/2025/2025_eng.pdf",
+      "status": "observed",
+      "certification": "none",
+      "resolved_url": "https://www.imo-official.org/assets/documents/problems/2025/2025_eng.pdf",
+      "sha256": "f6c56af26bf10ce0b7046c6861447f976a1b02d53ef7158061fc9e6344a82682",
+      "git_blob": "5a5ad8fc2f6f7c0d758db50c539c038670d59fd8",
+      "byte_count": 79214
+    }
+  ],
+  "certification": "none",
+  "scope": "source_bytes_and_bounded_excerpt_only"
+}

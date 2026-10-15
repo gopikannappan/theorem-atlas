@@ -1,0 +1,257 @@
+{
+  "schema_version": 1,
+  "pool_id": "real-source-development-2026-10-15",
+  "state": "preparation_only",
+  "atlas_source_commit": "3006eb636759c8987c6bf8ab3cbda7a6782fecc3",
+  "held_out": false,
+  "performance_results": null,
+  "human_reference_available": false,
+  "certification": "none",
+  "families": [
+    {
+      "family_id": "normal-rings",
+      "kind": "research_level_algebra_source_human_formal_proof_llm",
+      "targets": [
+        {
+          "repository": "https://github.com/google-deepmind/alphaproof-nexus-results",
+          "commit": "0647711a71183c1ea492ad60860776617ce1ea88",
+          "file": "APNOutputs/StacksProject/NormalRings_normalRing_characterization.lean",
+          "line": 1029,
+          "declaration": "normalRing_characterization",
+          "url": "https://github.com/google-deepmind/alphaproof-nexus-results/blob/0647711a71183c1ea492ad60860776617ce1ea88/APNOutputs/StacksProject/NormalRings_normalRing_characterization.lean#L1029",
+          "source_git_blob": "0f6cdd84840e75835cbbc2a2b35019a5ae092f88",
+          "toolchain": "leanprover/lean4:v4.27.0",
+          "mathlib_commit": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+          "dependencies": [
+            "Mathlib"
+          ]
+        }
+      ],
+      "source": {
+        "repository": "https://github.com/stacks/stacks-project",
+        "commit": "a04446e57ec1fbc252a871afcec7752fb2807b14",
+        "file": "algebra.tex",
+        "git_blob": "ff4c47a74e8a273a49e6de7272a5c1311617cfc7",
+        "url": "https://github.com/stacks/stacks-project/blob/a04446e57ec1fbc252a871afcec7752fb2807b14/algebra.tex#L8275",
+        "label": "lemma-characterize-reduced-ring-normal",
+        "tag_url": "https://stacks.math.columbia.edu/tag/030C",
+        "scope": "The three-way equivalence under reducedness and finitely many minimal primes",
+        "author_selected_revision": "unknown",
+        "license": "GFDL; link only, no manuscript copied"
+      },
+      "scope_summary": "Under the source hypotheses, compare normality, integral closure in the total quotient ring, and a finite product of normal domains.",
+      "questions": [
+        "Trace custom NormalRing and NormalDomain, localization at every prime, IsIntegrallyClosed and the total quotient ring.",
+        "Show List.TFAE covers all three assertions, not just one implication.",
+        "Check reducedness, finiteness of minimal primes, empty product and zero-ring conventions, universe/index types.",
+        "Distinguish a stronger added Noetherian hypothesis from an equivalent reformulation; mathematical source provenance remains unresolved."
+      ],
+      "definition_locators": [
+        {
+          "repository": "https://github.com/leanprover-community/mathlib4",
+          "commit": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+          "file": "Mathlib/Data/List/TFAE.lean",
+          "git_blob": "6c900bfd25be7c77b5e17d975d69d30caa2eee6a"
+        },
+        {
+          "repository": "https://github.com/leanprover-community/mathlib4",
+          "commit": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+          "file": "Mathlib/RingTheory/IntegralClosure/IntegrallyClosed.lean",
+          "git_blob": "a779f153940e589e9d0e0b05c55d7b24e4a2c69e"
+        }
+      ],
+      "proposed_designs": [
+        {
+          "kind": "upstream",
+          "description": "Review the selected unmodified declaration."
+        },
+        {
+          "kind": "alternative",
+          "description": "Replace TFAE syntax with an explicitly connected cycle of implications; supply a checked equivalence bridge."
+        },
+        {
+          "kind": "defect",
+          "description": "Add Noetherianity while continuing to advertise the full finite-minimal-prime source claim."
+        }
+      ],
+      "readiness_gaps": [
+        "Independent reference labels pending",
+        "Exact upstream author-selected manuscript revision unknown",
+        "Proposed wrapper fixtures not authored or compiled"
+      ],
+      "state": "public_development_candidate",
+      "reference_status": "expert_pending",
+      "human_reviewer": null,
+      "held_out_eligible": false,
+      "variants_state": "design_only_not_compiled",
+      "performance_results": null,
+      "certification": "none"
+    },
+    {
+      "family_id": "erdos-152",
+      "kind": "research_combinatorics_llm_proof",
+      "targets": [
+        {
+          "repository": "https://github.com/google-deepmind/alphaproof-nexus-results",
+          "commit": "0647711a71183c1ea492ad60860776617ce1ea88",
+          "file": "APNOutputs/ErdosProblems/erdos_152.lean",
+          "line": 505,
+          "declaration": "Erdos152.target_theorem_0",
+          "url": "https://github.com/google-deepmind/alphaproof-nexus-results/blob/0647711a71183c1ea492ad60860776617ce1ea88/APNOutputs/ErdosProblems/erdos_152.lean#L505",
+          "source_git_blob": "e09219a2220f579656757682839069d30572d28b",
+          "toolchain": "leanprover/lean4:v4.27.0",
+          "mathlib_commit": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+          "dependencies": [
+            "FormalConjectures.Util.ProblemImports"
+          ]
+        }
+      ],
+      "source": {
+        "repository": "https://github.com/google-deepmind/alphaproof-nexus-results",
+        "commit": "0647711a71183c1ea492ad60860776617ce1ea88",
+        "file": "NaturalLanguageProofs/ErdosProblems/erdos152.pdf",
+        "git_blob": "10cf3a8b982d128816dc66aff4bfc8cb9d260147",
+        "sha256": "ec57666d3b8c052c560848f7bd8501f34ad0fcbc00c1be7c7a9010c0c274aa86",
+        "url": "https://github.com/google-deepmind/alphaproof-nexus-results/blob/0647711a71183c1ea492ad60860776617ce1ea88/NaturalLanguageProofs/ErdosProblems/erdos152.pdf",
+        "scope": "The divergence corollary on page1, not the full quantitative theorem or an infinite-Sidon-set variant",
+        "license": "Repository Apache-2.0; source remains linked; bounded excerpt observation retained",
+        "read_scope": "Only first180 words of page1 extracted in CI; full manuscript review pending"
+      },
+      "scope_summary": "For finite Sidon sets of prescribed size, consider the minimum count of isolated pair sums. The selected obligation is that this minimum tends to infinity with set size.",
+      "questions": [
+        "Match the exact Sidon convention, finite-set cardinality, minimum/index family and existence of admissible sets for each n.",
+        "Check ℕ versus positive integers or ℤ, especially truncated s - 1 at s = 0. This is a question, not an established defect.",
+        "Expand answer(True) and Tendsto atTop atTop to the quantified eventual lower-bound obligation.",
+        "Do not credit this declaration with the manuscript's quantitative bound. Inspect f_lower_bound_div separately if that stronger claim is selected."
+      ],
+      "definition_locators": [
+        {
+          "repository": "https://github.com/google-deepmind/formal-conjectures",
+          "commit": "7862bf6a6976c26acb086b6b2cec12ad1d92ce5d",
+          "file": "FormalConjectures/ErdosProblems/152.lean",
+          "git_blob": "c2d53de1c69f53544ddca5b359303b2b0f7be79d",
+          "scope": "Statement comparison only; this linked conjecture file contains placeholders and is not proof evidence"
+        },
+        {
+          "repository": "https://github.com/google-deepmind/formal-conjectures",
+          "commit": "7862bf6a6976c26acb086b6b2cec12ad1d92ce5d",
+          "file": "FormalConjectures/Util/Answer.lean",
+          "scope": "Trace answer notation and its syntax imports; not yet fully inspected"
+        }
+      ],
+      "proposed_designs": [
+        {
+          "kind": "upstream",
+          "description": "Review the selected limit corollary, explicitly scoped to the prose corollary."
+        },
+        {
+          "kind": "alternative",
+          "description": "Expand the limit as an eventual threshold statement; prove its bridge to Tendsto."
+        },
+        {
+          "kind": "defect",
+          "description": "Replace eventual threshold coverage by merely finding a large value at a selected input, leaving quantifier scope weaker."
+        }
+      ],
+      "readiness_gaps": [
+        "Independent reference labels pending",
+        "Full manuscript and imported Sidon/answer definitions require review",
+        "Proposed wrapper fixtures not authored or compiled"
+      ],
+      "state": "public_development_candidate",
+      "reference_status": "expert_pending",
+      "human_reviewer": null,
+      "held_out_eligible": false,
+      "variants_state": "design_only_not_compiled",
+      "performance_results": null,
+      "certification": "none"
+    },
+    {
+      "family_id": "imo-2025-p4",
+      "kind": "olympiad_source_human_formal_proofs_llm_not_research_novelty",
+      "targets": [
+        {
+          "repository": "https://github.com/harmonic-ai/IMO2025",
+          "commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+          "file": "HarmonicLean/IMO2025P4.lean",
+          "line": 1437,
+          "declaration": "IMO2025P4.main_theorem",
+          "url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/HarmonicLean/IMO2025P4.lean#L1437",
+          "source_git_blob": "6a026875c0236715a1f799a4262a3df0a49779dd",
+          "toolchain": "leanprover/lean4:v4.20.0-rc5",
+          "mathlib_commit": "4e685d14db58b1ab29024bb0761902a3615f3f14",
+          "dependencies": [
+            "HarmonicLean.Imports"
+          ]
+        },
+        {
+          "repository": "https://github.com/harmonic-ai/IMO2025",
+          "commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+          "file": "HarmonicLean/IMO2025P4_solve2.lean",
+          "line": 934,
+          "declaration": "IMO2025P4Solve2.main_theorem",
+          "url": "https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/HarmonicLean/IMO2025P4_solve2.lean#L934",
+          "source_git_blob": "407a3f4a4217de8c928e19fd5e709b73e7102068",
+          "toolchain": "leanprover/lean4:v4.20.0-rc5",
+          "mathlib_commit": "4e685d14db58b1ab29024bb0761902a3615f3f14",
+          "dependencies": [
+            "HarmonicLean.Imports"
+          ]
+        }
+      ],
+      "source": {
+        "url": "https://www.imo-official.org/assets/documents/problems/2025/2025_eng.pdf",
+        "landing_url": "https://www.imo-official.org/problems/2025/",
+        "page": 2,
+        "problem": 4,
+        "sha256": "f6c56af26bf10ce0b7046c6861447f976a1b02d53ef7158061fc9e6344a82682",
+        "observation_kind": "Content hash observed2026-10-15; official website has no repository commit pin",
+        "scope": "Classification of starting values for the infinite positive sequence and its three-largest-proper-divisor recurrence",
+        "license": "Official-source terms not determined; link only, no problem text copied"
+      },
+      "scope_summary": "Classify initial positive integers whose divisor-sum recurrence can continue forever with every term satisfying the source conditions. Review both directions of each set equality.",
+      "questions": [
+        "Map source a1,a2,... to Lean a0,a1,... with an explicit shift; do not flag indexing syntax alone.",
+        "Check properDivisors, descending sort and indexing0,1,2; prove the cardinality guard prevents default-index artifacts.",
+        "Compare both right-hand sets. Determine whether Coprime m10 already implies m>0; no human reference decision is supplied.",
+        "Require an infinite valid sequence, not merely arbitrarily long finite prefixes or a single successful successor.",
+        "Separate native-decision trust flags from mathematical statement fidelity; no clean fresh replay is claimed."
+      ],
+      "definition_locators": [
+        {
+          "repository": "https://github.com/harmonic-ai/IMO2025",
+          "commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+          "file": "HarmonicLean/Imports.lean",
+          "scope": "Trace pinned Mathlib definitions for properDivisors, sorting and Coprime"
+        }
+      ],
+      "proposed_designs": [
+        {
+          "kind": "upstream",
+          "description": "Review both existing complete proofs as potential valid alternative formulations; do not assume their equivalence."
+        },
+        {
+          "kind": "alternative",
+          "description": "Provide an explicit index-shift bridge between one-based positive indices and zero-based natural sequences."
+        },
+        {
+          "kind": "defect",
+          "description": "Keep only the necessary containment from the set classification, while still advertising a full classification."
+        }
+      ],
+      "readiness_gaps": [
+        "Independent reference labels pending",
+        "No explicit license file found in upstream tree; do not copy its proofs",
+        "Official source is byte-hashed, not repository-versioned",
+        "Proposed wrapper fixtures not authored or compiled"
+      ],
+      "state": "public_development_candidate",
+      "reference_status": "expert_pending",
+      "human_reviewer": null,
+      "held_out_eligible": false,
+      "variants_state": "design_only_not_compiled",
+      "performance_results": null,
+      "certification": "none"
+    }
+  ]
+}
