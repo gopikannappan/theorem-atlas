@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "benchmark_id": "ai-fidelity-pilot-v1",
+  "reference_status": "author_intent_only_expert_pending",
+  "human_reference_available": false,
+  "author": "benchmark coordinator",
+  "cases": [
+    {
+      "id": "q7m2",
+      "family": "nat_zero_identity",
+      "split": "challenge",
+      "intended_label": "aligned",
+      "intended_category": null,
+      "author_rationale": "The statement ranges over every natural number and states the requested identity.",
+      "expert_review": {
+        "status": "pending",
+        "reviewer": null
+      }
+    },
+    {
+      "id": "p4v9",
+      "family": "even_definition",
+      "split": "development",
+      "intended_label": "mismatch",
+      "intended_category": "definition_mismatch",
+      "author_rationale": "EvenCandidate includes only zero, whereas the source includes all even natural numbers, for example 2.",
+      "expert_review": {
+        "status": "pending",
+        "reviewer": null
+      }
+    },
+    {
+      "id": "r8c1",
+      "family": "nat_unbounded",
+      "split": "challenge",
+      "intended_label": "aligned",
+      "intended_category": null,
+      "author_rationale": "The universal n and dependent existential m match the source.",
+      "expert_review": {
+        "status": "pending",
+        "reviewer": null
+      }
+    },
+    {
+      "id": "t3a6",
+      "family": "zero_or_successor",
+      "split": "development",
+      "intended_label": "mismatch",
+      "intended_category": "added_assumption",
+      "author_rationale": "The n = 0 hypothesis restricts the theorem to zero; the source covers every natural number.",
+      "expert_review": {
+        "status": "pending",
+        "reviewer": null
+      }
+    },
+    {
+      "id": "u6b3",
+      "family": "successor_zero_iff",
+      "split": "development",
+      "intended_label": "aligned",
+      "intended_category": null,
+      "author_rationale": "Both directions of the zero/successor identity equivalence are present.",
+      "expert_review": {
+        "status": "pending",
+        "reviewer": null
+      }
+    },
+    {
+      "id": "v1c8",
+      "family": "nat_unbounded",
+      "split": "challenge",
+      "intended_label": "mismatch",
+      "intended_category": "quantifier_mismatch",
+      "author_rationale": "The universal n has become existential; one example is weaker than the source's every-n claim.",
+      "expert_review": {
+        "status": "pending",
+        "reviewer": null
+      }
+    },
+    {
+      "id": "w7d2",
+      "family": "even_definition",
+      "split": "development",
+      "intended_label": "aligned",
+      "intended_category": null,
+      "author_rationale": "The custom definition and its unfolded conclusion match the source.",
+      "expert_review": {
+        "status": "pending",
+        "reviewer": null
+      }
+    },
+    {
+      "id": "x3a9",
+      "family": "successor_order",
+      "split": "development",
+      "intended_label": "mismatch",
+      "intended_category": "vacuous_hypothesis",
+      "author_rationale": "The additional n < n hypothesis is impossible; the candidate is vacuous rather than unconditional.",
+      "expert_review": {
+        "status": "pending",
+        "reviewer": null
+      }
+    },
+    {
+      "id": "y8f5",
+      "family": "zero_or_successor",
+      "split": "development",
+      "intended_label": "aligned",
+      "intended_category": null,
+      "author_rationale": "Natural-number case analysis supplies zero and successor cases with the source's domain.",
+      "expert_review": {
+        "status": "pending",
+        "reviewer": null
+      }
+    },
+    {
+      "id": "z2c6",
+      "family": "nat_zero_identity",
+      "split": "challenge",
+      "intended_label": "mismatch",
+      "intended_category": "domain_restriction",
+      "author_rationale": "Only successor naturals are covered; the source explicitly also includes zero.",
+      "expert_review": {
+        "status": "pending",
+        "reviewer": null
+      }
+    },
+    {
+      "id": "b5e7",
+      "family": "successor_order",
+      "split": "development",
+      "intended_label": "aligned",
+      "intended_category": null,
+      "author_rationale": "The theorem is unconditional and quantifies over all naturals.",
+      "expert_review": {
+        "status": "pending",
+        "reviewer": null
+      }
+    },
+    {
+      "id": "d9b4",
+      "family": "successor_zero_iff",
+      "split": "development",
+      "intended_label": "mismatch",
+      "intended_category": "missing_direction",
+      "author_rationale": "Only zero-to-successor equality is selected; the source also asserts the converse.",
+      "expert_review": {
+        "status": "pending",
+        "reviewer": null
+      }
+    }
+  ],
+  "held_out_status": "not_established",
+  "note": "Development/challenge family splits are planning partitions. The benchmark author knows all cases; challenge is not an independently hidden test set. All cases become public after reviewer responses freeze."
+}
