@@ -1,0 +1,39 @@
+name: AI fidelity benchmark fixture compilation
+on:
+  pull_request:
+    paths:
+      - 'benchmarks/ai-fidelity/**'
+      - '.github/workflows/fidelity-benchmark.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: fidelity-benchmark-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  compile-fixtures:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Prepare isolated pinned Lean image without credentials
+        run: |
+          mkdir -p benchmark-evidence
+          cp benchmarks/ai-fidelity/v1/cases.json benchmark-evidence/
+          git rev-parse HEAD > benchmark-evidence/controller-commit.txt
+          set -o pipefail
+          timeout --kill-after=20s 600s docker build --progress plain -t atlas-fidelity-fixtures benchmarks/ai-fidelity 2>&1 | tee benchmark-evidence/preparation.log
+      - name: Compile fixtures offline as non-root with read-only inputs
+        run: |
+          set -o pipefail
+          timeout --kill-after=10s 300s docker run --rm --init --network none --cap-drop ALL --security-opt no-new-privileges --read-only --pids-limit 128 --memory 2g --cpus 2 --tmpfs /tmp:rw,nosuid,nodev,size=128m atlas-fidelity-fixtures 2>&1 | tee benchmark-evidence/observations.log
+      - name: Retain compiler diagnostics
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: fidelity-benchmark-fixtures
+          path: benchmark-evidence/
+          retention-days: 30
+          if-no-files-found: error
