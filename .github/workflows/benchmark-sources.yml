@@ -1,0 +1,35 @@
+name: Benchmark source observations
+on:
+  pull_request:
+    paths:
+      - 'benchmarks/ai-fidelity/real-source-pool/**'
+      - '.github/workflows/benchmark-sources.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: benchmark-sources-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  observe-sources:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.11'
+      - name: Install PDF text reader
+        run: timeout --kill-after=10s 120s sudo apt-get update && timeout --kill-after=10s 120s sudo apt-get install -y --no-install-recommends poppler-utils
+      - name: Observe pinned and official source bytes
+        run: timeout --kill-after=10s 150s python3 benchmarks/ai-fidelity/real-source-pool/observe_sources.py
+      - name: Retain bounded source diagnostics
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: benchmark-source-observations
+          path: source-evidence/
+          retention-days: 30
+          if-no-files-found: warn
