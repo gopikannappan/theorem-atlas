@@ -20,7 +20,6 @@ theorem consecutive_factorization_iff (n m : ℕ) (hn : 4 ≤ n) :
       have hm0 : m % 2 = 0 := by omega
       have hs0 : (n.factorial + 1) % 2 = 0 := by
         rw [hsol, Nat.pow_mod, hm0]
-        norm_num
       omega
     have hm : m = 2 * (m / 2) + 1 := by omega
     refine ⟨m / 2, m / 2 + 1, rfl, ?_, ?_, ?_⟩
@@ -63,10 +62,10 @@ theorem fixed_modulus_eventually_one (q n : ℕ) (hq : 0 < q) (hn : q ≤ n) :
     Nat.mod_eq_zero_of_dvd (Nat.dvd_factorial hq hn)
   simp [Nat.add_mod, hz]
 
-#print consecutive_factorization_iff
-#print prime_successor_square_divides
-#print prime_successor_obstruction
-#print fixed_modulus_eventually_one
+#check consecutive_factorization_iff
+#check prime_successor_square_divides
+#check prime_successor_obstruction
+#check fixed_modulus_eventually_one
 #print axioms consecutive_factorization_iff
 #print axioms prime_successor_square_divides
 #print axioms prime_successor_obstruction
