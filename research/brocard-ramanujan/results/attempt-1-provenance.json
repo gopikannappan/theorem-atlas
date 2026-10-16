@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "state": "bounded_attempt_complete",
+  "date": "2026-10-16",
+  "source_commit": "c4f13e1a9e3111cfc1e228156d2fa43d395253bc",
+  "run_id": 38928647066,
+  "job_id": 117066628307,
+  "artifact_id": 12058440606,
+  "artifact_digest": "sha256:2ddd19fa655d23d23d9ffba6e6cf3b56934480a914e54472815e0ee9d2986069",
+  "report": "attempt-1-report.json",
+  "certificate": "attempt-1-certificate.json",
+  "scope": "exact n=0..2000 baseline plus 10000 explicitly bounded large n only",
+  "global_completeness": false,
+  "new_solution_identified": false,
+  "novelty": "not_established",
+  "compiler": {
+    "declaration": "BrocardResearch.nonsquare_of_modular_obstruction",
+    "file": "research/brocard-ramanujan/ModularObstruction.lean",
+    "source_commit": "c4f13e1a9e3111cfc1e228156d2fa43d395253bc",
+    "source_git_blob": "49ba15092b1c05a2d813ba0316bdae995a48d60b",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "mathlib": null,
+    "assumptions": [
+      "N,q are natural numbers",
+      "0<q",
+      "For every natural r<q, (r*r)%q is not N%q"
+    ],
+    "conclusion": "For every natural m, N is not m*m",
+    "dependencies": [
+      "Nat.mul_mod",
+      "Nat.mod_lt",
+      "congrArg"
+    ],
+    "exit_code": 0,
+    "printed_axioms": [
+      "propext"
+    ],
+    "scope": "generic lemma compilation and axioms only",
+    "fresh_replay": "not_run",
+    "end_to_end_search_verification": false,
+    "fidelity_review": "pending independent review"
+  },
+  "execution": {
+    "local": false,
+    "job_timeout_minutes": 12,
+    "search_timeout_seconds": 180,
+    "compiler_timeout_seconds": 30,
+    "attempts": 1
+  },
+  "certification": "none"
+}
