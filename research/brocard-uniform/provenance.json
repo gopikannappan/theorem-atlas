@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "state": "candidate_unreviewed",
+  "mathematical_problem": "For n,m positive integers, classify n!+1=m²; known positive pairs(4,5),(5,11),(7,71)",
+  "original_problem_changed": false,
+  "global_solution_found": false,
+  "novelty": "not_claimed_standard_reductions",
+  "candidate_file": "UniformReductions.lean",
+  "toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "mathlib_commit": "d77ef0741c6da1ff12df68fb4145ea0ae0850c54",
+  "source_scope": "Original elementary derivations of exact reformulation and necessary conditions; no external manuscript theorem copied",
+  "manuscript_urls": [
+    "https://doi.org/10.1007/s11139-008-9139-8",
+    "https://arxiv.org/abs/1209.3436"
+  ],
+  "source_limitations": [
+    "Institutional abstract/metadata of Helou-Haddad inspected, not full paper",
+    "No theorem-number-specific correspondence or novelty established"
+  ],
+  "declarations": [
+    {
+      "name": "BrocardUniform.consecutive_factorization_iff",
+      "assumptions": [
+        "n,m:Nat",
+        "4≤n"
+      ],
+      "conclusion": "n!+1=m² iff ∃a,b:Nat, b=a+1 ∧ Coprime a b ∧4ab=n!∧m=a+b",
+      "dependencies": [
+        "Nat.dvd_factorial",
+        "Nat.mod_eq_zero_of_dvd",
+        "Nat.pow_mod",
+        "Nat.coprime_self_add_right",
+        "omega",
+        "nlinarith"
+      ]
+    },
+    {
+      "name": "BrocardUniform.prime_successor_square_divides",
+      "assumptions": [
+        "n,m:Nat",
+        "Nat.Prime(n+1)",
+        "n!+1=m²"
+      ],
+      "conclusion": "(n+1)² divides n!+1",
+      "dependencies": [
+        "ZMod.wilsons_lemma",
+        "ZMod.natCast_eq_zero_iff",
+        "Nat.Prime.dvd_of_dvd_pow",
+        "pow_dvd_pow_of_dvd"
+      ]
+    },
+    {
+      "name": "BrocardUniform.prime_successor_obstruction",
+      "assumptions": [
+        "n:Nat",
+        "Nat.Prime(n+1)",
+        "not((n+1)² divides n!+1)"
+      ],
+      "conclusion": "∀m:Nat, n!+1≠m²",
+      "dependencies": [
+        "BrocardUniform.prime_successor_square_divides"
+      ]
+    },
+    {
+      "name": "BrocardUniform.fixed_modulus_eventually_one",
+      "assumptions": [
+        "q,n:Nat",
+        "0<q",
+        "q≤n"
+      ],
+      "conclusion": "(n!+1)%q=1%q",
+      "dependencies": [
+        "Nat.dvd_factorial",
+        "Nat.mod_eq_zero_of_dvd",
+        "Nat.add_mod"
+      ]
+    }
+  ],
+  "upstream_sources": [
+    {
+      "repository": "leanprover-community/mathlib4",
+      "commit": "d77ef0741c6da1ff12df68fb4145ea0ae0850c54",
+      "file": "Mathlib/NumberTheory/Wilson.lean",
+      "git_blob": "97c84e9181afc8e0b95b2994f37ec03d70abdd5a",
+      "declaration": "ZMod.wilsons_lemma"
+    },
+    {
+      "repository": "leanprover-community/mathlib4",
+      "commit": "d77ef0741c6da1ff12df68fb4145ea0ae0850c54",
+      "file": "Mathlib/Data/Nat/GCD/Basic.lean",
+      "git_blob": "898340cd3989f164b431a4c84be3b9c04d188242",
+      "declaration": "Nat.coprime_self_add_right"
+    },
+    {
+      "repository": "leanprover-community/mathlib4",
+      "commit": "d77ef0741c6da1ff12df68fb4145ea0ae0850c54",
+      "file": "Mathlib/Data/Nat/Factorial/Basic.lean",
+      "git_blob": "0bc6fc9de9a8362da95f551c29d680ab5c17cdcd",
+      "declaration": "Nat.dvd_factorial"
+    }
+  ],
+  "budget": {
+    "max_compile_attempts": 3,
+    "dependency_preparation_seconds": 600,
+    "compile_seconds": 120,
+    "module_replay_seconds": 90
+  },
+  "fidelity_review": {
+    "state": "pending",
+    "reviewer": null
+  },
+  "trust_review": {
+    "state": "pending",
+    "reviewer": null
+  },
+  "certification": "none"
+}

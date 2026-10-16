@@ -1,0 +1,43 @@
+name: Brocard uniform proof reductions
+on:
+  pull_request:
+    paths:
+      - 'research/brocard-uniform/**'
+      - '.github/workflows/brocard-uniform.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: brocard-uniform-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  observe-proofs:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Preserve inputs
+        run: |
+          mkdir -p uniform-evidence
+          chmod 777 uniform-evidence
+          git rev-parse HEAD > uniform-evidence/controller-commit.txt
+          cp research/brocard-uniform/lean-toolchain research/brocard-uniform/lake-manifest.json uniform-evidence/
+          sha256sum research/brocard-uniform/UniformReductions.lean > uniform-evidence/source-sha256.txt
+      - name: Prepare pinned upstream toolchain and Mathlib
+        run: |
+          set -o pipefail
+          timeout --kill-after=15s 600s docker build --platform linux/amd64 --progress plain -t atlas-brocard-uniform research/brocard-uniform 2>&1 | tee uniform-evidence/preparation.log
+      - name: Observe compilation and optional module replay offline
+        run: |
+          set -o pipefail
+          timeout --kill-after=10s 230s docker run --rm --network none --read-only --cap-drop ALL --security-opt no-new-privileges --pids-limit 128 --memory 6g --cpus 2 --tmpfs /tmp:rw,nosuid,nodev,size=256m --mount type=bind,src="$PWD/research/brocard-uniform/UniformReductions.lean",dst=/work/UniformReductions.lean,readonly --mount type=bind,src="$PWD/uniform-evidence",dst=/evidence atlas-brocard-uniform 2>&1 | tee uniform-evidence/observation.log
+      - name: Retain every bounded attempt
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: brocard-uniform-evidence
+          path: uniform-evidence/
+          retention-days: 30
+          if-no-files-found: error
