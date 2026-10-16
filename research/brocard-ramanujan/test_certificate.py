@@ -1,4 +1,7 @@
 import copy
+import hashlib
+import json
+from pathlib import Path
 from math import factorial
 import unittest
 from check_certificate import check, verify_primes
@@ -63,6 +66,18 @@ class CertificateTests(unittest.TestCase):
             else:
                 with self.assertRaises(ValueError):
                     check(c)
+
+class PreservedAttemptTests(unittest.TestCase):
+    def test_preserved_certificate_hash_and_all_claimed_exclusions(self):
+        root = Path(__file__).resolve().parent / "results"
+        raw = (root / "attempt-1-certificate.json").read_bytes()
+        report = json.loads((root / "attempt-1-report.json").read_text())
+        self.assertEqual(hashlib.sha256(raw).hexdigest(), report["certificate_sha256"])
+        verified = check(json.loads(raw))
+        self.assertEqual(verified, report["targeted_window"])
+        self.assertEqual(verified["checked_values"], 10000)
+        self.assertEqual(verified["excluded_by_checked_obstruction"], 10000)
+        self.assertEqual(verified["unresolved_candidates"], [])
 
 if __name__ == "__main__":
     unittest.main()

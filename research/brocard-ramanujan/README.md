@@ -43,4 +43,4 @@ Original research code is Apache-2.0. Source proofs and papers remain linked. No
 
 Run the Bounded Brocard-Ramanujan research GitHub Actions workflow on this PR/branch. Its exact Docker build, offline tests, search/checker commands and Lean command are in .github/workflows/brocard-research.yml. Source code is pinned by the workflow commit and copied into the container. All execution is remote; nothing runs on the user's machine.
 
-Results and certificate will be checkpointed after CI. Any bounded exclusion is a computational observation with explicit trust dependencies, not a proof of global completeness or human-equivalent audit.
+Results and the exact certificate are checkpointed in ATTEMPTS.md and results/. An eighth test replays the committed certificate and checks its hash. Any bounded exclusion is a computational observation with explicit trust dependencies, not a proof of global completeness or human-equivalent audit.
