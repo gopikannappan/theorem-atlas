@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "source_sha256": "74f7fb7ccdebc42d99fed89e5ef18d3f1f0682be05d1653b33128e469808c2a0",
+  "compiler": {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-o",
+      "/tmp/UniformReductions.olean",
+      "/work/UniformReductions.lean"
+    ],
+    "exit_code": 0,
+    "stdout": "/work/UniformReductions.lean:38:2: warning: Try this: \n  letI̵\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\nBrocardUniform.consecutive_factorization_iff (n m : ℕ) (hn : 4 ≤ n) :\n  n.factorial + 1 = m ^ 2 ↔ ∃ a b, b = a + 1 ∧ a.Coprime b ∧ 4 * a * b = n.factorial ∧ m = a + b\nBrocardUniform.prime_successor_square_divides (n m : ℕ) (hp : Nat.Prime (n + 1)) (hsol : n.factorial + 1 = m ^ 2) :\n  (n + 1) ^ 2 ∣ n.factorial + 1\nBrocardUniform.prime_successor_obstruction (n : ℕ) (hp : Nat.Prime (n + 1)) (hnot : ¬(n + 1) ^ 2 ∣ n.factorial + 1)\n  (m : ℕ) : n.factorial + 1 ≠ m ^ 2\nBrocardUniform.fixed_modulus_eventually_one (q n : ℕ) (hq : 0 < q) (hn : q ≤ n) : (n.factorial + 1) % q = 1 % q\n'BrocardUniform.consecutive_factorization_iff' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BrocardUniform.prime_successor_square_divides' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BrocardUniform.prime_successor_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BrocardUniform.fixed_modulus_eventually_one' depends on axioms: [propext]\n",
+    "stderr": "",
+    "outcome": "completed",
+    "timeout_seconds": 120
+  },
+  "fidelity_review": "pending independent review",
+  "certification": "none",
+  "module_replay": {
+    "command": [
+      "lake",
+      "env",
+      "bash",
+      "-c",
+      "export LEAN_PATH=\"/tmp:$LEAN_PATH\"; leanchecker UniformReductions"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "outcome": "completed",
+    "timeout_seconds": 90
+  },
+  "module_replay_scope": "selected_module_only_imports_assumed; no fresh dependency replay"
+}

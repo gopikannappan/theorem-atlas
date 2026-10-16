@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "state": "candidate_unreviewed",
+  "state": "compiled_unreviewed",
   "mathematical_problem": "For n,m positive integers, classify n!+1=m²; known positive pairs(4,5),(5,11),(7,71)",
   "original_problem_changed": false,
   "global_solution_found": false,
@@ -113,5 +113,59 @@
     "state": "pending",
     "reviewer": null
   },
-  "certification": "none"
+  "certification": "none",
+  "candidate_source_commit": "c465d610a89f92585c16c289d17826a1fd201a90",
+  "candidate_git_blob": "9a1694d0a5a00b4b47e9b1df6f01a38a1ddaeb56",
+  "candidate_sha256": "74f7fb7ccdebc42d99fed89e5ef18d3f1f0682be05d1653b33128e469808c2a0",
+  "attempts": [
+    {
+      "attempt": 1,
+      "source_commit": "7db1219845577ed410efe66432ad94e08419d925",
+      "source_git_blob": "8f83149c7e728e48d92ff0b22461cad6d7b03857",
+      "run_id": 38978245889,
+      "job_id": 117232747694,
+      "artifact_id": 12079972704,
+      "artifact_digest": "sha256:e7d054d4db2ef24ac1f9213000e87f8683bd21a662605f051aa3bdcbbad84f86",
+      "state": "failed_compilation_not_proof_evidence",
+      "observation": "attempt-1-failed.json",
+      "diagnostic": "line23:8 No goals to be solved; Lean recovery printed sorryAx. No accepted proof from this run."
+    },
+    {
+      "attempt": 2,
+      "source_commit": "c465d610a89f92585c16c289d17826a1fd201a90",
+      "source_git_blob": "9a1694d0a5a00b4b47e9b1df6f01a38a1ddaeb56",
+      "run_id": 38978628115,
+      "job_id": 117233969652,
+      "artifact_id": 12080162025,
+      "artifact_digest": "sha256:ae50a6549952b3cd63e36afe95c97f49d210ca17b0aeebac95036c10166612ea",
+      "state": "compiled_and_module_replayed_imports_assumed",
+      "observation": "attempt-2-compiled.json",
+      "diagnostic": "Removed redundant norm_num after goal-closing rw; changed #print bodies to #check types. All four mathematical statements unchanged. Nonfatal letI style warning remains."
+    }
+  ],
+  "statements_unchanged_between_attempts": true,
+  "axiom_observations": {
+    "consecutive_factorization_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "prime_successor_square_divides": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "prime_successor_obstruction": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "fixed_modulus_eventually_one": [
+      "propext"
+    ]
+  },
+  "replay_scope": "selected module only; imports assumed",
+  "fresh_dependency_replay": "not_run",
+  "external_checker": "not_run",
+  "original_problem_solved": false
 }
