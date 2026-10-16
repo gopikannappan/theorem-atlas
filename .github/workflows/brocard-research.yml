@@ -1,0 +1,47 @@
+name: Bounded Brocard-Ramanujan research
+on:
+  pull_request:
+    paths:
+      - 'research/brocard-ramanujan/**'
+      - '.github/workflows/brocard-research.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: brocard-research-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  bounded-attempt:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Prepare pinned tools without repository credentials
+        run: |
+          mkdir -p brocard-evidence
+          chmod 777 brocard-evidence
+          git rev-parse HEAD > brocard-evidence/controller-commit.txt
+          set -o pipefail
+          timeout --kill-after=15s 480s docker build --progress plain -t atlas-brocard research/brocard-ramanujan 2>&1 | tee brocard-evidence/preparation.log
+      - name: Test certificate rejection and known-solution preservation offline
+        run: |
+          set -o pipefail
+          timeout --kill-after=5s 60s docker run --rm --network none --cap-drop ALL --security-opt no-new-privileges --read-only --pids-limit 128 --memory 2g --cpus 2 --tmpfs /tmp:rw,nosuid,nodev,size=128m atlas-brocard python3 -m unittest discover -s /research -p 'test_*.py' -v 2>&1 | tee brocard-evidence/tests.log
+      - name: Search exactly one declared interval and verify its certificate offline
+        run: |
+          set -o pipefail
+          timeout --kill-after=10s 180s docker run --rm --network none --cap-drop ALL --security-opt no-new-privileges --read-only --pids-limit 128 --memory 2g --cpus 2 --tmpfs /tmp:rw,nosuid,nodev,size=128m --mount type=bind,src="$PWD/brocard-evidence",dst=/evidence -w /evidence atlas-brocard python3 /research/search.py 2>&1 | tee brocard-evidence/search.log
+      - name: Compile generic modular obstruction lemma
+        run: |
+          set -o pipefail
+          timeout --kill-after=5s 30s docker run --rm --network none --cap-drop ALL --security-opt no-new-privileges --read-only --pids-limit 128 --memory 2g --cpus 2 --tmpfs /tmp:rw,nosuid,nodev,size=128m atlas-brocard lean /research/ModularObstruction.lean 2>&1 | tee brocard-evidence/lean.log
+      - name: Retain every attempt and checkpoint
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: brocard-bounded-attempt
+          path: brocard-evidence/
+          retention-days: 30
+          if-no-files-found: error
