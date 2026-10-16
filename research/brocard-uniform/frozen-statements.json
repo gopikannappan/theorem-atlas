@@ -1,0 +1,25 @@
+{
+  "source_commit": "7db1219845577ed410efe66432ad94e08419d925",
+  "source_git_blob": "8f83149c7e728e48d92ff0b22461cad6d7b03857",
+  "comparison_commit": "c465d610a89f92585c16c289d17826a1fd201a90",
+  "statements_identical": true,
+  "scope": "text identity only, not independent mathematical fidelity",
+  "declarations": [
+    {
+      "name": "consecutive_factorization_iff",
+      "statement": "theorem consecutive_factorization_iff (n m : ℕ) (hn : 4 ≤ n) :\n    n.factorial + 1 = m ^ 2 ↔\n      ∃ a b : ℕ, b = a + 1 ∧ a.Coprime b ∧\n        4 * a * b = n.factorial ∧ m = a + b"
+    },
+    {
+      "name": "prime_successor_square_divides",
+      "statement": "theorem prime_successor_square_divides (n m : ℕ)\n    (hp : (n + 1).Prime) (hsol : n.factorial + 1 = m ^ 2) :\n    (n + 1) ^ 2 ∣ n.factorial + 1"
+    },
+    {
+      "name": "prime_successor_obstruction",
+      "statement": "theorem prime_successor_obstruction (n : ℕ) (hp : (n + 1).Prime)\n    (hnot : ¬ (n + 1) ^ 2 ∣ n.factorial + 1) :\n    ∀ m : ℕ, n.factorial + 1 ≠ m ^ 2"
+    },
+    {
+      "name": "fixed_modulus_eventually_one",
+      "statement": "theorem fixed_modulus_eventually_one (q n : ℕ) (hq : 0 < q) (hn : q ≤ n) :\n    (n.factorial + 1) % q = 1 % q"
+    }
+  ]
+}
