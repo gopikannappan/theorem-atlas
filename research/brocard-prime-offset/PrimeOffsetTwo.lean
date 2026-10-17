@@ -48,7 +48,7 @@ theorem prime_offset_two_obstruction (n : ℕ) (hp : (n + 2).Prime)
 /-- A concrete instantiation confirms that the excluded family is nonempty. -/
 theorem reject_eleven : ∀ m : ℕ, Nat.factorial 11 + 1 ≠ m ^ 2 := by
   apply prime_offset_two_obstruction 11
-  · norm_num
+  · decide
   · norm_num
 
 /-- A known solution lies on an allowed branch (n+2=7). -/
