@@ -1,0 +1,29 @@
+{
+  "source_commit": "1ca2929dcefc5b1679815acbc48e09dd8b20fd3e",
+  "source_git_blob": "bfebcb58d82d02ad75c4d2b8d5f0068e4b6ccdde",
+  "comparison_commit": "20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c",
+  "statements_identical": true,
+  "scope": "text identity only, not mathematical fidelity approval",
+  "declarations": [
+    {
+      "name": "reduces",
+      "statement": "theorem reduces n! to one when the prime modulus is n+2. -/\ntheorem factorial_eq_one_mod_prime_offset (n : ℕ) (hp : (n + 2).Prime) :\n    (n.factorial : ZMod (n + 2)) = 1"
+    },
+    {
+      "name": "solution_prime_offset_residues",
+      "statement": "theorem solution_prime_offset_residues (n m : ℕ) (hn : 0 < n)\n    (hp : (n + 2).Prime) (hsol : n.factorial + 1 = m ^ 2) :\n    (n + 2) % 8 = 1 ∨ (n + 2) % 8 = 7"
+    },
+    {
+      "name": "prime_offset_two_obstruction",
+      "statement": "theorem prime_offset_two_obstruction (n : ℕ) (hp : (n + 2).Prime)\n    (hbad : (n + 2) % 8 = 3 ∨ (n + 2) % 8 = 5) :\n    ∀ m : ℕ, n.factorial + 1 ≠ m ^ 2"
+    },
+    {
+      "name": "reject_eleven",
+      "statement": "theorem reject_eleven : ∀ m : ℕ, Nat.factorial 11 + 1 ≠ m ^ 2"
+    },
+    {
+      "name": "known_pair_five",
+      "statement": "theorem known_pair_five : Nat.factorial 5 + 1 = 11 ^ 2"
+    }
+  ]
+}

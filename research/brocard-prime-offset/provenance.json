@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "state": "candidate_unreviewed",
+  "state": "compiled_unreviewed",
   "problem": "n!+1=m² over positive integers",
   "candidate_file": "PrimeOffsetTwo.lean",
   "namespace": "BrocardPrimeOffset",
@@ -108,5 +108,105 @@
     "state": "pending",
     "reviewer": null
   },
-  "certification": "none"
+  "certification": "none",
+  "candidate_source_commit": "20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c",
+  "candidate_git_blob": "faa326c5644139436161501cc8bec77dc79c24f8",
+  "candidate_sha256": "c3a6fcacc5da755b89b3fb817839682fdeda80ed0d3d1d0a4770c52b0579b651",
+  "declaration_targets": [
+    {
+      "name": "BrocardPrimeOffset.factorial_eq_one_mod_prime_offset",
+      "file": "research/brocard-prime-offset/PrimeOffsetTwo.lean",
+      "commit": "20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c",
+      "git_blob": "faa326c5644139436161501cc8bec77dc79c24f8",
+      "line": 9,
+      "url": "https://github.com/theorem-atlas/theorem-atlas/blob/20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c/research/brocard-prime-offset/PrimeOffsetTwo.lean#L9"
+    },
+    {
+      "name": "BrocardPrimeOffset.solution_prime_offset_residues",
+      "file": "research/brocard-prime-offset/PrimeOffsetTwo.lean",
+      "commit": "20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c",
+      "git_blob": "faa326c5644139436161501cc8bec77dc79c24f8",
+      "line": 27,
+      "url": "https://github.com/theorem-atlas/theorem-atlas/blob/20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c/research/brocard-prime-offset/PrimeOffsetTwo.lean#L27"
+    },
+    {
+      "name": "BrocardPrimeOffset.prime_offset_two_obstruction",
+      "file": "research/brocard-prime-offset/PrimeOffsetTwo.lean",
+      "commit": "20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c",
+      "git_blob": "faa326c5644139436161501cc8bec77dc79c24f8",
+      "line": 40,
+      "url": "https://github.com/theorem-atlas/theorem-atlas/blob/20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c/research/brocard-prime-offset/PrimeOffsetTwo.lean#L40"
+    },
+    {
+      "name": "BrocardPrimeOffset.reject_eleven",
+      "file": "research/brocard-prime-offset/PrimeOffsetTwo.lean",
+      "commit": "20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c",
+      "git_blob": "faa326c5644139436161501cc8bec77dc79c24f8",
+      "line": 49,
+      "url": "https://github.com/theorem-atlas/theorem-atlas/blob/20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c/research/brocard-prime-offset/PrimeOffsetTwo.lean#L49"
+    },
+    {
+      "name": "BrocardPrimeOffset.known_pair_five",
+      "file": "research/brocard-prime-offset/PrimeOffsetTwo.lean",
+      "commit": "20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c",
+      "git_blob": "faa326c5644139436161501cc8bec77dc79c24f8",
+      "line": 55,
+      "url": "https://github.com/theorem-atlas/theorem-atlas/blob/20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c/research/brocard-prime-offset/PrimeOffsetTwo.lean#L55"
+    }
+  ],
+  "attempts": [
+    {
+      "attempt": 1,
+      "source_commit": "1ca2929dcefc5b1679815acbc48e09dd8b20fd3e",
+      "source_git_blob": "bfebcb58d82d02ad75c4d2b8d5f0068e4b6ccdde",
+      "run_id": 39017589235,
+      "job_id": 117352778460,
+      "artifact_id": 12095412816,
+      "artifact_digest": "sha256:b775d7925e6a5d17da7af6b1f02e73c76bf6e66f6cb64ee2c3f7dcf2c0f2c294",
+      "state": "failed_compilation_rejected",
+      "observation": "attempt-1-failed.json",
+      "diagnostic": "Nat.Prime13 remained open in concrete example; reject_eleven printed a recovery placeholder/sorryAx. Not accepted proof evidence."
+    },
+    {
+      "attempt": 2,
+      "source_commit": "20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c",
+      "source_git_blob": "faa326c5644139436161501cc8bec77dc79c24f8",
+      "run_id": 39017798460,
+      "job_id": 117353363997,
+      "artifact_id": 12095965484,
+      "artifact_digest": "sha256:f292ba9faf6ef8ecb267bf785523005ad753249164a6df2b0abf56cc4b5d5067",
+      "state": "compiled_and_module_replayed_imports_assumed",
+      "observation": "attempt-2-compiled.json",
+      "diagnostic": "Small primality subgoal discharged with ordinary decide; no statement changes. Two nonfatal letI style warnings remain."
+    }
+  ],
+  "statements_unchanged": true,
+  "axiom_observations": {
+    "factorial_eq_one_mod_prime_offset": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "solution_prime_offset_residues": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "prime_offset_two_obstruction": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "reject_eleven": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "known_pair_five": [
+      "propext"
+    ]
+  },
+  "module_replay_scope": "selected module, imports assumed",
+  "fresh_dependency_replay": "not_run",
+  "external_checker": "not_run"
 }
