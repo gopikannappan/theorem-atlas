@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "state": "compiled_unreviewed",
+  "problem": "n!+1=m² over positive integers",
+  "candidate_file": "PrimeOffsetTwo.lean",
+  "namespace": "BrocardPrimeOffset",
+  "global_problem_solved": false,
+  "new_pair_found": false,
+  "novelty": "not_claimed_classical_corollary",
+  "family_statement": "If n+2 is prime and (n+2)%8∈{3,5}, then∀m:Nat,n!+1≠m²",
+  "no_finite_n_bound": true,
+  "formal_infinitude_theorem": "not_provided",
+  "uncovered_cases": [
+    "n+2 composite",
+    "n+2 prime in residues1 or7 modulo8"
+  ],
+  "toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "mathlib_commit": "d77ef0741c6da1ff12df68fb4145ea0ae0850c54",
+  "declarations": [
+    {
+      "name": "BrocardPrimeOffset.factorial_eq_one_mod_prime_offset",
+      "assumptions": [
+        "n:Nat",
+        "Nat.Prime(n+2)"
+      ],
+      "conclusion": "(n!:ZMod(n+2))=1",
+      "dependencies": [
+        "ZMod.wilsons_lemma",
+        "Nat.factorial_succ",
+        "Nat.cast_mul"
+      ]
+    },
+    {
+      "name": "BrocardPrimeOffset.solution_prime_offset_residues",
+      "assumptions": [
+        "n,m:Nat",
+        "0<n",
+        "Nat.Prime(n+2)",
+        "n!+1=m²"
+      ],
+      "conclusion": "(n+2)%8=1∨(n+2)%8=7",
+      "dependencies": [
+        "BrocardPrimeOffset.factorial_eq_one_mod_prime_offset",
+        "ZMod.exists_sq_eq_two_iff"
+      ]
+    },
+    {
+      "name": "BrocardPrimeOffset.prime_offset_two_obstruction",
+      "assumptions": [
+        "n:Nat",
+        "Nat.Prime(n+2)",
+        "(n+2)%8=3∨(n+2)%8=5"
+      ],
+      "conclusion": "∀m:Nat,n!+1≠m²",
+      "dependencies": [
+        "BrocardPrimeOffset.solution_prime_offset_residues",
+        "omega"
+      ]
+    },
+    {
+      "name": "BrocardPrimeOffset.reject_eleven",
+      "assumptions": [],
+      "conclusion": "∀m:Nat,11!+1≠m²",
+      "dependencies": [
+        "BrocardPrimeOffset.prime_offset_two_obstruction",
+        "norm_num"
+      ]
+    },
+    {
+      "name": "BrocardPrimeOffset.known_pair_five",
+      "assumptions": [],
+      "conclusion": "5!+1=11²",
+      "dependencies": [
+        "norm_num"
+      ]
+    }
+  ],
+  "upstream_sources": [
+    {
+      "repository": "leanprover-community/mathlib4",
+      "commit": "d77ef0741c6da1ff12df68fb4145ea0ae0850c54",
+      "file": "Mathlib/NumberTheory/Wilson.lean",
+      "git_blob": "97c84e9181afc8e0b95b2994f37ec03d70abdd5a",
+      "declaration": "ZMod.wilsons_lemma"
+    },
+    {
+      "repository": "leanprover-community/mathlib4",
+      "commit": "d77ef0741c6da1ff12df68fb4145ea0ae0850c54",
+      "file": "Mathlib/NumberTheory/LegendreSymbol/QuadraticReciprocity.lean",
+      "git_blob": "f097ae5217fcf7522f8b31dd3806489eda56021f",
+      "line": 74,
+      "declaration": "ZMod.exists_sq_eq_two_iff"
+    }
+  ],
+  "manuscript_url": "https://doi.org/10.1007/s11139-008-9139-8",
+  "manuscript_scope": "General context from institutional abstract only, not a theorem-number-specific reproduction",
+  "budget": {
+    "max_candidate_compilations": 3,
+    "dependency_preparation_seconds": 600,
+    "candidate_compile_seconds": 120,
+    "module_replay_seconds": 90
+  },
+  "fidelity_review": {
+    "state": "pending",
+    "reviewer": null
+  },
+  "trust_review": {
+    "state": "pending",
+    "reviewer": null
+  },
+  "certification": "none",
+  "candidate_source_commit": "20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c",
+  "candidate_git_blob": "faa326c5644139436161501cc8bec77dc79c24f8",
+  "candidate_sha256": "c3a6fcacc5da755b89b3fb817839682fdeda80ed0d3d1d0a4770c52b0579b651",
+  "declaration_targets": [
+    {
+      "name": "BrocardPrimeOffset.factorial_eq_one_mod_prime_offset",
+      "file": "research/brocard-prime-offset/PrimeOffsetTwo.lean",
+      "commit": "20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c",
+      "git_blob": "faa326c5644139436161501cc8bec77dc79c24f8",
+      "line": 9,
+      "url": "https://github.com/theorem-atlas/theorem-atlas/blob/20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c/research/brocard-prime-offset/PrimeOffsetTwo.lean#L9"
+    },
+    {
+      "name": "BrocardPrimeOffset.solution_prime_offset_residues",
+      "file": "research/brocard-prime-offset/PrimeOffsetTwo.lean",
+      "commit": "20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c",
+      "git_blob": "faa326c5644139436161501cc8bec77dc79c24f8",
+      "line": 27,
+      "url": "https://github.com/theorem-atlas/theorem-atlas/blob/20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c/research/brocard-prime-offset/PrimeOffsetTwo.lean#L27"
+    },
+    {
+      "name": "BrocardPrimeOffset.prime_offset_two_obstruction",
+      "file": "research/brocard-prime-offset/PrimeOffsetTwo.lean",
+      "commit": "20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c",
+      "git_blob": "faa326c5644139436161501cc8bec77dc79c24f8",
+      "line": 40,
+      "url": "https://github.com/theorem-atlas/theorem-atlas/blob/20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c/research/brocard-prime-offset/PrimeOffsetTwo.lean#L40"
+    },
+    {
+      "name": "BrocardPrimeOffset.reject_eleven",
+      "file": "research/brocard-prime-offset/PrimeOffsetTwo.lean",
+      "commit": "20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c",
+      "git_blob": "faa326c5644139436161501cc8bec77dc79c24f8",
+      "line": 49,
+      "url": "https://github.com/theorem-atlas/theorem-atlas/blob/20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c/research/brocard-prime-offset/PrimeOffsetTwo.lean#L49"
+    },
+    {
+      "name": "BrocardPrimeOffset.known_pair_five",
+      "file": "research/brocard-prime-offset/PrimeOffsetTwo.lean",
+      "commit": "20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c",
+      "git_blob": "faa326c5644139436161501cc8bec77dc79c24f8",
+      "line": 55,
+      "url": "https://github.com/theorem-atlas/theorem-atlas/blob/20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c/research/brocard-prime-offset/PrimeOffsetTwo.lean#L55"
+    }
+  ],
+  "attempts": [
+    {
+      "attempt": 1,
+      "source_commit": "1ca2929dcefc5b1679815acbc48e09dd8b20fd3e",
+      "source_git_blob": "bfebcb58d82d02ad75c4d2b8d5f0068e4b6ccdde",
+      "run_id": 39017589235,
+      "job_id": 117352778460,
+      "artifact_id": 12095412816,
+      "artifact_digest": "sha256:b775d7925e6a5d17da7af6b1f02e73c76bf6e66f6cb64ee2c3f7dcf2c0f2c294",
+      "state": "failed_compilation_rejected",
+      "observation": "attempt-1-failed.json",
+      "diagnostic": "Nat.Prime13 remained open in concrete example; reject_eleven printed a recovery placeholder/sorryAx. Not accepted proof evidence."
+    },
+    {
+      "attempt": 2,
+      "source_commit": "20c20e7acbd7f64fdc6ffa0e7adf02afb26d0d3c",
+      "source_git_blob": "faa326c5644139436161501cc8bec77dc79c24f8",
+      "run_id": 39017798460,
+      "job_id": 117353363997,
+      "artifact_id": 12095965484,
+      "artifact_digest": "sha256:f292ba9faf6ef8ecb267bf785523005ad753249164a6df2b0abf56cc4b5d5067",
+      "state": "compiled_and_module_replayed_imports_assumed",
+      "observation": "attempt-2-compiled.json",
+      "diagnostic": "Small primality subgoal discharged with ordinary decide; no statement changes. Two nonfatal letI style warnings remain."
+    }
+  ],
+  "statements_unchanged": true,
+  "axiom_observations": {
+    "factorial_eq_one_mod_prime_offset": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "solution_prime_offset_residues": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "prime_offset_two_obstruction": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "reject_eleven": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "known_pair_five": [
+      "propext"
+    ]
+  },
+  "module_replay_scope": "selected module, imports assumed",
+  "fresh_dependency_replay": "not_run",
+  "external_checker": "not_run"
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "source_sha256": "f1a1a7817887e0d7b576d7f7fb19db7382c0d32e1076d298f7bc1dd0aed92116",
+  "compiler": {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-o",
+      "/tmp/PrimeOffsetTwo.olean",
+      "/work/PrimeOffsetTwo.lean"
+    ],
+    "exit_code": 1,
+    "stdout": "/work/PrimeOffsetTwo.lean:11:2: warning: Try this: \n  letI̵\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n/work/PrimeOffsetTwo.lean:30:2: warning: Try this: \n  letI̵\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n/work/PrimeOffsetTwo.lean:51:2: error: unsolved goals\ncase hp\n⊢ Nat.Prime 13\nBrocardPrimeOffset.factorial_eq_one_mod_prime_offset (n : ℕ) (hp : Nat.Prime (n + 2)) : ↑n.factorial = 1\nBrocardPrimeOffset.solution_prime_offset_residues (n m : ℕ) (hn : 0 < n) (hp : Nat.Prime (n + 2))\n  (hsol : n.factorial + 1 = m ^ 2) : (n + 2) % 8 = 1 ∨ (n + 2) % 8 = 7\nBrocardPrimeOffset.prime_offset_two_obstruction (n : ℕ) (hp : Nat.Prime (n + 2))\n  (hbad : (n + 2) % 8 = 3 ∨ (n + 2) % 8 = 5) (m : ℕ) : n.factorial + 1 ≠ m ^ 2\nBrocardPrimeOffset.reject_eleven (m : ℕ) : Nat.factorial 11 + 1 ≠ m ^ 2\nBrocardPrimeOffset.known_pair_five : Nat.factorial 5 + 1 = 11 ^ 2\n'BrocardPrimeOffset.factorial_eq_one_mod_prime_offset' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BrocardPrimeOffset.solution_prime_offset_residues' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BrocardPrimeOffset.prime_offset_two_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]\n'BrocardPrimeOffset.reject_eleven' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]\n'BrocardPrimeOffset.known_pair_five' depends on axioms: [propext]\n",
+    "stderr": "",
+    "outcome": "completed",
+    "timeout_seconds": 120
+  },
+  "fidelity_review": "pending independent review",
+  "certification": "none"
+}
