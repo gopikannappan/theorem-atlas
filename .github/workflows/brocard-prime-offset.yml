@@ -1,0 +1,43 @@
+name: Brocard prime-offset exclusion
+on:
+  pull_request:
+    paths:
+      - 'research/brocard-prime-offset/**'
+      - '.github/workflows/brocard-prime-offset.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: brocard-prime-offset-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  observe-proofs:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Preserve inputs
+        run: |
+          mkdir -p family-evidence
+          chmod 777 family-evidence
+          git rev-parse HEAD > family-evidence/controller-commit.txt
+          cp research/brocard-prime-offset/lean-toolchain research/brocard-prime-offset/lake-manifest.json family-evidence/
+          sha256sum research/brocard-prime-offset/PrimeOffsetTwo.lean > family-evidence/source-sha256.txt
+      - name: Prepare pinned upstream toolchain and Mathlib
+        run: |
+          set -o pipefail
+          timeout --kill-after=15s 600s docker build --platform linux/amd64 --progress plain -t atlas-brocard-prime-offset research/brocard-prime-offset 2>&1 | tee family-evidence/preparation.log
+      - name: Observe compilation and optional module replay offline
+        run: |
+          set -o pipefail
+          timeout --kill-after=10s 230s docker run --rm --network none --read-only --cap-drop ALL --security-opt no-new-privileges --pids-limit 128 --memory 6g --cpus 2 --tmpfs /tmp:rw,nosuid,nodev,size=256m --mount type=bind,src="$PWD/research/brocard-prime-offset/PrimeOffsetTwo.lean",dst=/work/PrimeOffsetTwo.lean,readonly --mount type=bind,src="$PWD/family-evidence",dst=/evidence atlas-brocard-prime-offset 2>&1 | tee family-evidence/observation.log
+      - name: Retain every bounded attempt
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: brocard-prime-offset-evidence
+          path: family-evidence/
+          retention-days: 30
+          if-no-files-found: error
