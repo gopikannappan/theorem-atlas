@@ -15,6 +15,7 @@ import Mathlib.Analysis.InnerProductSpace.TwoDim
 import Mathlib.Tactic.Ring
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.LinearCombination
+import Mathlib.Tactic.FieldSimp
 import Aesop
 
 open scoped Real
@@ -222,8 +223,10 @@ theorem imo2025_p2 {M N A B C D P E F H : Pt} {Ω Γ : Sphere Pt}
       (inner ℝ n (u -ᵥ M) / d - inner ℝ n (v -ᵥ M) / d) ^ 2 +
         (o.areaForm n (u -ᵥ M) / d - o.areaForm n (v -ᵥ M) / d) ^ 2 =
       dist u v ^ 2 := by
-    simpa only [inner_sub_right, map_sub, sub_div, vsub_sub_vsub_cancel_right,
-      dist_eq_norm_vsub V] using hframe ((u -ᵥ M) - (v -ᵥ M))
+    have hid := hframe ((u -ᵥ M) - (v -ᵥ M))
+    rw [inner_sub_right, map_sub, sub_div, sub_div] at hid
+    rw [vsub_sub_vsub_cancel_right] at hid
+    simpa only [dist_eq_norm_vsub V] using hid
   let pvec : V := P -ᵥ M
   let px : ℝ := inner ℝ n pvec / d
   let py : ℝ := o.areaForm n pvec / d
@@ -273,6 +276,66 @@ theorem imo2025_p2 {M N A B C D P E F H : Pt} {Ω Γ : Sphere Pt}
     rcases mul_eq_zero.mp hzero with h | h
     · linarith only [h]
     · exact (hy_nonzero h).elim
+
+
+  let tPMN : Triangle ℝ Pt := ⟨_, affineIndependent_PMN⟩
+  have haltitude (i j k : Fin 3) (hji : j ≠ i) (hki : k ≠ i) :
+      inner ℝ (tPMN.points j -ᵥ tPMN.points k) (H -ᵥ tPMN.points i) = 0 := by
+    have hj : tPMN.points j ∈ tPMN.points '' ({i}ᶜ) := ⟨j, by simpa using hji, rfl⟩
+    have hk : tPMN.points k ∈ tPMN.points '' ({i}ᶜ) := ⟨k, by simpa using hki, rfl⟩
+    have hside := vsub_mem_vectorSpan ℝ hj hk
+    have hH : H ∈ tPMN.altitude i := by
+      rw [H_eq_orthocenter]
+      exact tPMN.orthocenter_mem_altitude
+    have hdir := AffineSubspace.vsub_mem_direction hH (tPMN.mem_altitude i)
+    exact (tPMN.vectorSpan_isOrtho_altitude_direction i).inner_eq hside hdir
+  have hperp0 : inner ℝ n (H -ᵥ P) = 0 := by
+    simpa [tPMN, n] using haltitude 0 2 1 (by decide) (by decide)
+  have hperp1 : inner ℝ (P -ᵥ N) (H -ᵥ M) = 0 := by
+    simpa [tPMN] using haltitude 1 0 2 (by decide) (by decide)
+  let hvec : V := H -ᵥ M
+  let hx : ℝ := inner ℝ n hvec / d
+  let hy : ℝ := o.areaForm n hvec / d
+  have hxP : hx = px := by
+    have heq : inner ℝ n (hvec - pvec) / d = 0 := by
+      simp only [hvec, pvec, vsub_sub_vsub_cancel_right, hperp0, zero_div]
+    rw [inner_sub_right, sub_div] at heq
+    exact sub_eq_zero.mp heq
+  have hdotframe (u v : V) :
+      (inner ℝ n u / d) * (inner ℝ n v / d) +
+        (o.areaForm n u / d) * (o.areaForm n v / d) = inner ℝ u v := by
+    have hid := o.inner_mul_inner_add_areaForm_mul_areaForm n u v
+    change inner ℝ n u * inner ℝ n v + o.areaForm n u * o.areaForm n v =
+      d ^ 2 * inner ℝ u v at hid
+    field_simp [hd]
+    nlinarith only [hid]
+  have hdotP : px * (px - d) + py * hy = 0 := by
+    have hrhs : inner ℝ (pvec - n) hvec = 0 := by
+      simpa only [pvec, n, hvec, vsub_sub_vsub_cancel_right] using hperp1
+    have heq := hdotframe (pvec - n) hvec
+    rw [hrhs] at heq
+    simp only [inner_sub_right, map_sub, sub_div, hxn, o.areaForm_apply_self,
+      zero_div, sub_zero] at heq
+    change (px - d) * hx + py * hy = 0 at heq
+    rw [hxP] at heq
+    nlinarith only [heq]
+  have hheight :
+      4 * d ^ 2 * y ^ 2 = (d + (Γ.radius + Ω.radius)) *
+        (Γ.radius + Ω.radius - d) * (d ^ 2 - (Γ.radius - Ω.radius) ^ 2) := by
+    linear_combination 4 * d ^ 2 * hcircleΩ -
+      (2 * d * x + d ^ 2 + Ω.radius ^ 2 - Γ.radius ^ 2) * hLA
+  have hpq : 4 * py * hy = d ^ 2 - (Γ.radius - Ω.radius) ^ 2 := by
+    have hid : 4 * px * (px - d) =
+        (Γ.radius - Ω.radius) ^ 2 - d ^ 2 := by
+      linear_combination (2 * px - d + (Γ.radius - Ω.radius)) * hpx
+    linear_combination 4 * hdotP - hid
+  have hHcoord : (d + (Γ.radius + Ω.radius)) * hy = -d * y := by
+    have hm : ((d + (Γ.radius + Ω.radius)) * hy + d * y) * (d * y) = 0 := by
+      linear_combination (1 / 4 : ℝ) * hheight +
+        ((d + (Γ.radius + Ω.radius)) * (Γ.radius + Ω.radius - d) / 4) * hpq +
+        (d + (Γ.radius + Ω.radius)) * hy * hpy
+    have hh := (mul_eq_zero.mp hm).resolve_right (mul_ne_zero hd hy_nonzero)
+    linarith only [hh]
 
   let T : Pt := (N -ᵥ A) +ᵥ M
   suffices h :

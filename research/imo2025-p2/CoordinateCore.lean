@@ -1,6 +1,7 @@
 import Mathlib.Basic.Real.Basic
 import Mathlib.Analysis.InnerProductSpace.TwoDim
 import Mathlib.Geometry.Euclidean.Sphere.Tangent
+import Mathlib.Geometry.Euclidean.MongePoint
 import Mathlib.Geometry.Euclidean.Sphere.SecondInter
 import Mathlib.Tactic.FieldSimp
 import Mathlib.Tactic.Ring
@@ -287,6 +288,20 @@ theorem centers_distance_lt_sum {s t : Sphere P} {a b : P}
 #print axioms radius_pos_of_two_points
 #print axioms centers_distance_lt_sum
 
+
+/-- For a triangle, its orthocenter's altitude is perpendicular to the
+opposite side. This is a general Mathlib bridge, not the IMO conclusion. -/
+theorem orthocenter_opposite_side_perp (t : Triangle ℝ P) (i j k : Fin 3)
+    (hji : j ≠ i) (hki : k ≠ i) :
+    inner ℝ (t.points j -ᵥ t.points k) (t.orthocenter -ᵥ t.points i) = 0 := by
+  have hj : t.points j ∈ t.points '' ({i}ᶜ) := ⟨j, by simpa using hji, rfl⟩
+  have hk : t.points k ∈ t.points '' ({i}ᶜ) := ⟨k, by simpa using hki, rfl⟩
+  have hside := vsub_mem_vectorSpan ℝ hj hk
+  have halt := AffineSubspace.vsub_mem_direction (t.orthocenter_mem_altitude (i₁ := i)) (t.mem_altitude i)
+  exact (t.vectorSpan_isOrtho_altitude_direction i).inner_eq hside halt
+
+#print axioms orthocenter_opposite_side_perp
+
 end IMO2025P2Bridge
 
 
@@ -347,5 +362,16 @@ theorem coordinate_point_distance_sq (o : Orientation ℝ V (Fin 2))
 
 #print axioms coordinate_point_distance_sq
 end PointDistances
+
+
+/-- Inner products are represented by the ordinary dot product in this frame. -/
+theorem coordinate_inner (o : Orientation ℝ V (Fin 2)) (n u v : V) (hn : n ≠ 0) :
+    abscissa n u * abscissa n v + ordinate o n u * ordinate o n v = inner ℝ u v := by
+  unfold abscissa ordinate
+  have hid := o.inner_mul_inner_add_areaForm_mul_areaForm n u v
+  field_simp [norm_ne_zero_iff.mpr hn]
+  nlinarith only [hid]
+
+#print axioms coordinate_inner
 
 end IMO2025P2Frame
