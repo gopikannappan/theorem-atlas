@@ -604,7 +604,7 @@ theorem imo2025_p2 {M N A B C D P E F H : Pt} {Ω Γ : Sphere Pt}
   let triBEF : Triangle ℝ Pt := ⟨_, hBEF⟩
   have hcenterInSpan : circleCenter ∈ affineSpan ℝ (Set.range triBEF.points) := by
     rw [triBEF.affineSpan_eq_top (Fact.out : finrank ℝ V = 2)]
-    exact AffineSubspace.mem_top ℝ circleCenter
+    simp
   have hBEFdist : ∀ i, dist (triBEF.points i) circleCenter = dist B circleCenter := by
     intro i
     fin_cases i <;> simp [triBEF, hEdist, hFdist]
@@ -686,7 +686,62 @@ theorem imo2025_p2 {M N A B C D P E F H : Pt} {Ω Γ : Sphere Pt}
     exact (line[ℝ, A, P]).direction.smul_mem tcontact
       (AffineSubspace.vsub_mem_direction hlineP hlineA)
 
-  trace_state
+
+  have hvx : px - x = (Γ.radius - Ω.radius) * (d + (Γ.radius + Ω.radius)) / (2 * d) := by
+    apply (eq_div_iff (mul_ne_zero two_ne_zero hd)).mpr
+    linear_combination d * hpx - hLA
+  have hdx : d - 2 * x = (Γ.radius - Ω.radius) * (Γ.radius + Ω.radius) / d := by
+    apply (eq_div_iff hd).mpr
+    linear_combination -hLA
+  have hvy : py - y = -(Γ.radius + Ω.radius) * y / (Γ.radius + Ω.radius - d) := by
+    apply (eq_div_iff hKne).mpr
+    linear_combination hpy
+  have hgradient : (d - 2 * x) * (px - x) +
+      (circleCoeff - 2 * y) * (py - y) = 0 := by
+    rw [hdx, hvx, hvy]
+    dsimp only [circleCoeff]
+    have hid :
+        ((Γ.radius - Ω.radius) * (Γ.radius + Ω.radius) / d) *
+            ((Γ.radius - Ω.radius) * (d + (Γ.radius + Ω.radius)) / (2 * d)) +
+          (((Γ.radius + Ω.radius) ^ 2 - d ^ 2) / (2 * y) - 2 * y) *
+            (-(Γ.radius + Ω.radius) * y / (Γ.radius + Ω.radius - d)) =
+        ((Γ.radius + Ω.radius) / (2 * d ^ 2 * (Γ.radius + Ω.radius - d))) *
+          (4 * d ^ 2 * y ^ 2 -
+            (d + (Γ.radius + Ω.radius)) * (Γ.radius + Ω.radius - d) *
+              (d ^ 2 - (Γ.radius - Ω.radius) ^ 2)) := by
+      field_simp [hd, hKne, hy_nonzero]
+      <;> ring
+    simpa only [hheight, sub_self, mul_zero] using hid
+  have hTOvec : (T -ᵥ circleCenter : V) = (T -ᵥ M) - (circleCenter -ᵥ M) := by
+    simp only [vsub_sub_vsub_cancel_right]
+  have hvcoordX : inner ℝ n (P -ᵥ A) / d = px - x := by
+    rw [hPminusA, inner_sub_right, sub_div]
+  have hvcoordY : o.areaForm n (P -ᵥ A) / d = py - y := by
+    rw [hPminusA, map_sub, sub_div]
+  have hrcoordX : inner ℝ n (T -ᵥ circleCenter) / d = d / 2 - x := by
+    rw [hTOvec, inner_sub_right, sub_div, hTcoords.1, hcenter.1]
+    ring
+  have hrcoordY : o.areaForm n (T -ᵥ circleCenter) / d = -y + circleCoeff / 2 := by
+    rw [hTOvec, map_sub, sub_div, hTcoords.2, hcenter.2]
+    ring
+  have hperpFinal : inner ℝ (P -ᵥ A) (T -ᵥ circleCenter) = 0 := by
+    have heq := hdotframe (P -ᵥ A) (T -ᵥ circleCenter)
+    rw [hvcoordX, hvcoordY, hrcoordX, hrcoordY] at heq
+    have hzero : (px - x) * (d / 2 - x) +
+        (py - y) * (-y + circleCoeff / 2) = 0 := by
+      linear_combination (1 / 2 : ℝ) * hgradient
+    rw [hzero] at heq
+    exact heq.symm
+  change triBEF.circumsphere.IsTangentAt T (AffineSubspace.mk' H line[ℝ, A, P].direction)
+  refine ⟨hTonCircle, hTonLine, ?_⟩
+  intro q hq
+  apply Sphere.mem_orthRadius_iff_inner_left.mpr
+  rw [triBEF.circumsphere_center, ← hcenterEq]
+  have hdir := AffineSubspace.vsub_mem_direction hq hTonLine
+  rw [AffineSubspace.direction_mk', direction_affineSpan, vectorSpan_pair_rev] at hdir
+  obtain ⟨s, hs⟩ := Submodule.mem_span_singleton.mp hdir
+  rw [← hs, real_inner_smul_left, hperpFinal, mul_zero]
+
 
 #print axioms imo2025_p2
 
