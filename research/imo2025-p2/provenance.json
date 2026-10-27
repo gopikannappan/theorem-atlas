@@ -241,6 +241,36 @@
       "coordinate_result": "Fourteen lemmas compile successfully and selected module replay succeeds, imports assumed",
       "full_target_result": "Unsolved full original geometric goal",
       "accepted_full_proof": false
+    },
+    {
+      "attempt": 6,
+      "stage": "continuation candidate 1",
+      "source_commit": "70fc43345ce5244b289ff8a4cf8d3d48074f8ceb",
+      "run_id": 40519871237,
+      "job_id": 122243723864,
+      "artifact": {
+        "id": 12742150808,
+        "name": "imo2025-p2-attempt",
+        "size_in_bytes": 14905,
+        "url": "https://api.github.com/repos/theorem-atlas/theorem-atlas/actions/artifacts/12742150808",
+        "archive_download_url": "https://api.github.com/repos/theorem-atlas/theorem-atlas/actions/artifacts/12742150808/zip",
+        "expired": false,
+        "created_at": "2026-10-27T14:21:14Z",
+        "expires_at": "2026-11-26T14:21:13Z",
+        "updated_at": "2026-10-27T14:21:14Z",
+        "digest": "sha256:7c8ebef2982bf1fc8ae64d36d3482ef9c041f4aef5e61a6d3c3d00e5a932c15f",
+        "workflow_run": {
+          "id": 40519871237,
+          "repository_id": 1416962223,
+          "head_repository_id": 1416962223,
+          "head_branch": "proof/imo2025-p2",
+          "head_sha": "70fc43345ce5244b289ff8a4cf8d3d48074f8ceb"
+        }
+      },
+      "observation": "observations/attempt-6.json",
+      "coordinate_result": "Sixteen lemmas compile, module replay passes with imports assumed",
+      "full_target_result": "Actual ambient frame and both original circle equations derive without additional assumptions; original full geometric goal remains unsolved",
+      "accepted_full_proof": false
     }
   ],
   "additional_coordinate_declarations": [
@@ -288,5 +318,24 @@
       "documentation_checkpoint": 1
     },
     "goal": "Derive normalized coordinates and circle equations from the original ambient geometry; preserve full target and verifier policy"
-  }
+  },
+  "additional_frame_declarations": [
+    {
+      "name": "IMO2025P2Frame.coordinate_norm_sq",
+      "assumptions": [
+        "Original real inner product space dimension two",
+        "orientation",
+        "nonzero center-displacement vector"
+      ],
+      "conclusion": "Derived inner-product and area coordinates preserve squared norms"
+    },
+    {
+      "name": "IMO2025P2Frame.coordinate_injective",
+      "assumptions": [
+        "Same ambient context",
+        "both derived coordinates agree"
+      ],
+      "conclusion": "The vectors are equal"
+    }
+  ]
 }

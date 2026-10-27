@@ -13,6 +13,7 @@ import Mathlib.Analysis.Convex.BetweenList
 import Mathlib.Geometry.Euclidean.Sphere.SecondInter
 import Mathlib.Analysis.InnerProductSpace.TwoDim
 import Mathlib.Tactic.Ring
+import Mathlib.Tactic.Linarith
 import Aesop
 
 open scoped Real
@@ -95,6 +96,68 @@ theorem imo2025_p2 {M N A B C D P E F H : Pt} {Ω Γ : Sphere Pt}
     simpa only [x, y, hz] using hframe z
   have hcircleΓ : (x - d) ^ 2 + y ^ 2 = Γ.radius ^ 2 := by
     simpa only [hxsub, hysub, hzN] using hframe (z - n)
+
+
+  have hcoords_ext {u v : V}
+      (hx : inner ℝ n u / d = inner ℝ n v / d)
+      (hy : o.areaForm n u / d = o.areaForm n v / d) : u = v := by
+    have hx0 : inner ℝ n (u - v) / d = 0 := by
+      rw [inner_sub_right, sub_div]
+      exact sub_eq_zero.mpr hx
+    have hy0 : o.areaForm n (u - v) / d = 0 := by
+      rw [map_sub, sub_div]
+      exact sub_eq_zero.mpr hy
+    have hid := hframe (u - v)
+    rw [hx0, hy0] at hid
+    have hnorm : ‖u - v‖ ^ 2 = 0 := by nlinarith [hid]
+    exact sub_eq_zero.mp (norm_eq_zero.mp (sq_eq_zero_iff.mp hnorm))
+  let w : V := B -ᵥ M
+  let xb : ℝ := inner ℝ n w / d
+  let yb : ℝ := o.areaForm n w / d
+  have hw : ‖w‖ = Ω.radius := by
+    simpa only [w, dist_eq_norm_vsub V, Ω_center_eq_M] using
+      (mem_sphere.mp B_mem_inter.1)
+  have hwN : ‖w - n‖ = Γ.radius := by
+    simpa only [w, n, vsub_sub_vsub_cancel_right, dist_eq_norm_vsub V,
+      Γ_center_eq_N] using (mem_sphere.mp B_mem_inter.2)
+  have hxwsub : inner ℝ n (w - n) / d = xb - d := by
+    rw [inner_sub_right, sub_div, hxn]
+  have hywsub : o.areaForm n (w - n) / d = yb := by
+    simp only [map_sub, o.areaForm_apply_self, sub_zero]
+    rfl
+  have hcircleBΩ : xb ^ 2 + yb ^ 2 = Ω.radius ^ 2 := by
+    simpa only [xb, yb, hw] using hframe w
+  have hcircleBΓ : (xb - d) ^ 2 + yb ^ 2 = Γ.radius ^ 2 := by
+    simpa only [hxwsub, hywsub, hwN] using hframe (w - n)
+  have hdistinctcoords : x ≠ xb ∨ y ≠ yb := by
+    by_cases hx : x = xb
+    · right
+      intro hy
+      have hzw : z = w := hcoords_ext hx hy
+      exact A_ne_B (vsub_left_cancel hzw)
+    · exact Or.inl hx
+  have hLA : 2 * d * x = d ^ 2 + Ω.radius ^ 2 - Γ.radius ^ 2 := by
+    nlinarith [hcircleΩ, hcircleΓ]
+  have hLB : 2 * d * xb = d ^ 2 + Ω.radius ^ 2 - Γ.radius ^ 2 := by
+    nlinarith [hcircleBΩ, hcircleBΓ]
+  have hxb : xb = x := by
+    apply mul_left_cancel₀ (mul_ne_zero two_ne_zero hd)
+    nlinarith [hLA, hLB]
+  have hyfactor : (yb - y) * (yb + y) = 0 := by
+    rw [hxb] at hcircleBΩ
+    nlinarith [hcircleΩ, hcircleBΩ]
+  have hyb : yb = -y := by
+    rcases mul_eq_zero.mp hyfactor with h | h
+    · have heq : yb = y := sub_eq_zero.mp h
+      rcases hdistinctcoords with hx | hy
+      · exact (hx hxb.symm).elim
+      · exact (hy heq.symm).elim
+    · linarith
+  have hy_nonzero : y ≠ 0 := by
+    intro hy0
+    rcases hdistinctcoords with hx | hy
+    · exact hx hxb.symm
+    · exact hy (by rw [hyb, hy0]; ring)
 
   let T : Pt := (N -ᵥ A) +ᵥ M
   suffices h :

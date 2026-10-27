@@ -203,6 +203,36 @@ theorem contact_is_reflected_A (r R d x y : ℝ)
 #print axioms normalized_contact_coordinates
 #print axioms contact_is_reflected_A
 
+
+/-- Two distinct points on both normalized circles are reflected across the centers' axis. -/
+theorem common_circle_reflection (r R d x y xb yb : ℝ) (hd : d ≠ 0)
+    (hA : x ^ 2 + y ^ 2 = r ^ 2) (hAN : (x - d) ^ 2 + y ^ 2 = R ^ 2)
+    (hB : xb ^ 2 + yb ^ 2 = r ^ 2) (hBN : (xb - d) ^ 2 + yb ^ 2 = R ^ 2)
+    (hdistinct : x ≠ xb ∨ y ≠ yb) :
+    xb = x ∧ yb = -y ∧ y ≠ 0 := by
+  have hLA := circle_difference r R d x y hA hAN
+  have hLB := circle_difference r R d xb yb hB hBN
+  have hxeq : xb = x := by
+    apply mul_left_cancel₀ (mul_ne_zero two_ne_zero hd)
+    nlinarith [hLA, hLB]
+  have hyeq : (yb - y) * (yb + y) = 0 := by
+    rw [hxeq] at hB
+    nlinarith [hA, hB]
+  have hyneg : yb = -y := by
+    rcases mul_eq_zero.mp hyeq with h | h
+    · have heq : yb = y := sub_eq_zero.mp h
+      rcases hdistinct with hx | hy
+      · exact (hx hxeq.symm).elim
+      · exact (hy heq.symm).elim
+    · linarith
+  refine ⟨hxeq, hyneg, ?_⟩
+  intro hy0
+  rcases hdistinct with hx | hy
+  · exact hx hxeq.symm
+  · exact hy (by rw [hyneg, hy0]; ring)
+
+#print axioms common_circle_reflection
+
 end IMO2025P2Coordinates
 
 namespace IMO2025P2Bridge
