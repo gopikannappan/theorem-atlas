@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "source_sha256": {
+    "/work/CoordinateCore.lean": "03c1d33ca7921d7d8e028d28610084ffeef8547d6e6324a736e33cf3f2452ae2",
+    "/work/FullTargetAttempt.lean": "75d196e23e900e63100b52ff4fc3d1dea595da06131a82c4d90837c9e7329256"
+  },
+  "fidelity_review": "pending independent review",
+  "certification": "none",
+  "coordinate_core": {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "-o",
+      "/tmp/CoordinateCore.olean",
+      "/work/CoordinateCore.lean"
+    ],
+    "exit_code": 1,
+    "stdout": "/work/CoordinateCore.lean:1:0: error: object file '/work/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Data/Real/Basic.olean' of module Mathlib.Data.Real.Basic does not exist\n",
+    "stderr": "warning: manifest out of date: git revision of dependency 'mathlib' changed; use `lake update mathlib` to update it\n",
+    "outcome": "completed",
+    "timeout_seconds": 150
+  },
+  "full_target_attempt": {
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "/work/FullTargetAttempt.lean"
+    ],
+    "exit_code": 1,
+    "stdout": "/work/FullTargetAttempt.lean:43:2: warning: aesop: failed to prove the goal after exhaustive search.\n/work/FullTargetAttempt.lean:41:58: error: unsolved goals\nV : Type u_1\nPt : Type u_2\ninst : NormedAddCommGroup V\ninst_1 : InnerProductSpace ℝ V\ninst_2 : MetricSpace Pt\ninst_3 : NormedAddTorsor V Pt\ninst_4 : Fact (finrank ℝ V = 2)\nA B C D E F : Pt\nΩ Γ : Sphere Pt\nΩ_radius_lt_Γ_radius : Ω.radius < Γ.radius\naffineIndependent_ACD : AffineIndependent ℝ ![A, C, D]\naffineIndependent_PMN :\n  AffineIndependent ℝ ![{ points := ![A, C, D], independent := affineIndependent_ACD }.circumcenter, Ω.center, Γ.center]\nA_ne_B : ¬A = B\nE_ne_A : ¬E = A\nF_ne_A : ¬F = A\nM_ne_N : ¬Ω.center = Γ.center\nsbtw_C_M_N_D : List.Sbtw ℝ [C, Ω.center, Γ.center, D]\nleft : A ∈ Ω\nright : A ∈ Γ\nleft_1 : B ∈ Ω\nright_1 : B ∈ Γ\nleft_2 : C ∈ line[ℝ, Ω.center, Γ.center]\nright_2 : C ∈ Ω\nleft_3 : D ∈ line[ℝ, Ω.center, Γ.center]\nright_3 : D ∈ Γ\nleft_4 : E ∈ line[ℝ, A, { points := ![A, C, D], independent := affineIndependent_ACD }.circumcenter]\nright_4 : E ∈ Ω\nleft_5 : F ∈ line[ℝ, A, { points := ![A, C, D], independent := affineIndependent_ACD }.circumcenter]\nright_5 : F ∈ Γ\n⊢ ∃ (h : AffineIndependent ℝ ![B, E, F]),\n    { points := ![B, E, F], independent := ⋯ }.circumsphere.IsTangent\n      (AffineSubspace.mk'\n        (Triangle.orthocenter\n          {\n            points :=\n              ![{ points := ![A, C, D], independent := affineIndependent_ACD }.circumcenter, Ω.center, Γ.center],\n            independent := affineIndependent_PMN })\n        line[ℝ, A, { points := ![A, C, D], independent := affineIndependent_ACD }.circumcenter].direction)\n",
+    "stderr": "warning: manifest out of date: git revision of dependency 'mathlib' changed; use `lake update mathlib` to update it\n",
+    "outcome": "completed",
+    "timeout_seconds": 60
+  },
+  "full_problem_complete": false,
+  "scope_note": "Coordinate proofs alone do not prove the full affine-geometry target. Full-target diagnostics decide the attempt outcome; a failed target keeps this workflow red."
+}

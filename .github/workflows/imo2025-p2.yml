@@ -1,0 +1,43 @@
+name: IMO 2025 P2 formalization attempt
+on:
+  pull_request:
+    paths:
+      - 'research/imo2025-p2/**'
+      - '.github/workflows/imo2025-p2.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: imo2025-p2-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  attempt:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 23
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Preserve source and reproduction inputs
+        run: |
+          mkdir -p imo-p2-evidence
+          chmod 777 imo-p2-evidence
+          git rev-parse HEAD > imo-p2-evidence/controller-commit.txt
+          cp research/imo2025-p2/lean-toolchain research/imo2025-p2/lake-manifest.json imo-p2-evidence/
+          sha256sum research/imo2025-p2/CoordinateCore.lean research/imo2025-p2/FullTargetAttempt.lean > imo-p2-evidence/source-sha256.txt
+      - name: Prepare pinned upstream dependencies without candidate code
+        run: |
+          set -o pipefail
+          timeout --kill-after=15s 900s docker build --platform linux/amd64 --progress plain -t atlas-imo2025-p2 research/imo2025-p2 2>&1 | tee imo-p2-evidence/preparation.log
+      - name: Attempt coordinate proofs and full statement offline
+        run: |
+          set -o pipefail
+          timeout --kill-after=10s 320s docker run --rm --network none --read-only --cap-drop ALL --security-opt no-new-privileges --pids-limit 128 --memory 6g --cpus 2 --tmpfs /tmp:rw,nosuid,nodev,size=256m --mount type=bind,src="$PWD/research/imo2025-p2/CoordinateCore.lean",dst=/work/CoordinateCore.lean,readonly --mount type=bind,src="$PWD/research/imo2025-p2/FullTargetAttempt.lean",dst=/work/FullTargetAttempt.lean,readonly --mount type=bind,src="$PWD/imo-p2-evidence",dst=/evidence atlas-imo2025-p2 2>&1 | tee imo-p2-evidence/observation.log
+      - name: Retain all attempts including failures
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: imo2025-p2-attempt
+          path: imo-p2-evidence/
+          retention-days: 30
+          if-no-files-found: error
