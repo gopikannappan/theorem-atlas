@@ -1,4 +1,6 @@
-import Mathlib.Data.Real.Basic
+import Mathlib.Basic.Real.Basic
+import Mathlib.Geometry.Euclidean.Sphere.Tangent
+import Mathlib.Geometry.Euclidean.Sphere.SecondInter
 import Mathlib.Tactic.FieldSimp
 import Mathlib.Tactic.Ring
 import Mathlib.Tactic.Linarith
@@ -117,4 +119,91 @@ theorem normalized_unique_parameter (d U V y t : ℝ)
 #print axioms normalized_line_factorization
 #print axioms normalized_unique_parameter
 
+
+/-- The candidate polynomial contains the reflected common-circle point. -/
+theorem candidate_B_on_polynomial (r R d x y : ℝ) (hy : y ≠ 0)
+    (hA : x ^ 2 + y ^ 2 = r ^ 2)
+    (hB : (x - d) ^ 2 + y ^ 2 = R ^ 2) :
+    circlePolynomial d (R - r) (R + r) y x (-y) = 0 := by
+  have hlin := circle_difference r R d x y hA hB
+  have hid :
+      circlePolynomial d (R - r) (R + r) y x (-y) =
+        (x ^ 2 + y ^ 2 - r ^ 2) -
+          (2 * d * x - (d ^ 2 + r ^ 2 - R ^ 2)) / 2 := by
+    unfold circlePolynomial
+    field_simp [hy]
+    <;> ring
+  simpa [hA, hlin] using hid
+
+/-- Conditional membership for the proposed E coordinates; the full geometry
+still has to establish that the actual second intersection has these coordinates. -/
+theorem candidate_E_on_polynomial (r R d x y : ℝ)
+    (hR : R ≠ 0) (hy : y ≠ 0)
+    (hA : x ^ 2 + y ^ 2 = r ^ 2)
+    (hB : (x - d) ^ 2 + y ^ 2 = R ^ 2) :
+    circlePolynomial d (R - r) (R + r) y (r / R * (d - x)) (-r / R * y) = 0 := by
+  have hlin := circle_difference r R d x y hA hB
+  have hid :
+      circlePolynomial d (R - r) (R + r) y (r / R * (d - x)) (-r / R * y) =
+        (r / R) ^ 2 * ((x - d) ^ 2 + y ^ 2 - R ^ 2) +
+          (r / (2 * R)) * (2 * d * x - (d ^ 2 + r ^ 2 - R ^ 2)) := by
+    unfold circlePolynomial
+    field_simp [hR, hy]
+    <;> ring
+  simpa [hB, hlin] using hid
+
+/-- Conditional membership for the proposed F coordinates. -/
+theorem candidate_F_on_polynomial (r R d x y : ℝ)
+    (hr : r ≠ 0) (hy : y ≠ 0)
+    (hA : x ^ 2 + y ^ 2 = r ^ 2)
+    (hB : (x - d) ^ 2 + y ^ 2 = R ^ 2) :
+    circlePolynomial d (R - r) (R + r) y (d - R / r * x) (-R / r * y) = 0 := by
+  have hlin := circle_difference r R d x y hA hB
+  have hid :
+      circlePolynomial d (R - r) (R + r) y (d - R / r * x) (-R / r * y) =
+        (R / r) ^ 2 * (x ^ 2 + y ^ 2 - r ^ 2) -
+          (R / (2 * r)) * (2 * d * x - (d ^ 2 + r ^ 2 - R ^ 2)) := by
+    unfold circlePolynomial
+    field_simp [hr, hy]
+    <;> ring
+  simpa [hA, hlin] using hid
+
+#print axioms candidate_B_on_polynomial
+#print axioms candidate_E_on_polynomial
+#print axioms candidate_F_on_polynomial
+
 end IMO2025P2Coordinates
+
+namespace IMO2025P2Bridge
+
+open EuclideanGeometry
+variable {V P : Type*} [NormedAddCommGroup V] [InnerProductSpace ℝ V]
+  [MetricSpace P] [NormedAddTorsor V P]
+
+/-- A unique intersection with an affine subspace implies actual Mathlib
+sphere tangency at that point. This is a generic bridge, not the IMO proof. -/
+theorem tangentAt_of_unique_intersection (s : Sphere P) (a : AffineSubspace ℝ P) (p : P)
+    (hpS : p ∈ s) (hpA : p ∈ a)
+    (hunique : ∀ q : P, q ∈ s → q ∈ a → q = p) :
+    s.IsTangentAt p a := by
+  refine ⟨hpS, hpA, ?_⟩
+  intro x hx
+  apply Sphere.mem_orthRadius_iff_inner_left.mpr
+  apply Sphere.secondInter_eq_self_iff.mp
+  apply hunique
+  · exact (Sphere.secondInter_mem (x -ᵥ p)).mpr hpS
+  · unfold Sphere.secondInter
+    exact AffineSubspace.vadd_mem_of_mem_direction
+      (a.direction.smul_mem _ (AffineSubspace.vsub_mem_direction hx hpA)) hpA
+
+theorem tangent_of_unique_intersection (s : Sphere P) (a : AffineSubspace ℝ P) (p : P)
+    (hpS : p ∈ s) (hpA : p ∈ a)
+    (hunique : ∀ q : P, q ∈ s → q ∈ a → q = p) :
+    s.IsTangent a :=
+  (tangentAt_of_unique_intersection s a p hpS hpA hunique).isTangent
+
+#print axioms tangentAt_of_unique_intersection
+#print axioms tangent_of_unique_intersection
+
+end IMO2025P2Bridge
+

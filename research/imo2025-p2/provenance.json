@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "state": "in_progress_full_theorem_unproved",
+  "state": "in_progress_attempt_1_failed",
   "record_id": "harmonic:imo2025:p2",
   "goal": "Complete the original Compfiles IMO2025P2 theorem, without extra mathematical assumptions",
   "full_target_file": "FullTargetAttempt.lean",
@@ -110,5 +110,46 @@
     "state": "pending",
     "reviewer": null
   },
-  "certification": "none"
+  "certification": "none",
+  "attempts": [
+    {
+      "attempt": 1,
+      "source_commit": "abe224d7fd1fd36979d6211275a4ee26fd69cfd1",
+      "run_id": 40471794537,
+      "job_id": 122080403134,
+      "artifact_id": 12719121086,
+      "artifact_digest": "sha256:36b33675ba1ea99c6a7d96970446d279f9d9c814a72775949a4e8d8486ff9093",
+      "observation": "observations/attempt-1.json",
+      "coordinate_result": "missing cached Data.Real.Basic import",
+      "full_target_result": "unsolved actual geometry goal after proof search",
+      "accepted_full_proof": false
+    }
+  ],
+  "additional_coordinate_declarations": [
+    "IMO2025P2Coordinates.candidate_B_on_polynomial",
+    "IMO2025P2Coordinates.candidate_E_on_polynomial",
+    "IMO2025P2Coordinates.candidate_F_on_polynomial"
+  ],
+  "additional_geometry_declarations": [
+    {
+      "name": "IMO2025P2Bridge.tangentAt_of_unique_intersection",
+      "assumptions": [
+        "p lies on sphere and affine subspace",
+        "Every common point of sphere and subspace equals p"
+      ],
+      "conclusion": "Mathlib Sphere.IsTangentAt p",
+      "scope": "generic lemma; hypotheses still need proof for the IMO configuration"
+    },
+    {
+      "name": "IMO2025P2Bridge.tangent_of_unique_intersection",
+      "scope": "generic corollary, not the full IMO theorem"
+    }
+  ],
+  "next_candidate_changes": [
+    "Use explicitly cached Basic.Real.Basic module",
+    "Cache Sphere.SecondInter for a generic actual tangency bridge",
+    "Add conditional polynomial memberships for the proposed B/E/F coordinates",
+    "Select proposed contact point (N-A)+M in the unchanged full target",
+    "Align lockfile inputRev with the already pinned resolved Mathlib commit; dependency content unchanged"
+  ]
 }

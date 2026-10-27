@@ -40,6 +40,13 @@ theorem imo2025_p2 {M N A B C D P E F H : Pt} {Ω Γ : Sphere Pt}
       (⟨_, affineIndependent_BEF⟩ : Triangle ℝ Pt).circumsphere.IsTangent
         (AffineSubspace.mk' H line[ℝ, A, P].direction) := by
   classical
+  let T : Pt := (N -ᵥ A) +ᵥ M
+  suffices h :
+      ∃ affineIndependent_BEF : AffineIndependent ℝ ![B, E, F],
+        (⟨_, affineIndependent_BEF⟩ : Triangle ℝ Pt).circumsphere.IsTangentAt T
+          (AffineSubspace.mk' H line[ℝ, A, P].direction) by
+    rcases h with ⟨hBEF, hT⟩
+    exact ⟨hBEF, hT.isTangent⟩
   aesop
 
 end Imo2025P2
