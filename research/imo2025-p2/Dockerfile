@@ -6,7 +6,7 @@ RUN curl --fail --location --connect-timeout 20 --max-time 240 --retry 2 https:/
 ENV PATH="/opt/lean/bin:$PATH"
 WORKDIR /work
 COPY lean-toolchain lakefile.toml lake-manifest.json ./
-RUN lake exe cache get Mathlib.Analysis.InnerProductSpace.TwoDim Mathlib.Basic.Real.Basic Mathlib.Geometry.Euclidean.Sphere.SecondInter Mathlib.Geometry.Euclidean.Sphere.Tangent Mathlib.Geometry.Euclidean.MongePoint Mathlib.Analysis.Convex.BetweenList Mathlib.Tactic.FieldSimp Mathlib.Tactic.Ring Mathlib.Tactic.Linarith Mathlib.Tactic.LinearCombination Mathlib.Tactic.NormNum \
+RUN lake exe cache get Mathlib.Tactic.FinCases Mathlib.Analysis.InnerProductSpace.TwoDim Mathlib.Basic.Real.Basic Mathlib.Geometry.Euclidean.Sphere.SecondInter Mathlib.Geometry.Euclidean.Sphere.Tangent Mathlib.Geometry.Euclidean.MongePoint Mathlib.Analysis.Convex.BetweenList Mathlib.Tactic.FieldSimp Mathlib.Tactic.Ring Mathlib.Tactic.Linarith Mathlib.Tactic.LinearCombination Mathlib.Tactic.NormNum \
     && rm -rf /root/.cache/mathlib \
     && chmod -R a+rX /work /opt/lean && chown -R 1000:1000 /work
 COPY observe.py /observer/observe.py

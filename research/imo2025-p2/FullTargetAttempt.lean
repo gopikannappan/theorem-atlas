@@ -16,6 +16,7 @@ import Mathlib.Tactic.Ring
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.LinearCombination
 import Mathlib.Tactic.FieldSimp
+import Mathlib.Tactic.FinCases
 import Aesop
 
 open scoped Real
@@ -599,6 +600,94 @@ theorem imo2025_p2 {M N A B C D P E F H : Pt} {Ω Γ : Sphere Pt}
     rcases h with ⟨hBEF, hT⟩
     exact ⟨hBEF, hT.isTangent⟩
   refine ⟨hBEF, ?_⟩
+
+  let triBEF : Triangle ℝ Pt := ⟨_, hBEF⟩
+  have hcenterInSpan : circleCenter ∈ affineSpan ℝ (Set.range triBEF.points) := by
+    rw [triBEF.affineSpan_eq_top (Fact.out : finrank ℝ V = 2)]
+    exact AffineSubspace.mem_top ℝ circleCenter
+  have hBEFdist : ∀ i, dist (triBEF.points i) circleCenter = dist B circleCenter := by
+    intro i
+    fin_cases i <;> simp [triBEF, hEdist, hFdist]
+  have hcenterEq : circleCenter = triBEF.circumcenter :=
+    triBEF.eq_circumcenter_of_dist_eq hcenterInSpan hBEFdist
+  have hradiusEq : triBEF.circumradius = dist B circleCenter :=
+    (triBEF.eq_circumradius_of_dist_eq hcenterInSpan hBEFdist).symm
+  have hTvec : (T -ᵥ M : V) = n - z := by
+    simp only [T, vadd_vsub, n, z, vsub_sub_vsub_cancel_right]
+  have hTcoords :
+      inner ℝ n (T -ᵥ M) / d = d - x ∧
+      o.areaForm n (T -ᵥ M) / d = -y := by
+    rw [hTvec]
+    constructor
+    · rw [inner_sub_right, sub_div, hxn]
+    · simp only [map_sub, o.areaForm_apply_self, zero_sub, neg_div]
+      rfl
+  have hTpoly : circlePoly (d - x) (-y) = 0 := by
+    have heq : circlePoly (d - x) (-y) = circlePoly x (-y) := by
+      dsimp only [circlePoly]
+      ring
+    rw [heq]
+    exact hBpoly
+  have hTdist : dist T circleCenter = dist B circleCenter := by
+    have h := hpolydist T
+    rw [hTcoords.1, hTcoords.2, hTpoly] at h
+    apply (mul_self_inj_of_nonneg dist_nonneg dist_nonneg).mp
+    nlinarith only [h]
+  have hTonCircle : T ∈ triBEF.circumsphere := by
+    apply mem_sphere.mpr
+    rw [triBEF.circumsphere_center, triBEF.circumsphere_radius, ← hcenterEq, hradiusEq]
+    exact hTdist
+  have hupper : d < Ω.radius + Γ.radius := by
+    have hs := Sphere.dist_center_midpoint_lt_radius A_mem_inter.1 B_mem_inter.1 A_ne_B
+    have ht := Sphere.dist_center_midpoint_lt_radius A_mem_inter.2 B_mem_inter.2 A_ne_B
+    rw [Ω_center_eq_M] at hs
+    rw [Γ_center_eq_N, dist_comm N (midpoint ℝ A B)] at ht
+    have htri := dist_triangle M (midpoint ℝ A B) N
+    rw [hMN] at htri
+    linarith only [hs, ht, htri]
+  have hS : d + (Γ.radius + Ω.radius) ≠ 0 :=
+    ne_of_gt (by linarith only [hdpositive, hΩpos, hΓpos])
+  have hKne : Γ.radius + Ω.radius - d ≠ 0 :=
+    ne_of_gt (by linarith only [hupper])
+  let tcontact : ℝ := (Γ.radius + Ω.radius - d) / (d + (Γ.radius + Ω.radius))
+  have hTx : d - x - hx = tcontact * (px - x) := by
+    rw [hxP]
+    dsimp only [tcontact]
+    field_simp [hS]
+    linear_combination -hLA - (Γ.radius + Ω.radius) * hpx
+  have hTy : -y - hy = tcontact * (py - y) := by
+    dsimp only [tcontact]
+    field_simp [hS]
+    linear_combination -hHcoord - hpy
+  have hTminusH : (T -ᵥ H : V) = (T -ᵥ M) - hvec := by
+    simp only [hvec, vsub_sub_vsub_cancel_right]
+  have hPminusA : (P -ᵥ A : V) = pvec - z := by
+    simp only [pvec, z, vsub_sub_vsub_cancel_right]
+  have hTlineVector : (T -ᵥ H : V) = tcontact • (P -ᵥ A) := by
+    apply hcoords_ext
+    · have hl : inner ℝ n (T -ᵥ H) / d = d - x - hx := by
+        rw [hTminusH, inner_sub_right, sub_div, hTcoords.1]
+      have hr : inner ℝ n (tcontact • (P -ᵥ A)) / d = tcontact * (px - x) := by
+        rw [hPminusA, inner_smul_right, inner_sub_right]
+        dsimp only [px, x]
+        ring
+      exact hl.trans (hTx.trans hr.symm)
+    · have hl : o.areaForm n (T -ᵥ H) / d = -y - hy := by
+        rw [hTminusH, map_sub, sub_div, hTcoords.2]
+      have hr : o.areaForm n (tcontact • (P -ᵥ A)) / d = tcontact * (py - y) := by
+        rw [hPminusA, map_smul, map_sub]
+        dsimp only [py, y]
+        simp only [smul_eq_mul]
+        ring
+      exact hl.trans (hTy.trans hr.symm)
+  have hTonLine : T ∈ AffineSubspace.mk' H line[ℝ, A, P].direction := by
+    apply AffineSubspace.mem_mk'.mpr
+    rw [hTlineVector]
+    exact (line[ℝ, A, P]).direction.smul_mem tcontact
+      (AffineSubspace.vsub_mem_direction hlineP hlineA)
+
   trace_state
+
+#print axioms imo2025_p2
 
 end Imo2025P2
