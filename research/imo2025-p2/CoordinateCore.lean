@@ -416,4 +416,26 @@ theorem coordinate_inner (o : Orientation ℝ V (Fin 2)) (n u v : V) (hn : n ≠
 
 #print axioms coordinate_inner
 
+
+/-- Construct a vector with prescribed coordinates in the derived orthogonal frame. -/
+noncomputable def vectorForCoordinates (o : Orientation ℝ V (Fin 2))
+    (n : V) (a b : ℝ) : V :=
+  (a / ‖n‖) • n + (b / ‖n‖) • o.rightAngleRotation n
+
+theorem coordinates_of_vectorForCoordinates (o : Orientation ℝ V (Fin 2))
+    (n : V) (hn : n ≠ 0) (a b : ℝ) :
+    abscissa n (vectorForCoordinates o n a b) = a ∧
+    ordinate o n (vectorForCoordinates o n a b) = b := by
+  have hd : ‖n‖ ≠ 0 := norm_ne_zero_iff.mpr hn
+  unfold abscissa ordinate vectorForCoordinates
+  constructor
+  · simp only [inner_add_right, inner_smul_right, o.inner_rightAngleRotation_right,
+      o.areaForm_apply_self, neg_zero, mul_zero, add_zero, real_inner_self_eq_norm_sq]
+    field_simp [hd] <;> ring
+  · simp only [map_add, map_smul, smul_eq_mul, o.areaForm_apply_self, mul_zero,
+      zero_add, o.areaForm_rightAngleRotation_right, real_inner_self_eq_norm_sq]
+    field_simp [hd] <;> ring
+
+#print axioms coordinates_of_vectorForCoordinates
+
 end IMO2025P2Frame

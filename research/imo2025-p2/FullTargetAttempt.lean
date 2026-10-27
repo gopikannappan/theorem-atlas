@@ -466,6 +466,131 @@ theorem imo2025_p2 {M N A B C D P E F H : Pt} {Ω Γ : Sphere Pt}
       o.areaForm n (F -ᵥ M) / d = -Γ.radius / Ω.radius * y := by
     simpa only [hFstarF] using hFco
 
+
+  let circleCoeff : ℝ := ((Γ.radius + Ω.radius) ^ 2 - d ^ 2) / (2 * y)
+  let circlePoly : ℝ → ℝ → ℝ := fun X Y =>
+    X ^ 2 + Y ^ 2 - d * X + circleCoeff * Y + Γ.radius * Ω.radius
+  let centerVector : V :=
+    ((d / 2) / d) • n + ((-circleCoeff / 2) / d) • o.rightAngleRotation n
+  let circleCenter : Pt := centerVector +ᵥ M
+  have hcenter :
+      inner ℝ n (circleCenter -ᵥ M) / d = d / 2 ∧
+      o.areaForm n (circleCenter -ᵥ M) / d = -circleCoeff / 2 := by
+    constructor
+    · simp only [circleCenter, vadd_vsub, centerVector, inner_add_right,
+        inner_smul_right, o.inner_rightAngleRotation_right, o.areaForm_apply_self,
+        neg_zero, mul_zero, add_zero, real_inner_self_eq_norm_sq]
+      change ((d / 2 / d) * d ^ 2) / d = d / 2
+      field_simp [hd] <;> ring
+    · simp only [circleCenter, vadd_vsub, centerVector, map_add, map_smul,
+        smul_eq_mul, o.areaForm_apply_self, mul_zero, zero_add,
+        o.areaForm_rightAngleRotation_right, real_inner_self_eq_norm_sq]
+      change ((-circleCoeff / 2 / d) * d ^ 2) / d = -circleCoeff / 2
+      field_simp [hd] <;> ring
+  have hBpoly : circlePoly x (-y) = 0 := by
+    have hid : circlePoly x (-y) =
+        (x ^ 2 + y ^ 2 - Ω.radius ^ 2) -
+          (2 * d * x - (d ^ 2 + Ω.radius ^ 2 - Γ.radius ^ 2)) / 2 := by
+      dsimp only [circlePoly, circleCoeff]
+      field_simp [hy_nonzero]
+      <;> ring
+    simpa only [hcircleΩ, hLA, sub_self, zero_div] using hid
+  have hEpoly : circlePoly (Ω.radius / Γ.radius * (d - x)) (-Ω.radius / Γ.radius * y) = 0 := by
+    have hid : circlePoly (Ω.radius / Γ.radius * (d - x)) (-Ω.radius / Γ.radius * y) =
+        (Ω.radius / Γ.radius) ^ 2 * ((x - d) ^ 2 + y ^ 2 - Γ.radius ^ 2) +
+          (Ω.radius / (2 * Γ.radius)) *
+            (2 * d * x - (d ^ 2 + Ω.radius ^ 2 - Γ.radius ^ 2)) := by
+      dsimp only [circlePoly, circleCoeff]
+      field_simp [hRne, hy_nonzero]
+      <;> ring
+    simpa only [hcircleΓ, hLA, sub_self, mul_zero, add_zero] using hid
+  have hFpoly : circlePoly (d - Γ.radius / Ω.radius * x) (-Γ.radius / Ω.radius * y) = 0 := by
+    have hid : circlePoly (d - Γ.radius / Ω.radius * x) (-Γ.radius / Ω.radius * y) =
+        (Γ.radius / Ω.radius) ^ 2 * (x ^ 2 + y ^ 2 - Ω.radius ^ 2) -
+          (Γ.radius / (2 * Ω.radius)) *
+            (2 * d * x - (d ^ 2 + Ω.radius ^ 2 - Γ.radius ^ 2)) := by
+      dsimp only [circlePoly, circleCoeff]
+      field_simp [hrne, hy_nonzero]
+      <;> ring
+    simpa only [hcircleΩ, hLA, sub_self, mul_zero, sub_zero] using hid
+  have hpolydist (q : Pt) :
+      dist q circleCenter ^ 2 - dist B circleCenter ^ 2 =
+        circlePoly (inner ℝ n (q -ᵥ M) / d) (o.areaForm n (q -ᵥ M) / d) := by
+    let qx : ℝ := inner ℝ n (q -ᵥ M) / d
+    let qy : ℝ := o.areaForm n (q -ᵥ M) / d
+    have hq := hdistframe q circleCenter
+    have hb := hdistframe B circleCenter
+    change (qx - inner ℝ n (circleCenter -ᵥ M) / d) ^ 2 +
+      (qy - o.areaForm n (circleCenter -ᵥ M) / d) ^ 2 = dist q circleCenter ^ 2 at hq
+    change (xb - inner ℝ n (circleCenter -ᵥ M) / d) ^ 2 +
+      (yb - o.areaForm n (circleCenter -ᵥ M) / d) ^ 2 = dist B circleCenter ^ 2 at hb
+    rw [hcenter.1, hcenter.2] at hq hb
+    rw [hxb, hyb] at hb
+    change dist q circleCenter ^ 2 - dist B circleCenter ^ 2 = circlePoly qx qy
+    have hp := hBpoly
+    dsimp only [circlePoly] at hp ⊢
+    linear_combination -hq + hb - hp
+  have hEpolyActual :
+      circlePoly (inner ℝ n (E -ᵥ M) / d) (o.areaForm n (E -ᵥ M) / d) = 0 := by
+    simpa only [hEcoordinates.1, hEcoordinates.2] using hEpoly
+  have hFpolyActual :
+      circlePoly (inner ℝ n (F -ᵥ M) / d) (o.areaForm n (F -ᵥ M) / d) = 0 := by
+    simpa only [hFcoordinates.1, hFcoordinates.2] using hFpoly
+  have hEdist : dist E circleCenter = dist B circleCenter := by
+    have hq := hpolydist E
+    rw [hEpolyActual] at hq
+    apply (mul_self_inj_of_nonneg dist_nonneg dist_nonneg).mp
+    nlinarith only [hq]
+  have hFdist : dist F circleCenter = dist B circleCenter := by
+    have hq := hpolydist F
+    rw [hFpolyActual] at hq
+    apply (mul_self_inj_of_nonneg dist_nonneg dist_nonneg).mp
+    nlinarith only [hq]
+  have hBE : B ≠ E := by
+    intro he
+    have hv : yb = o.areaForm n (E -ᵥ M) / d :=
+      congrArg (fun q : Pt => o.areaForm n (q -ᵥ M) / d) he
+    rw [hyb, hEcoordinates.2] at hv
+    have hs : (-1 : ℝ) = -Ω.radius / Γ.radius := by
+      apply mul_right_cancel₀ hy_nonzero
+      simpa only [neg_one_mul] using hv
+    have hr := (eq_div_iff hRne).mp hs
+    have heq : Ω.radius = Γ.radius := by nlinarith only [hr]
+    exact (ne_of_lt Ω_radius_lt_Γ_radius) heq
+  have hBF : B ≠ F := by
+    intro he
+    have hv : yb = o.areaForm n (F -ᵥ M) / d :=
+      congrArg (fun q : Pt => o.areaForm n (q -ᵥ M) / d) he
+    rw [hyb, hFcoordinates.2] at hv
+    have hs : (-1 : ℝ) = -Γ.radius / Ω.radius := by
+      apply mul_right_cancel₀ hy_nonzero
+      simpa only [neg_one_mul] using hv
+    have hr := (eq_div_iff hrne).mp hs
+    have heq : Ω.radius = Γ.radius := by nlinarith only [hr]
+    exact (ne_of_lt Ω_radius_lt_Γ_radius) heq
+  have hEF : E ≠ F := by
+    intro he
+    have hv : o.areaForm n (E -ᵥ M) / d = o.areaForm n (F -ᵥ M) / d :=
+      congrArg (fun q : Pt => o.areaForm n (q -ᵥ M) / d) he
+    rw [hEcoordinates.2, hFcoordinates.2] at hv
+    have hs : -Ω.radius / Γ.radius = -Γ.radius / Ω.radius := by
+      apply mul_right_cancel₀ hy_nonzero
+      exact hv
+    field_simp [hRne, hrne] at hs
+    have hprod : 0 < (Γ.radius - Ω.radius) * (Γ.radius + Ω.radius) :=
+      mul_pos (sub_pos.mpr Ω_radius_lt_Γ_radius) (by linarith only [hΓpos, hΩpos])
+    nlinarith only [hs, hprod]
+  have hcospherical : Cospherical ({B, E, F} : Set Pt) := by
+    refine ⟨circleCenter, dist B circleCenter, ?_⟩
+    intro q hq
+    simp only [Set.mem_insert_iff, Set.mem_singleton_iff] at hq
+    rcases hq with rfl | rfl | rfl
+    · rfl
+    · exact hEdist
+    · exact hFdist
+  have hBEF : AffineIndependent ℝ ![B, E, F] :=
+    hcospherical.affineIndependent_of_ne hBE hBF hEF
+
   let T : Pt := (N -ᵥ A) +ᵥ M
   suffices h :
       ∃ affineIndependent_BEF : AffineIndependent ℝ ![B, E, F],
@@ -473,6 +598,7 @@ theorem imo2025_p2 {M N A B C D P E F H : Pt} {Ω Γ : Sphere Pt}
           (AffineSubspace.mk' H line[ℝ, A, P].direction) by
     rcases h with ⟨hBEF, hT⟩
     exact ⟨hBEF, hT.isTangent⟩
+  refine ⟨hBEF, ?_⟩
   aesop
 
 end Imo2025P2

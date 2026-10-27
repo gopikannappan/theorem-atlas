@@ -421,6 +421,36 @@
       "coordinate_result": "Supporting module failed in candidate circle membership algebra, with compiler recovery axiom. Not accepted.",
       "full_target_result": "P/H and candidate line-coordinate derivations elaborated; candidate circle membership and distinctness produced four errors. E/F identities downstream of those errors are not accepted.",
       "accepted_full_proof": false
+    },
+    {
+      "attempt": 13,
+      "stage": "round3 candidate 4",
+      "source_commit": "764be71ad463d2c8f50f4f45c9c30712e9a5ca6e",
+      "run_id": 40534726604,
+      "job_id": 122296768694,
+      "artifact": {
+        "id": 12747597455,
+        "name": "imo2025-p2-attempt",
+        "size_in_bytes": 18728,
+        "url": "https://api.github.com/repos/theorem-atlas/theorem-atlas/actions/artifacts/12747597455",
+        "archive_download_url": "https://api.github.com/repos/theorem-atlas/theorem-atlas/actions/artifacts/12747597455/zip",
+        "expired": false,
+        "created_at": "2026-10-27T15:52:12Z",
+        "expires_at": "2026-11-26T15:52:11Z",
+        "updated_at": "2026-10-27T15:52:12Z",
+        "digest": "sha256:24edaf440a7a2ac40cceab31c9e642eecbdba29f163bcbf595567436dd9c8a2d",
+        "workflow_run": {
+          "id": 40534726604,
+          "repository_id": 1416962223,
+          "head_repository_id": 1416962223,
+          "head_branch": "proof/imo2025-p2",
+          "head_sha": "764be71ad463d2c8f50f4f45c9c30712e9a5ca6e"
+        }
+      },
+      "observation": "observations/attempt-13.json",
+      "coordinate_result": "23 supporting lemmas compile and module replay passes, imports assumed",
+      "full_target_result": "Actual P, H, E, F coordinate derivations elaborate; exact original full tangency goal unsolved",
+      "accepted_full_proof": false
     }
   ],
   "additional_coordinate_declarations": [
@@ -500,6 +530,13 @@
     "checkpoint_reproductions": 1,
     "objective": "Derive actual circumcenter, orthocenter, second intersections and identify the target circle and line",
     "independent_review": "pending and unassigned",
-    "candidates_completed": 3
+    "candidates_completed": 4,
+    "status": "checkpointed_incomplete"
+  },
+  "continuation_round4": {
+    "candidate_CI_iterations": 4,
+    "checkpoint_reproductions": 1,
+    "objective": "Construct actual B,E,F circumcircle and prove affine independence and tangency",
+    "status": "in_progress"
   }
 }
