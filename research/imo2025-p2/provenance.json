@@ -322,7 +322,7 @@
           "head_sha": "121374f632877697c7939b3264b0569ac407be90"
         }
       },
-      "observation": "../../../docs/research/imo2025-p2-checkpoint-previous.json",
+      "observation": "../../docs/research/imo2025-p2-checkpoint-previous.json",
       "coordinate_result": "18 supporting lemmas compiled and replayed with imports assumed",
       "full_target_result": "original tangency goal remained unsolved",
       "accepted_full_proof": false
