@@ -1,9 +1,9 @@
 # Attempt checkpoint
 
-Attempt1: source `abe224d7fd1fd36979d6211275a4ee26fd69cfd1`, [run40471794537](https://github.com/theorem-atlas/theorem-atlas/actions/runs/40471794537), job122080403134, artifact12719121086, digest `sha256:36b33675ba1ea99c6a7d96970446d279f9d9c814a72775949a4e8d8486ff9093`.
+Attempts 1 and 2 are preserved in observations/attempt-1.json and observations/attempt-2.json, including complete compiler output and source hashes. Run links and immutable source commits are recorded in provenance.json.
 
-The coordinate file stopped at an uncached Mathlib.Data.Real.Basic import before its mathematics was checked. FullTargetAttempt.lean elaborated the exact upstream interface but ordinary proof search left the original affine-independence/tangency goal unsolved. No full proof or accepted coordinate result is claimed from this run. Full stdout/stderr and source hashes are retained in observations/attempt-1.json.
+Attempt 2 elaborated ten mathematical lemmas with propext, Classical.choice and Quot.sound. The module still failed because three real-valued definitions required noncomputable code-generation annotations. No successful module build or full proof is claimed from attempt 2.
 
-Next iteration fixes the explicit cached import, keeps all resolved dependency commits pinned, and adds concrete algebraic memberships plus a generic Mathlib tangency bridge. The full-target signature is unchanged; the proof attempt selects the proposed contact point T=(N-A)+M. Selecting this point does not prove it lies on the actual circumcircle or the target line. Those are still goals, not assumptions.
+Candidate 3 adds those annotations without changing formula bodies, proves generic radius/center-distance consequences of two-point sphere intersections, and derives actual second-intersection identities in the unchanged full target. The full target still requires actual geometric identifications, affine independence and tangency.
 
-No local execution or catalogue status change. Four candidate CI iterations plus one unchanged-source checkpoint reproduction is the bounded budget. Independent fidelity/trust review remains unassigned.
+Budget: four candidate CI iterations plus one unchanged-source checkpoint reproduction. No local execution. No catalogue or audit upgrade. Independent fidelity and trust review remain unassigned.

@@ -10,6 +10,7 @@ The attempted proof below is not certified if compilation fails.
 import Mathlib.Geometry.Euclidean.Sphere.Tangent
 import Mathlib.Geometry.Euclidean.MongePoint
 import Mathlib.Analysis.Convex.BetweenList
+import Mathlib.Geometry.Euclidean.Sphere.SecondInter
 import Aesop
 
 open scoped Real
@@ -40,6 +41,21 @@ theorem imo2025_p2 {M N A B C D P E F H : Pt} {Ω Γ : Sphere Pt}
       (⟨_, affineIndependent_BEF⟩ : Triangle ℝ Pt).circumsphere.IsTangent
         (AffineSubspace.mk' H line[ℝ, A, P].direction) := by
   classical
+  have hΩpos : 0 < Ω.radius := by
+    rw [← mem_sphere.mp A_mem_inter.1]
+    exact dist_pos.mpr
+      (Sphere.ne_center_of_mem_of_mem_of_ne A_mem_inter.1 B_mem_inter.1 A_ne_B)
+  have hΓpos : 0 < Γ.radius := by
+    rw [← mem_sphere.mp A_mem_inter.2]
+    exact dist_pos.mpr
+      (Sphere.ne_center_of_mem_of_mem_of_ne A_mem_inter.2 B_mem_inter.2 A_ne_B)
+  have hdpos : 0 < dist M N := dist_pos.mpr M_ne_N
+  have hEsecond : E = Ω.secondInter A (P -ᵥ A) :=
+    ((Sphere.eq_or_eq_secondInter_iff_mem_of_mem_affineSpan_pair
+      A_mem_inter.1 E_mem_inter.1).mpr E_mem_inter.2).resolve_left E_ne_A
+  have hFsecond : F = Γ.secondInter A (P -ᵥ A) :=
+    ((Sphere.eq_or_eq_secondInter_iff_mem_of_mem_affineSpan_pair
+      A_mem_inter.2 F_mem_inter.1).mpr F_mem_inter.2).resolve_left F_ne_A
   let T : Pt := (N -ᵥ A) +ᵥ M
   suffices h :
       ∃ affineIndependent_BEF : AffineIndependent ℝ ![B, E, F],

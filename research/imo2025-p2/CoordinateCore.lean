@@ -58,14 +58,14 @@ theorem circumcenter_coordinates (r R d x y p q : ℝ)
 
 /-- A polynomial intended for the normalized circumcircle. Identifying it with the
 actual circumcircle of B,E,F is a separate, currently unproved geometry step. -/
-def circlePolynomial (d U V y X Y : ℝ) : ℝ :=
+noncomputable def circlePolynomial (d U V y X Y : ℝ) : ℝ :=
   X ^ 2 + Y ^ 2 - d * X + ((V ^ 2 - d ^ 2) / (2 * y)) * Y +
     (V ^ 2 - U ^ 2) / 4
 
-def lineX (d U V t : ℝ) : ℝ :=
+noncomputable def lineX (d U V t : ℝ) : ℝ :=
   (d + U) / 2 + (U * (d + V) / (2 * d)) * t
 
-def lineY (d V y t : ℝ) : ℝ :=
+noncomputable def lineY (d V y t : ℝ) : ℝ :=
   -d * y / (d + V) - (V * y / (V - d)) * t
 
 /-- The main analytic factorization. This is not yet the full affine-geometry theorem. -/
@@ -204,6 +204,26 @@ theorem tangent_of_unique_intersection (s : Sphere P) (a : AffineSubspace ℝ P)
 
 #print axioms tangentAt_of_unique_intersection
 #print axioms tangent_of_unique_intersection
+
+
+/-- Two distinct points on a sphere force its radius to be positive. -/
+theorem radius_pos_of_two_points {s : Sphere P} {a b : P}
+    (ha : a ∈ s) (hb : b ∈ s) (hab : a ≠ b) : 0 < s.radius := by
+  rw [← mem_sphere.mp ha]
+  exact dist_pos.mpr (Sphere.ne_center_of_mem_of_mem_of_ne ha hb hab)
+
+/-- A genuine two-point intersection gives a strict upper bound on center distance. -/
+theorem centers_distance_lt_sum {s t : Sphere P} {a b : P}
+    (has : a ∈ s) (hbs : b ∈ s) (hat : a ∈ t) (hbt : b ∈ t)
+    (hab : a ≠ b) : dist s.center t.center < s.radius + t.radius := by
+  have hs := Sphere.dist_center_midpoint_lt_radius has hbs hab
+  have ht := Sphere.dist_center_midpoint_lt_radius hat hbt hab
+  have htri := dist_triangle s.center (midpoint ℝ a b) t.center
+  rw [dist_comm (midpoint ℝ a b) t.center] at htri
+  linarith
+
+#print axioms radius_pos_of_two_points
+#print axioms centers_distance_lt_sum
 
 end IMO2025P2Bridge
 
