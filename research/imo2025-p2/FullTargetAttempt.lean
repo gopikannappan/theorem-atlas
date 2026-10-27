@@ -14,6 +14,7 @@ import Mathlib.Geometry.Euclidean.Sphere.SecondInter
 import Mathlib.Analysis.InnerProductSpace.TwoDim
 import Mathlib.Tactic.Ring
 import Mathlib.Tactic.Linarith
+import Mathlib.Tactic.LinearCombination
 import Aesop
 
 open scoped Real
@@ -215,6 +216,63 @@ theorem imo2025_p2 {M N A B C D P E F H : Pt} {Ω Γ : Sphere Pt}
   have hyd : yd = 0 := by
     rw [hxd] at hdv0
     nlinarith only [hdv0]
+
+
+  have hdistframe (u v : Pt) :
+      (inner ℝ n (u -ᵥ M) / d - inner ℝ n (v -ᵥ M) / d) ^ 2 +
+        (o.areaForm n (u -ᵥ M) / d - o.areaForm n (v -ᵥ M) / d) ^ 2 =
+      dist u v ^ 2 := by
+    simpa only [inner_sub_right, map_sub, sub_div, vsub_sub_vsub_cancel_right,
+      dist_eq_norm_vsub V] using hframe ((u -ᵥ M) - (v -ᵥ M))
+  let pvec : V := P -ᵥ M
+  let px : ℝ := inner ℝ n pvec / d
+  let py : ℝ := o.areaForm n pvec / d
+  have hACdist : dist A P = dist C P := by
+    have ha := (⟨_, affineIndependent_ACD⟩ : Triangle ℝ Pt).dist_circumcenter_eq_circumradius 0
+    have hc' := (⟨_, affineIndependent_ACD⟩ : Triangle ℝ Pt).dist_circumcenter_eq_circumradius 1
+    simpa [P_eq_circumcenter] using ha.trans hc'.symm
+  have hCDdist : dist C P = dist D P := by
+    have hc' := (⟨_, affineIndependent_ACD⟩ : Triangle ℝ Pt).dist_circumcenter_eq_circumradius 1
+    have hd' := (⟨_, affineIndependent_ACD⟩ : Triangle ℝ Pt).dist_circumcenter_eq_circumradius 2
+    simpa [P_eq_circumcenter] using hc'.trans hd'.symm
+  have hPAcoord :
+      (px - x) ^ 2 + (py - y) ^ 2 = (px + Ω.radius) ^ 2 + py ^ 2 := by
+    have ha := hdistframe A P
+    have hc' := hdistframe C P
+    change (x - px) ^ 2 + (y - py) ^ 2 = dist A P ^ 2 at ha
+    change (xc - px) ^ 2 + (yc - py) ^ 2 = dist C P ^ 2 at hc'
+    rw [hxc, hyc] at hc'
+    rw [hACdist] at ha
+    nlinarith only [ha, hc']
+  have hCDcoord :
+      (px + Ω.radius) ^ 2 + py ^ 2 = (px - d - Γ.radius) ^ 2 + py ^ 2 := by
+    have hc' := hdistframe C P
+    have hd' := hdistframe D P
+    change (xc - px) ^ 2 + (yc - py) ^ 2 = dist C P ^ 2 at hc'
+    change (xd - px) ^ 2 + (yd - py) ^ 2 = dist D P ^ 2 at hd'
+    rw [hxc, hyc] at hc'
+    rw [hxd, hyd] at hd'
+    rw [hCDdist] at hc'
+    nlinarith only [hc', hd']
+  have hdpositive : 0 < d := norm_pos_iff.mpr hn
+  have hsum : d + Γ.radius + Ω.radius ≠ 0 := ne_of_gt (by linarith only [hdpositive, hΓpos, hΩpos])
+  have hfactor : (d + Γ.radius + Ω.radius) *
+      (2 * px - d - Γ.radius + Ω.radius) = 0 := by nlinarith only [hCDcoord]
+  have hpx : 2 * px = d + Γ.radius - Ω.radius := by
+    rcases mul_eq_zero.mp hfactor with h | h
+    · exact (hsum h).elim
+    · linarith only [h]
+  have hkp : (Γ.radius + Ω.radius - d) * px = d * (Ω.radius - x) := by
+    linear_combination ((Γ.radius + Ω.radius - d) / 2) * hpx + (1 / 2 : ℝ) * hLA
+  have hqy : py * y = -px * (x + Ω.radius) := by nlinarith only [hPAcoord, hcircleΩ]
+  have hkp2 : (Γ.radius + Ω.radius - d) * px * (x + Ω.radius) = d * y ^ 2 := by
+    linear_combination (x + Ω.radius) * hkp - d * hcircleΩ
+  have hpy : (Γ.radius + Ω.radius - d) * py = -d * y := by
+    have hzero : ((Γ.radius + Ω.radius - d) * py + d * y) * y = 0 := by
+      linear_combination (Γ.radius + Ω.radius - d) * hqy - hkp2
+    rcases mul_eq_zero.mp hzero with h | h
+    · linarith only [h]
+    · exact (hy_nonzero h).elim
 
   let T : Pt := (N -ᵥ A) +ᵥ M
   suffices h :

@@ -333,4 +333,19 @@ theorem coordinate_sub_norm_sq (o : Orientation ℝ V (Fin 2)) (n u v : V) (hn :
     coordinate_norm_sq o n (u - v) hn
 #print axioms coordinate_sub_norm_sq
 
+
+section PointDistances
+variable {Pt : Type*} [MetricSpace Pt] [NormedAddTorsor V Pt]
+
+/-- The derived coordinates preserve distances between points in an affine torsor. -/
+theorem coordinate_point_distance_sq (o : Orientation ℝ V (Fin 2))
+    (n : V) (hn : n ≠ 0) (origin u v : Pt) :
+    (abscissa n (u -ᵥ origin) - abscissa n (v -ᵥ origin)) ^ 2 +
+      (ordinate o n (u -ᵥ origin) - ordinate o n (v -ᵥ origin)) ^ 2 = dist u v ^ 2 := by
+  simpa only [vsub_sub_vsub_cancel_right, dist_eq_norm_vsub V] using
+    coordinate_sub_norm_sq o n (u -ᵥ origin) (v -ᵥ origin) hn
+
+#print axioms coordinate_point_distance_sq
+end PointDistances
+
 end IMO2025P2Frame
