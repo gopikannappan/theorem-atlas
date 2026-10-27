@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "state": "in_progress_full_theorem_unproved",
+  "record_id": "harmonic:imo2025:p2",
+  "goal": "Complete the original Compfiles IMO2025P2 theorem, without extra mathematical assumptions",
+  "full_target_file": "FullTargetAttempt.lean",
+  "full_target_declaration": "Imo2025P2.imo2025_p2",
+  "full_target_statement_status": "unchanged_from_pinned_upstream_math_signature",
+  "full_problem_complete": false,
+  "coordinate_results_are_full_proof": false,
+  "source_actor": "Harmonic/Aristotle; auxiliary coordinate reconstruction follows a separate published OpenAI proof",
+  "problem_authorship": "IMO human problem authors",
+  "source_trace": {
+    "repository": "harmonic-ai/IMO2025",
+    "commit": "72b62405a176a7eaeadb335a7fa6ee80b6667161",
+    "file": "HarmonicLean/IMO2025P2.txt",
+    "git_blob": "f74c6f95f6e8f78464eae812b2c3f706ea7bf2f5",
+    "copied": false
+  },
+  "source_statement": {
+    "repository": "dwrensha/compfiles",
+    "commit": "1745e6ced3e671bd74417548494b034eb2c87da8",
+    "file": "Compfiles/Imo2025P2.lean",
+    "git_blob": "acec73896c8d8500b01da4dc8de87202bb183c1c",
+    "author": "Joseph Myers",
+    "license": "Apache-2.0",
+    "adaptations": [
+      "Remove problem-extraction metadata/import",
+      "Use standard theorem keyword with identical mathematical signature",
+      "Replace missing upstream proof by an actual bounded tactic attempt",
+      "Use minimal Mathlib imports at the same pinned version"
+    ]
+  },
+  "auxiliary_coordinate_source": {
+    "repository": "aw31/openai-imo-2025-proofs",
+    "commit": "9990fe800af66bcc312cbfe2d631e6e64f5cb1f0",
+    "file": "problem_2.txt",
+    "git_blob": "c3fa035b99db9add4adce8c829d4e2801a9e68c4",
+    "copied": false
+  },
+  "manuscript_url": "https://www.imo-official.org/assets/documents/problems/2025/2025_eng.pdf",
+  "toolchain": "leanprover/lean4:v4.35.0",
+  "lean_archive_sha256": "7289597a44543246c9227b8cae501767e095ce17f6d448b95fc4a8dc97268f6d",
+  "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "coordinate_declarations": [
+    {
+      "name": "IMO2025P2Coordinates.circle_difference",
+      "assumptions": [
+        "r,R,d,x,y:Real",
+        "x²+y²=r²",
+        "(x-d)²+y²=R²"
+      ],
+      "conclusion": "2dx=d²+r²-R²"
+    },
+    {
+      "name": "IMO2025P2Coordinates.circle_height_identity",
+      "assumptions": [
+        "r,R,d,x,y:Real",
+        "x²+y²=r²",
+        "(x-d)²+y²=R²"
+      ],
+      "conclusion": "4d²y²=(d+R+r)(R+r-d)(d²-(R-r)²)"
+    },
+    {
+      "name": "IMO2025P2Coordinates.circumcenter_coordinates",
+      "assumptions": [
+        "r,R,d>0",
+        "y≠0",
+        "A lies on the two normalized circles",
+        "P has equal squared distances to A,C,D, with C=(-r,0), D=(d+R,0)"
+      ],
+      "conclusion": "2p=d+R-r and (R+r-d)q=-dy"
+    },
+    {
+      "name": "IMO2025P2Coordinates.normalized_line_factorization",
+      "assumptions": [
+        "d,y,d+V,V-d all nonzero",
+        "4d²y²=(d+V)(V-d)(d²-U²)"
+      ],
+      "conclusion": "Candidate circle polynomial along candidate line equals ((V²-U²)/4)(d+V)/(V-d)(t-(V-d)/(d+V))²"
+    },
+    {
+      "name": "IMO2025P2Coordinates.normalized_unique_parameter",
+      "assumptions": [
+        "All factorization assumptions",
+        "V²-U²≠0"
+      ],
+      "conclusion": "Candidate polynomial along candidate line vanishes iff t=(V-d)/(d+V)"
+    }
+  ],
+  "unproved_bridges": [
+    "Normalized frame and bounds from full hypotheses",
+    "Coordinates of B,E,F and orthocenter H",
+    "Circumcircle identification and affine independence of B,E,F",
+    "Line identification and actual Sphere.IsTangent transport"
+  ],
+  "budget": {
+    "candidate_CI_iterations": 4,
+    "unchanged_checkpoint_reproductions": 1,
+    "coordinate_compile_seconds": 150,
+    "full_target_seconds": 60,
+    "module_replay_seconds": 90,
+    "preparation_seconds": 900
+  },
+  "fidelity_review": {
+    "state": "pending",
+    "reviewer": null
+  },
+  "trust_review": {
+    "state": "pending",
+    "reviewer": null
+  },
+  "certification": "none"
+}
