@@ -36,10 +36,10 @@ GitHub Actions prepares only pinned upstream dependencies, then mounts both cand
 
 The full-target failure keeps the proof workflow red even if coordinate lemmas compile. Catalogue CI success must never be interpreted as completion of this theorem. No catalogue proof link or audit badge is added during an incomplete attempt.
 
-Budget for this stage: four candidate CI iterations plus one final checkpoint build. The checkpoint fixes a misplaced documentation comment only; ATTEMPTS.md discloses the departure from the originally planned unchanged-source reproduction. Each coordinate compile is bounded to150seconds, full-target attempt60seconds, optional module replay90seconds, and dependency preparation900seconds. Persist every attempt and useful diagnostic. No local commands, unbounded searches or statement weakening.
+Budget for this stage: at most four candidate CI iterations plus one unchanged-source checkpoint reproduction if needed. Each coordinate compile is bounded to150seconds, full-target attempt60seconds, optional module replay90seconds, and dependency preparation900seconds. Persist every attempt and useful diagnostic. No local commands, unbounded searches or statement weakening.
 
 The exact build/runtime commands are in .github/workflows/imo2025-p2.yml. All candidate declarations and assumptions are recorded in provenance.json. Independent fidelity/trust review remains unassigned; this agent does not approve its own statement fidelity.
 
-## Checkpoint status
+## Continuation checkpoint
 
-The full theorem remains unproved after four candidate iterations. Fourteen supporting lemmas elaborated in iteration4, but a comment-placement parser error prevented module success. The final checkpoint corrects only that comment; its result must be read from CI before claiming a successful supporting module. Full source identities and diagnostics are permanent in observations/ and provenance.json. See REMAINING.md. No independent fidelity or trust review has been performed.
+Run40474577628 compiled all fourteen supporting lemmas and passed selected-module leanchecker replay, with imports assumed. The full original theorem remains unproved and the overall proof run failed. Full diagnostics are in observations/attempt-5.json. After the user requested continuation, a new bounded stage allows three geometric-coordinate candidates and one documentation checkpoint. It adds derived inner-product/area coordinates rather than assuming a normalized diagram. Independent fidelity/trust review remains pending.

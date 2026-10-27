@@ -1,4 +1,5 @@
 import Mathlib.Basic.Real.Basic
+import Mathlib.Analysis.InnerProductSpace.TwoDim
 import Mathlib.Geometry.Euclidean.Sphere.Tangent
 import Mathlib.Geometry.Euclidean.Sphere.SecondInter
 import Mathlib.Tactic.FieldSimp
@@ -258,3 +259,40 @@ theorem centers_distance_lt_sum {s t : Sphere P} {a b : P}
 
 end IMO2025P2Bridge
 
+
+namespace IMO2025P2Frame
+
+open scoped RealInnerProductSpace
+open EuclideanGeometry Module
+variable {V : Type*} [NormedAddCommGroup V] [InnerProductSpace ℝ V]
+  [Fact (finrank ℝ V = 2)]
+
+noncomputable def abscissa (n z : V) : ℝ := ⟪n, z⟫ / ‖n‖
+noncomputable def ordinate (o : Orientation ℝ V (Fin 2)) (n z : V) : ℝ :=
+  o.areaForm n z / ‖n‖
+
+/-- Coordinates are derived from the ambient inner product and area form. -/
+theorem coordinate_norm_sq (o : Orientation ℝ V (Fin 2)) (n z : V) (hn : n ≠ 0) :
+    abscissa n z ^ 2 + ordinate o n z ^ 2 = ‖z‖ ^ 2 := by
+  unfold abscissa ordinate
+  rw [div_pow, div_pow, ← add_div]
+  apply (div_eq_iff (pow_ne_zero 2 (norm_ne_zero_iff.mpr hn))).mpr
+  simpa [mul_comm] using o.inner_sq_add_areaForm_sq n z
+
+theorem coordinate_injective (o : Orientation ℝ V (Fin 2)) (n : V) (hn : n ≠ 0)
+    {u v : V} (hx : abscissa n u = abscissa n v)
+    (hy : ordinate o n u = ordinate o n v) : u = v := by
+  have hx0 : abscissa n (u - v) = 0 := by
+    simp only [abscissa, inner_sub_right, sub_div]
+    exact sub_eq_zero.mpr hx
+  have hy0 : ordinate o n (u - v) = 0 := by
+    simp only [ordinate, map_sub, sub_div]
+    exact sub_eq_zero.mpr hy
+  have hid := coordinate_norm_sq o n (u - v) hn
+  rw [hx0, hy0] at hid
+  have hnorm : ‖u - v‖ ^ 2 = 0 := by nlinarith [hid]
+  exact sub_eq_zero.mp (norm_eq_zero.mp (sq_eq_zero_iff.mp hnorm))
+
+#print axioms coordinate_norm_sq
+#print axioms coordinate_injective
+end IMO2025P2Frame
