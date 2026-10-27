@@ -325,4 +325,12 @@ theorem coordinate_injective (o : Orientation ℝ V (Fin 2)) (n : V) (hn : n ≠
 
 #print axioms coordinate_norm_sq
 #print axioms coordinate_injective
+
+theorem coordinate_sub_norm_sq (o : Orientation ℝ V (Fin 2)) (n u v : V) (hn : n ≠ 0) :
+    (abscissa n u - abscissa n v) ^ 2 +
+      (ordinate o n u - ordinate o n v) ^ 2 = ‖u - v‖ ^ 2 := by
+  simpa only [abscissa, ordinate, inner_sub_right, map_sub, sub_div] using
+    coordinate_norm_sq o n (u - v) hn
+#print axioms coordinate_sub_norm_sq
+
 end IMO2025P2Frame

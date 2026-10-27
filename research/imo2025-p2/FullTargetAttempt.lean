@@ -23,7 +23,7 @@ namespace Imo2025P2
 variable {V Pt : Type*} [NormedAddCommGroup V] [InnerProductSpace ℝ V] [MetricSpace Pt]
 variable [NormedAddTorsor V Pt] [Fact (finrank ℝ V = 2)]
 
-set_option maxHeartbeats 200000 in
+set_option maxHeartbeats 2000000 in
 theorem imo2025_p2 {M N A B C D P E F H : Pt} {Ω Γ : Sphere Pt}
     (Ω_center_eq_M : Ω.center = M) (Γ_center_eq_N : Γ.center = N)
     (Ω_radius_lt_Γ_radius : Ω.radius < Γ.radius)
@@ -109,7 +109,7 @@ theorem imo2025_p2 {M N A B C D P E F H : Pt} {Ω Γ : Sphere Pt}
       exact sub_eq_zero.mpr hy
     have hid := hframe (u - v)
     rw [hx0, hy0] at hid
-    have hnorm : ‖u - v‖ ^ 2 = 0 := by nlinarith [hid]
+    have hnorm : ‖u - v‖ ^ 2 = 0 := by nlinarith only [hid]
     exact sub_eq_zero.mp (norm_eq_zero.mp (sq_eq_zero_iff.mp hnorm))
   let w : V := B -ᵥ M
   let xb : ℝ := inner ℝ n w / d
@@ -137,15 +137,15 @@ theorem imo2025_p2 {M N A B C D P E F H : Pt} {Ω Γ : Sphere Pt}
       exact A_ne_B (vsub_left_cancel hzw)
     · exact Or.inl hx
   have hLA : 2 * d * x = d ^ 2 + Ω.radius ^ 2 - Γ.radius ^ 2 := by
-    nlinarith [hcircleΩ, hcircleΓ]
+    nlinarith only [hcircleΩ, hcircleΓ]
   have hLB : 2 * d * xb = d ^ 2 + Ω.radius ^ 2 - Γ.radius ^ 2 := by
-    nlinarith [hcircleBΩ, hcircleBΓ]
+    nlinarith only [hcircleBΩ, hcircleBΓ]
   have hxb : xb = x := by
     apply mul_left_cancel₀ (mul_ne_zero two_ne_zero hd)
-    nlinarith [hLA, hLB]
+    exact hLB.trans hLA.symm
   have hyfactor : (yb - y) * (yb + y) = 0 := by
     rw [hxb] at hcircleBΩ
-    nlinarith [hcircleΩ, hcircleBΩ]
+    nlinarith only [hcircleΩ, hcircleBΩ]
   have hyb : yb = -y := by
     rcases mul_eq_zero.mp hyfactor with h | h
     · have heq : yb = y := sub_eq_zero.mp h
@@ -158,6 +158,63 @@ theorem imo2025_p2 {M N A B C D P E F H : Pt} {Ω Γ : Sphere Pt}
     rcases hdistinctcoords with hx | hy
     · exact hx hxb.symm
     · exact hy (by rw [hyb, hy0]; ring)
+
+
+  have hshiftframe (v : V) :
+      (inner ℝ n v / d - d) ^ 2 + (o.areaForm n v / d) ^ 2 = ‖v - n‖ ^ 2 := by
+    simpa only [inner_sub_right, map_sub, sub_div, hxn,
+      o.areaForm_apply_self, zero_div, sub_zero] using hframe (v - n)
+  have hMN : dist M N = d := dist_eq_norm_vsub' V M N
+  have hCM : dist C M = Ω.radius := by
+    simpa only [Ω_center_eq_M] using (mem_sphere.mp C_mem_inter.2)
+  have hDN : dist D N = Γ.radius := by
+    simpa only [Γ_center_eq_N] using (mem_sphere.mp D_mem_inter.2)
+  have hCMN : Sbtw ℝ C M N := (List.sbtw_four.mp sbtw_C_M_N_D).1
+  have hMND : Sbtw ℝ M N D := (List.sbtw_four.mp sbtw_C_M_N_D).2.2.2
+  have hCN : dist C N = Ω.radius + d := by
+    have heq := dist_add_dist_eq_iff.mpr hCMN.wbtw
+    rw [hCM, hMN] at heq
+    exact heq.symm
+  have hMD : dist M D = d + Γ.radius := by
+    have heq := dist_add_dist_eq_iff.mpr hMND.wbtw
+    rw [hMN, dist_comm N D, hDN] at heq
+    exact heq.symm
+  let c : V := C -ᵥ M
+  let xc : ℝ := inner ℝ n c / d
+  let yc : ℝ := o.areaForm n c / d
+  have hc : ‖c‖ = Ω.radius := by
+    simpa only [c, dist_eq_norm_vsub V] using hCM
+  have hcn : ‖c - n‖ = Ω.radius + d := by
+    simpa only [c, n, vsub_sub_vsub_cancel_right, dist_eq_norm_vsub V] using hCN
+  have hc0 : xc ^ 2 + yc ^ 2 = Ω.radius ^ 2 := by
+    simpa only [xc, yc, hc] using hframe c
+  have hc1 : (xc - d) ^ 2 + yc ^ 2 = (Ω.radius + d) ^ 2 := by
+    simpa only [xc, yc, hcn] using hshiftframe c
+  have hxc : xc = -Ω.radius := by
+    have hm : (2 * d) * (xc + Ω.radius) = 0 := by nlinarith only [hc0, hc1]
+    have hz := (mul_eq_zero.mp hm).resolve_left (mul_ne_zero two_ne_zero hd)
+    linarith
+  have hyc : yc = 0 := by
+    rw [hxc] at hc0
+    nlinarith only [hc0]
+  let dv : V := D -ᵥ M
+  let xd : ℝ := inner ℝ n dv / d
+  let yd : ℝ := o.areaForm n dv / d
+  have hdv : ‖dv‖ = d + Γ.radius := by
+    simpa only [dv, dist_eq_norm_vsub' V] using hMD
+  have hdvn : ‖dv - n‖ = Γ.radius := by
+    simpa only [dv, n, vsub_sub_vsub_cancel_right, dist_eq_norm_vsub V] using hDN
+  have hdv0 : xd ^ 2 + yd ^ 2 = (d + Γ.radius) ^ 2 := by
+    simpa only [xd, yd, hdv] using hframe dv
+  have hdv1 : (xd - d) ^ 2 + yd ^ 2 = Γ.radius ^ 2 := by
+    simpa only [xd, yd, hdvn] using hshiftframe dv
+  have hxd : xd = d + Γ.radius := by
+    have hm : (2 * d) * (xd - d - Γ.radius) = 0 := by nlinarith only [hdv0, hdv1]
+    have hz := (mul_eq_zero.mp hm).resolve_left (mul_ne_zero two_ne_zero hd)
+    linarith
+  have hyd : yd = 0 := by
+    rw [hxd] at hdv0
+    nlinarith only [hdv0]
 
   let T : Pt := (N -ᵥ A) +ᵥ M
   suffices h :
