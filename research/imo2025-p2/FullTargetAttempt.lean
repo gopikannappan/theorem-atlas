@@ -385,8 +385,12 @@ theorem imo2025_p2 {M N A B C D P E F H : Pt} {Ω Γ : Sphere Pt}
     rw [hEco.1, hEco.2] at hf
     have heq : (Ω.radius / Γ.radius * (d - x)) ^ 2 +
         (-Ω.radius / Γ.radius * y) ^ 2 = Ω.radius ^ 2 := by
-      field_simp [hRne]
-      linear_combination Ω.radius ^ 2 * hcircleΓ
+      calc
+        (Ω.radius / Γ.radius * (d - x)) ^ 2 + (-Ω.radius / Γ.radius * y) ^ 2 =
+            (Ω.radius / Γ.radius) ^ 2 * ((d - x) ^ 2 + y ^ 2) := by ring
+        _ = (Ω.radius / Γ.radius) ^ 2 * Γ.radius ^ 2 := by
+          rw [show (d - x) ^ 2 + y ^ 2 = Γ.radius ^ 2 by nlinarith only [hcircleΓ]]
+        _ = Ω.radius ^ 2 := by field_simp [hRne] <;> ring
     rw [heq] at hf
     have hnE : ‖Estar -ᵥ M‖ = Ω.radius := by
       have hn0 := norm_nonneg (Estar -ᵥ M : V)
@@ -403,8 +407,11 @@ theorem imo2025_p2 {M N A B C D P E F H : Pt} {Ω Γ : Sphere Pt}
     rw [hxF, hyF] at hf
     have heq : (-Γ.radius / Ω.radius * x) ^ 2 +
         (-Γ.radius / Ω.radius * y) ^ 2 = Γ.radius ^ 2 := by
-      field_simp [hrne]
-      linear_combination Γ.radius ^ 2 * hcircleΩ
+      calc
+        (-Γ.radius / Ω.radius * x) ^ 2 + (-Γ.radius / Ω.radius * y) ^ 2 =
+            (Γ.radius / Ω.radius) ^ 2 * (x ^ 2 + y ^ 2) := by ring
+        _ = (Γ.radius / Ω.radius) ^ 2 * Ω.radius ^ 2 := by rw [hcircleΩ]
+        _ = Γ.radius ^ 2 := by field_simp [hrne] <;> ring
     rw [heq] at hf
     have hnF : ‖Fstar -ᵥ N‖ = Γ.radius := by
       rw [show ((Fstar -ᵥ M) - n : V) = Fstar -ᵥ N by
@@ -420,11 +427,11 @@ theorem imo2025_p2 {M N A B C D P E F H : Pt} {Ω Γ : Sphere Pt}
         -Ω.radius / Γ.radius * y = o.areaForm n (Estar -ᵥ M) / d := hEco.2.symm
         _ = o.areaForm n (A -ᵥ M) / d := by rw [he]
         _ = y := rfl
-    have hm : (Γ.radius + Ω.radius) * y = 0 := by
-      field_simp [hRne] at hyE
-      nlinarith only [hyE]
-    have hy0 := (mul_eq_zero.mp hm).resolve_left (ne_of_gt (by linarith only [hΓpos, hΩpos]))
-    exact hy_nonzero hy0
+    have hfactorE : -Ω.radius / Γ.radius = 1 := by
+      apply mul_right_cancel₀ hy_nonzero
+      simpa only [one_mul] using hyE
+    have hcontr := (div_eq_iff hRne).mp hfactorE
+    linarith only [hcontr, hΩpos, hΓpos]
   have hFstarNe : Fstar ≠ A := by
     intro he
     have hyF : -Γ.radius / Ω.radius * y = y := by
@@ -432,11 +439,11 @@ theorem imo2025_p2 {M N A B C D P E F H : Pt} {Ω Γ : Sphere Pt}
         -Γ.radius / Ω.radius * y = o.areaForm n (Fstar -ᵥ M) / d := hFco.2.symm
         _ = o.areaForm n (A -ᵥ M) / d := by rw [he]
         _ = y := rfl
-    have hm : (Γ.radius + Ω.radius) * y = 0 := by
-      field_simp [hrne] at hyF
-      nlinarith only [hyF]
-    have hy0 := (mul_eq_zero.mp hm).resolve_left (ne_of_gt (by linarith only [hΓpos, hΩpos]))
-    exact hy_nonzero hy0
+    have hfactorF : -Γ.radius / Ω.radius = 1 := by
+      apply mul_right_cancel₀ hy_nonzero
+      simpa only [one_mul] using hyF
+    have hcontr := (div_eq_iff hrne).mp hfactorF
+    linarith only [hcontr, hΩpos, hΓpos]
   have hlineA : A ∈ line[ℝ, A, P] := left_mem_affineSpan_pair ℝ A P
   have hlineP : P ∈ line[ℝ, A, P] := right_mem_affineSpan_pair ℝ A P
   have hlineStar (t : ℝ) : (t • (P -ᵥ A)) +ᵥ A ∈ line[ℝ, A, P] :=

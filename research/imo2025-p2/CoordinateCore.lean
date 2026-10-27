@@ -262,10 +262,16 @@ theorem candidate_second_intersections_on_original_circles (r R d x y : ℝ)
     (r / R * (d - x)) ^ 2 + (-r / R * y) ^ 2 = r ^ 2 ∧
     ((d - R / r * x) - d) ^ 2 + (-R / r * y) ^ 2 = R ^ 2 := by
   constructor
-  · field_simp [hR]
-    linear_combination r ^ 2 * hB
-  · field_simp [hr]
-    linear_combination R ^ 2 * hA
+  · calc
+      (r / R * (d - x)) ^ 2 + (-r / R * y) ^ 2 =
+          (r / R) ^ 2 * ((d - x) ^ 2 + y ^ 2) := by ring
+      _ = (r / R) ^ 2 * R ^ 2 := by rw [show (d - x) ^ 2 + y ^ 2 = R ^ 2 by nlinarith only [hB]]
+      _ = r ^ 2 := by field_simp [hR] <;> ring
+  · calc
+      ((d - R / r * x) - d) ^ 2 + (-R / r * y) ^ 2 =
+          (R / r) ^ 2 * (x ^ 2 + y ^ 2) := by ring
+      _ = (R / r) ^ 2 * r ^ 2 := by rw [hA]
+      _ = R ^ 2 := by field_simp [hr] <;> ring
 
 #print axioms candidate_second_intersection_coordinates
 #print axioms candidate_second_intersections_on_original_circles
