@@ -242,7 +242,7 @@ theorem radius_pos_of_two_points {s : Sphere P} {a b : P}
   rw [← mem_sphere.mp ha]
   exact dist_pos.mpr (Sphere.ne_center_of_mem_of_mem_of_ne ha hb hab)
 
-/-- A genuine two-point intersection gives a strict upper bound on center distance. -/
+/- A genuine two-point intersection gives a strict upper bound on center distance. -/
 include V in
 theorem centers_distance_lt_sum {s t : Sphere P} {a b : P}
     (has : a ∈ s) (hbs : b ∈ s) (hat : a ∈ t) (hbt : b ∈ t)

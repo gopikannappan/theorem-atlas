@@ -1,9 +1,12 @@
-# Attempt checkpoint
+# Bounded attempt checkpoint
 
-Attempts 1 and 2 are preserved in observations/attempt-1.json and observations/attempt-2.json, including complete compiler output and source hashes. Run links and immutable source commits are recorded in provenance.json.
+**Full problem unproved.** Four candidate iterations are complete. Source commits, run/job/artifact identities and every compiler diagnostic are preserved in provenance.json and observations/attempt-{1,2,3,4}.json.
 
-Attempt 2 elaborated ten mathematical lemmas with propext, Classical.choice and Quot.sound. The module still failed because three real-valued definitions required noncomputable code-generation annotations. No successful module build or full proof is claimed from attempt 2.
+1. Missing cached compatibility import; full geometric goal unsolved.
+2. Ten supporting lemmas elaborated, but three definitions needed noncomputable code-generation annotations.
+3. Eleven supporting lemmas elaborated; an ambient vector-space binder was omitted from the new center-distance helper. That failed helper produced a compiler recovery axiom and is rejected.
+4. Fourteen supporting lemmas elaborated with only propext, Classical.choice and Quot.sound. A documentation comment before include caused a parser error, so this is still not a successful module build. The full target remains unsolved.
 
-Candidate 3 adds those annotations without changing formula bodies, proves generic radius/center-distance consequences of two-point sphere intersections, and derives actual second-intersection identities in the unchanged full target. The full target still requires actual geometric identifications, affine independence and tangency.
+The final checkpoint build changes only the misplaced documentation comment from /-- to /-. This is a disclosed deviation from the originally planned unchanged-source checkpoint reproduction: source bytes differ, but mathematical statements, formulas, proof bodies, pinned dependencies and observer policy remain unchanged. No further mathematical iteration is included in this stage.
 
-Budget: four candidate CI iterations plus one unchanged-source checkpoint reproduction. No local execution. No catalogue or audit upgrade. Independent fidelity and trust review remain unassigned.
+The full-target workflow must remain red while the original target is unproved. The supporting module is separate evidence, never a complete proof or independent fidelity review. No local execution and no catalogue status change. See REMAINING.md for concrete obligations.

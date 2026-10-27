@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "state": "in_progress_attempt_3_failed",
+  "state": "checkpoint_full_problem_unproved",
   "record_id": "harmonic:imo2025:p2",
   "goal": "Complete the original Compfiles IMO2025P2 theorem, without extra mathematical assumptions",
   "full_target_file": "FullTargetAttempt.lean",
@@ -100,7 +100,8 @@
     "coordinate_compile_seconds": 150,
     "full_target_seconds": 60,
     "module_replay_seconds": 90,
-    "preparation_seconds": 900
+    "preparation_seconds": 900,
+    "checkpoint_note": "The fifth and final checkpoint build corrects only /-- to /- in a misplaced comment. Contrary to the initial unchanged-source plan, its source bytes differ; no theorem statement, definition, proof body, dependency or observer policy changed."
   },
   "fidelity_review": {
     "state": "pending",
@@ -181,12 +182,43 @@
       "coordinate_result": "Eleven lemmas elaborated with standard axioms; center-distance lemma failed because implicit vector-space context was omitted, with compiler recovery axiom, rejected",
       "full_target_result": "Radius positivity and second-intersection reductions elaborate; full geometric goal unsolved",
       "accepted_full_proof": false
+    },
+    {
+      "attempt": 4,
+      "source_commit": "3dd5b2848806fb21aa136ce06089a3925b680acd",
+      "run_id": 40474166346,
+      "job_id": 122088160735,
+      "artifact": {
+        "id": 12719614545,
+        "name": "imo2025-p2-attempt",
+        "size_in_bytes": 13506,
+        "url": "https://api.github.com/repos/theorem-atlas/theorem-atlas/actions/artifacts/12719614545",
+        "archive_download_url": "https://api.github.com/repos/theorem-atlas/theorem-atlas/actions/artifacts/12719614545/zip",
+        "expired": false,
+        "created_at": "2026-10-27T08:34:31Z",
+        "expires_at": "2026-11-26T08:34:30Z",
+        "updated_at": "2026-10-27T08:34:31Z",
+        "digest": "sha256:e3dd437da257ddd1dc70b410e1396e64d627028192d10a97b0454a7bddc9d7d3",
+        "workflow_run": {
+          "id": 40474166346,
+          "repository_id": 1416962223,
+          "head_repository_id": 1416962223,
+          "head_branch": "proof/imo2025-p2",
+          "head_sha": "3dd5b2848806fb21aa136ce06089a3925b680acd"
+        }
+      },
+      "observation": "observations/attempt-4.json",
+      "coordinate_result": "Fourteen lemmas elaborated with standard axioms, but a doc-comment before include caused a module parser error; not a successful module build",
+      "full_target_result": "unsolved original affine-independence/tangency goal",
+      "accepted_full_proof": false
     }
   ],
   "additional_coordinate_declarations": [
     "IMO2025P2Coordinates.candidate_B_on_polynomial",
     "IMO2025P2Coordinates.candidate_E_on_polynomial",
-    "IMO2025P2Coordinates.candidate_F_on_polynomial"
+    "IMO2025P2Coordinates.candidate_F_on_polynomial",
+    "IMO2025P2Coordinates.normalized_contact_coordinates",
+    "IMO2025P2Coordinates.contact_is_reflected_A"
   ],
   "additional_geometry_declarations": [
     {
@@ -201,10 +233,22 @@
     {
       "name": "IMO2025P2Bridge.tangent_of_unique_intersection",
       "scope": "generic corollary, not the full IMO theorem"
+    },
+    {
+      "name": "IMO2025P2Bridge.radius_pos_of_two_points",
+      "assumptions": [
+        "Two distinct points belong to the sphere"
+      ],
+      "conclusion": "Sphere radius is strictly positive"
+    },
+    {
+      "name": "IMO2025P2Bridge.centers_distance_lt_sum",
+      "assumptions": [
+        "Two distinct points belong to both spheres"
+      ],
+      "conclusion": "Center distance is strictly less than the sum of radii"
     }
   ],
-  "next_candidate_changes": [
-    "Explicitly include the existing ambient vector space in the generic center-distance lemma",
-    "Prove the normalized contact-coordinate formula from the two circle equations"
-  ]
+  "next_candidate_changes": [],
+  "coordinate_module_success": false
 }
