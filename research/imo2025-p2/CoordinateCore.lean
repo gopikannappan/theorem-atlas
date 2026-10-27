@@ -172,6 +172,36 @@ theorem candidate_F_on_polynomial (r R d x y : ℝ)
 #print axioms candidate_E_on_polynomial
 #print axioms candidate_F_on_polynomial
 
+
+/-- The unique normalized contact parameter has explicit coordinates. -/
+theorem normalized_contact_coordinates (d U V y : ℝ)
+    (hd : d ≠ 0) (hS : d + V ≠ 0) (hK : V - d ≠ 0) :
+    lineX d U V ((V - d) / (d + V)) = (d ^ 2 + U * V) / (2 * d) ∧
+    lineY d V y ((V - d) / (d + V)) = -y := by
+  constructor
+  · unfold lineX
+    field_simp [hd, hS]
+    <;> ring
+  · unfold lineY
+    field_simp [hS, hK]
+    <;> ring
+
+/-- Derive the reflected contact coordinates from the original two circle equations. -/
+theorem contact_is_reflected_A (r R d x y : ℝ)
+    (hd : d ≠ 0) (hS : d + (R + r) ≠ 0) (hK : R + r - d ≠ 0)
+    (hA : x ^ 2 + y ^ 2 = r ^ 2)
+    (hB : (x - d) ^ 2 + y ^ 2 = R ^ 2) :
+    lineX d (R - r) (R + r) ((R + r - d) / (d + (R + r))) = d - x ∧
+    lineY d (R + r) y ((R + r - d) / (d + (R + r))) = -y := by
+  obtain ⟨hx, hy⟩ := normalized_contact_coordinates d (R - r) (R + r) y hd hS hK
+  refine ⟨hx.trans ?_, hy⟩
+  apply (div_eq_iff (mul_ne_zero (by norm_num) hd)).mpr
+  have hlin := circle_difference r R d x y hA hB
+  nlinarith
+
+#print axioms normalized_contact_coordinates
+#print axioms contact_is_reflected_A
+
 end IMO2025P2Coordinates
 
 namespace IMO2025P2Bridge
@@ -213,6 +243,7 @@ theorem radius_pos_of_two_points {s : Sphere P} {a b : P}
   exact dist_pos.mpr (Sphere.ne_center_of_mem_of_mem_of_ne ha hb hab)
 
 /-- A genuine two-point intersection gives a strict upper bound on center distance. -/
+include V in
 theorem centers_distance_lt_sum {s t : Sphere P} {a b : P}
     (has : a ∈ s) (hbs : b ∈ s) (hat : a ∈ t) (hbt : b ∈ t)
     (hab : a ≠ b) : dist s.center t.center < s.radius + t.radius := by
