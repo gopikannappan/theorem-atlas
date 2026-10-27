@@ -276,6 +276,25 @@ theorem candidate_second_intersections_on_original_circles (r R d x y : ℝ)
 #print axioms candidate_second_intersection_coordinates
 #print axioms candidate_second_intersections_on_original_circles
 
+
+/-- The normalized proposed line direction is perpendicular to the candidate
+circle radius at the reflected contact point, conditional on the height identity. -/
+theorem normalized_tangent_direction (d U V y : ℝ)
+    (hd : d ≠ 0) (hy : y ≠ 0) (hK : V - d ≠ 0)
+    (hheight : 4 * d ^ 2 * y ^ 2 = (d + V) * (V - d) * (d ^ 2 - U ^ 2)) :
+    (U * V / d) * (U * (d + V) / (2 * d)) +
+      ((V ^ 2 - d ^ 2) / (2 * y) - 2 * y) * (-V * y / (V - d)) = 0 := by
+  have hid :
+      (U * V / d) * (U * (d + V) / (2 * d)) +
+        ((V ^ 2 - d ^ 2) / (2 * y) - 2 * y) * (-V * y / (V - d)) =
+      (V / (2 * d ^ 2 * (V - d))) *
+        (4 * d ^ 2 * y ^ 2 - (d + V) * (V - d) * (d ^ 2 - U ^ 2)) := by
+    field_simp [hd, hy, hK]
+    <;> ring
+  simpa only [hheight, sub_self, mul_zero] using hid
+
+#print axioms normalized_tangent_direction
+
 end IMO2025P2Coordinates
 
 namespace IMO2025P2Bridge

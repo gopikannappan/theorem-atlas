@@ -451,6 +451,36 @@
       "coordinate_result": "23 supporting lemmas compile and module replay passes, imports assumed",
       "full_target_result": "Actual P, H, E, F coordinate derivations elaborate; exact original full tangency goal unsolved",
       "accepted_full_proof": false
+    },
+    {
+      "attempt": 14,
+      "stage": "round4 candidate 1",
+      "source_commit": "b30a6b475e22fb129f870b2bb5e748ad6aa0d798",
+      "run_id": 40535476353,
+      "job_id": 122299432842,
+      "artifact": {
+        "id": 12747354578,
+        "name": "imo2025-p2-attempt",
+        "size_in_bytes": 13165,
+        "url": "https://api.github.com/repos/theorem-atlas/theorem-atlas/actions/artifacts/12747354578",
+        "archive_download_url": "https://api.github.com/repos/theorem-atlas/theorem-atlas/actions/artifacts/12747354578/zip",
+        "expired": false,
+        "created_at": "2026-10-27T15:57:14Z",
+        "expires_at": "2026-11-26T15:57:13Z",
+        "updated_at": "2026-10-27T15:57:14Z",
+        "digest": "sha256:79a8665bb4c1d4b4ded9e0bb541ade571032884b205d3c2f5b5b3242bc75651d",
+        "workflow_run": {
+          "id": 40535476353,
+          "repository_id": 1416962223,
+          "head_repository_id": 1416962223,
+          "head_branch": "proof/imo2025-p2",
+          "head_sha": "b30a6b475e22fb129f870b2bb5e748ad6aa0d798"
+        }
+      },
+      "observation": "observations/attempt-14.json",
+      "coordinate_result": "24 supporting lemmas compile and module replay passes with imports assumed",
+      "full_target_result": "60-second timeout without compiler output; no candidate circumcircle or full proof accepted",
+      "accepted_full_proof": false
     }
   ],
   "additional_coordinate_declarations": [
@@ -537,6 +567,7 @@
     "candidate_CI_iterations": 4,
     "checkpoint_reproductions": 1,
     "objective": "Construct actual B,E,F circumcircle and prove affine independence and tangency",
-    "status": "in_progress"
+    "status": "in_progress",
+    "candidates_completed": 1
   }
 }

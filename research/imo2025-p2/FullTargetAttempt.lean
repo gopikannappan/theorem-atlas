@@ -599,6 +599,6 @@ theorem imo2025_p2 {M N A B C D P E F H : Pt} {Ω Γ : Sphere Pt}
     rcases h with ⟨hBEF, hT⟩
     exact ⟨hBEF, hT.isTangent⟩
   refine ⟨hBEF, ?_⟩
-  aesop
+  trace_state
 
 end Imo2025P2
