@@ -1,32 +1,21 @@
 {
   "schema_version": 1,
-  "state": "bounded_checkpoint_full_theorem_unproved",
-  "source_commit": "121374f632877697c7939b3264b0569ac407be90",
-  "run_id": 40520995382,
-  "job_id": 122247721981,
-  "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/40520995382",
-  "artifact": {
-    "id": 12742830205,
-    "name": "imo2025-p2-attempt",
-    "size_in_bytes": 16135,
-    "url": "https://api.github.com/repos/theorem-atlas/theorem-atlas/actions/artifacts/12742830205",
-    "archive_download_url": "https://api.github.com/repos/theorem-atlas/theorem-atlas/actions/artifacts/12742830205/zip",
-    "expired": false,
-    "created_at": "2026-10-27T14:31:05Z",
-    "expires_at": "2026-11-26T14:31:04Z",
-    "updated_at": "2026-10-27T14:31:05Z",
-    "digest": "sha256:d5075e025e04aac7b95e6724214948b245bf4394fd116a2e240a61e7c4b0482c",
-    "workflow_run": {
-      "id": 40520995382,
-      "repository_id": 1416962223,
-      "head_repository_id": 1416962223,
-      "head_branch": "proof/imo2025-p2",
-      "head_sha": "121374f632877697c7939b3264b0569ac407be90"
-    }
-  },
-  "full_problem_complete": false,
-  "coordinate_module_success": true,
-  "checked_declarations": [
+  "state": "lean_checked_independent_review_pending",
+  "source_commit": "a97c547c0164d8967207be72ca6c17ce8c111f7c",
+  "proof_url": "https://github.com/theorem-atlas/theorem-atlas/blob/a97c547c0164d8967207be72ca6c17ce8c111f7c/research/imo2025-p2/FullTargetAttempt.lean#L30",
+  "declaration": "Imo2025P2.imo2025_p2",
+  "full_problem_complete": true,
+  "source_signature_matches_frozen": true,
+  "independent_fidelity_review": "pending, unassigned",
+  "independent_trust_review": "pending, unassigned",
+  "full_declaration_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "full_module_replay": "not performed",
+  "supporting_module_replay": "passed with imports assumed",
+  "supporting_declarations": [
     {
       "name": "IMO2025P2Coordinates.circle_difference",
       "axioms": [
@@ -116,6 +105,26 @@
       ]
     },
     {
+      "name": "IMO2025P2Coordinates.candidate_second_intersection_coordinates",
+      "axioms": [
+        "propext,\n Classical.choice,\n Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Coordinates.candidate_second_intersections_on_original_circles",
+      "axioms": [
+        "propext,\n Classical.choice,\n Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Coordinates.normalized_tangent_direction",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
       "name": "IMO2025P2Bridge.tangentAt_of_unique_intersection",
       "axioms": [
         "propext",
@@ -148,6 +157,14 @@
       ]
     },
     {
+      "name": "IMO2025P2Bridge.orthocenter_opposite_side_perp",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
       "name": "IMO2025P2Frame.coordinate_norm_sq",
       "axioms": [
         "propext",
@@ -170,67 +187,60 @@
         "Classical.choice",
         "Quot.sound"
       ]
+    },
+    {
+      "name": "IMO2025P2Frame.coordinate_point_distance_sq",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Frame.coordinate_inner",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Frame.coordinates_of_vectorForCoordinates",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
     }
   ],
-  "proof_dependencies": {
-    "imports": [
-      "Mathlib.Basic.Real.Basic",
-      "Mathlib.Analysis.InnerProductSpace.TwoDim",
-      "Mathlib.Geometry.Euclidean.Sphere.Tangent",
-      "Mathlib.Geometry.Euclidean.Sphere.SecondInter",
-      "Mathlib.Tactic.FieldSimp",
-      "Mathlib.Tactic.Ring",
-      "Mathlib.Tactic.Linarith",
-      "Mathlib.Tactic.LinearCombination",
-      "Mathlib.Tactic.NormNum"
-    ],
-    "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",
-    "lean": "v4.35.0",
-    "manifest": "https://github.com/theorem-atlas/theorem-atlas/blob/121374f632877697c7939b3264b0569ac407be90/research/imo2025-p2/lake-manifest.json",
-    "assumptions": "Each declaration retains all binders in the linked pinned CoordinateCore.lean, including each namespace's ambient variable context; conditional coordinate lemmas are not the full target."
-  },
-  "module_replay_scope": "Selected CoordinateCore module only, imported dependencies assumed; not fresh independent verification",
-  "full_target_prefix": {
-    "status": "Local derivations elaborated before the remaining full theorem goal; not separately certified theorem declarations",
-    "derived": [
-      "Actual ambient inner-product/area coordinates and injectivity",
-      "Actual A and B two-circle equations",
-      "B=(x,-y) and y nonzero from A≠B",
-      "C=(-r,0) and D=(d+R,0) using original strict betweenness",
-      "Actual E,F equal Mathlib sphere second intersections"
-    ],
-    "remaining": [
-      "Actual P coordinates from circumcenter equidistance",
-      "Actual H coordinates from orthocenter",
-      "Actual E,F coordinate formulas",
-      "Affine independence of B,E,F",
-      "Identification of actual circumcircle with candidate polynomial",
-      "Identification of orthocenter parallel line and actual tangency"
-    ]
-  },
-  "full_statement_check": {
-    "method": "Byte-for-byte inclusion of frozen mathematical signature",
-    "matches": true,
-    "independent_fidelity_review": false
-  },
-  "trust_bypass_scan": {
-    "authored_tokens_present": false,
-    "scope": "Supplemental text scan, not sufficient trust review"
-  },
-  "independent_fidelity_review": "pending, unassigned",
-  "independent_trust_review": "pending, unassigned",
-  "certification": "none for full theorem",
-  "catalogue_status_changed": false,
-  "execution": "GitHub Actions only; no local commands",
-  "budget": {
-    "initial_stage": "4 candidates plus comment-only correction checkpoint; departure from initially planned unchanged reproduction disclosed in ATTEMPTS.md",
-    "continuation_stage": "3 candidates completed after user's continue request; this documentation checkpoint does not change candidate or verification sources"
+  "toolchain": "leanprover/lean4:v4.35.0",
+  "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "run_id": 40537281937,
+  "job_id": 122305840762,
+  "artifact": {
+    "id": 12747369434,
+    "name": "imo2025-p2-attempt",
+    "size_in_bytes": 14174,
+    "url": "https://api.github.com/repos/theorem-atlas/theorem-atlas/actions/artifacts/12747369434",
+    "archive_download_url": "https://api.github.com/repos/theorem-atlas/theorem-atlas/actions/artifacts/12747369434/zip",
+    "expired": false,
+    "created_at": "2026-10-27T16:07:10Z",
+    "expires_at": "2026-11-26T16:07:09Z",
+    "updated_at": "2026-10-27T16:07:10Z",
+    "digest": "sha256:95d8e42591251ac48cb960b2b58f0692ac2541108a24d328a58953109ff03e89",
+    "workflow_run": {
+      "id": 40537281937,
+      "repository_id": 1416962223,
+      "head_repository_id": 1416962223,
+      "head_branch": "proof/imo2025-p2",
+      "head_sha": "a97c547c0164d8967207be72ca6c17ce8c111f7c"
+    }
   },
   "observation": {
     "schema_version": 1,
     "source_sha256": {
-      "/work/CoordinateCore.lean": "f00e1e9a3baecc3c1882b8a9634d669aba4ed8c4fcea1f51996ac96e8f074c6f",
-      "/work/FullTargetAttempt.lean": "9c9ae90b689fa71d1590a4f91a23893eade6c9ab118ae7b8ce315024d20fbf3a"
+      "/work/CoordinateCore.lean": "55578d5e127bb1ca08d5ace17ff653fb50bc5012be5426c53cf9d23bbde74de6",
+      "/work/FullTargetAttempt.lean": "2e6876b4d2f225d5006bca44f8d66af734a8924a8441806ae955cd16467a2025"
     },
     "fidelity_review": "pending independent review",
     "certification": "none",
@@ -244,7 +254,7 @@
         "/work/CoordinateCore.lean"
       ],
       "exit_code": 0,
-      "stdout": "/work/CoordinateCore.lean:88:4: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/CoordinateCore.lean:88:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nIMO2025P2Coordinates.circle_difference (r R d x y : ℝ) (hA : x ^ 2 + y ^ 2 = r ^ 2) (hB : (x - d) ^ 2 + y ^ 2 = R ^ 2) :\n  2 * d * x = d ^ 2 + r ^ 2 - R ^ 2\nIMO2025P2Coordinates.circle_height_identity (r R d x y : ℝ) (hA : x ^ 2 + y ^ 2 = r ^ 2)\n  (hB : (x - d) ^ 2 + y ^ 2 = R ^ 2) : 4 * d ^ 2 * y ^ 2 = (d + (R + r)) * (R + r - d) * (d ^ 2 - (R - r) ^ 2)\nIMO2025P2Coordinates.circumcenter_coordinates (r R d x y p q : ℝ) (hr : 0 < r) (hR : 0 < R) (hd : 0 < d) (hy : y ≠ 0)\n  (hA : x ^ 2 + y ^ 2 = r ^ 2) (hB : (x - d) ^ 2 + y ^ 2 = R ^ 2)\n  (hPA : (p - x) ^ 2 + (q - y) ^ 2 = (p + r) ^ 2 + q ^ 2) (hCD : (p + r) ^ 2 + q ^ 2 = (p - d - R) ^ 2 + q ^ 2) :\n  2 * p = d + R - r ∧ (R + r - d) * q = -d * y\nIMO2025P2Coordinates.normalized_line_factorization (d U V y t : ℝ) (hd : d ≠ 0) (hy : y ≠ 0) (hS : d + V ≠ 0)\n  (hK : V - d ≠ 0) (hheight : 4 * d ^ 2 * y ^ 2 = (d + V) * (V - d) * (d ^ 2 - U ^ 2)) :\n  circlePolynomial d U V y (lineX d U V t) (lineY d V y t) =\n    (V ^ 2 - U ^ 2) / 4 * (d + V) / (V - d) * (t - (V - d) / (d + V)) ^ 2\nIMO2025P2Coordinates.normalized_unique_parameter (d U V y t : ℝ) (hd : d ≠ 0) (hy : y ≠ 0) (hS : d + V ≠ 0)\n  (hK : V - d ≠ 0) (hc : V ^ 2 - U ^ 2 ≠ 0) (hheight : 4 * d ^ 2 * y ^ 2 = (d + V) * (V - d) * (d ^ 2 - U ^ 2)) :\n  circlePolynomial d U V y (lineX d U V t) (lineY d V y t) = 0 ↔ t = (V - d) / (d + V)\n'IMO2025P2Coordinates.circle_difference' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Coordinates.circle_height_identity' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Coordinates.circumcenter_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Coordinates.normalized_line_factorization' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Coordinates.normalized_unique_parameter' depends on axioms: [propext, Classical.choice, Quot.sound]\n/work/CoordinateCore.lean:136:4: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/CoordinateCore.lean:136:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n/work/CoordinateCore.lean:153:4: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/CoordinateCore.lean:153:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n/work/CoordinateCore.lean:169:4: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/CoordinateCore.lean:169:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n'IMO2025P2Coordinates.candidate_B_on_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Coordinates.candidate_E_on_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Coordinates.candidate_F_on_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]\n/work/CoordinateCore.lean:185:4: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/CoordinateCore.lean:188:4: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/CoordinateCore.lean:185:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n/work/CoordinateCore.lean:188:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n'IMO2025P2Coordinates.normalized_contact_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Coordinates.contact_is_reflected_A' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Coordinates.common_circle_reflection' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Bridge.tangentAt_of_unique_intersection' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Bridge.tangent_of_unique_intersection' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Bridge.radius_pos_of_two_points' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Bridge.centers_distance_lt_sum' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Frame.coordinate_norm_sq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Frame.coordinate_injective' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Frame.coordinate_sub_norm_sq' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "stdout": "/work/CoordinateCore.lean:89:4: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/CoordinateCore.lean:89:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\nIMO2025P2Coordinates.circle_difference (r R d x y : ℝ) (hA : x ^ 2 + y ^ 2 = r ^ 2) (hB : (x - d) ^ 2 + y ^ 2 = R ^ 2) :\n  2 * d * x = d ^ 2 + r ^ 2 - R ^ 2\nIMO2025P2Coordinates.circle_height_identity (r R d x y : ℝ) (hA : x ^ 2 + y ^ 2 = r ^ 2)\n  (hB : (x - d) ^ 2 + y ^ 2 = R ^ 2) : 4 * d ^ 2 * y ^ 2 = (d + (R + r)) * (R + r - d) * (d ^ 2 - (R - r) ^ 2)\nIMO2025P2Coordinates.circumcenter_coordinates (r R d x y p q : ℝ) (hr : 0 < r) (hR : 0 < R) (hd : 0 < d) (hy : y ≠ 0)\n  (hA : x ^ 2 + y ^ 2 = r ^ 2) (hB : (x - d) ^ 2 + y ^ 2 = R ^ 2)\n  (hPA : (p - x) ^ 2 + (q - y) ^ 2 = (p + r) ^ 2 + q ^ 2) (hCD : (p + r) ^ 2 + q ^ 2 = (p - d - R) ^ 2 + q ^ 2) :\n  2 * p = d + R - r ∧ (R + r - d) * q = -d * y\nIMO2025P2Coordinates.normalized_line_factorization (d U V y t : ℝ) (hd : d ≠ 0) (hy : y ≠ 0) (hS : d + V ≠ 0)\n  (hK : V - d ≠ 0) (hheight : 4 * d ^ 2 * y ^ 2 = (d + V) * (V - d) * (d ^ 2 - U ^ 2)) :\n  circlePolynomial d U V y (lineX d U V t) (lineY d V y t) =\n    (V ^ 2 - U ^ 2) / 4 * (d + V) / (V - d) * (t - (V - d) / (d + V)) ^ 2\nIMO2025P2Coordinates.normalized_unique_parameter (d U V y t : ℝ) (hd : d ≠ 0) (hy : y ≠ 0) (hS : d + V ≠ 0)\n  (hK : V - d ≠ 0) (hc : V ^ 2 - U ^ 2 ≠ 0) (hheight : 4 * d ^ 2 * y ^ 2 = (d + V) * (V - d) * (d ^ 2 - U ^ 2)) :\n  circlePolynomial d U V y (lineX d U V t) (lineY d V y t) = 0 ↔ t = (V - d) / (d + V)\n'IMO2025P2Coordinates.circle_difference' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Coordinates.circle_height_identity' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Coordinates.circumcenter_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Coordinates.normalized_line_factorization' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Coordinates.normalized_unique_parameter' depends on axioms: [propext, Classical.choice, Quot.sound]\n/work/CoordinateCore.lean:137:4: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/CoordinateCore.lean:137:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n/work/CoordinateCore.lean:154:4: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/CoordinateCore.lean:154:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n/work/CoordinateCore.lean:170:4: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/CoordinateCore.lean:170:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n'IMO2025P2Coordinates.candidate_B_on_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Coordinates.candidate_E_on_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Coordinates.candidate_F_on_polynomial' depends on axioms: [propext, Classical.choice, Quot.sound]\n/work/CoordinateCore.lean:186:4: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/CoordinateCore.lean:189:4: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/CoordinateCore.lean:186:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n/work/CoordinateCore.lean:189:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n'IMO2025P2Coordinates.normalized_contact_coordinates' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Coordinates.contact_is_reflected_A' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Coordinates.common_circle_reflection' depends on axioms: [propext, Classical.choice, Quot.sound]\n/work/CoordinateCore.lean:269:38: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/CoordinateCore.lean:269:42: warning: Unused tactic linter: `ring` does nothing.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/CoordinateCore.lean:274:38: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/CoordinateCore.lean:274:42: warning: Unused tactic linter: `ring` does nothing.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/CoordinateCore.lean:269:42: warning: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\n/work/CoordinateCore.lean:274:42: warning: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\n'IMO2025P2Coordinates.candidate_second_intersection_coordinates' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'IMO2025P2Coordinates.candidate_second_intersections_on_original_circles' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n/work/CoordinateCore.lean:293:4: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/CoordinateCore.lean:293:4: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n'IMO2025P2Coordinates.normalized_tangent_direction' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Bridge.tangentAt_of_unique_intersection' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Bridge.tangent_of_unique_intersection' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Bridge.radius_pos_of_two_points' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Bridge.centers_distance_lt_sum' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Bridge.orthocenter_opposite_side_perp' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Frame.coordinate_norm_sq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Frame.coordinate_injective' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Frame.coordinate_sub_norm_sq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Frame.coordinate_point_distance_sq' depends on axioms: [propext, Classical.choice, Quot.sound]\n'IMO2025P2Frame.coordinate_inner' depends on axioms: [propext, Classical.choice, Quot.sound]\n/work/CoordinateCore.lean:453:20: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/CoordinateCore.lean:453:24: warning: Unused tactic linter: `ring` does nothing.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/CoordinateCore.lean:456:20: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/CoordinateCore.lean:456:24: warning: Unused tactic linter: `ring` does nothing.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/CoordinateCore.lean:453:24: warning: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\n/work/CoordinateCore.lean:456:24: warning: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\n'IMO2025P2Frame.coordinates_of_vectorForCoordinates' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
       "stderr": "",
       "outcome": "completed",
       "timeout_seconds": 150
@@ -271,13 +281,13 @@
         "lean",
         "/work/FullTargetAttempt.lean"
       ],
-      "exit_code": 1,
-      "stdout": "/work/FullTargetAttempt.lean:63:2: warning: Try this: \n  letI̵\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n/work/FullTargetAttempt.lean:226:2: warning: aesop: failed to prove the goal after exhaustive search.\n/work/FullTargetAttempt.lean:45:58: error: unsolved goals\nV : Type u_1\nPt : Type u_2\ninst : NormedAddCommGroup V\ninst_1 : InnerProductSpace ℝ V\ninst_2 : MetricSpace Pt\ninst_3 : NormedAddTorsor V Pt\ninst_4 : Fact (finrank ℝ V = 2)\nA B C D : Pt\nΩ Γ : Sphere Pt\nΩ_radius_lt_Γ_radius : Ω.radius < Γ.radius\naffineIndependent_ACD : AffineIndependent ℝ ![A, C, D]\nthis : FiniteDimensional ℝ V := FiniteDimensional.of_fact_finrank_eq_two\no : Orientation ℝ V (Fin 2) := ((stdOrthonormalBasis ℝ V).reindex (finCongr ⋯)).toBasis.orientation\nz : V := A -ᵥ Ω.center\nw : V := B -ᵥ Ω.center\nc : V := C -ᵥ Ω.center\ndv : V := D -ᵥ Ω.center\nn : V := Γ.center -ᵥ Ω.center\nd : ℝ := ‖n‖\nx : ℝ := inner ℝ n z / d\ny : ℝ := (o.areaForm n) z / d\nxb : ℝ := inner ℝ n w / d\nyb : ℝ := (o.areaForm n) w / d\nxc : ℝ := inner ℝ n c / d\nyc : ℝ := (o.areaForm n) c / d\nxd : ℝ := inner ℝ n dv / d\nyd : ℝ := (o.areaForm n) dv / d\nT : Pt := (Γ.center -ᵥ A) +ᵥ Ω.center\naffineIndependent_PMN :\n  AffineIndependent ℝ ![{ points := ![A, C, D], independent := affineIndependent_ACD }.circumcenter, Ω.center, Γ.center]\nA_ne_B : ¬A = B\nhΩpos : 0 < Ω.radius\nhΓpos : 0 < Γ.radius\nhz : ‖A -ᵥ Ω.center‖ = Ω.radius\nhw : ‖B -ᵥ Ω.center‖ = Ω.radius\nhCM : C ∈ Ω\nhc : ‖C -ᵥ Ω.center‖ = Ω.radius\nhDN : D ∈ Γ\nM_ne_N : ¬Ω.center = Γ.center\nC_mem_inter : C ∈ line[ℝ, Ω.center, Γ.center]\nD_mem_inter : D ∈ line[ℝ, Ω.center, Γ.center]\nsbtw_C_M_N_D : List.Sbtw ℝ [C, Ω.center, Γ.center, D]\nhdpos : ¬Γ.center = Ω.center\nhframe :\n  ∀ (v : V),\n    (inner ℝ (Γ.center -ᵥ Ω.center) v / ‖Γ.center -ᵥ Ω.center‖) ^ 2 +\n        ((((stdOrthonormalBasis ℝ V).toBasis.reindex (finCongr ⋯)).orientation.areaForm (Γ.center -ᵥ Ω.center)) v /\n            ‖Γ.center -ᵥ Ω.center‖) ^\n          2 =\n      ‖v‖ ^ 2\nhzN : ‖A -ᵥ Γ.center‖ = Γ.radius\nhxn : ‖Γ.center -ᵥ Ω.center‖ ^ 2 / ‖Γ.center -ᵥ Ω.center‖ = ‖Γ.center -ᵥ Ω.center‖\nhxsub :\n  inner ℝ (Γ.center -ᵥ Ω.center) (A -ᵥ Γ.center) / ‖Γ.center -ᵥ Ω.center‖ =\n    inner ℝ (Γ.center -ᵥ Ω.center) (A -ᵥ Ω.center) / ‖Γ.center -ᵥ Ω.center‖ - ‖Γ.center -ᵥ Ω.center‖\nhysub :\n  (((stdOrthonormalBasis ℝ V).toBasis.reindex (finCongr ⋯)).orientation.areaForm (Γ.center -ᵥ Ω.center))\n      (A -ᵥ Γ.center) =\n    (((stdOrthonormalBasis ℝ V).toBasis.reindex (finCongr ⋯)).orientation.areaForm (Γ.center -ᵥ Ω.center))\n      (A -ᵥ Ω.center)\nhcoords_ext :\n  ∀ {u v : V},\n    inner ℝ (Γ.center -ᵥ Ω.center) u = inner ℝ (Γ.center -ᵥ Ω.center) v →\n      (((stdOrthonormalBasis ℝ V).toBasis.reindex (finCongr ⋯)).orientation.areaForm (Γ.center -ᵥ Ω.center)) u =\n          (((stdOrthonormalBasis ℝ V).toBasis.reindex (finCongr ⋯)).orientation.areaForm (Γ.center -ᵥ Ω.center)) v →\n        u = v\nhwN : ‖B -ᵥ Γ.center‖ = Γ.radius\nhywsub :\n  (((stdOrthonormalBasis ℝ V).toBasis.reindex (finCongr ⋯)).orientation.areaForm (Γ.center -ᵥ Ω.center))\n      (B -ᵥ Γ.center) =\n    (((stdOrthonormalBasis ℝ V).toBasis.reindex (finCongr ⋯)).orientation.areaForm (Γ.center -ᵥ Ω.center))\n      (B -ᵥ Ω.center)\nhdistinctcoords :\n  ¬(((stdOrthonormalBasis ℝ V).toBasis.reindex (finCongr ⋯)).orientation.areaForm (Γ.center -ᵥ Ω.center))\n        (A -ᵥ Ω.center) =\n      (((stdOrthonormalBasis ℝ V).toBasis.reindex (finCongr ⋯)).orientation.areaForm (Γ.center -ᵥ Ω.center))\n        (B -ᵥ Ω.center)\nhLA :\n  2 * ‖Γ.center -ᵥ Ω.center‖ * (inner ℝ (Γ.center -ᵥ Ω.center) (A -ᵥ Ω.center) / ‖Γ.center -ᵥ Ω.center‖) =\n    ‖Γ.center -ᵥ Ω.center‖ ^ 2 + Ω.radius ^ 2 - Γ.radius ^ 2\nhxb : inner ℝ (Γ.center -ᵥ Ω.center) (B -ᵥ Ω.center) = inner ℝ (Γ.center -ᵥ Ω.center) (A -ᵥ Ω.center)\nhyb :\n  (((stdOrthonormalBasis ℝ V).toBasis.reindex (finCongr ⋯)).orientation.areaForm (Γ.center -ᵥ Ω.center))\n        (B -ᵥ Ω.center) /\n      ‖Γ.center -ᵥ Ω.center‖ =\n    -((((stdOrthonormalBasis ℝ V).toBasis.reindex (finCongr ⋯)).orientation.areaForm (Γ.center -ᵥ Ω.center))\n          (A -ᵥ Ω.center) /\n        ‖Γ.center -ᵥ Ω.center‖)\nhy_nonzero :\n  ¬(((stdOrthonormalBasis ℝ V).toBasis.reindex (finCongr ⋯)).orientation.areaForm (Γ.center -ᵥ Ω.center))\n        (A -ᵥ Ω.center) =\n      0\nhshiftframe :\n  ∀ (v : V),\n    (inner ℝ (Γ.center -ᵥ Ω.center) v / ‖Γ.center -ᵥ Ω.center‖ - ‖Γ.center -ᵥ Ω.center‖) ^ 2 +\n        ((((stdOrthonormalBasis ℝ V).toBasis.reindex (finCongr ⋯)).orientation.areaForm (Γ.center -ᵥ Ω.center)) v /\n            ‖Γ.center -ᵥ Ω.center‖) ^\n          2 =\n      ‖v - (Γ.center -ᵥ Ω.center)‖ ^ 2\nhMN : dist Ω.center Γ.center = ‖Γ.center -ᵥ Ω.center‖\nhCMN : Sbtw ℝ C Ω.center Γ.center\nhMND : Sbtw ℝ Ω.center Γ.center D\nhCN : dist C Γ.center = Ω.radius + ‖Γ.center -ᵥ Ω.center‖\nhMD : dist Ω.center D = ‖Γ.center -ᵥ Ω.center‖ + Γ.radius\nhcn : ‖C -ᵥ Γ.center‖ = Ω.radius + ‖Γ.center -ᵥ Ω.center‖\nhxc : inner ℝ (Γ.center -ᵥ Ω.center) (C -ᵥ Ω.center) / ‖Γ.center -ᵥ Ω.center‖ = -Ω.radius\nhyc :\n  (((stdOrthonormalBasis ℝ V).toBasis.reindex (finCongr ⋯)).orientation.areaForm (Γ.center -ᵥ Ω.center))\n      (C -ᵥ Ω.center) =\n    0\nhdv : ‖D -ᵥ Ω.center‖ = ‖Γ.center -ᵥ Ω.center‖ + Γ.radius\nhdvn : ‖D -ᵥ Γ.center‖ = Γ.radius\nhxd : inner ℝ (Γ.center -ᵥ Ω.center) (D -ᵥ Ω.center) / ‖Γ.center -ᵥ Ω.center‖ = ‖Γ.center -ᵥ Ω.center‖ + Γ.radius\nhyd :\n  (((stdOrthonormalBasis ℝ V).toBasis.reindex (finCongr ⋯)).orientation.areaForm (Γ.center -ᵥ Ω.center))\n      (D -ᵥ Ω.center) =\n    0\nE_ne_A : ¬Ω.secondInter A ({ points := ![A, C, D], independent := affineIndependent_ACD }.circumcenter -ᵥ A) = A\nE_mem_inter :\n  Ω.secondInter A ({ points := ![A, C, D], independent := affineIndependent_ACD }.circumcenter -ᵥ A) ∈\n    line[ℝ, A, { points := ![A, C, D], independent := affineIndependent_ACD }.circumcenter]\nF_ne_A : ¬Γ.secondInter A ({ points := ![A, C, D], independent := affineIndependent_ACD }.circumcenter -ᵥ A) = A\nF_mem_inter :\n  Γ.secondInter A ({ points := ![A, C, D], independent := affineIndependent_ACD }.circumcenter -ᵥ A) ∈\n    line[ℝ, A, { points := ![A, C, D], independent := affineIndependent_ACD }.circumcenter]\nleft : A ∈ Ω\nright : A ∈ Γ\nleft_1 : B ∈ Ω\nright_1 : B ∈ Γ\n⊢ ∃ (h :\n    AffineIndependent ℝ\n      ![B, Ω.secondInter A ({ points := ![A, C, D], independent := affineIndependent_ACD }.circumcenter -ᵥ A),\n        Γ.secondInter A ({ points := ![A, C, D], independent := affineIndependent_ACD }.circumcenter -ᵥ A)]),\n    {\n            points :=\n              ![B, Ω.secondInter A ({ points := ![A, C, D], independent := affineIndependent_ACD }.circumcenter -ᵥ A),\n                Γ.secondInter A ({ points := ![A, C, D], independent := affineIndependent_ACD }.circumcenter -ᵥ A)],\n            independent := ⋯ }.circumsphere.IsTangentAt\n      ((Γ.center -ᵥ A) +ᵥ Ω.center)\n      (AffineSubspace.mk'\n        (Triangle.orthocenter\n          {\n            points :=\n              ![{ points := ![A, C, D], independent := affineIndependent_ACD }.circumcenter, Ω.center, Γ.center],\n            independent := affineIndependent_PMN })\n        line[ℝ, A, { points := ![A, C, D], independent := affineIndependent_ACD }.circumcenter].direction)\n",
+      "exit_code": 0,
+      "stdout": "/work/FullTargetAttempt.lean:66:2: warning: Try this: \n  letI̵\n\nThe goal is a proposition, so `let` is preferred over `letI`.\nThe difference between `let` and `letI` is that `letI` inlines the value.\nBut this is not relevant for proofs because of proof irrelevance.\n\nNote: This linter can be disabled with `set_option linter.style.haveILetI false`\n/work/FullTargetAttempt.lean:319:6: warning: This simp argument is unused:\n  zero_div\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [inner_sub_right, map_sub, sub_div, hxn, o.areaForm_apply_self, sub_zero] at heq\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n/work/FullTargetAttempt.lean:349:82: warning: This simp argument is unused:\n  sub_div\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [hv, inner_add_right, inner_smul_right, inner_sub_right, add_div]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n/work/FullTargetAttempt.lean:352:71: warning: This simp argument is unused:\n  sub_div\n\nHint: Omit it from the simp argument list.\n  [apply] simp only [hv, map_add, map_smul, map_sub, smul_eq_mul, add_div]\n\nNote: This linter can be disabled with `set_option linter.unusedSimpArgs false`\n/work/FullTargetAttempt.lean:363:6: warning: Unused tactic linter: `change inner ℝ n (Estar -ᵥ M) / d = _` does nothing.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/FullTargetAttempt.lean:367:6: warning: Unused tactic linter: `change o.areaForm n (Estar -ᵥ M) / d = _` does nothing.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/FullTargetAttempt.lean:376:6: warning: Unused tactic linter: `change inner ℝ n (Fstar -ᵥ M) / d = _` does nothing.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/FullTargetAttempt.lean:380:6: warning: Unused tactic linter: `change o.areaForm n (Fstar -ᵥ M) / d = _` does nothing.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/FullTargetAttempt.lean:394:49: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/FullTargetAttempt.lean:394:53: warning: Unused tactic linter: `ring` does nothing.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/FullTargetAttempt.lean:415:49: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/FullTargetAttempt.lean:415:53: warning: Unused tactic linter: `ring` does nothing.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/FullTargetAttempt.lean:485:22: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/FullTargetAttempt.lean:485:26: warning: Unused tactic linter: `ring` does nothing.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/FullTargetAttempt.lean:490:22: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/FullTargetAttempt.lean:490:26: warning: Unused tactic linter: `ring` does nothing.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/FullTargetAttempt.lean:497:6: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/FullTargetAttempt.lean:506:6: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/FullTargetAttempt.lean:515:6: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/FullTargetAttempt.lean:713:6: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`\n/work/FullTargetAttempt.lean:394:53: warning: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\n/work/FullTargetAttempt.lean:415:53: warning: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\n/work/FullTargetAttempt.lean:485:26: warning: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\n/work/FullTargetAttempt.lean:490:26: warning: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`\n/work/FullTargetAttempt.lean:497:6: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n/work/FullTargetAttempt.lean:506:6: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n/work/FullTargetAttempt.lean:515:6: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n/work/FullTargetAttempt.lean:713:6: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice\n\nNote: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`\n'Imo2025P2.imo2025_p2' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
       "stderr": "",
       "outcome": "completed",
       "timeout_seconds": 60
     },
-    "full_problem_complete": false,
+    "full_problem_complete": true,
     "scope_note": "Coordinate proofs alone do not prove the full affine-geometry target. Full-target diagnostics decide the attempt outcome; a failed target keeps this workflow red."
   }
 }

@@ -1,45 +1,26 @@
-# IMO2025 Problem2 — full formalization attempt
+# IMO 2025 Problem 2 — Lean formalization
 
-**Objective:** complete the exact Compfiles theorem for the official IMO2025 Problem2, using the existing AI-produced geometry proof as a source. The full target is not established merely by proving coordinate identities.
+The complete [Imo2025P2.imo2025_p2](https://github.com/theorem-atlas/theorem-atlas/blob/a97c547c0164d8967207be72ca6c17ce8c111f7c/research/imo2025-p2/FullTargetAttempt.lean#L30) declaration compiled in [GitHub Actions run 40537281937](https://github.com/theorem-atlas/theorem-atlas/actions/runs/40537281937). It uses the Compfiles mathematical signature without additional hypotheses. Independent review of the signature's fidelity to the official problem and of trust assumptions is **pending and unassigned**.
 
-## Source identities
+The source retains the historical filename FullTargetAttempt.lean; the proof in the pinned commit is complete. The formalized statement is a human-authored IMO problem with published AI-produced proofs. The Lean proof reconstructs a coordinate method informed by the OpenAI proof below; it is not a line-by-line translation of the Harmonic trace.
 
-- Harmonic/Aristotle geometry trace: [IMO2025P2.txt](https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/HarmonicLean/IMO2025P2.txt), Git blob f74c6f95f6e8f78464eae812b2c3f706ea7bf2f5. Its sampled point coordinates, orientation and nondegeneracy checks must not become extra theorem assumptions.
-- Exact interface: [Compfiles](https://github.com/dwrensha/compfiles/blob/1745e6ced3e671bd74417548494b034eb2c87da8/Compfiles/Imo2025P2.lean), blob acec73896c8d8500b01da4dc8de87202bb183c1c, author Joseph Myers. The upstream proof is incomplete. We retain every mathematical binder, hypothesis and conclusion, replacing only the extraction DSL keyword with a standard theorem declaration and selecting equivalent imports.
-- Additional coordinate reconstruction source: [published OpenAI IMO proof](https://github.com/aw31/openai-imo-2025-proofs/blob/9990fe800af66bcc312cbfe2d631e6e64f5cb1f0/problem_2.txt), blob c3fa035b99db9add4adce8c829d4e2801a9e68c4. This is a second AI-produced proof of the same human-authored problem, not the Harmonic trace itself. Its coordinate method is reconstructed in original Lean code; no proof prose is copied.
-- [Official IMO2025 problems](https://www.imo-official.org/assets/documents/problems/2025/2025_eng.pdf), Problem2, page1.
+## Sources and attribution
 
-The copied statement retains its Apache-2.0 copyright/author notice. Existing upstream proofs remain linked; no Harmonic trace or OpenAI prose is redistributed. Original candidate code is Apache-2.0. No claim is made that the LLM originated the IMO problem.
+- [Official 2025 IMO problems](https://www.imo-official.org/assets/documents/problems/2025/2025_eng.pdf), Problem 2, page 1.
+- [Compfiles statement](https://github.com/dwrensha/compfiles/blob/1745e6ced3e671bd74417548494b034eb2c87da8/Compfiles/Imo2025P2.lean), commit 1745e6ced3e671bd74417548494b034eb2c87da8, blob acec73896c8d8500b01da4dc8de87202bb183c1c, Joseph Myers / Compfiles contributors, Apache-2.0. The upstream proof was incomplete; the copied statement retains its notice. The extraction DSL was replaced by a theorem declaration with the same mathematical signature.
+- [Harmonic/Aristotle trace](https://github.com/harmonic-ai/IMO2025/blob/72b62405a176a7eaeadb335a7fa6ee80b6667161/HarmonicLean/IMO2025P2.txt), blob f74c6f95f6e8f78464eae812b2c3f706ea7bf2f5. Linked, not copied; numerical diagram constraints were not added to the target.
+- [OpenAI IMO proof artifact](https://github.com/aw31/openai-imo-2025-proofs/blob/9990fe800af66bcc312cbfe2d631e6e64f5cb1f0/problem_2.txt), blob c3fa035b99db9add4adce8c829d4e2801a9e68c4. Linked, not copied; the coordinate route is reconstructed in original Lean code.
 
-## Two proof layers
+## What was checked
 
-FullTargetAttempt.lean contains the exact full affine-geometry target and an actual bounded proof attempt. No authored placeholder, invented axiom or trust bypass is inserted. It must compile completely before any full-proof claim.
+The frozen signature, full source and declaration are recorded in [provenance.json](provenance.json). The proof derives an orthogonal coordinate frame, identifies the geometric points and circumcircle, and proves Mathlib sphere tangency at `(N -ᵥ A) +ᵥ M`. No authored placeholder, extra axiom or sampled numerical hypothesis is used.
 
-CoordinateCore.lean attempts genuine supporting theorems over arbitrary real parameters: the linear two-circle relation; the quartic height identity; circumcenter equations derived from equidistance; a factorization of the candidate line/circle polynomial; and uniqueness of its zero parameter. These are algebraic components, not a redefinition of Mathlib sphere tangency.
+In the pinned remote container, `lake env lean /work/FullTargetAttempt.lean` exited 0. `#print axioms Imo2025P2.imo2025_p2` reported `propext`, `Classical.choice`, and `Quot.sound`. This is an axiom report, not a complete trust or source-fidelity review. The full theorem was not separately replayed by leanchecker.
 
-The coordinate approach normalizes M=(0,0), N=(d,0), A=(x,y), with circle radii r<R. Put U=R-r and V=R+r. It proposes explicit formulas for P, H, E, F and the circumcircle. The current coordinate file does not establish all those formulas or their transport from the full affine setting.
+The separate CoordinateCore.lean compiled 25 supporting lemmas and its module passed leanchecker replay with imports assumed. Cached imported dependencies were not freshly replayed. Lean 4.35.0, Mathlib commit 56a005855ea17e0b0958f73ec801ae140b0a1679, all manifest revisions, the Lean archive hash and Ubuntu image digest are pinned; apt packages and runner infrastructure are not fully pinned.
 
-Necessary remaining bridges must not be assumed:
-1. Construct a valid normalized coordinate frame from the official hypotheses and derive all positivity/nonzero bounds.
-2. Prove the second intersections E,F and the second common-circle point B have the proposed coordinates.
-3. Prove the candidate polynomial describes the actual circumcircle of B,E,F, including affine independence.
-4. Identify lineX/lineY with the line through the actual orthocenter H parallel to AP.
-5. Derive Mathlib Sphere.IsTangent from the coordinate results and transport back to the exact target.
+The exact container preparation and runtime commands are in [.github/workflows/imo2025-p2.yml](https://github.com/theorem-atlas/theorem-atlas/blob/a97c547c0164d8967207be72ca6c17ce8c111f7c/.github/workflows/imo2025-p2.yml). Candidate files are mounted read-only and checked offline. No local commands were run. The [successful observation](observations/attempt-17.json), earlier attempts and their diagnostics are retained. Artifact 12747369434 has digest `sha256:95d8e42591251ac48cb960b2b58f0692ac2541108a24d328a58953109ff03e89`; the permanent observation records the compiler output and source hashes.
 
-A unique polynomial root is not, by itself, the formal theorem. No sampled orientation facts, coordinate formulas, uniqueness premise or tangent conclusion may be added to the full target to force compilation. Any statement change would require independent review.
+## Review status
 
-## Remote CI and bounded attempt
-
-Lean4.35.0 and Mathlib56a005855ea17e0b0958f73ec801ae140b0a1679 match the pinned Compfiles environment. Every transitive dependency is pinned in the manifest. The Lean archive SHA256 and Ubuntu image digest are checked. Apt packages and runner infrastructure are not completely pinned.
-
-GitHub Actions prepares only pinned upstream dependencies, then mounts both candidate files read-only and runs offline, non-root, with memory/PID/CPU limits. It records source hashes, complete compiler outputs, axiom lists and optional selected-module replay. Module replay assumes imports and is not fresh independent verification.
-
-The full-target failure keeps the proof workflow red even if coordinate lemmas compile. Catalogue CI success must never be interpreted as completion of this theorem. No catalogue proof link or audit badge is added during an incomplete attempt.
-
-Budget for this stage: at most four candidate CI iterations plus one unchanged-source checkpoint reproduction if needed. Each coordinate compile is bounded to150seconds, full-target attempt60seconds, optional module replay90seconds, and dependency preparation900seconds. Persist every attempt and useful diagnostic. No local commands, unbounded searches or statement weakening.
-
-The exact build/runtime commands are in .github/workflows/imo2025-p2.yml. All candidate declarations and assumptions are recorded in provenance.json. Independent fidelity/trust review remains unassigned; this agent does not approve its own statement fidelity.
-
-## Continuation checkpoint
-
-Run40474577628 compiled all fourteen supporting lemmas and passed selected-module leanchecker replay, with imports assumed. The full original theorem remains unproved and the overall proof run failed. Full diagnostics are in observations/attempt-5.json. After the user requested continuation, a new bounded stage allows three geometric-coordinate candidates and one documentation checkpoint. It adds derived inner-product/area coordinates rather than assuming a normalized diagram. Independent fidelity/trust review remains pending.
+The declaration is Lean checked for the pinned formal statement. A reviewer must independently compare its types, assumptions and definitions with both the Compfiles statement and the official problem, and review the trust boundary. Compilation alone does not establish that fidelity. No audited or faithful catalogue status is claimed; the PR remains draft.

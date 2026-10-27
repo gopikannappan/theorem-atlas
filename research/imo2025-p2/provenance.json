@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "state": "continued_geometric_frame_stage",
+  "state": "lean_checked_independent_review_pending",
   "record_id": "harmonic:imo2025:p2",
   "goal": "Complete the original Compfiles IMO2025P2 theorem, without extra mathematical assumptions",
   "full_target_file": "FullTargetAttempt.lean",
   "full_target_declaration": "Imo2025P2.imo2025_p2",
   "full_target_statement_status": "unchanged_from_pinned_upstream_math_signature",
-  "full_problem_complete": false,
+  "full_problem_complete": true,
   "coordinate_results_are_full_proof": false,
   "source_actor": "Harmonic/Aristotle; auxiliary coordinate reconstruction follows a separate published OpenAI proof",
   "problem_authorship": "IMO human problem authors",
@@ -27,7 +27,7 @@
     "adaptations": [
       "Remove problem-extraction metadata/import",
       "Use standard theorem keyword with identical mathematical signature",
-      "Replace missing upstream proof by an actual bounded tactic attempt",
+      "Replace incomplete upstream proof with an original coordinate-based Lean proof",
       "Use minimal Mathlib imports at the same pinned version"
     ]
   },
@@ -88,12 +88,7 @@
       "conclusion": "Candidate polynomial along candidate line vanishes iff t=(V-d)/(d+V)"
     }
   ],
-  "unproved_bridges": [
-    "Normalized frame and bounds from full hypotheses",
-    "Coordinates of B,E,F and orthocenter H",
-    "Circumcircle identification and affine independence of B,E,F",
-    "Line identification and actual Sphere.IsTangent transport"
-  ],
+  "unproved_bridges": [],
   "budget": {
     "candidate_CI_iterations": 4,
     "unchanged_checkpoint_reproductions": 1,
@@ -111,7 +106,7 @@
     "state": "pending",
     "reviewer": null
   },
-  "certification": "none",
+  "certification": "full_target_lean_checked_in_ci_not_independently_reviewed",
   "attempts": [
     {
       "attempt": 1,
@@ -300,6 +295,36 @@
       "observation": "observations/attempt-7.json",
       "coordinate_result": "Seventeen supporting lemmas compile and replay, imports assumed",
       "full_target_result": "Ambient coordinate reflection derivation reached horizontal equality then exhausted 200000 heartbeats in broad-context arithmetic; not a completed full proof",
+      "accepted_full_proof": false
+    },
+    {
+      "attempt": 8,
+      "stage": "continuation candidate 3",
+      "source_commit": "121374f632877697c7939b3264b0569ac407be90",
+      "run_id": 40520995382,
+      "job_id": 122247721981,
+      "artifact": {
+        "id": 12742830205,
+        "name": "imo2025-p2-attempt",
+        "size_in_bytes": 16135,
+        "url": "https://api.github.com/repos/theorem-atlas/theorem-atlas/actions/artifacts/12742830205",
+        "archive_download_url": "https://api.github.com/repos/theorem-atlas/theorem-atlas/actions/artifacts/12742830205/zip",
+        "expired": false,
+        "created_at": "2026-10-27T14:31:05Z",
+        "expires_at": "2026-11-26T14:31:04Z",
+        "updated_at": "2026-10-27T14:31:05Z",
+        "digest": "sha256:d5075e025e04aac7b95e6724214948b245bf4394fd116a2e240a61e7c4b0482c",
+        "workflow_run": {
+          "id": 40520995382,
+          "repository_id": 1416962223,
+          "head_repository_id": 1416962223,
+          "head_branch": "proof/imo2025-p2",
+          "head_sha": "121374f632877697c7939b3264b0569ac407be90"
+        }
+      },
+      "observation": "../../../docs/research/imo2025-p2-checkpoint-previous.json",
+      "coordinate_result": "18 supporting lemmas compiled and replayed with imports assumed",
+      "full_target_result": "original tangency goal remained unsolved",
       "accepted_full_proof": false
     },
     {
@@ -541,6 +566,37 @@
       "coordinate_result": "25 supporting lemmas compile and selected module replay passes, imports assumed",
       "full_target_result": "A type-argument error in center membership caused compiler recovery; dependent circle-incidence results are not accepted. Contact point on the target line elaborated independently. Tangency remains unproved.",
       "accepted_full_proof": false
+    },
+    {
+      "attempt": 17,
+      "stage": "round4 candidate 4",
+      "source_commit": "a97c547c0164d8967207be72ca6c17ce8c111f7c",
+      "run_id": 40537281937,
+      "job_id": 122305840762,
+      "artifact": {
+        "id": 12747369434,
+        "name": "imo2025-p2-attempt",
+        "size_in_bytes": 14174,
+        "url": "https://api.github.com/repos/theorem-atlas/theorem-atlas/actions/artifacts/12747369434",
+        "archive_download_url": "https://api.github.com/repos/theorem-atlas/theorem-atlas/actions/artifacts/12747369434/zip",
+        "expired": false,
+        "created_at": "2026-10-27T16:07:10Z",
+        "expires_at": "2026-11-26T16:07:09Z",
+        "updated_at": "2026-10-27T16:07:10Z",
+        "digest": "sha256:95d8e42591251ac48cb960b2b58f0692ac2541108a24d328a58953109ff03e89",
+        "workflow_run": {
+          "id": 40537281937,
+          "repository_id": 1416962223,
+          "head_repository_id": 1416962223,
+          "head_branch": "proof/imo2025-p2",
+          "head_sha": "a97c547c0164d8967207be72ca6c17ce8c111f7c"
+        }
+      },
+      "observation": "observations/attempt-17.json",
+      "coordinate_result": "25 supporting lemmas compile and selected module replay passes with imports assumed",
+      "full_target_result": "Original complete theorem compiles; #print axioms reports propext, Classical.choice, Quot.sound",
+      "accepted_full_proof": true,
+      "independent_fidelity_review": "pending"
     }
   ],
   "additional_coordinate_declarations": [
@@ -627,7 +683,246 @@
     "candidate_CI_iterations": 4,
     "checkpoint_reproductions": 1,
     "objective": "Construct actual B,E,F circumcircle and prove affine independence and tangency",
-    "status": "in_progress",
-    "candidates_completed": 3
-  }
+    "status": "full_target_compiled_review_pending",
+    "candidates_completed": 4
+  },
+  "proof": {
+    "declaration": "Imo2025P2.imo2025_p2",
+    "file": "research/imo2025-p2/FullTargetAttempt.lean",
+    "line": 30,
+    "repository": "https://github.com/theorem-atlas/theorem-atlas",
+    "commit": "a97c547c0164d8967207be72ca6c17ce8c111f7c",
+    "url": "https://github.com/theorem-atlas/theorem-atlas/blob/a97c547c0164d8967207be72ca6c17ce8c111f7c/research/imo2025-p2/FullTargetAttempt.lean#L30",
+    "source_sha256": "2e6876b4d2f225d5006bca44f8d66af734a8924a8441806ae955cd16467a2025",
+    "assumptions_file": "frozen-target.txt",
+    "signature_check": "Exact textual match to frozen mathematical signature; independent source fidelity review pending",
+    "full_lean_command": [
+      "lake",
+      "env",
+      "lean",
+      "/work/FullTargetAttempt.lean"
+    ],
+    "full_lean_exit_code": 0,
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "full_module_replay": "not performed",
+    "supporting_module_replay": "passed; imports assumed",
+    "independent_fidelity_review": "pending",
+    "independent_trust_review": "pending",
+    "run_url": "https://github.com/theorem-atlas/theorem-atlas/actions/runs/40537281937"
+  },
+  "proof_dependencies": [
+    "Mathlib.Geometry.Euclidean.Sphere.Tangent",
+    "Mathlib.Geometry.Euclidean.MongePoint",
+    "Mathlib.Analysis.Convex.BetweenList",
+    "Mathlib.Geometry.Euclidean.Sphere.SecondInter",
+    "Mathlib.Analysis.InnerProductSpace.TwoDim",
+    "Mathlib.Tactic.Ring",
+    "Mathlib.Tactic.Linarith",
+    "Mathlib.Tactic.LinearCombination",
+    "Mathlib.Tactic.FieldSimp",
+    "Mathlib.Tactic.FinCases",
+    "Aesop"
+  ],
+  "checked_supporting_declarations": [
+    {
+      "name": "IMO2025P2Coordinates.circle_difference",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Coordinates.circle_height_identity",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Coordinates.circumcenter_coordinates",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Coordinates.normalized_line_factorization",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Coordinates.normalized_unique_parameter",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Coordinates.candidate_B_on_polynomial",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Coordinates.candidate_E_on_polynomial",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Coordinates.candidate_F_on_polynomial",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Coordinates.normalized_contact_coordinates",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Coordinates.contact_is_reflected_A",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Coordinates.common_circle_reflection",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Coordinates.candidate_second_intersection_coordinates",
+      "axioms": [
+        "propext,\n Classical.choice,\n Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Coordinates.candidate_second_intersections_on_original_circles",
+      "axioms": [
+        "propext,\n Classical.choice,\n Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Coordinates.normalized_tangent_direction",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Bridge.tangentAt_of_unique_intersection",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Bridge.tangent_of_unique_intersection",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Bridge.radius_pos_of_two_points",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Bridge.centers_distance_lt_sum",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Bridge.orthocenter_opposite_side_perp",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Frame.coordinate_norm_sq",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Frame.coordinate_injective",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Frame.coordinate_sub_norm_sq",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Frame.coordinate_point_distance_sq",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Frame.coordinate_inner",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "name": "IMO2025P2Frame.coordinates_of_vectorForCoordinates",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ]
 }
