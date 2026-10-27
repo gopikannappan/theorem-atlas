@@ -332,10 +332,132 @@ theorem imo2025_p2 {M N A B C D P E F H : Pt} {Ω Γ : Sphere Pt}
   have hHcoord : (d + (Γ.radius + Ω.radius)) * hy = -d * y := by
     have hm : ((d + (Γ.radius + Ω.radius)) * hy + d * y) * (d * y) = 0 := by
       linear_combination (1 / 4 : ℝ) * hheight +
-        ((d + (Γ.radius + Ω.radius)) * (Γ.radius + Ω.radius - d) / 4) * hpq +
+        - ((d + (Γ.radius + Ω.radius)) * (Γ.radius + Ω.radius - d) / 4) * hpq +
         (d + (Γ.radius + Ω.radius)) * hy * hpy
     have hh := (mul_eq_zero.mp hm).resolve_right (mul_ne_zero hd hy_nonzero)
     linarith only [hh]
+
+
+  have hlinecoords (t : ℝ) :
+      inner ℝ n (((t • (P -ᵥ A)) +ᵥ A) -ᵥ M) / d = x + t * (px - x) ∧
+      o.areaForm n (((t • (P -ᵥ A)) +ᵥ A) -ᵥ M) / d = y + t * (py - y) := by
+    have hv : (((t • (P -ᵥ A)) +ᵥ A) -ᵥ M : V) = t • (pvec - z) + z := by
+      simp only [vadd_vsub_assoc, pvec, z, vsub_sub_vsub_cancel_right]
+    constructor
+    · dsimp only [x, px]
+      simp only [hv, inner_add_right, inner_smul_right, inner_sub_right, add_div, sub_div]
+      ring
+    · dsimp only [y, py]
+      simp only [hv, map_add, map_smul, map_sub, smul_eq_mul, add_div, sub_div]
+      ring
+  have hRne : Γ.radius ≠ 0 := ne_of_gt hΓpos
+  have hrne : Ω.radius ≠ 0 := ne_of_gt hΩpos
+  let Estar : Pt := ((Γ.radius + Ω.radius - d) / Γ.radius) • (P -ᵥ A) +ᵥ A
+  let Fstar : Pt := ((Γ.radius + Ω.radius - d) / Ω.radius) • (P -ᵥ A) +ᵥ A
+  have hEco :
+      inner ℝ n (Estar -ᵥ M) / d = Ω.radius / Γ.radius * (d - x) ∧
+      o.areaForm n (Estar -ᵥ M) / d = -Ω.radius / Γ.radius * y := by
+    obtain ⟨he1, he2⟩ := hlinecoords ((Γ.radius + Ω.radius - d) / Γ.radius)
+    constructor
+    · change inner ℝ n (Estar -ᵥ M) / d = _
+      rw [he1]
+      field_simp [hRne]
+      nlinarith only [hkp]
+    · change o.areaForm n (Estar -ᵥ M) / d = _
+      rw [he2]
+      field_simp [hRne]
+      nlinarith only [hpy]
+  have hFco :
+      inner ℝ n (Fstar -ᵥ M) / d = d - Γ.radius / Ω.radius * x ∧
+      o.areaForm n (Fstar -ᵥ M) / d = -Γ.radius / Ω.radius * y := by
+    obtain ⟨hf1, hf2⟩ := hlinecoords ((Γ.radius + Ω.radius - d) / Ω.radius)
+    constructor
+    · change inner ℝ n (Fstar -ᵥ M) / d = _
+      rw [hf1]
+      field_simp [hrne]
+      nlinarith only [hkp]
+    · change o.areaForm n (Fstar -ᵥ M) / d = _
+      rw [hf2]
+      field_simp [hrne]
+      nlinarith only [hpy]
+  have hEstarSphere : Estar ∈ Ω := by
+    have hf := hframe (Estar -ᵥ M)
+    rw [hEco.1, hEco.2] at hf
+    have heq : (Ω.radius / Γ.radius * (d - x)) ^ 2 +
+        (-Ω.radius / Γ.radius * y) ^ 2 = Ω.radius ^ 2 := by
+      field_simp [hRne]
+      linear_combination Ω.radius ^ 2 * hcircleΓ
+    rw [heq] at hf
+    have hnE : ‖Estar -ᵥ M‖ = Ω.radius := by
+      have hn0 := norm_nonneg (Estar -ᵥ M : V)
+      nlinarith only [hf, hn0, hΩpos]
+    apply mem_sphere.mpr
+    simpa only [Ω_center_eq_M, dist_eq_norm_vsub V] using hnE
+  have hFstarSphere : Fstar ∈ Γ := by
+    have hf := hframe ((Fstar -ᵥ M) - n)
+    have hxF : inner ℝ n ((Fstar -ᵥ M) - n) / d = -Γ.radius / Ω.radius * x := by
+      rw [inner_sub_right, sub_div, hFco.1, hxn]
+      ring
+    have hyF : o.areaForm n ((Fstar -ᵥ M) - n) / d = -Γ.radius / Ω.radius * y := by
+      simp only [map_sub, o.areaForm_apply_self, sub_zero, hFco.2]
+    rw [hxF, hyF] at hf
+    have heq : (-Γ.radius / Ω.radius * x) ^ 2 +
+        (-Γ.radius / Ω.radius * y) ^ 2 = Γ.radius ^ 2 := by
+      field_simp [hrne]
+      linear_combination Γ.radius ^ 2 * hcircleΩ
+    rw [heq] at hf
+    have hnF : ‖Fstar -ᵥ N‖ = Γ.radius := by
+      rw [show ((Fstar -ᵥ M) - n : V) = Fstar -ᵥ N by
+        simp only [n, vsub_sub_vsub_cancel_right]] at hf
+      have hn0 := norm_nonneg (Fstar -ᵥ N : V)
+      nlinarith only [hf, hn0, hΓpos]
+    apply mem_sphere.mpr
+    simpa only [Γ_center_eq_N, dist_eq_norm_vsub V] using hnF
+  have hEstarNe : Estar ≠ A := by
+    intro he
+    have hyE : -Ω.radius / Γ.radius * y = y := by
+      calc
+        -Ω.radius / Γ.radius * y = o.areaForm n (Estar -ᵥ M) / d := hEco.2.symm
+        _ = o.areaForm n (A -ᵥ M) / d := by rw [he]
+        _ = y := rfl
+    have hm : (Γ.radius + Ω.radius) * y = 0 := by
+      field_simp [hRne] at hyE
+      nlinarith only [hyE]
+    have hy0 := (mul_eq_zero.mp hm).resolve_left (ne_of_gt (by linarith only [hΓpos, hΩpos]))
+    exact hy_nonzero hy0
+  have hFstarNe : Fstar ≠ A := by
+    intro he
+    have hyF : -Γ.radius / Ω.radius * y = y := by
+      calc
+        -Γ.radius / Ω.radius * y = o.areaForm n (Fstar -ᵥ M) / d := hFco.2.symm
+        _ = o.areaForm n (A -ᵥ M) / d := by rw [he]
+        _ = y := rfl
+    have hm : (Γ.radius + Ω.radius) * y = 0 := by
+      field_simp [hrne] at hyF
+      nlinarith only [hyF]
+    have hy0 := (mul_eq_zero.mp hm).resolve_left (ne_of_gt (by linarith only [hΓpos, hΩpos]))
+    exact hy_nonzero hy0
+  have hlineA : A ∈ line[ℝ, A, P] := left_mem_affineSpan_pair ℝ A P
+  have hlineP : P ∈ line[ℝ, A, P] := right_mem_affineSpan_pair ℝ A P
+  have hlineStar (t : ℝ) : (t • (P -ᵥ A)) +ᵥ A ∈ line[ℝ, A, P] :=
+    AffineSubspace.vadd_mem_of_mem_direction
+      ((line[ℝ, A, P]).direction.smul_mem _ (AffineSubspace.vsub_mem_direction hlineP hlineA)) hlineA
+  have hEstarE : Estar = E := by
+    have hsecond := ((Sphere.eq_or_eq_secondInter_iff_mem_of_mem_affineSpan_pair
+      A_mem_inter.1 (hlineStar ((Γ.radius + Ω.radius - d) / Γ.radius))).mpr hEstarSphere).resolve_left hEstarNe
+    exact hsecond.trans hEsecond.symm
+  have hFstarF : Fstar = F := by
+    have hsecond := ((Sphere.eq_or_eq_secondInter_iff_mem_of_mem_affineSpan_pair
+      A_mem_inter.2 (hlineStar ((Γ.radius + Ω.radius - d) / Ω.radius))).mpr hFstarSphere).resolve_left hFstarNe
+    exact hsecond.trans hFsecond.symm
+  have hEcoordinates :
+      inner ℝ n (E -ᵥ M) / d = Ω.radius / Γ.radius * (d - x) ∧
+      o.areaForm n (E -ᵥ M) / d = -Ω.radius / Γ.radius * y := by
+    simpa only [hEstarE] using hEco
+  have hFcoordinates :
+      inner ℝ n (F -ᵥ M) / d = d - Γ.radius / Ω.radius * x ∧
+      o.areaForm n (F -ᵥ M) / d = -Γ.radius / Ω.radius * y := by
+    simpa only [hFstarF] using hFco
 
   let T : Pt := (N -ᵥ A) +ᵥ M
   suffices h :

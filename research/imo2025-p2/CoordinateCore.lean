@@ -234,11 +234,47 @@ theorem common_circle_reflection (r R d x y xb yb : ℝ) (hd : d ≠ 0)
 
 #print axioms common_circle_reflection
 
+
+/-- Candidate second intersection coordinates follow from the circumcenter equations. -/
+theorem candidate_second_intersection_coordinates (r R d x y px py : ℝ)
+    (hr : r ≠ 0) (hR : R ≠ 0)
+    (hkp : (R + r - d) * px = d * (r - x))
+    (hpy : (R + r - d) * py = -d * y) :
+    (x + (R + r - d) / R * (px - x) = r / R * (d - x) ∧
+     y + (R + r - d) / R * (py - y) = -r / R * y) ∧
+    (x + (R + r - d) / r * (px - x) = d - R / r * x ∧
+     y + (R + r - d) / r * (py - y) = -R / r * y) := by
+  constructor <;> constructor
+  · field_simp [hR]
+    nlinarith only [hkp]
+  · field_simp [hR]
+    nlinarith only [hpy]
+  · field_simp [hr]
+    nlinarith only [hkp]
+  · field_simp [hr]
+    nlinarith only [hpy]
+
+/-- The proposed points lie on the respective original circles. -/
+theorem candidate_second_intersections_on_original_circles (r R d x y : ℝ)
+    (hr : r ≠ 0) (hR : R ≠ 0)
+    (hA : x ^ 2 + y ^ 2 = r ^ 2)
+    (hB : (x - d) ^ 2 + y ^ 2 = R ^ 2) :
+    (r / R * (d - x)) ^ 2 + (-r / R * y) ^ 2 = r ^ 2 ∧
+    ((d - R / r * x) - d) ^ 2 + (-R / r * y) ^ 2 = R ^ 2 := by
+  constructor
+  · field_simp [hR]
+    linear_combination r ^ 2 * hB
+  · field_simp [hr]
+    linear_combination R ^ 2 * hA
+
+#print axioms candidate_second_intersection_coordinates
+#print axioms candidate_second_intersections_on_original_circles
+
 end IMO2025P2Coordinates
 
 namespace IMO2025P2Bridge
 
-open EuclideanGeometry
+open Affine EuclideanGeometry
 variable {V P : Type*} [NormedAddCommGroup V] [InnerProductSpace ℝ V]
   [MetricSpace P] [NormedAddTorsor V P]
 
